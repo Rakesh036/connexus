@@ -1,0 +1,18 @@
+<% layout("layouts/boilerplate") %>
+
+<h1>All Groups</h1>
+<ul class="list-group">
+    <% groups.forEach(group => { %>
+    <li class="list-group-item group-item">
+        <a href="/groups/<%= group._id %>"><%= group.title %></a> - <%= group.owner.username %>
+        <div class="btn-group">
+            <% if (!group.members.includes(currUser)) { %>
+            <form action="/groups/<%= group._id %>/join" method="POST">
+                <button type="submit" class="btn btn-primary">Join</button>
+            </form>
+            <% } %>
+            <a href="/groups/<%= group._id %>" class="btn btn-secondary">View</a>
+        </div>
+    </li>
+    <% }) %>
+</ul>

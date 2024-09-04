@@ -1,0 +1,16 @@
+<% layout("layouts/boilerplate") %>
+
+<h1><%= group.title %></h1>
+<p><%= group.description %></p>
+<h3>Members:</h3>
+<ul>
+    <% group.members.forEach(member => { %>
+    <li><%= member.username %></li>
+    <% }) %>
+</ul>
+<h3>Quizzes:</h3>
+<ul>
+    <% group.quizzes.forEach(quiz => { %>
+    <li><a href="/groups/<%= group._id %>/quizzes/<%= quiz._id %>"><%= quiz.title %></a></li>
+    <% }) %>
+</ul>

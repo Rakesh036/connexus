@@ -1,0 +1,41 @@
+<%- layout("/layouts/boilerplate") -%>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="mb-4">Job </h1>
+            <a href="/jobs/new" class="btn btn-success mb-3">Create New Job</a>
+            <div class="list-group">
+                <% jobs.forEach(job => { %>
+                <div class="list-group-item mb-3 job-item">
+                    <div class="list-group-item job-header list-group-item-action">
+                        <a href="/jobs/<%=job._id %>" class="list-group-item post-header list-group-item-action">
+                            <h5 class="mb-1"><%= job.title %></h5>
+                            <p class="mb-1">Company: <%= job.companyName %></p>
+                            <p class="mb-1">Location: <%= job.location %></p>
+                            <p class="mb-1">Job Type: <%= job.jobType %></p>
+                            <p class="mb-1">Salary: $<%= job.salary ? job.salary.toLocaleString() : 'Not specified' %>
+                                per year</p>
+                        </a>
+                    </div>
+                    <br>
+                    <div class="d-flex">
+                        <a href="<%= job.applyLink %>" class="btn btn-primary btn-sm me-3" target="_blank">Apply</a>
+                        <a href="/jobs/<%= job._id %>/like" class="btn btn-like btn-sm me-3">
+                            <%= job.likes ? job.likes.length : 0 %>&nbsp;
+                            <% if(currUser && job.likes.findIndex(like => like.equals(currUser._id)) > -1) { %>
+                            <i class="fa-solid fa-thumbs-up"></i>
+                            <% } else { %>
+                            <i class="fa-regular fa-thumbs-up"></i>
+                            <% } %>
+                        </a>
+                        <a href="/jobs/<%= job._id %>/Comment" class="btn btn-comment btn-sm me-3">Comment</a>
+                        <a href="/jobs/<%= job._id %>/report" class="btn btn-report btn-sm">
+                            <%= job.reports ? job.reports.length : 0 %>&nbsp;Report
+                        </a>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>

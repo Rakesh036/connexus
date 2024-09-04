@@ -1,0 +1,92 @@
+<% layout("/layouts/boilerplate") -%>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Back to Posts with Icon -->
+            <a href="/listings" class="btn btn-secondary d-inline-flex align-items-center">
+                <i class="fa-solid fa-left-long"></i>
+                <!-- <i class="bi bi-arrow-left-circle me-2"></i> Back to Posts -->
+            </a>
+            <br><br>
+            <p class="card-text">Owned by: <i><%=listing.owner.username  %></i></p>
+            <h1><%= listing.title %></h1><br>
+            <p class="lead"><%= listing.description %></p>
+            <!-- <p class="text-muted">Posted by <%# listing.owner.username %></p> -->
+
+            <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
+            <div class="btns">
+                <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark col-1  edit-btn">Edit</a>
+                <form action="/listings/<%=listing._id%>?_method=delete" method="post">
+                    <button class="btn btn-dark  offset-5"> Delete </button>
+                </form>
+            </div>
+            <% } %>
+
+        </div>
+
+
+        <div class="col-6 offset-3" id="comment-section">
+            <% if(currUser){ %>
+            <form action="/listings/<%= listing._id %>/reviews" method="post" class="needs-validation" novalidate>
+                <hr>
+                <!-- <div class="mb-3 mt-3"> -->
+
+                <!-- </div> -->
+                <label for="comment" class="form-label">
+                    <h5>Leave a Comments</h5>
+                </label>
+                <textarea name="review[comment]" class="form-control" id="comment" cols="20" rows="3"
+                    required></textarea>
+                <div class="invalid-feedback">please add some comment for review</div><br>
+                <button type="submit" class="btn btn-outline-dark">Submit</button>
+
+
+                <% } %>
+            </form>
+        </div>
+
+        <div class="col-6 offset-3 mb-3">
+            <hr>
+            <h4>All Reviews</h4>
+            <div class="row">
+                <% listing.reviews.forEach(review => { %>
+                <div class="card col-5 ms-3  mb-3">
+                    <div class="card-body">
+                        <div class="card-title"><i>@<%=review.author.username %></i></div>
+                        <p class="card-text">
+                            <%=review.comment %></p>
+
+                        <% if(currUser&&review.author._id.equals(currUser._id)) {%>
+                        <span>
+                            <form action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=delete"
+                                method="post">
+                                <button class="btn btn-sm btn-danger mb-3">Delete</button>
+                            </form>
+                        </span>
+                        <% } %>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Check if the URL has a fragment identifier
+        if (window.location.hash === '#comment-section') {
+            // Scroll to the comment section
+            document.getElementById('comment-section').scrollIntoView({ behavior: 'smooth' });
+
+            // Use setTimeout to ensure the element is focused after scrolling
+            setTimeout(function () {
+                const commentInput = document.getElementById('comment');
+                if (commentInput) {
+                    commentInput.focus();
+                }
+            }, 1); // Adjust timeout as needed
+        }
+    });
+</script>
