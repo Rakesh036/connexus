@@ -1,0 +1,46 @@
+<%- layout("/layouts/boilerplate") -%>
+
+<div class="container">
+    <h1 class="mb-4">Posts</h1>
+    <a href="/listings/new" class="btn btn-success mb-3">Create New Post</a>
+    <div class="row">
+        <% listings.reverse().forEach(listing => { %>
+        <div class="col-md-4 mb-4">
+            <div class="card post-card">
+                <div class="card-body">
+                    <div class="upperpart">
+                        <h5 class="card-title"><%= listing.title %></h5>
+                        <p class="card-text"><%= listing.description.substring(0, 50) %>...</p>
+                    </div>
+                    <div class="lowerpart">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex">
+                                <!-- Like button -->
+                                <a href="/listings/<%= listing._id %>/like" class="btn btn-like btn-sm me-2">
+                                    <%= listing.likes.length %>&nbsp;
+                                    <% if (currUser && listing.likes.findIndex(like => like.equals(currUser._id)) > -1) { %>
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                    <% } else { %>
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    <% } %>
+                                </a>
+                                <!-- Comment button -->
+                                <a href="/listings/<%= listing._id %>/comment" class="btn btn-comment btn-sm me-2">
+                                    <i class="fas fa-comment"></i>
+                                </a>
+                                <!-- Report button -->
+                                <a href="/listings/<%= listing._id %>/report" class="btn btn-report btn-sm">
+                                    <%= listing.reports.length %>&nbsp;<i class="fas fa-flag"></i>
+                                </a>
+                            </div>
+                            <!-- Read more button -->
+                            <a href="/listings/<%= listing._id %>" class="btn btn-primary btn-sm readmore">Read More</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>

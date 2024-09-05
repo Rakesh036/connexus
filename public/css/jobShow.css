@@ -1,0 +1,195 @@
+/* Outer Border for the Page Container */
+.container {
+  border: 2px solid #00ffcc; /* Keep the border */
+  padding: 10px; /* Reduced padding */
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Neon Border Effect for Input Fields */
+textarea.form-control {
+  border: 2px solid #00ffcc;
+  border-radius: 5px;
+  background-color: #fdfdfd;
+  color: #333;
+}
+
+textarea.form-control:focus {
+  border-color: #00ffcc;
+  box-shadow: 0 0 8px #00ffcc;
+}
+
+/* Button Styles */
+.btn-dark {
+  background-color: #0c7563 !important; /* Dark blue color */
+  border: 2px solid #00493a;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 5px;
+}
+
+.btn-dark:hover {
+  background-color: #00ffcc;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-dark i {
+  margin-right: 8px;
+}
+
+.btn-outline-dark {
+  border: 2px solid #0c7563;
+  color: #0c7563;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-outline-dark:hover {
+  background-color: #0c7563;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline-dark i {
+  margin-right: 8px;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: 2px solid #b02a37;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-danger i {
+  margin-right: 8px;
+}
+
+/* Heading Style */
+h1 {
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+h4 {
+  color: #000;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Lead Paragraph Style */
+p.lead {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+}
+
+/* Card Styles */
+.card {
+  border: none; /* Remove internal border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for cards */
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+/* Spacing Adjustments */
+.row {
+  margin-top: 30px;
+}
+
+.col-md-8.offset-md-2 {
+  margin-top: 20px;
+}
+
+/* Styling for Back to Jobs button */
+.btn-secondary {
+  background-color: #045449;
+  border: 2px solid #046551;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #098f74;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-secondary i {
+  margin-right: 8px;
+}
+
+/* Font Awesome styling for icon buttons */
+.btn-dark i {
+  margin-right: 8px;
+}
+
+.btn-outline-dark i {
+  margin-right: 8px;
+}
+
+/* Styling for job details text */
+.container .lead {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 10px;
+    max-width: 95%;
+  }
+}

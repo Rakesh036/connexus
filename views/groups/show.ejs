@@ -1,0 +1,42 @@
+<%- layout("layouts/boilerplate") %>
+
+<div class="container mt-3">
+    <div class="group-show-header">
+        <!-- Back to Groups -->
+        <div class="group-show-header-back">
+            <a href="/groups" class="btn btn-secondary d-inline-flex align-items-center">
+                <i class="fa-solid fa-left-long"></i>
+            </a>
+        </div>
+
+        <!-- If the current user is the owner of the group, show Edit and Delete buttons -->
+        <% if(currUser && String(currUser._id) === String(group.owner._id)) { %>
+        <div class="btns">
+            <a href="/groups/<%=group._id%>/edit" class="btn btn-dark col-1 edit-btn">Edit</a>
+            <form action="/groups/<%=group._id%>?_method=delete" method="post">
+                <button class="btn btn-dark offset-5">Delete</button>
+            </form>
+        </div>
+        <% } %>
+    </div>
+
+    <br><br>
+
+    <h1><%= group.title %></h1>
+    <p><%= group.description %></p>
+
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Members:</h3>
+            <ul>
+                <% group.members.forEach(member => { %>
+                <li><%= member.username %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <!-- Button to navigate to quizzes for this group -->
+            <a href="/groups/<%=group._id %>/quizzes" class="btn btn-primary btn-lg">Go to Quizzes</a>
+        </div>
+    </div>
+</div>

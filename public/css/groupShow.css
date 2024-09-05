@@ -1,0 +1,111 @@
+/* Group Details Container */
+.group-details-container {
+  position: relative;
+  border: 1px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 1;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* Neon border effect for group details */
+.group-details-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(45deg, #ff0081, #ff8c00, #00d084, #00aaff) border-box;
+  z-index: -1;
+  animation: neonBorder 3s linear infinite;
+}
+
+.group-details-container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Group Title Styling */
+.group-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Group Description Styling */
+.group-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Section Titles (Members, Quizzes) */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Members List */
+.members-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.member-item {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+/* Quizzes List */
+.quizzes-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.quiz-item {
+  margin-bottom: 0.75rem;
+}
+
+/* Quiz Link Styling */
+.quiz-link {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.quiz-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+/* Neon border animation reused */
+@keyframes neonBorder {
+  0% {
+    border-color: #ff0081;
+  }
+  25% {
+    border-color: #ff8c00;
+  }
+  50% {
+    border-color: #00d084;
+  }
+  75% {
+    border-color: #00aaff;
+  }
+  100% {
+    border-color: #ff0081;
+  }
+}
