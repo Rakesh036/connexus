@@ -24,7 +24,6 @@ const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
 
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
@@ -37,7 +36,7 @@ const quizRoutes = require("./routes/quiz.js");
 const successRoutes = require("./routes/success.js");
 const successReviewRoutes = require("./routes/successReview.js");
 
-const ExpressError = require("./utils/ExpressError.js");
+const ExpressError = require("./utils/expressError.js");
 const User = require("./models/user.js");
 
 // Mongoose Connection
