@@ -13,13 +13,17 @@ router.get(
   wrapAsync(async (req, res) => {
     const groups = await Group.find({}).populate("owner");
     const currUserT = req.user._id;
-    res.render("groups/index", { groups, currUserT });
+    res.render("groups/index", {
+      groups,
+      currUserT,
+      cssFile: "groupIndex.css",
+    });
   })
 );
 
 // Show form to create a new group
 router.get("/new", isLoggedIn, (req, res) => {
-  res.render("groups/new");
+  res.render("groups/new", { cssFile: "groupNew.css" });
 });
 
 // Create a new group
@@ -48,7 +52,7 @@ router.get(
       return res.redirect("/groups");
     }
 
-    res.render("groups/show", { group });
+    res.render("groups/show", { group, cssFile: "groupShow.css" });
   })
 );
 
@@ -63,7 +67,7 @@ router.get(
       req.flash("error", "Group not found");
       return res.redirect("/groups");
     }
-    res.render("groups/edit", { group });
+    res.render("groups/edit", { group, cssFile: "groupEdit.css" });
   })
 );
 
