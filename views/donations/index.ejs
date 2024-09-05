@@ -1,25 +1,29 @@
 <%- layout("/layouts/boilerplate") -%>
 <div class="container mt-3">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-12">
             <h1 class="mb-4">Donations</h1>
             <a href="/donations/new" class="btn btn-success mb-3">Create New Donation</a>
-            <div class="list-group">
+            <div class="row justify-content-center">
                 <% donations.reverse().forEach(donation => { %>
-                <div class="list-group-item mb-3 donation-item">
-                    <div class="list-group-item donation-header list-group-item-action">
-                        <a href="/donations/<%= donation._id %>"
-                            class="list-group-item post-header list-group-item-action">
-                            <h5 class="mb-1"><%= donation.title %></h5>
-                            <p class="mb-1">Description: <%= donation.description %></p>
-                        </a>
-                    </div>
-                    <div class="d-flex mt-3">
-                        <form action="/donations/<%= donation._id %>/transactions" method="POST" class="me-3">
-                            <input type="number" name="transaction[amount]" min="10" value="10" class="form-control w-50" required>
-                            <button type="submit" class="btn btn-primary mt-2">Donate</button>
-                        </form>
-                        <a href="/donations/<%= donation._id %>" class="btn btn-info">Show More</a>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="donation-card">
+                        <div class="card-body">
+                            <div class="upperpart">
+                                <h5 class="card-title"><%= donation.title %></h5>
+                                <p class="card-text">Description: <%= donation.description %></p>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3">
+                                <form action="/donations/<%= donation._id %>/transactions" method="POST" class="me-3">
+                                    <button type="submit" class="btn btn-primary mt-2">
+                                        <i class="fa fa-donate"></i> Donate
+                                    </button>
+                                </form>
+                                <a href="/donations/<%= donation._id %>" class="btn btn-info mt-2">
+                                    <i class="xyz"></i> Read More
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <% }) %>

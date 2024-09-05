@@ -1,161 +1,127 @@
-.card {
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-    /* Smooth transition for all properties */
-    overflow: hidden;
-    /* Ensure border animation stays within the card */
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    /* Ensure content is stacked vertically */
-    height: 100%;
-    /* Make sure cards fill their container */
-}
-
-.card-body {
-    position: relative;
-    padding: 1.5rem;
-    /* Add some padding inside the card */
-    flex: 1;
-    /* Allow body to grow and fill the available space */
-}
-
+/* Neon border effect for post cards */
 .post-card {
-    position: relative;
-    border: 1px solid transparent;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Smooth transition for transform and shadow */
-    display: flex;
-    flex-direction: column;
-    /* Stack content vertically */
-    height: 100%;
-    /* Ensure all cards are the same height */
+  position: relative;
+  border: 1px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1rem; /* Increased padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  overflow: hidden;
+  z-index: 1;
 }
 
 .post-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    border: 3px solid transparent;
-    background: linear-gradient(white, white) padding-box,
-        linear-gradient(45deg, #ff0081, #ff8c00, #00d084, #00aaff) border-box;
-    z-index: 0;
-    /* Ensure the pseudo-element is behind the card content */
-    animation: neonBorder 3s linear infinite;
-    /* Neon border animation */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(45deg, #ff0081, #ff8c00, #00d084, #00aaff) border-box;
+  z-index: -1; /* Ensure the neon border is behind the content */
+  animation: neonBorder 3s linear infinite;
 }
 
 .post-card:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Enhanced shadow effect */
-    transform: scale(1.05);
-    /* Slightly increase size on hover */
-    z-index: 1;
-    /* Ensure the card is above other elements */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }
 
+/* Title styling */
 .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 0.75rem;
-    /* Add space below the title */
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem; /* Ensure some space below the title */
 }
 
+/* Text styling */
 .card-text {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 1rem;
-    /* Add space below the text */
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem; /* Ensure some space below the text */
 }
 
+/* Read more button styling */
 .readmore {
-    position: absolute;
-    right: 20px;
+  background: linear-gradient(45deg, #007bff, #0056b3); /* Gradient effect */
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
+.readmore:hover {
+  background: linear-gradient(45deg, #0056b3, #003d7a); /* Darker gradient */
+}
+
+/* Button styles */
 .card .btn {
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    /* Smooth transition for background color and transform */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  color: #fff;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft button shadow */
 }
 
 .btn-like {
-    background-color: #007bff;
-    color: white;
+  background-color: #ff0081;
 }
 
 .btn-like:hover {
-    background-color: #0056b3;
-    /* Darker blue on hover */
-    transform: scale(1.1);
-    /* Slightly increase size on hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    /* Add subtle shadow */
-    animation: bounce 0.5s ease;
-    /* Bounce effect */
+  background-color: #e60077;
 }
 
 .btn-comment {
-    background-color: #28a745;
-    color: white;
+  background-color: #00d084;
 }
 
 .btn-comment:hover {
-    background-color: #218838;
-    /* Darker green on hover */
-    transform: scale(1.1);
-    /* Slightly increase size on hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    /* Add subtle shadow */
-    animation: bounce 0.5s ease;
-    /* Bounce effect */
+  background-color: #00b36a;
 }
 
 .btn-report {
-    background-color: #dc3545;
-    color: white;
+  background-color: #00aaff;
 }
 
 .btn-report:hover {
-    background-color: #c82333;
-    /* Darker red on hover */
-    transform: scale(1.1);
-    /* Slightly increase size on hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    /* Add subtle shadow */
-    animation: bounce 0.5s ease;
-    /* Bounce effect */
+  background-color: #0088cc;
 }
 
+/* Spacing adjustments */
 .d-flex {
-    display: flex;
-    justify-content: space-between;
-    /* Space between buttons and other elements */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.d-flex .btn {
+  margin-right: 0.5rem; /* Space between buttons */
 }
 
 /* Neon border animation */
 @keyframes neonBorder {
-    0% {
-        border-color: #ff0081;
-    }
-
-    25% {
-        border-color: #ff8c00;
-    }
-
-    50% {
-        border-color: #00d084;
-    }
-
-    75% {
-        border-color: #00aaff;
-    }
-
-    100% {
-        border-color: #ff0081;
-    }
+  0% {
+    border-color: #ff0081;
+  }
+  25% {
+    border-color: #ff8c00;
+  }
+  50% {
+    border-color: #00d084;
+  }
+  75% {
+    border-color: #00aaff;
+  }
+  100% {
+    border-color: #ff0081;
+  }
 }

@@ -1,8 +1,7 @@
 <% layout("layouts/boilerplate") %>
 
 <h1>Edit Group</h1>
-<form action="/groups/<%= group._id %>" method="POST">
-    <input type="hidden" name="_method" value="PUT">
+<form action="/groups/<%= group._id %>?_method=put" method="POST">
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input type="text" id="title" name="group[title]" class="form-control" value="<%= group.title %>" required>

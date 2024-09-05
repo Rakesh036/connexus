@@ -6,6 +6,8 @@ const { Donation, Transaction } = require("./models/donation");
 const Group = require("./models/group.js");
 const Quiz = require("./models/quiz.js");
 const ExpressError = require("./utils/ExpressError");
+const Success = require("./models/success.js");
+const SuccessReview = require("./models/successReview.js");
 const Joi = require("joi");
 
 // Schema imports for JOI validation
@@ -18,6 +20,8 @@ const {
   transactionSchema,
   groupSchema,
   quizSchema,
+  successReviewSchema,
+  successSchema,
 } = require("./schema.js");
 
 // Middleware to check if user is logged in
@@ -41,7 +45,7 @@ module.exports.saveRedirectUrl = (req, res, next) => {
   } else if (req.session.currentUrl) {
     res.locals.redirectUrl = req.session.currentUrl;
   } else {
-    res.locals.redirectUrl = "/listings"; // Default fallback URL
+    res.locals.redirectUrl = "/"; // Default fallback URL
   }
   next();
 };
@@ -81,8 +85,11 @@ module.exports.validateReview = (req, res, next) => {
 
 // Middleware to check if user is the author of a review
 module.exports.isReviewAuthor = async (req, res, next) => {
-  const { id, reviewsId } = req.params;
-  const review = await Review.findById(reviewsId);
+  const { id, reviewId } = req.params;
+  const review = await Review.findById(reviewId);
+  console.log("review body: ", review);
+  console.log("res.locals: ", res.locals);
+
   if (!review.author.equals(res.locals.currUser._id)) {
     req.flash("error", "You don't have permission");
     return res.redirect(`/listings/${id}`);
@@ -189,9 +196,23 @@ module.exports.validateTransaction = (req, res, next) => {
   }
 };
 
+module.exports.isGroup = async (req, res, next) => {
+  console.log("req.params: ", req.params);
+  const { groupId } = req.params;
+  console.log("Group ID:", groupId); // Debugging step
+  const group = await Group.findById(groupId);
+
+  if (!group) {
+    req.flash("error", "Group does not exist!");
+    return res.redirect("/groups");
+  }
+
+  req.group = group;
+  next();
+};
 // Middleware to check if user is the owner of a group
 module.exports.isGroupOwner = async (req, res, next) => {
-  const { id } = req.params;
+  const id = req.params.groupId;
   const group = await Group.findById(id).populate("owner");
   if (!group || !group.owner.equals(req.user._id)) {
     req.flash("error", "You do not have permission to do that.");
@@ -200,39 +221,130 @@ module.exports.isGroupOwner = async (req, res, next) => {
   next();
 };
 
+// Middleware to check if the user is a member of the group
+module.exports.isGroupMember = async (req, res, next) => {
+  const { groupId } = req.params;
+  const group = await Group.findById(groupId);
+
+  if (!group) {
+    req.flash("error", "Group not found.");
+    return res.redirect("/groups");
+  }
+
+  // Check if the user is a member of the group
+  const isMember = group.members.some((member) => member.equals(req.user._id));
+
+  if (!isMember) {
+    req.flash("error", "You need to join the group to access this.");
+    return res.redirect(`/groups`);
+  }
+
+  next();
+};
+
 module.exports.validateGroup = (req, res, next) => {
-  console.log('Group Data:', req.body.group); // Debugging line
+  console.log("Group Data:", req.body.group); // Debugging line
   const { error } = groupSchema.validate(req.body.group);
   if (error) {
-    const errMsg = error.details.map((el) => el.message).join(',');
-    console.error('Validation Error:', errMsg); // Debugging line
+    const errMsg = error.details.map((el) => el.message).join(",");
+    console.error("Validation Error:", errMsg); // Debugging line
     throw new ExpressError(400, errMsg);
   } else {
     next();
   }
 };
 
-
-
+// Middleware for validating Quiz data
 module.exports.validateQuiz = (req, res, next) => {
-  console.log("Request Body:", req.body); // Log the request body
   const { error } = quizSchema.validate(req.body.quiz);
   if (error) {
-    const errMsg = error.details.map((el) => el.message).join(',');
-    console.error("Validation Error:", errMsg); // Log validation error details
+    const errMsg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(400, errMsg);
   } else {
     next();
   }
 };
 
-// Middleware to check if user created the quiz
+// Middleware to check if user is the creator of the quiz
 module.exports.isQuizCreator = async (req, res, next) => {
   const { id } = req.params;
   const quiz = await Quiz.findById(id).populate("createdBy");
-  if (!quiz || !quiz.createdBy._id.equals(req.user._id)) {
-    req.flash("error", "You do not have permission to do that.");
+  if (!quiz) {
+    req.flash("error", "Quiz not found");
+    return res.redirect(`/groups/${quiz.group}`);
+  }
+  if (!quiz.createdBy._id.equals(req.user._id)) {
+    req.flash("error", "You do not have permission to edit this quiz");
     return res.redirect(`/groups/${quiz.group}`);
   }
   next();
+};
+
+// Middleware function to validate the quiz data
+module.exports.validateQuiz = (req, res, next) => {
+  const { error } = quizSchema.validate(req.body, { abortEarly: false });
+  if (error) {
+    const errorMessages = error.details.map((err) => err.message);
+    req.flash("error", errorMessages.join(", "));
+    return res.redirect("/groups"); // Redirect the user back to the form
+  }
+  next(); // Proceed if no validation errors
+};
+
+module.exports.isStoryOwner = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const successStory = await Success.findById(id);
+    if (!successStory) {
+      req.flash("error", "Success story not found");
+      return res.redirect("/successes"); // Adjust path as necessary
+    }
+    if (!successStory.owner.equals(res.locals.currUser._id)) {
+      req.flash("error", "You don't have permission");
+      return res.redirect(`/successes`); // Adjust path as necessary
+    }
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
+
+// Middleware for validating Success story data
+module.exports.validateSuccess = (req, res, next) => {
+  const { error } = successSchema.validate(req.body);
+  if (error) {
+    const errMsg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(400, errMsg); // Ensure ExpressError is correctly imported
+  }
+  next();
+};
+
+// Middleware to check if user is the author of a review
+module.exports.isSuccessReviewAuthor = async (req, res, next) => {
+  try {
+    const { id, reviewId } = req.params;
+    const review = await SuccessReview.findById(reviewId);
+    if (!review) {
+      req.flash("error", "Review not found");
+      return res.redirect(`/successes`); // Adjust path as necessary
+    }
+    if (!review.author.equals(res.locals.currUser._id)) {
+      req.flash("error", "You don't have permission");
+      return res.redirect(`/successes`); // Adjust path as necessary
+    }
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
+
+// Middleware for validating Review data
+module.exports.validateSuccessReview = (req, res, next) => {
+  const { error } = successReviewSchema.validate(req.body);
+  if (error) {
+    const errMsg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(400, errMsg);
+  } else {
+    next();
+  }
 };

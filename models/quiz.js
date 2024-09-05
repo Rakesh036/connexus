@@ -10,9 +10,20 @@ const quizSchema = new Schema(
     },
     questions: [
       {
-        questionText: String,
-        options: [String],
-        correctAnswer: Number, // Index of the correct answer in the options array
+        questionText: {
+          type: String,
+          required: true,
+        },
+        options: [
+          {
+            type: String,
+            required: true,
+          },
+        ],
+        correctAnswer: {
+          type: Number, // Stores the index of the correct answer (0-based)
+          required: true,
+        },
       },
     ],
     group: {
@@ -31,7 +42,10 @@ const quizSchema = new Schema(
           type: Schema.Types.ObjectId,
           ref: "User",
         },
-        score: Number,
+        score: {
+          type: Number,
+          default: 0,
+        },
       },
     ],
   },

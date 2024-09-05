@@ -2,16 +2,18 @@ const express = require("express");
 const router = express.Router();
 const Group = require("../models/group");
 const Quiz = require("../models/quiz");
-const { isLoggedIn, isGroupOwner } = require("../middleware");
+const { isLoggedIn, isGroupOwner, isGroupMember } = require("../middleware");
 const { validateGroup, validateQuiz } = require("../middleware");
 const wrapAsync = require("../utils/wrapAsync");
 
 // List all groups
 router.get(
   "/",
+  isLoggedIn,
   wrapAsync(async (req, res) => {
-    const groups = await Group.find({}).populate("owner").exec();
-    res.render("groups/index", { groups });
+    const groups = await Group.find({}).populate("owner");
+    const currUserT = req.user._id;
+    res.render("groups/index", { groups, currUserT });
   })
 );
 
@@ -28,35 +30,35 @@ router.post(
   wrapAsync(async (req, res) => {
     const group = new Group(req.body.group);
     group.owner = req.user._id;
+    group.members.push(req.user._id);
     await group.save();
-    res.redirect(`/groups/${group._id}`);
+    res.redirect(`/groups`);
   })
 );
-
-// Show a single group
+// Show group details along with quizzes
 router.get(
-  "/:id",
+  "/:groupId",
   isLoggedIn,
+  isGroupMember,
   wrapAsync(async (req, res) => {
-    const group = await Group.findById(req.params.id)
-      .populate("members")
-      .populate("quizzes")
-      .exec();
+    const groupId = req.params.groupId;
+    const group = await Group.findById(groupId).populate("members");
     if (!group) {
-      req.flash("error", "Group not found");
+      req.flash("error", "Group does not exist!");
       return res.redirect("/groups");
     }
+
     res.render("groups/show", { group });
   })
 );
 
 // Show form to edit a group
 router.get(
-  "/:id/edit",
+  "/:groupId/edit",
   isLoggedIn,
   isGroupOwner,
   wrapAsync(async (req, res) => {
-    const group = await Group.findById(req.params.id);
+    const group = await Group.findById(req.params.groupId);
     if (!group) {
       req.flash("error", "Group not found");
       return res.redirect("/groups");
@@ -67,36 +69,42 @@ router.get(
 
 // Update a group
 router.put(
-  "/:id",
+  "/:groupId",
   isLoggedIn,
   isGroupOwner,
-  // validateGroup,
+  validateGroup,
   wrapAsync(async (req, res) => {
-    const { id } = req.params;
-    const group = await Group.findByIdAndUpdate(id, { ...req.body.group });
+    const { groupId } = req.params;
+    const group = await Group.findByIdAndUpdate(groupId, { ...req.body.group });
     res.redirect(`/groups/${group._id}`);
   })
 );
 
 // Join a group
 router.post(
-  "/:id/join",
+  "/:groupId/join",
   isLoggedIn,
   wrapAsync(async (req, res) => {
-    const group = await Group.findById(req.params.id);
+    const group = await Group.findById(req.params.groupId);
     if (!group) {
       req.flash("error", "Group not found");
       return res.redirect("/groups");
     }
-    const member = group.members.find((member) => member.equals(req.user._id));
-    if (member) {
+
+    // Check if the user is already a member
+    const memberExists = group.members.some((member) =>
+      member.equals(req.user._id)
+    );
+    if (memberExists) {
       req.flash("error", "You are already a member of this group");
       return res.redirect(`/groups/${group._id}`);
     }
-    const newMember = await Member.create({
-      user: req.user._id,
-      group: group._id,
-    });
+
+    // Add the user to the members array
+    group.members.push(req.user._id);
+    group.memberCount += 1; // Increment member count
+    await group.save();
+
     req.flash("success", "You have joined the group");
     res.redirect(`/groups/${group._id}`);
   })
@@ -104,7 +112,7 @@ router.post(
 
 // Leave a group
 router.post(
-  "/:id/leave",
+  "/:groupId/leave",
   isLoggedIn,
   wrapAsync(async (req, res) => {
     const group = await Group.findById(req.params.id);
@@ -112,15 +120,21 @@ router.post(
       req.flash("error", "Group not found");
       return res.redirect("/groups");
     }
-    const member = await Member.findOne({
-      user: req.user._id,
-      group: group._id,
-    });
-    if (!member) {
+
+    // Check if the user is a member
+    const memberIndex = group.members.findIndex((member) =>
+      member.equals(req.user._id)
+    );
+    if (memberIndex === -1) {
       req.flash("error", "You are not a member of this group");
       return res.redirect(`/groups/${group._id}`);
     }
-    await Member.findByIdAndRemove(member._id);
+
+    // Remove the user from the members array
+    group.members.splice(memberIndex, 1);
+    group.memberCount -= 1; // Decrement member count
+    await group.save();
+
     req.flash("success", "You have left the group");
     res.redirect(`/groups/${group._id}`);
   })
@@ -128,72 +142,72 @@ router.post(
 
 // Delete a group
 router.delete(
-  "/:id",
+  "/:groupId",
   isLoggedIn,
   isGroupOwner,
   wrapAsync(async (req, res) => {
-    const { id } = req.params;
-    await Group.findByIdAndDelete(id);
+    const { groupId } = req.params;
+    await Group.findByIdAndDelete(groupId);
     res.redirect("/groups");
   })
 );
 
-// Add quiz to group
-router.post(
-  "/:id/quizzes",
-  isLoggedIn,
-  validateQuiz,
-  wrapAsync(async (req, res) => {
-    const { id } = req.params;
-    const group = await Group.findById(id);
-    const quiz = new Quiz(req.body.quiz);
-    quiz.group = group._id;
-    quiz.createdBy = req.user._id;
-    await quiz.save();
-    group.quizzes.push(quiz);
-    await group.save();
-    res.redirect(`/groups/${id}`);
-  })
-);
+// // Add quiz to group
+// router.post(
+//   "/:groupId/quizzes",
+//   isLoggedIn,
+//   validateQuiz,
+//   wrapAsync(async (req, res) => {
+//     const { groupId } = req.params;
+//     const group = await Group.findById(groupId);
+//     const quiz = new Quiz(req.body.quiz);
+//     quiz.group = group._id;
+//     quiz.createdBy = req.user._id;
+//     await quiz.save();
+//     group.quizzes.push(quiz);
+//     await group.save();
+//     res.redirect(`/groups/${groupId}`);
+//   })
+// );
 
-// Show quiz and allow members to take it
-router.get(
-  "/:id/quizzes/:quizId",
-  isLoggedIn,
-  wrapAsync(async (req, res) => {
-    const { id, quizId } = req.params;
-    const quiz = await Quiz.findById(quizId).populate("group").exec();
-    if (!quiz) {
-      req.flash("error", "Quiz not found");
-      return res.redirect(`/groups/${id}`);
-    }
-    res.render("quizzes/show", { quiz });
-  })
-);
+// // Show quiz and allow members to take it
+// router.get(
+//   "/:groupId/quizzes/:quizId",
+//   isLoggedIn,
+//   wrapAsync(async (req, res) => {
+//     const { groupId, quizId } = req.params;
+//     const quiz = await Quiz.findById(quizId).populate("group");
+//     if (!quiz) {
+//       req.flash("error", "Quiz not found");
+//       return res.redirect(`/groups/${groupId}`);
+//     }
+//     res.render("quizzes/show", { quiz });
+//   })
+// );
 
-// Submit quiz answers
-router.post(
-  "/:id/quizzes/:quizId/submit",
-  isLoggedIn,
-  wrapAsync(async (req, res) => {
-    const { quizId } = req.params;
-    const quiz = await Quiz.findById(quizId);
-    const score = calculateScore(req.body.answers, quiz);
-    quiz.scores.push({ user: req.user._id, score });
-    await quiz.save();
-    res.redirect(`/groups/${quiz.group}`);
-  })
-);
+// // Submit quiz answers
+// router.post(
+//   "/:groupId/quizzes/:quizId/submit",
+//   isLoggedIn,
+//   wrapAsync(async (req, res) => {
+//     const { quizId } = req.params;
+//     const quiz = await Quiz.findById(quizId);
+//     const score = calculateScore(req.body.answers, quiz);
+//     quiz.scores.push({ user: req.user._id, score });
+//     await quiz.save();
+//     res.redirect(`/groups/${quiz.group}`);
+//   })
+// );
 
-// Function to calculate score based on submitted answers
-function calculateScore(userAnswers, quiz) {
-  let score = 0;
-  quiz.questions.forEach((question, index) => {
-    if (question.correctAnswer === userAnswers[index]) {
-      score++;
-    }
-  });
-  return score;
-}
+// // Function to calculate score based on submitted answers
+// function calculateScore(userAnswers, quiz) {
+//   let score = 0;
+//   quiz.questions.forEach((question, index) => {
+//     if (question.correctAnswer === userAnswers[index]) {
+//       score++;
+//     }
+//   });
+//   return score;
+// }
 
 module.exports = router;

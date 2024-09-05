@@ -22,7 +22,7 @@ router.get(
 
 // New route
 router.get("/new", isLoggedIn, (req, res) => {
-  res.render("listings/new.ejs");
+  res.render("listings/new.ejs", { cssFile: "listingNew.css" });
 });
 
 // Create route
@@ -55,7 +55,7 @@ router.get(
       req.flash("error", "Listing does not exist!");
       return res.redirect("/listings");
     }
-    res.render("listings/show.ejs", { listing });
+    res.render("listings/show.ejs", { listing, cssFile: "listingShow.css" });
   })
 );
 
@@ -70,7 +70,7 @@ router.get(
       req.flash("error", "Listing does not exist!");
       return res.redirect("/listings");
     }
-    res.render("listings/edit.ejs", { listing });
+    res.render("listings/edit.ejs", { listing, cssFile: "listingEdit.css" });
   })
 );
 

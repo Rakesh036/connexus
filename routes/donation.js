@@ -14,13 +14,16 @@ router.get(
   "/",
   wrapAsync(async (req, res) => {
     const donations = await Donation.find({}).populate("owner transactions");
-    res.render("donations/index.ejs", { donations });
+    res.render("donations/index.ejs", {
+      donations,
+      cssFile: "donateIndex.css",
+    });
   })
 );
 
 // New route - Form for creating a new donation
 router.get("/new", (req, res) => {
-  res.render("donations/new.ejs");
+  res.render("donations/new.ejs", { cssFile: "donateNew.css" });
 });
 // Create route - Add a new donation
 router.post(
@@ -52,7 +55,7 @@ router.get(
       req.flash("error", "Donation does not exist!");
       return res.redirect("/donations");
     }
-    res.render("donations/show.ejs", { donation });
+    res.render("donations/show.ejs", { donation, cssFile: "donateShow.css" });
   })
 );
 
@@ -67,7 +70,7 @@ router.get(
       req.flash("error", "Donation does not exist!");
       return res.redirect("/donations");
     }
-    res.render("donations/edit.ejs", { donation });
+    res.render("donations/edit.ejs", { donation, cssFile: "donateEdit.css" });
   })
 );
 

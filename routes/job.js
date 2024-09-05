@@ -16,13 +16,13 @@ router.get(
   "/",
   wrapAsync(async (req, res) => {
     const jobs = await Job.find({}).populate("likes").populate("reports");
-    res.render("jobs/index.ejs", { jobs });
+    res.render("jobs/index.ejs", { jobs, cssFile: "jobIndex.css" });
   })
 );
 
 // New route - Form for creating a new job
 router.get("/new", isLoggedIn, (req, res) => {
-  res.render("jobs/new.ejs");
+  res.render("jobs/new.ejs", { cssFile: "jobNew.css" });
 });
 
 // Create route - Add a new job
@@ -55,7 +55,7 @@ router.get(
       req.flash("error", "Job does not exist!");
       return res.redirect("/jobs");
     }
-    res.render("jobs/show.ejs", { job });
+    res.render("jobs/show.ejs", { job, cssFile: "jobShow.css" });
   })
 );
 
@@ -70,7 +70,7 @@ router.get(
       req.flash("error", "Job does not exist!");
       return res.redirect("/jobs");
     }
-    res.render("jobs/edit.ejs", { job });
+    res.render("jobs/edit.ejs", { job, cssFile: "jobEdit.css" });
   })
 );
 

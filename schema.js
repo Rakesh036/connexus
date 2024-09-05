@@ -59,21 +59,78 @@ module.exports.groupSchema = Joi.object({
   description: Joi.string().trim(),
 });
 
-// Quiz Schema
+// // Define the validation schema using Joi
+// module.exports.quizSchema = Joi.object({
+//   quiz: Joi.object({
+//     title: Joi.string().required().min(1).max(100).messages({
+//       "string.empty": "Quiz title is required",
+//       "string.min": "Quiz title must be at least 1 characters long",
+//       "string.max": "Quiz title cannot exceed 100 characters",
+//     }),
+//     questions: Joi.array()
+//       .items(
+//         Joi.object({
+//           questionText: Joi.string().required().min(1).messages({
+//             "string.empty": "Question text is required",
+//             "string.min": "Question text must be at least 1 characters long",
+//           }),
+//           options: Joi.array()
+//             .items(Joi.string().required().min(1))
+//             .length(2)
+//             .messages({
+//               "array.length": "Each question must have exactly 4 options",
+//               "string.empty": "Option text cannot be empty",
+//             }),
+//           correctAnswer: Joi.number()
+//             .integer()
+//             .min(1)
+//             .max(4)
+//             .required()
+//             .messages({
+//               "number.base": "Correct answer must be a number",
+//               "number.min": "Correct answer index must be between 1 and 4",
+//               "number.max": "Correct answer index must be between 1 and 4",
+//             }),
+//         })
+//       )
+//       .length(1)
+//       .required()
+//       .messages({
+//         "array.length": "Quiz must contain exactly 5 questions",
+//       }),
+//   }).required(),
+// });
+
 module.exports.quizSchema = Joi.object({
-  title: Joi.string().required().trim(),
-  questions: Joi.array()
-    .items(
-      Joi.object({
-        questionText: Joi.string().required(),
-        options: Joi.array().items(Joi.string()).required(),
-        correctAnswer: Joi.number().min(0),
-      })
-    )
-    .required(),
+  quiz: Joi.object({
+    title: Joi.string().required().messages({
+      "string.empty": "Quiz title is required",
+    }),
+    questions: Joi.array()
+      .items(
+        Joi.object({
+          questionText: Joi.string().required().messages({
+            "string.empty": "Question text is required",
+          }),
+          options: Joi.array()
+            .items(Joi.string().required())
+            .length(4)
+            .messages({
+              "array.length": "Each question must have exactly 4 options",
+              "string.empty": "Option text cannot be empty",
+            }),
+          correctAnswer: Joi.number().integer().required().messages({
+            "number.base": "Correct answer must be a number",
+          }),
+        })
+      )
+      .required()
+      .messages({
+        "array.required": "Quiz must contain questions",
+      }),
+  }).required(),
 });
 
-// Middleware for validating Transaction data
 module.exports.validateTransaction = (req, res, next) => {
   const { error } = transactionSchema.validate(req.body.transaction);
   if (error) {
@@ -94,3 +151,18 @@ module.exports.validateDonation = (req, res, next) => {
   }
   next();
 };
+
+// Success Schema
+module.exports.successSchema = Joi.object({
+  success: Joi.object({
+    title: Joi.string().required(),
+    description: Joi.string().required(),
+    image: Joi.string().allow("", null),
+  }),
+});
+
+module.exports.successReviewSchema = Joi.object({
+  review: Joi.object({
+    comment: Joi.string().required(),
+  }).required(),
+});
