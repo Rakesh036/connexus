@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const { saveRedirectUrl } = require("../middleware.js");
+const { isLoggedIn, isCurrentUser } = require("../middleware");
+
 
 // Utils
 const wrapAsync = require("../utils/wrapAsync.js");
@@ -67,5 +69,46 @@ router.get("/logout", (req, res) => {
     res.redirect(redirectUrl);
   });
 });
+
+
+
+
+// Route to view user profile
+router.get("/profile/:id", isLoggedIn, isCurrentUser, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      req.flash("error", "User not found");
+      return res.redirect("/");
+    }
+    res.render("users/profile", { user });
+  } catch (err) {
+    req.flash("error", "Something went wrong");
+    res.redirect("/");
+  }
+});
+
+// Route to edit user profile
+router.get("/profile/:id/edit", isLoggedIn, isCurrentUser, (req, res) => {
+  res.render("users/edit", { user: req.user });
+});
+
+router.put("/profile/:id", isLoggedIn, isCurrentUser, async (req, res) => {
+  try {
+    const { username, email } = req.body;
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      { username, email },
+      { new: true }
+    );
+    req.flash("success", "Profile updated successfully");
+    res.redirect(`/profile/${user._id}`);
+  } catch (err) {
+    req.flash("error", "Something went wrong");
+    res.redirect(`/profile/${req.params.id}/edit`);
+  }
+});
+
+module.exports = router;
 
 module.exports = router;

@@ -3,9 +3,9 @@
     <div class="row mt-3">
         <div class="col-6 offset-3">
             <!-- Back to Donations with Icon -->
-            <a href="/donations" class="btn btn-secondary d-inline-flex align-items-center">
-                <i class="fa-solid fa-left-long backtodonation"></i>
-                Back to Donations
+            <a href="/donations" class="btn btn-secondary d-inline-flex align-items-center back-btn">
+                <i class="fa-solid fa-left-long"></i>
+
             </a>
             <br><br>
             <h3>Edit Donation</h3>
@@ -13,7 +13,7 @@
             <form action="/donations/<%= donation._id %>?_method=PUT" method="POST" class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" id="title" name="donation[title]" class="form-control"
+                    <input type="text" id="title" name="donation[title]" class="form-control custom-border"
                         value="<%= donation.title %>" placeholder="Enter donation title" required>
                     <div class="valid-feedback">Title looks good!</div>
                     <div class="invalid-feedback">Please enter a title.</div>
@@ -21,13 +21,13 @@
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea id="description" name="donation[description]" class="form-control"
+                    <textarea id="description" name="donation[description]" class="form-control custom-border"
                         placeholder="Enter description" rows="3" required><%= donation.description %></textarea>
                     <div class="invalid-feedback">Please enter a description.</div>
                 </div>
 
-                <button type="submit" class="btn btn-dark add-btn mt-3">
-                    <i class="fa-solid fa-save"></i> Update Donation
+                <button type="submit" class="btn btn-dark add-btn d-inline-flex align-items-center mt-3">
+                    <i class="fa-solid fa-save"></i> Update
                 </button>
                 <br><br>
             </form>

@@ -2,28 +2,34 @@
 <div class="page-container">
     <div class="row mt-3">
         <div class="col-md-8 offset-md-2">
-            <!-- Back to Donations with Icon -->
-            <a href="/donations" class="btn btn-secondary d-inline-flex align-items-center">
-                <i class="fa-solid fa-left-long"></i>
-                Back to Donations
-            </a>
-            <br><br>
+            <!-- Flex container for action buttons and title -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="d-flex align-items-center">
+                    <!-- Back to Donations with Icon -->
+                    <a href="/donations" class="btn btn-back d-inline-flex align-items-center me-3">
+                        <i class="fa-solid fa-left-long"></i>
+                    </a>
+                </div>
 
-            <h1 class="mb-4"><%= donation.title %></h1>
-            <p><%= donation.description %></p>
+                <!-- Title -->
 
-            <% if (currUser && donation.owner && donation.owner.equals(currUser._id)) { %>
-            <div class="d-flex mb-3">
-                <a href="/donations/<%= donation._id %>/edit" class="btn btn-dark me-2">
-                    <i class="fa-solid fa-edit"></i> Edit
-                </a>
-                <form action="/donations/<%= donation._id %>?_method=DELETE" method="POST">
-                    <button class="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i> Delete
-                    </button>
-                </form>
+
+                <!-- Flex container for edit and delete buttons -->
+                <% if (currUser && donation.owner && donation.owner.equals(currUser._id)) { %>
+                <div class="d-flex align-items-center">
+                    <a href="/donations/<%= donation._id %>/edit" class="btn btn-edit me-2">
+                        <i class="fa-solid fa-edit"></i>
+                    </a>
+                    <form action="/donations/<%= donation._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+                </div>
+                <% } %>
             </div>
-            <% } %>
+            <h1 class="mb-0 flex-grow-1 text-center"><%= donation.title %></h1>
+            <p><%= donation.description %></p>
 
             <form action="/donations/<%= donation._id %>/transactions" method="POST">
                 <div class="mb-3">

@@ -1,111 +1,152 @@
-/* Group Details Container */
-.group-details-container {
-  position: relative;
-  border: 1px solid transparent;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #ffffff;
-  border-radius: 0.5rem;
-  padding: 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  z-index: 1;
-  max-width: 800px;
-  margin: 20px auto;
+/* Outer Border for the Page Container */
+.container.mt-3 {
+  border: 2px solid #00ffcc; /* Neon border color */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9; /* Slightly different background for contrast */
+  max-width: 800px; /* Set a max-width to control the container width */
+  margin: 0 auto; /* Center the container horizontally */
 }
 
-/* Neon border effect for group details */
-.group-details-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  border: 3px solid transparent;
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(45deg, #ff0081, #ff8c00, #00d084, #00aaff) border-box;
-  z-index: -1;
-  animation: neonBorder 3s linear infinite;
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .container.mt-3 {
+    padding: 15px;
+    max-width: 90%; /* Allow more width on smaller screens */
+  }
 }
 
-.group-details-container:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transform: scale(1.05);
+@media (max-width: 576px) {
+  .container.mt-3 {
+    padding: 10px;
+    max-width: 95%; /* Further increase width for very small screens */
+  }
 }
 
-/* Group Title Styling */
-.group-title {
-  font-size: 2rem;
+/* Header Styling */
+.group-show-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none; /* Remove border for header */
+}
+
+.group-show-header-back {
+  flex: 1;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+  flex: 2;
+  justify-content: flex-end; /* Align buttons to the right */
+}
+
+/* Button Styles */
+.btn-secondary {
+  background-color: #045449; /* Greenish color for Back button */
+  border: 2px solid #046551; /* Border to match the theme */
+  color: #ffffff;
+  padding: 10px 20px;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 1rem;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Group Description Styling */
-.group-description {
-  font-size: 1.1rem;
-  color: #666;
-  margin-bottom: 2rem;
+.btn-secondary i {
+  margin-right: 8px; /* Space between icon and text */
 }
 
-/* Section Titles (Members, Quizzes) */
-.section-title {
-  font-size: 1.5rem;
+.btn-secondary:hover {
+  background-color: #098f74; /* Slightly lighter on hover */
+  color: #333; /* Dark text on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+  transform: translateY(-2px); /* Moves the button up slightly */
+}
+
+.btn-edit {
+  background-color: #004493; /* Blueish color for Edit button */
+  border: 2px solid #003366; /* Border to match the theme */
+  color: #ffffff;
+  padding: 10px 20px;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 1rem;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Members List */
-.members-list {
+.btn-edit i {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.btn-edit:hover {
+  background-color: #002a80; /* Slightly darker on hover */
+  color: #ffffff; /* Text color on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+  transform: translateY(-2px); /* Moves the button up slightly */
+}
+
+.btn-delete {
+  background-color: #d9534f; /* Reddish color for Delete button */
+  border: 2px solid #c9302c; /* Border to match the theme */
+  color: #ffffff;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-delete i {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.btn-delete:hover {
+  background-color: #c9302c; /* Slightly darker on hover */
+  color: #ffffff; /* Text color on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+  transform: translateY(-2px); /* Moves the button up slightly */
+}
+
+.btn-primary.btn-lg {
+  background-color: #004493; /* Dark bluish color for Go to Quizzes button */
+  border: 2px solid #003366; /* Border to match the theme */
+  color: #ffffff;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary.btn-lg:hover {
+  background-color: #002a80; /* Slightly darker on hover */
+  color: #ffffff; /* Text color on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+  transform: translateY(-2px); /* Moves the button up slightly */
+}
+
+/* Remove Font Awesome icon from Go to Quizzes button */
+.btn-primary.btn-lg i {
+  display: none;
+}
+
+/* Member List Item Style */
+ul {
   list-style-type: none;
   padding: 0;
 }
 
-.member-item {
-  font-size: 1rem;
-  color: #444;
-  margin-bottom: 0.5rem;
-}
-
-/* Quizzes List */
-.quizzes-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.quiz-item {
-  margin-bottom: 0.75rem;
-}
-
-/* Quiz Link Styling */
-.quiz-link {
-  color: #007bff;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.quiz-link:hover {
-  text-decoration: underline;
-  color: #0056b3;
-}
-
-/* Neon border animation reused */
-@keyframes neonBorder {
-  0% {
-    border-color: #ff0081;
-  }
-  25% {
-    border-color: #ff8c00;
-  }
-  50% {
-    border-color: #00d084;
-  }
-  75% {
-    border-color: #00aaff;
-  }
-  100% {
-    border-color: #ff0081;
-  }
+ul li {
+  border-bottom: 1px solid #ddd; /* Light border for list items */
+  padding: 5px 0;
 }

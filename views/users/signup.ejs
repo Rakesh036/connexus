@@ -1,39 +1,59 @@
-<% layout("/layouts/boilerplate") -%>
-<div class="row mt-3">
-    <h1 class="col-6 offset-3">signup</h1>
-    <div class="col-6 offset-3">
-        <form action="/signup" method="post" class="needs-validation" novalidate>
+<%- include('layouts/boilerplate') %>
 
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Sign Up</h1>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form action="/signup" method="post" class="needs-validation" novalidate>
+                <!-- Username Field -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Username is required.</div>
+                    </div>
 
-            <div class="mb-3">
-                <label for="username">Username:</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your name"
-                    required>
-                <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">Username is required</div>
-            </div>
-
-            <div class="form-group mb-3">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
-                    required>
-                <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">Email is required</div>
-            </div>
-            <div class="form-group mb-3">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" name="password"
-                    placeholder="Enter your password" required>
-                <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">Password is required</div>
-            </div>
-
-            <!-- <div class="form-group mb-3">
-                <label for="confirm_password">Confirm Password:</label>
-                <input type="password" class="form-control" id="confirm_password" name="confirm
-                            _password" placeholder="Confirm your password" required>
-            </div> -->
-            <button type="submit" class="btn btn-success">Sign Up</button>
-        </form>
-    </div>
+                <!-- Email Field -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Email is required.</div>
+                </div>
+                <!-- Password Field -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password"
+                        required>
+                    <div class="valid-feedback">Looks good!</div>
+                                        <div class="invalid-feedback">Password is required.</div>
+                                        </div>
+                    <!-- Confirm Password Field (Optional) -->
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">Confirm Password:</label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                            placeholder="Confirm your password">
+                        <div class="valid-feedback">Passwords match.</div>
+                        <div class="invalid-feedback">Passwords do not match.</div>
+                    </div>
+                                    <button type="submit" class="btn btn-success">Sign Up</button>
+                                    </form>
+                                    </div>
+                                    </div>
 </div>
+
+<script>
+    // JavaScript to validate password and confirm password fields
+    document.querySelector('form').addEventListener('submit', function (event) {
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirm_password').value;
+        if (confirmPassword && password !== confirmPassword) {
+            event.preventDefault();
+            document.getElementById('confirm_password').classList.add('is-invalid');
+            document.getElementById('confirm_password').classList.remove('is-valid');
+        } else {
+            document.getElementById('confirm_password').classList.remove('is-invalid');
+            document.getElementById('confirm_password').classList.add('is-valid');
+        }
+    });
+</script>

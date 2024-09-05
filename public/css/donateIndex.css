@@ -52,9 +52,11 @@
   margin-bottom: 1rem; /* Reduced margin */
 }
 
-/* Ensure the button container is pushed down */
+/* Ensure the button container is on the same line and spaced properly */
 .d-flex {
-  margin-top: auto; /* Pushes the button container to the bottom */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Common button styles */
@@ -70,7 +72,7 @@
 
 /* Donate button with Font Awesome icon */
 .btn-primary {
-  background-color: #FCDE70; /* Blue */
+  background-color: #fcde70; /* Yellowish color */
 }
 
 .btn-primary i {
@@ -78,20 +80,22 @@
 }
 
 .btn-primary:hover {
-  background-color: #E8B86D; /* Darker blue on hover */
+  background-color: #e8b86d; /* Darker yellow on hover */
 }
 
-/* Show More button with Font Awesome icon */
+/* Read More button styling */
 .btn-info {
-  background-color: #00aaff; /* Blue */
-}
-
-.btn-info i {
-  margin-right: 0.5rem; /* Space between icon and text */
+  background: linear-gradient(45deg, #007bff, #0056b3); /* Gradient effect */
+  border: none;
+  color: #fff;
 }
 
 .btn-info:hover {
-  background-color: #0088cc; /* Darker blue on hover */
+  background: linear-gradient(
+    45deg,
+    #0056b3,
+    #003d7a
+  ); /* Darker gradient on hover */
 }
 
 /* Neon border animation */

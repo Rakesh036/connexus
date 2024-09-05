@@ -1,14 +1,18 @@
 <% layout("layouts/boilerplate") %>
 
-<h1>Edit Group</h1>
-<form action="/groups/<%= group._id %>?_method=put" method="POST">
-    <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" id="title" name="group[title]" class="form-control" value="<%= group.title %>" required>
-    </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea id="description" name="group[description]" class="form-control"><%= group.description %></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Update Group</button>
-</form>
+<div class="page-container">
+    <h1>Edit Group</h1>
+    <form action="/groups/<%= group._id %>?_method=put" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" id="title" name="group[title]" class="form-control custom-border"
+                value="<%= group.title %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="group[description]"
+                class="form-control custom-border"><%= group.description %></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Group</button>
+    </form>
+</div>

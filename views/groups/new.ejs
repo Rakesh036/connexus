@@ -1,14 +1,16 @@
-<% layout("layouts/boilerplate") %>
+<%- layout("layouts/boilerplate") %>
 
-<h1>Create New Group</h1>
-<form action="/groups" method="POST" class="needs-validation" novalidate>
-    <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" id="title" name="group[title]" class="form-control" required>
-    </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea id="description" name="group[description]" class="form-control"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Create Group</button>
-</form>
+<div class="container mt-3">
+    <h1>Create New Group</h1>
+    <form action="/groups" method="POST" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" id="title" name="group[title]" class="form-control custom-border" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="group[description]" class="form-control custom-border"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Group</button>
+    </form>
+</div>
