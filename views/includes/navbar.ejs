@@ -76,15 +76,26 @@
 
     /* Responsive Design */
     @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+        }
+
         .nav-links {
+            width: 100%;
+            justify-content: center;
             flex-direction: column;
             align-items: center;
-            gap: 7px;
+            gap: 10px;
         }
 
         .buttons {
             flex-direction: column;
-            gap: 5px;
+            gap: 10px;
+        }
+
+        .nav-links li a {
+            padding: 10px 15px;
+            font-size: 16px;
         }
     }
 
@@ -95,29 +106,24 @@
 
         .nav-links li a {
             font-size: 14px;
+            padding: 8px 10px;
         }
 
         .btn {
             padding: 6px 12px;
+            font-size: 14px;
+        }
+
+        .buttons {
+            width: 100%;
+            justify-content: center;
         }
     }
 
+    /* Logo */
     .logo-link {
         text-decoration: none;
-        /* Remove underline from link */
         color: inherit;
-        /* Ensure text color is inherited */
-    }
-
-    .logo {
-        font-size: 24px;
-        /* Adjust font size as needed */
-        font-weight: bold;
-        /* Make the logo text bold */
-        color: #333;
-        /* Adjust text color as needed */
-        padding: 10px;
-        /* Adjust padding as needed */
     }
 
     .logo img {
@@ -152,4 +158,4 @@
             </div>
         </nav>
     </div>
-    </header>
+</header>

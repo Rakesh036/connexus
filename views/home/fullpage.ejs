@@ -532,35 +532,7 @@
   </head>
 
   <body>
-    <header>
-      <div class="container">
-        <nav>
-          <a href="/" class="logo-link">
-            <div class="logo"><img src="/images/connexusLogo.jpeg" alt="Connexus"></div>
-          </a>
-          <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/jobs">Career</a></li>
-            <li><a href="/groups">Find Alumni</a></li>
-            <li><a href="/successes">Success Story</a></li>
-            <li><a href="/donations">Donation</a></li>
-            <li><a href="/listings">Discussion</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/about-us">About Us</a></li>
-          </ul>
-          <div class="buttons">
-            <% if (!currUser) { %>
-            <a href="/auth/login" class="btn btn-login">Log in</a>
-            <a href="/auth/signup" class="btn btn-register">Signup</a>
-            <% } else { %>
-            <a href="/users/profile/<%=currUser._id%>" class="btn btn-login">Profile </a>
-            <a href="/auth/logout" class="btn btn-login">Log out</a>
-            <% } %>
-          </div>
-        </nav>
-      </div>
-    </header>
-
+  <%- include('include/navbar') %>
     <div class="page1hero">
       <section class="hero">
         <div class="hero-content">

@@ -5,6 +5,7 @@ module.exports.listingSchema = Joi.object({
   listing: Joi.object({
     title: Joi.string().required(),
     description: Joi.string().required(),
+    queryType: Joi.string().required(),
   }).required(),
 });
 
@@ -54,10 +55,15 @@ module.exports.transactionSchema = Joi.object({
 });
 
 // Group Schema
+
 module.exports.groupSchema = Joi.object({
-  title: Joi.string().required().trim(),
+  name: Joi.string().required().trim(), // Changed from title to name
   description: Joi.string().trim(),
+  motto: Joi.string().trim(), // Added motto
+  website: Joi.string().uri().trim(), // Added website, validating as URI
+  contactEmail: Joi.string().email().trim() // Added contactEmail, validating as email
 });
+
 
 // // Define the validation schema using Joi
 // module.exports.quizSchema = Joi.object({
