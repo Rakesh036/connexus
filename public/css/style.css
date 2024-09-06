@@ -1,148 +1,161 @@
+/* Basic Layout */
 body {
   font-family: "Plus Jakarta Sans", sans-serif !important;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
   flex: 1;
 }
 
-/* navbar */
-.navbar {
-  height: 5rem;
-  background-color: white;
-}
-
-.fa-compass {
-  color: #fe424d;
-  font-size: 2rem;
-}
-
-.nav-link {
-  color: #222222 !important;
-}
-
-/* footer */
-.f-info-links a {
-  text-decoration: none;
-  color: #222222;
-}
-
-.f-info-links a:hover {
-  text-decoration: underline;
-}
-
-.f-info-links,
-.f-info-socials,
-.f-info-brand {
-  width: 100%;
+/* Footer Styles */
+footer {
+  background-color: #ebebeb;
+  text-align: center;
+  height: 8rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: auto;
+  width: 100%;
 }
 
-.f-info-socials i {
-  font-size: 1.2rem;
-  margin-right: 1rem;
+/* Header/Navbar Styles */
+header {
+  background-color: white;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 999;
 }
 
-.f-info {
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #007bff;
+}
+
+/* Hamburger Menu Styling */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  border: none;
+  background: none;
+  z-index: 1000;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  margin: 4px 0;
+  background-color: #333;
+  transition: 0.4s;
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 0;
+    border-top: 1px solid #ddd;
+    z-index: 999;
+  }
+
+  .nav-links li {
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .nav-links li a {
+    padding: 15px;
+    display: block;
+  }
+
+  .buttons {
+    display: none;
+  }
+
+  /* Show the navigation when toggled */
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+/* Make navbar visible on larger screens */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex !important;
+  }
+
+  .buttons {
+    display: flex !important;
+  }
+}
+
+/* Responsive button alignment */
+@media (max-width: 480px) {
+  .logo img {
+    width: 80px;
+  }
+
+  .nav-links li a {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 6px 12px;
+  }
+}
+
+/* Ensure footer stays at the bottom */
+footer {
+  background-color: #ebebeb;
   text-align: center;
   height: 8rem;
-  background-color: #ebebeb;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  align-items: space-evenly;
-}
-
-/* cards */
-
-.listing-card {
-  border: none !important;
-  margin-bottom: 2rem;
-}
-
-.card-img-top {
-  border-radius: 1rem !important;
+  margin-top: auto;
   width: 100%;
-  object-fit: cover !important;
 }
-
-.upperpart {
-  height: 80%;
-}
-
-.lowerpart {
-  height: 20%;
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-}
-
-.card-body {
-  padding: 15px !important;
-}
-
-.card-text p {
-  font-weight: 400 !important;
-}
-
-.listing-link {
-  text-decoration: none;
-}
-
-/* Card effect */
-.card-img-overlay {
-  opacity: 0;
-}
-
-.card-img-overlay:hover {
-  opacity: 0.2;
-  background-color: white;
-}
-
-/* new page */
-.add-btn {
-  background-color: #fe434d !important;
-  border: none !important;
-}
-
-/* edit page */
-.edit-btn {
-  background-color: #fe434d !important;
-  border: none !important;
-}
-
-/* show page */
-
-.show-img {
-  height: 30vh;
-}
-
-.btns {
-  display: flex;
-}
-
-.show-card {
-  padding-left: 0;
-  padding-right: 0;
-}
-body {
-  /* background-image: url("https:xyz.com/premium_photo-1673306778968-5aab577a7365?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-#background-video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -1; /* Ensure the video stays in the background */
-}
-
-/* Page-specific styles for the index page */

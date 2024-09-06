@@ -1,143 +1,17 @@
-<style>
-    /* Header Styles */
-    header {
-        background-color: white;
-        width: 100%;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 10px 20px;
-    }
-
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .logo {
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-    .nav-links {
-        list-style: none;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .nav-links li a {
-        text-decoration: none;
-        color: #333;
-        padding: 5px 10px;
-        transition: color 0.3s;
-    }
-
-    .nav-links li a:hover {
-        color: #007bff;
-    }
-
-    .buttons {
-        display: flex;
-        gap: 10px;
-    }
-
-    .btn {
-        padding: 8px 16px;
-        border-radius: 5px;
-        text-decoration: none;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    .btn-login {
-        border: 1px solid #007bff;
-        color: #007bff;
-    }
-
-    .btn-login:hover {
-        background-color: #007bff;
-        color: white;
-    }
-
-    .btn-register {
-        background-color: #007bff;
-        color: white;
-        border: none;
-    }
-
-    .btn-register:hover {
-        background-color: #0056b3;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        nav {
-            flex-direction: column;
-        }
-
-        .nav-links {
-            width: 100%;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .buttons {
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .nav-links li a {
-            padding: 10px 15px;
-            font-size: 16px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .logo {
-            font-size: 20px;
-        }
-
-        .nav-links li a {
-            font-size: 14px;
-            padding: 8px 10px;
-        }
-
-        .btn {
-            padding: 6px 12px;
-            font-size: 14px;
-        }
-
-        .buttons {
-            width: 100%;
-            justify-content: center;
-        }
-    }
-
-    /* Logo */
-    .logo-link {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    .logo img {
-        width: 110px;
-    }
-</style>
-
 <header>
     <div class="container">
         <nav>
             <a href="/" class="logo-link">
-                <div class="logo"><img src="/images/connexusLogo.jpeg" alt="Connexus"></div>
+                <div class="logo">
+                    <img src="/images/connexusLogo.jpeg" alt="Connexus" width="80px" />
+                </div>
             </a>
-            <ul class="nav-links">
+            <button class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/jobs">Career</a></li>
                 <li><a href="/groups">Find Alumni</a></li>
@@ -152,10 +26,24 @@
                 <a href="/auth/login" class="btn btn-login">Log in</a>
                 <a href="/auth/signup" class="btn btn-register">Signup</a>
                 <% } else { %>
-                <a href="/users/profile/<%=currUser._id%>" class="btn btn-login">Profile </a>
+                <a href="/users/profile/<%= currUser._id %>" class="btn btn-login">Profile</a>
                 <a href="/auth/logout" class="btn btn-login">Log out</a>
                 <% } %>
             </div>
         </nav>
     </div>
 </header>
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('active');
+        }
+    });
+</script>
