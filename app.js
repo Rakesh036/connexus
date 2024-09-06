@@ -4,19 +4,16 @@ process.on("unhandledRejection", (reason, promise) => {
   process.exit(1);
 });
 
-if (process.env.NODE_ENV != "production") {
+// Environment Configuration
+if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
 // Imports
 const express = require("express");
-
-// Express App Initialization
-const app = express();
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -25,39 +22,35 @@ const path = require("path");
 const ejsMate = require("ejs-mate");
 const multer = require("multer");
 
-const listingsRouter = require("./routes/listing.js");
-const reviewsRouter = require("./routes/review.js");
-const usersRouter = require("./routes/user.js");
-const jobsRouter = require("./routes/job.js");
-const jobReviewsRouter = require("./routes/jobReview.js");
+// Route Imports
+const listingsRouter = require("./routes/listing");
+const reviewsRouter = require("./routes/review");
+const jobsRouter = require("./routes/job");
+const jobReviewsRouter = require("./routes/jobReview");
 const donationRoutes = require("./routes/donation");
-const groupRoutes = require("./routes/group.js");
-const quizRoutes = require("./routes/quiz.js");
-const successRoutes = require("./routes/success.js");
-const successReviewRoutes = require("./routes/successReview.js");
+const groupRoutes = require("./routes/group");
+const quizRoutes = require("./routes/quiz");
+const successRoutes = require("./routes/success");
+const successReviewRoutes = require("./routes/successReview");
+const gatewayRoutes = require("./routes/paymentGateway");
+const authRoutes = require("./routes/authRoutes");
+const profileRoutes = require("./routes/profileRoutes");
+const connectionRoutes = require("./routes/connectionRoutes");
 
-const ExpressError = require("./utils/expressError.js");
-const User = require("./models/user.js");
+// Error Handling
+const ExpressError = require("./utils/expressError");
+const User = require("./models/user");
+
+// Express App Initialization
+const app = express();
 
 // Mongoose Connection
 const MONGO_URL = process.env.MONGODB_URL;
-
-main()
-  .then(() => {
-    console.log("connected to database");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-async function main() {
-  await mongoose.connect(MONGO_URL);
-}
-
-// mongoose
-//   .connect(MONGO_URL)
-//   .then(() => console.log("Connected to DB"))
-//   .catch((err) => console.error("Error connecting to MongoDB:", err));
+// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+mongoose
+  .connect(MONGO_URL)
+  .then(() => console.log("Connected to DB"))
+  .catch((err) => console.error("Error connecting to MongoDB:", err));
 
 // Express Configuration
 app.engine("ejs", ejsMate);
@@ -68,19 +61,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
+// Session and Flash Configuration
 const store = MongoStore.create({
   mongoUrl: MONGO_URL,
-  crypto: {
-    secret: process.env.SECRET,
-  },
+  crypto: { secret: process.env.SECRET },
   touchAfter: 24 * 3600,
 });
 
-store.on("error", () => {
+store.on("error", (err) => {
   console.log("Error in session store", err);
 });
 
-// Session and Flash Configuration
 const sessionOption = {
   store,
   secret: process.env.SECRET,
@@ -106,16 +97,19 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
-  res.locals.currUser = req.user; // Ensure req.user is set correctly
+  res.locals.currUser = req.user;
   next();
 });
 
-// Routes
+// Home Route
 app.get("/", (req, res) => {
-  res.redirect("/listings");
+  res.render("home/fullpage.ejs");
 });
 
 // Route Definitions
+app.use("/auth", authRoutes);
+app.use("/users", profileRoutes);
+app.use("/users", connectionRoutes);
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/jobs", jobsRouter);
@@ -125,16 +119,10 @@ app.use("/groups", groupRoutes);
 app.use("/groups/:groupId/quizzes", quizRoutes);
 app.use("/successes", successRoutes);
 app.use("/successes/:id/reviews", successReviewRoutes);
+app.use("/api/payment", gatewayRoutes);
 
-// app.get("/groups/:groupId/quizzes", (req, res) => {
-//   res.redirect("/groups/:groupId/quizzes/new");
-// });
-
-// app.get("/groups/:groupId/quizzes/new", (req, res) => {
-//   console.log("inside new request, req", req);
-//   res.send("new");
-// });
-app.use("/", usersRouter);
+// Home Route
+app.get("/", (req, res) => res.redirect("/listings"));
 
 // Error Handling for Undefined Routes
 app.all("*", (req, res, next) => {
@@ -144,10 +132,11 @@ app.all("*", (req, res, next) => {
 // General Error Handler
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong" } = err;
-  res.status(statusCode).render("error.ejs", { message });
+  res.status(statusCode).render("error", { message });
 });
 
 // Server Setup
-app.listen(8080, () => {
-  console.log("Server is running on port 8080");
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

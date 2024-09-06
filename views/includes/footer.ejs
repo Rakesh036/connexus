@@ -1,4 +1,4 @@
-<footer>
+<!-- <footer>
     <div class="f-info">
         <div class="f-info-socials">
             <i class="fa-brands fa-square-facebook"></i>
@@ -9,6 +9,125 @@
         <div class="f-info-links">
             <a href="/privacy">Privacy</a>
             <a href="/terms">Terms</a>
+        </div>
+    </div>
+</footer> -->
+
+<style>
+    /* Footer */
+    .footer {
+        background-color: #f0f0f0;
+        padding: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        border-top: 1px solid #ddd;
+    }
+
+    .footer-column {
+        flex: 1;
+        min-width: 200px;
+        margin: 10px;
+    }
+
+    .footer-column h3 {
+        margin-top: 0;
+    }
+
+    .footer-column ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-column a {
+        text-decoration: none;
+        color: #000;
+        font-size: 16px;
+    }
+
+    .footer-column a:hover {
+        text-decoration: underline;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .social-icons img {
+        width: 30px;
+        vertical-align: middle;
+    }
+
+    .footer-column form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-column input[type="email"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .footer-column button {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .footer-column button:hover {
+        background-color: #0056b3;
+    }
+</style>
+<footer class="footer">
+    <div class="footer-column">
+        <h3>Our Service</h3>
+        <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Work</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Company</h3>
+        <ul>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Our Information</h3>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Career</a></li>
+            <li><a href="#">Find Alumni</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Success Story</a></li>
+            <li><a href="#">Donation</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Follow us</h3>
+        <div class="social-icons">
+            <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                <img src="/images/twitter.png" alt="Twitter" />
+            </a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+                <img src="/images/Linkedin.png" alt="LinkedIn" />
+            </a>
+            <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                <img src="/images/instagram-fill.png" alt="Instagram" />
+            </a>
         </div>
     </div>
 </footer>

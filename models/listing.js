@@ -11,6 +11,21 @@ const listingSchema = new Schema({
     type: String,
     required: true,
   },
+  queryType: {
+    type: String,
+    required: true,
+    enum: [
+      "Job",
+      "Internship",
+      "General Query",
+      "Life Update",
+      "Achievement",
+      "Pledge",
+      "Technical Query",
+      "Notes",
+      "Other",
+    ],
+  },
   reviews: [
     {
       type: Schema.Types.ObjectId,
@@ -40,5 +55,6 @@ listingSchema.post("findOneAndDelete", async (listing) => {
     await Review.deleteMany({ _id: { $in: listing.reviews } });
   }
 });
+
 const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;

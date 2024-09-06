@@ -1,8 +1,39 @@
 <%- layout("/layouts/boilerplate") -%>
 
 <div class="container">
-    <h1 class="mb-4">Posts</h1>
-    <a href="/listings/new" class="btn btn-success mb-3">Create New Post</a>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="mb-0">Posts</h1>
+        <div>
+            <!-- Filter Dropdown Button -->
+            <div class="btn-group">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="filterMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Filter by Query Type
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="filterMenuButton">
+                    <li><a class="dropdown-item" href="/listings?queryType=Job">Job</a></li>
+                    <li><a class="dropdown-item" href="/listings?queryType=Internship">Internship</a></li>
+                    <li><a class="dropdown-item" href="/listings?queryType=General Query">General Query</a></li>
+                    <li><a class="dropdown-item" href="/listings?queryType=Life Update">Life Update</a></li>
+                    <li><a class="dropdown-item" href="/listings?queryType=Achievement">Achievement</a></li>
+                    <li><a class="dropdown-item" href="/listings?queryType=Pledge">Pledge</a></li>
+                    <li><a class="dropdown-item" href="/listings?queryType=Technical Query">Technical Query</a></li>
+                    <li><a class="dropdown-item" href="/listings?queryType=Notes">Notes</a></li>
+                    <li><a class="dropdown-item" href="/listings?queryType=Other">Other</a></li>
+                    <li><a class="dropdown-item" href="/listings">All</a></li>
+                </ul>
+            </div>
+
+            <!-- Create New Post Button -->
+            <a href="/listings/new" class="btn btn-success ms-2">Create New Post</a>
+        </div>
+    </div>
+
+    <!-- If listings is empty, show a message -->
+    <% if (listings.length === 0) { %>
+    <div class="alert alert-warning" role="alert">
+        No records found.
+    </div>
+    <% } else { %>
     <div class="row">
         <% listings.reverse().forEach(listing => { %>
         <div class="col-md-4 mb-4">
@@ -11,6 +42,7 @@
                     <div class="upperpart">
                         <h5 class="card-title"><%= listing.title %></h5>
                         <p class="card-text"><%= listing.description.substring(0, 50) %>...</p>
+                        <p class="card-text"><small class="text-muted">Query Type: <%= listing.queryType %></small></p>
                     </div>
                     <div class="lowerpart">
                         <div class="d-flex justify-content-between align-items-center">
@@ -36,11 +68,11 @@
                             <!-- Read more button -->
                             <a href="/listings/<%= listing._id %>" class="btn btn-primary btn-sm readmore">Read More</a>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
         <% }) %>
     </div>
+    <% } %>
 </div>

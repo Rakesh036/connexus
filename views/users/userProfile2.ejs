@@ -1,0 +1,24 @@
+<%- layout('/layouts/boilerplate') -%>
+<div class="container mt-3">
+    <h3><%= user.username %>'s Profile</h3>
+    <p>Email: <%= user.email %></p>
+    <p>Location: <%= user.location %></p>
+    <p>Department: <%= user.department %></p>
+    <p>Year: <%= user.year %></p>
+    <p>Interests: <%= user.interests.join(', ') %></p>
+    <p>Total Connections: <%= user.connections.length %></p>
+
+    <!-- Button to view connection list -->
+    <a href="/profile/<%= user._id %>/connections" class="btn btn-info">View Connections</a>
+
+    <!-- Check if viewing another user's profile -->
+    <% if (user._id.toString() !== currentUser._id.toString()) { %>
+    <% if (!currentUser.connections.includes(user._id.toString())) { %>
+    <form action="/connect/<%= user._id %>" method="post">
+        <button type="submit" class="btn btn-primary">Connect</button>
+    </form>
+    <% } else { %>
+    <p>You are connected to this user</p>
+    <% } %>
+    <% } %>
+</div>

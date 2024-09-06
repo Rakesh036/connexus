@@ -25,9 +25,11 @@
                 <% } %>
             </div>
 
-            <p class="card-text">Owned by: <i><%=listing.owner.username %></i></p>
+            <!-- Post Details -->
+            <p class="card-text">Owned by: <i><%=listing.owner._id %></i></p>
             <h1><%= listing.title %></h1><br>
             <p class="lead"><%= listing.description %></p>
+            <p class="lead"><strong>Query Type:</strong> <%= listing.queryType %></p>
 
             <% if(currUser){ %>
             <div id="comment-section">

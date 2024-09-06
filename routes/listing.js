@@ -9,16 +9,60 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const Listing = require("../models/listing.js");
 
 // Index route
+// Index route for all listings (no filter)
 router.get(
   "/",
   wrapAsync(async (req, res) => {
-    const listings = await Listing.find({});
+    const { queryType } = req.query; // Extract queryType from query parameters
+    let listings;
+
+    if (queryType) {
+      // Filter the listings by queryType if provided
+      listings = await Listing.find({ queryType });
+    } else {
+      // If no queryType is provided, return all listings
+      listings = await Listing.find({});
+    }
+
+    // Render the index.ejs template with the filtered or unfiltered listings
     res.render("listings/index.ejs", {
       listings,
       cssFile: "listingIndex.css",
     });
   })
 );
+
+// router.get(
+//   "/",
+//   wrapAsync(async (req, res) => {
+//     const listings = await Listing.find({});
+//     res.render("listings/index.ejs", {
+//       listings,
+//       cssFile: "listingIndex.css",
+//     });
+//   })
+// );
+// router.get(
+//   "/:queryType",
+//   wrapAsync(async (req, res) => {
+//     const { queryType } = req.params; // Extract queryType from URL path parameter
+//     let listings;
+
+//     if (queryType) {
+//       // Filter the listings by the provided queryType
+//       listings = await Listing.find({ queryType });
+//     } else {
+//       // If no queryType is provided, return all listings
+//       listings = await Listing.find({});
+//     }
+
+//     // Render the index.ejs template with the filtered listings
+//     res.render("listings/index.ejs", {
+//       listings,
+//       cssFile: "listingIndex.css",
+//     });
+//   })
+// );
 
 // New route
 router.get("/new", isLoggedIn, (req, res) => {

@@ -1,28 +1,155 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/listings">All Listings</a>
-                <a class="nav-link" href="/jobs">All Jobs</a> <!-- Existing link for Jobs -->
-                <a class="nav-link" href="/donations">All Donations</a> <!-- Existing link for Donations -->
-                <a class="nav-link" href="/groups">Groups</a>
-                <a class="nav-link" href="/successes">Success story</a> <!-- New link for Groups -->
-            </div>
-            <div class="navbar-nav ms-auto">
+<style>
+    /* Header Styles */
+    header {
+        background-color: white;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px 20px;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .nav-links li a {
+        text-decoration: none;
+        color: #333;
+        padding: 5px 10px;
+        transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+        color: #007bff;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-login {
+        border: 1px solid #007bff;
+        color: #007bff;
+    }
+
+    .btn-login:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-register {
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+
+    .btn-register:hover {
+        background-color: #0056b3;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-links {
+            flex-direction: column;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .buttons {
+            flex-direction: column;
+            gap: 5px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo {
+            font-size: 20px;
+        }
+
+        .nav-links li a {
+            font-size: 14px;
+        }
+
+        .btn {
+            padding: 6px 12px;
+        }
+    }
+
+    .logo-link {
+        text-decoration: none;
+        /* Remove underline from link */
+        color: inherit;
+        /* Ensure text color is inherited */
+    }
+
+    .logo {
+        font-size: 24px;
+        /* Adjust font size as needed */
+        font-weight: bold;
+        /* Make the logo text bold */
+        color: #333;
+        /* Adjust text color as needed */
+        padding: 10px;
+        /* Adjust padding as needed */
+    }
+
+    .logo img {
+        width: 110px;
+    }
+</style>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="/" class="logo-link">
+                <div class="logo"><img src="/images/connexusLogo.jpeg" alt="Connexus"></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/jobs">Career</a></li>
+                <li><a href="/groups">Find Alumni</a></li>
+                <li><a href="/successes">Success Story</a></li>
+                <li><a href="/donations">Donation</a></li>
+                <li><a href="/listings">Discussion</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about-us">About Us</a></li>
+            </ul>
+            <div class="buttons">
                 <% if (!currUser) { %>
-                <a class="nav-link" href="/signup">Sign Up</a>
-                <a class="nav-link" href="/login">Login</a>
-                <% } %>
-                <% if (currUser) { %>
-                <a class="nav-link" href="/profile">Profile</a>
-                <a class="nav-link" href="/logout">Logout</a>
+                <a href="/auth/login" class="btn btn-login">Log in</a>
+                <a href="/auth/signup" class="btn btn-register">Signup</a>
+                <% } else { %>
+                <a href="/users/profile/<%=currUser._id%>" class="btn btn-login">Profile </a>
+                <a href="/auth/logout" class="btn btn-login">Log out</a>
                 <% } %>
             </div>
-        </div>
+        </nav>
     </div>
-</nav>
+    </header>

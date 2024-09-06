@@ -4,8 +4,7 @@
         <div class="col-6 offset-3">
             <!-- Back to Posts with Icon -->
             <a href="/listings" class="btn btn-secondary d-inline-flex align-items-center">
-                <i class="fa-solid fa-left-long"></i>
-                <!-- <i class="bi bi-arrow-left-circle me-2"></i> Back to Posts -->
+                <i class="fa-solid fa-left-long"></i> Back to Posts
             </a>
             <br><br>
             <h3>Edit Post</h3>
@@ -22,6 +21,23 @@
                     <textarea id="description" name="listing[description]" class="form-control" rows="4"
                         required><%= listing.description %></textarea>
                     <div class="invalid-feedback">Please enter the content.</div>
+                </div>
+
+                <!-- Query Type Dropdown -->
+                <div class="mb-3">
+                    <label for="queryType" class="form-label">Query Type</label>
+                    <select id="queryType" name="listing[queryType]" class="form-select" required>
+                        <option value="Job" <%= listing.queryType === 'Job' ? 'selected' : '' %>>Job</option>
+                        <option value="Internship" <%= listing.queryType === 'Internship' ? 'selected' : '' %>>Internship</option>
+                        <option value="General Query" <%= listing.queryType === 'General Query' ? 'selected' : '' %>>General Query</option>
+                        <option value="Life Update" <%= listing.queryType === 'Life Update' ? 'selected' : '' %>>Life Update</option>
+                        <option value="Achievement" <%= listing.queryType === 'Achievement' ? 'selected' : '' %>>Achievement</option>
+                        <option value="Pledge" <%= listing.queryType === 'Pledge' ? 'selected' : '' %>>Pledge</option>
+                        <option value="Technical Query" <%= listing.queryType === 'Technical Query' ? 'selected' : '' %>>Technical Query</option>
+                        <option value="Notes" <%= listing.queryType === 'Notes' ? 'selected' : '' %>>Notes</option>
+                        <option value="Other" <%= listing.queryType === 'Other' ? 'selected' : '' %>>Other</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a query type.</div>
                 </div>
 
                 <button class="btn btn-dark add-btn mt-3" type="submit">

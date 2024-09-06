@@ -24,13 +24,14 @@ router.get(
     const successes = await Success.find({});
     res.render("success/index.ejs", {
       successes,
+      cssFile: "successIndex.css",
     });
   })
 );
 
 // New route
 router.get("/new", isLoggedIn, (req, res) => {
-  res.render("success/new.ejs");
+  res.render("success/new.ejs", { cssFile: "successNew.css" });
 });
 
 // Create route
@@ -96,8 +97,8 @@ router.get(
       req.flash("error", "Success story does not exist!");
       return res.redirect("/successes");
     }
-    console.log("successStory", successStory);
-    res.render("success/show", { successStory });
+    // console.log("successStory", successStory);
+    res.render("success/show", { successStory, cssFile: "successShow.css" });
   })
 );
 
@@ -133,7 +134,7 @@ router.get(
       req.flash("error", "Success story not found!");
       return res.redirect("/successes");
     }
-    res.render("success/edit", { successStory }); // Ensure you're passing 'successStory'
+    res.render("success/edit", { successStory, cssFile: "successEdit.css" }); // Ensure you're passing 'successStory'
   })
 );
 

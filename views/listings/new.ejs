@@ -18,10 +18,28 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="content" class="form-label">Content</label>
-                    <textarea id="content" name="listing[description]" class="form-control" rows="4"
+                    <label for="description" class="form-label">Content</label>
+                    <textarea id="description" name="listing[description]" class="form-control" rows="4"
                         placeholder="Write your post content here" required></textarea>
                     <div class="invalid-feedback">Please enter the content of your post.</div>
+                </div>
+
+                <!-- Query Type Dropdown -->
+                <div class="mb-3">
+                    <label for="queryType" class="form-label">Query Type</label>
+                    <select id="queryType" name="listing[queryType]" class="form-select" required>
+                        <option value="" disabled selected>Select a query type</option>
+                        <option value="Job">Job</option>
+                        <option value="Internship">Internship</option>
+                        <option value="General Query">General Query</option>
+                        <option value="Life Update">Life Update</option>
+                        <option value="Achievement">Achievement</option>
+                        <option value="Pledge">Pledge</option>
+                        <option value="Technical Query">Technical Query</option>
+                        <option value="Notes">Notes</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a query type.</div>
                 </div>
 
                 <button type="submit" class="btn btn-dark add-btn mt-3">

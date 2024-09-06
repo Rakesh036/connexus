@@ -1,0 +1,91 @@
+<%- layout("/layouts/boilerplate") -%>
+
+<body>
+    <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <h2><%= user.username %>'s Profile</h2>
+            <p>Email: <%= user.email %></p>
+            <p>Location: <%= user.location %></p>
+        </div>
+
+        <!-- Basic Info Section -->
+        <div class="basic-info">
+            <h3>Basic Information</h3>
+            <p>Department: <%= user.department %></p>
+            <p>Graduation Year: <%= user.year %></p>
+            <p>Interests: <%= user.interests.join(', ') %></p>
+        </div>
+
+        <!-- Connections Section -->
+        <div class="section">
+            <h3>Connections</h3>
+            <ul class="section-list">
+                <% user.connections.forEach(connection => { %>
+                <li><a href="/users/<%= connection._id %>"><%= connection.username %></a></li>
+                <% }) %>
+            </ul>
+        </div>
+
+        <!-- Groups Section -->
+        <div class="section">
+            <h3>Groups Joined</h3>
+            <ul class="section-list">
+                <% user.groupJoined.forEach(group => { %>
+                <li><a href="/groups/<%= group._id %>"><%= group.name %></a></li>
+                <% }) %>
+            </ul>
+        </div>
+
+        <!-- Donations Section -->
+        <div class="section">
+            <h3>Donations</h3>
+            <ul class="section-list">
+                <% user.donations.forEach(donation => { %>
+                <li><a href="/donations/<%= donation._id %>">Donation of <%= donation.amount %> to
+                        <%= donation.cause %></a></li>
+                <% }) %>
+            </ul>
+        </div>
+
+        <!-- Listings Section -->
+        <div class="section">
+            <h3>Listings</h3>
+            <ul class="section-list">
+                <% user.listingPost.forEach(listing => { %>
+                <li><a href="/listings/<%= listing._id %>"><%= listing.title %></a></li>
+                <% }) %>
+            </ul>
+        </div>
+
+        <!-- Quizzes Participated Section -->
+        <div class="section">
+            <h3>Quizzes Participated</h3>
+            <ul class="section-list">
+                <% user.quizParticipated.forEach(quiz => { %>
+                <li><a href="/quizzes/<%= quiz._id %>"><%= quiz.title %></a></li>
+                <% }) %>
+            </ul>
+        </div>
+
+        <!-- Events Organized Section -->
+        <div class="section">
+            <h3>Events Organized</h3>
+            <ul class="section-list">
+                <% user.eventOrganised.forEach(event => { %>
+                <li><a href="/events/<%= event._id %>"><%= event.title %></a></li>
+                <% }) %>
+            </ul>
+        </div>
+
+        <!-- Events Joined Section -->
+        <div class="section">
+            <h3>Events Joined</h3>
+            <ul class="section-list">
+                <% user.joinEvent.forEach(event => { %>
+                <li><a href="/events/<%= event._id %>"><%= event.title %></a></li>
+                <% }) %>
+            </ul>
+        </div>
+
+    </div>

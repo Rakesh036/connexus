@@ -38,8 +38,8 @@ const jobSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "JobReview",
     },
-    ],
-   owner: { type: Schema.Types.ObjectId, ref: 'User' },
+  ],
+  owner: { type: Schema.Types.ObjectId, ref: "User" },
 
   reports: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 

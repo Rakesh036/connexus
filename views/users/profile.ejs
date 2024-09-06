@@ -1,42 +1,54 @@
-<%- include('layouts/boilerplate') %>
-
+<%- layout("/layouts/boilerplate") -%>
 <div class="container mt-5">
     <h2 class="mb-4">My Profile</h2>
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4 text-center">
-                    <img src="<%= user.profilePicture || '/images/default-profile.png' %>"
+                    <!-- Check if profilePicture exists, otherwise use default image -->
+                    <img src="<%= user.profilePicture ? user.profilePicture : '/images/default-profile.png' %>"
                         class="img-fluid rounded-circle mb-3" alt="Profile Picture" width="150" height="150" />
-                    <h5><%= user.firstName %> <%= user.lastName %></h5>
-                    <p class="text-muted">Batch of <%= user.batchYear %></p>
+                    <!-- Check if firstName and lastName exist -->
+                    <h5><%= user.firstName ? user.firstName : 'First Name' %>
+                        <%= user.lastName ? user.lastName : 'Last Name' %></h5>
+                    <!-- Check if batchYear exists -->
+                    <p class="text-muted">Batch of <%= user.batchYear ? user.batchYear : 'N/A' %></p>
                 </div>
                 <div class="col-md-8">
                     <h5>About Me</h5>
-                    <p><%= user.aboutMe || 'No bio available.' %></p>
+                    <!-- Check if aboutMe exists -->
+                    <p><%= user.aboutMe ? user.aboutMe : 'No bio available.' %></p>
                     <h5>Contact Information</h5>
-                    <p>Email: <%= user.email %></p>
-                    <p>Phone: <%= user.contactNumber || 'N/A' %></p>
+                    <!-- Check if email exists -->
+                    <p>Email: <%= user.email ? user.email : 'N/A' %></p>
+                    <!-- Check if contactNumber exists -->
+                    <p>Phone: <%= user.contactNumber ? user.contactNumber : 'N/A' %></p>
                     <h5>Social Media</h5>
+                    <!-- Check if LinkedIn, Facebook, Instagram exist -->
                     <p>
                         LinkedIn:
-                        <a href="<%= user.linkedin || '#' %>"><%= user.linkedin || 'N/A' %></a>
+                        <a href="<%= user.linkedin ? user.linkedin : '#' %>"><%= user.linkedin ? user.linkedin : 'N/A' %></a>
                     </p>
                     <p>
                         Facebook:
-                        <a href="<%= user.facebook || '#' %>"><%= user.facebook || 'N/A' %></a>
+                        <a href="<%= user.facebook ? user.facebook : '#' %>"><%= user.facebook ? user.facebook : 'N/A' %></a>
                     </p>
                     <p>
                         Instagram:
-                        <a href="<%= user.instagram || '#' %>"><%= user.instagram || 'N/A' %></a>
+                        <a href="<%= user.instagram ? user.instagram : '#' %>"><%= user.instagram ? user.instagram : 'N/A' %></a>
                     </p>
                     <h5>Interests</h5>
+                    <!-- Check if interests array exists and has items -->
                     <ul>
+                        <% if (user.interests && user.interests.length > 0) { %>
                         <% user.interests.forEach(function(interest) { %>
                         <li><%= interest %></li>
                         <% }); %>
+                        <% } else { %>
+                        <li>No interests listed.</li>
+                        <% } %>
                     </ul>
-                    <a href="/users/edit" class="btn btn-primary">Edit Profile</a>
+                    <a href="/users/profile/<%=user._id  %>/edit" class="btn btn-primary">Edit Profile</a>
                 </div>
             </div>
         </div>

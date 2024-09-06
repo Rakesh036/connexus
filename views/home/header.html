@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alumni Association Landing Page</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        box-sizing: border-box;
+      }
+
+      header {
+        background-color: white;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px 50px;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .logo img {
+        max-height: 50px;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links li a {
+        text-decoration: none;
+        color: #333;
+        padding: 5px 10px;
+        transition: color 0.3s;
+      }
+
+      .nav-links li a:hover {
+        color: #007bff;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .btn-login {
+        border: 1px solid #007bff;
+        color: #007bff;
+      }
+
+      .btn-login:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .btn-register {
+        background-color: #007bff;
+        color: white;
+        border: none;
+      }
+
+      .btn-register:hover {
+        background-color: #0056b3;
+      }
+
+      /* Mobile Menu (hidden by default) */
+      .menu-icon {
+        display: none;
+        cursor: pointer;
+      }
+
+      .menu-icon div {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        margin: 5px;
+        transition: all 0.3s;
+      }
+
+      .nav-links,
+      .buttons {
+        display: flex;
+      }
+
+      @media (max-width: 768px) {
+        /* Responsive header layout */
+        .menu-icon {
+          display: block;
+        }
+
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: #f9f9f9;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          padding: 20px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links li {
+          margin: 10px 0;
+        }
+
+        .nav-links.show {
+          display: flex;
+        }
+
+        .buttons {
+          display: none;
+        }
+      }
+
+      /* Placeholder content */
+      .content {
+        padding: 50px;
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <a href="index.html">
+              <img src="/v0_landing/logo&typo-01-01.png" alt="Alumni Logo" />
+            </a>
+          </div>
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Career</a></li>
+            <li><a href="#">Find Alumni</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Success Story</a></li>
+            <li><a href="#">Donation</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+          <div class="buttons">
+            <a href="#" class="btn btn-login">Log in</a>
+            <a href="#" class="btn btn-register">Register</a>
+          </div>
+          <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+        fermentum, libero ut pharetra dapibus, ex tortor lacinia felis, a
+        consequat libero turpis non quam. Proin tristique arcu ut lectus
+        scelerisque efficitur. Integer fermentum orci at dolor vehicula, in
+        lacinia libero viverra. Phasellus finibus orci in enim lacinia feugiat.
+        In placerat, lectus nec dapibus cursus, ligula erat ullamcorper arcu,
+        non dapibus magna orci nec felis. Nam in urna dolor. Etiam a tincidunt
+        dui, et fermentum felis.
+      </p>
+      <p>
+        Aenean vitae facilisis est, nec finibus ligula. Phasellus feugiat tortor
+        nec orci porta, a feugiat leo facilisis. Quisque maximus orci nec dui
+        accumsan, ut convallis purus ullamcorper. Integer vulputate, ligula nec
+        rhoncus vulputate, lectus lacus fringilla leo, at pharetra justo ante ut
+        mauris. Suspendisse ut viverra libero, sed eleifend tortor. Etiam
+        lobortis elit ac diam maximus feugiat. Maecenas efficitur nunc orci, ac
+        lacinia nunc lacinia ac. Integer in nisl ac nulla efficitur dictum nec
+        vel mi.
+      </p>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        const navLinks = document.querySelector(".nav-links");
+        navLinks.classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>

@@ -10,6 +10,16 @@ const Success = require("./models/success.js");
 const SuccessReview = require("./models/successReview.js");
 const Joi = require("joi");
 
+// middleware/errorHandler.js
+module.exports.errorHandler = (err, req, res, next) => {
+  // Determine the middleware name from the error object if provided
+  const middlewareName = err.middlewareName || "Unknown Middleware";
+
+  console.error(`Error in ${middlewareName}:`, err.message);
+
+  res.status(err.statusCode || 500).render("error", { err });
+};
+
 // Schema imports for JOI validation
 const {
   listingSchema,
@@ -29,7 +39,7 @@ module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
     req.session.redirectUrl = req.originalUrl;
     req.flash("error", "Login required");
-    return res.redirect("/login");
+    return res.redirect("/auth/login");
   }
   next();
 };
@@ -347,4 +357,44 @@ module.exports.validateSuccessReview = (req, res, next) => {
   } else {
     next();
   }
+};
+
+const { paymentSchema } = require("./schema");
+
+module.exports.validatePayment = (req, res, next) => {
+  const { error } = paymentSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
+
+module.exports.isUser = (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    // If the user is not authenticated, redirect to login or send an appropriate response
+    req.flash("error", "You must be signed in to access this page.");
+    return res.redirect("/login"); // or any other page like `/signin`
+  }
+  next();
+};
+
+module.exports.validateUser = (req, res, next) => {
+  const { error } = userSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(", ");
+    req.flash("error", msg);
+    return res.redirect("back"); // or return an error response for an API
+  }
+  next();
+};
+
+module.exports.isCurrentUser = (req, res, next) => {
+  // Check if the user is logged in and if the user ID in the request params matches the logged-in user ID
+  if (req.isAuthenticated() && req.user._id.equals(req.params.id)) {
+    return next(); // User is authorized to access or modify this resource
+  }
+  req.flash("error", "You do not have permission to do that.");
+  res.redirect("/"); // Redirect to the home page or any other appropriate route
 };

@@ -3,7 +3,8 @@ const { Schema } = mongoose;
 
 const groupSchema = new Schema(
   {
-    title: {
+    name: {
+      // Changed from title to name
       type: String,
       required: true,
       trim: true,
@@ -11,6 +12,23 @@ const groupSchema = new Schema(
     description: {
       type: String,
       trim: true,
+    },
+    motto: {
+      // Added motto field
+      type: String,
+      trim: true,
+    },
+    website: {
+      // Added website field
+      type: String,
+      trim: true,
+    },
+    contactEmail: {
+      // Added contactEmail field
+      type: String,
+      trim: true,
+      lowercase: true,
+      match: [/.+@.+\..+/, "Please enter a valid email address"],
     },
     members: [
       {
@@ -35,7 +53,7 @@ const groupSchema = new Schema(
     },
   },
   {
-    timestamps: true,
+    timestamps: true, // This adds createdAt and updatedAt fields
   }
 );
 

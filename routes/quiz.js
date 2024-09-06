@@ -14,7 +14,7 @@ router.get(
   wrapAsync(async (req, res) => {
     const { groupId } = req.params;
     const group = await Group.findById(groupId).populate("quizzes");
-    res.render("quizzes/index", { group });
+    res.render("quizzes/index", { group, cssFile: "quizIndex.css" });
   })
 );
 
@@ -27,7 +27,7 @@ router.get(
   isGroupOwner,
   wrapAsync(async (req, res) => {
     const group = req.group; // Get the group from the isGroup middleware
-    res.render("quizzes/new", { group });
+    res.render("quizzes/new", { group, cssFile: "quizNew.css" });
   })
 );
 // Route to create a new quiz
@@ -88,6 +88,7 @@ router.get(
       quiz,
       groupId,
       currUser: req.user._id,
+      cssFile: "quizShow.css",
     });
   })
 );
@@ -103,7 +104,7 @@ router.get(
     if (!quiz) {
       throw new ExpressError("Quiz not found", 404);
     }
-    res.render("quizzes/edit", { quiz, groupId });
+    res.render("quizzes/edit", { quiz, groupId, cssFile: "quizEdit.css" });
   })
 );
 
@@ -231,6 +232,7 @@ router.get(
       groupId,
       leaderboard,
       userScore,
+      cssFile: "quizLeaderboard.css",
     });
   })
 );
@@ -244,7 +246,7 @@ router.get("/:id/start", isLoggedIn, (req, res) => {
     if (!quiz) {
       throw new ExpressError("Quiz not found", 404);
     }
-    res.render("quizzes/show", { quiz, groupId });
+    res.render("quizzes/show", { quiz, groupId, cssFile: "quizShow.css" });
   });
 });
 module.exports = router;

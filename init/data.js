@@ -1,44 +1,130 @@
 const posts = [
   {
-    title: 'Innovate India Hackathon 2024',
-    description: 'A nationwide hackathon focused on solving real-world problems using cutting-edge technologies like AI, blockchain, and IoT. Open to students and professionals.',
+    "title": "Looking for Job Opportunities",
+    "description": "Can anyone guide me on how to apply for software engineering jobs?",
+    "queryType": "Job"
   },
   {
-    title: 'Building Scalable Web Apps in India',
-    description: 'An in-depth discussion on the challenges and best practices for building scalable web applications for the Indian market, with a focus on regional scalability and infrastructure constraints.',
+    "title": "Internship Application Tips",
+    "description": "What should I include in my resume to get an internship at a startup?",
+    "queryType": "Internship"
   },
   {
-    title: 'AI and Machine Learning in Indian Startups',
-    description: 'Exploring how Indian startups are leveraging AI and machine learning to disrupt industries like healthcare, agriculture, and fintech. Case studies of successful Indian AI ventures.',
+    "title": "Life Update: Moved to a new city!",
+    "description": "I recently relocated to San Francisco for a new job. Any tips for settling in?",
+    "queryType": "Life Update"
   },
   {
-    title: 'Bengaluru Tech Summit 2024',
-    description: 'An annual technology summit in Bengaluru, showcasing innovations in AI, cloud computing, cybersecurity, and more. Features keynotes from industry leaders and interactive workshops.',
+    "title": "How to Pledge Donations?",
+    "description": "I would like to donate to the alumni association. Can anyone share the process?",
+    "queryType": "Pledge"
   },
   {
-    title: 'Digital India: Bridging the Technology Gap',
-    description: 'An article focusing on the Digital India initiative and how it aims to bring technological advancements to rural areas, empowering local entrepreneurs and boosting digital literacy.',
+    "title": "Achievement Unlocked: Promotion!",
+    "description": "Excited to share that I got promoted to Senior Developer!",
+    "queryType": "Achievement"
   },
   {
-    title: 'Smart Cities Hackathon: Redefining Urban Spaces',
-    description: 'A hackathon aimed at developing smart solutions for urban challenges in Indian cities. The event focuses on sustainable technology, urban planning, and IoT-driven solutions.',
+    "title": "General Query about Alumni Network",
+    "description": "How can I get involved with the alumni network's upcoming events?",
+    "queryType": "General Query"
   },
   {
-    title: 'Open-Source Development in India',
-    description: 'A look into the thriving open-source community in India and how developers are contributing to global projects. Includes success stories of Indian contributors to open-source platforms.',
+    "title": "Technical Query: Python vs Java",
+    "description": "Which programming language is more in demand for data science roles?",
+    "queryType": "Technical Query"
   },
   {
-    title: 'Blockchain Revolution in Indian Finance',
-    description: 'Exploring the impact of blockchain technology on the Indian financial sector, with a focus on secure transactions, decentralized finance (DeFi), and regulatory challenges in India.',
+    "title": "Job Referral Needed",
+    "description": "I am looking for a job in web development. Can anyone refer me to open positions?",
+    "queryType": "Job"
   },
   {
-    title: 'Women in Tech: Changing the Indian Landscape',
-    description: 'An inspiring article on the increasing number of women in technology in India, featuring profiles of women tech leaders, entrepreneurs, and their contributions to the industry.',
+    "title": "Notes for Machine Learning Course",
+    "description": "Sharing my notes from the machine learning class we took in 2021.",
+    "queryType": "Notes"
   },
   {
-    title: 'Virtual Hackathons: Innovating in the New Normal',
-    description: 'With the rise of virtual hackathons in India, this post discusses how developers are collaborating online to solve challenges and innovate from the comfort of their homes.',
+    "title": "Tips for Virtual Internships",
+    "description": "Does anyone have advice for managing virtual internships effectively?",
+    "queryType": "Internship"
   },
+  {
+    "title": "Life Update: New Parent!",
+    "description": "I recently became a parent and wanted to share this exciting news with everyone!",
+    "queryType": "Life Update"
+  },
+  {
+    "title": "Pledge Information Needed",
+    "description": "Can someone explain how I can pledge a monthly contribution?",
+    "queryType": "Pledge"
+  },
+  {
+    "title": "Published My First Research Paper!",
+    "description": "I just published my first research paper on AI and its applications!",
+    "queryType": "Achievement"
+  },
+  {
+    "title": "General Inquiry about Networking Events",
+    "description": "Are there any upcoming alumni networking events?",
+    "queryType": "General Query"
+  },
+  {
+    "title": "Technical Issue: Web App Hosting",
+    "description": "Having trouble hosting my web app on AWS. Any guidance?",
+    "queryType": "Technical Query"
+  },
+  {
+    "title": "Job Opportunity for Junior Developers",
+    "description": "Our company is hiring junior developers. Feel free to reach out for more details.",
+    "queryType": "Job"
+  },
+  {
+    "title": "Study Notes for Algorithms",
+    "description": "Here are my notes from the algorithms class. Hope this helps!",
+    "queryType": "Notes"
+  },
+  {
+    "title": "How to Ace Internship Interviews?",
+    "description": "What are the best ways to prepare for technical internship interviews?",
+    "queryType": "Internship"
+  },
+  {
+    "title": "Life Update: Running a Marathon",
+    "description": "Training for my first marathon! Any training tips would be appreciated.",
+    "queryType": "Life Update"
+  },
+  {
+    "title": "Pledge: Monthly Donation",
+    "description": "I just signed up to donate $50 every month to support our alumni community.",
+    "queryType": "Pledge"
+  },
+  {
+    "title": "Awarded Best Startup of the Year!",
+    "description": "Our startup was recognized as the best in the region. So proud of our team!",
+    "queryType": "Achievement"
+  },
+  {
+    "title": "General Query about Mentorship",
+    "description": "Is there a mentorship program available for recent graduates?",
+    "queryType": "General Query"
+  },
+  {
+    "title": "Technical Question: API Integration",
+    "description": "How do I handle OAuth for integrating third-party APIs into my project?",
+    "queryType": "Technical Query"
+  },
+  {
+    "title": "Job Posting: Data Scientist",
+    "description": "We are hiring data scientists at our firm. Message me for details!",
+    "queryType": "Job"
+  },
+  {
+    "title": "Lecture Notes: Distributed Systems",
+    "description": "I have compiled notes from our distributed systems lectures.",
+    "queryType": "Notes"
+  }
 ];
 
-module.exports = { data: posts };
+
+module.exports = { data: posts  };

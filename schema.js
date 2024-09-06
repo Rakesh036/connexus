@@ -166,3 +166,79 @@ module.exports.successReviewSchema = Joi.object({
     comment: Joi.string().required(),
   }).required(),
 });
+
+
+module.exports.paymentSchema = Joi.object({
+  fullName: Joi.string().required(),
+  email: Joi.string().email(),
+  eventTitle: Joi.string(),
+  amount: Joi.number().positive().required(),
+  paymentMethod: Joi.string()
+    .valid("UPI", "Credit Card", "Debit Card")
+    .required(),
+  upiId: Joi.when("paymentMethod", {
+    is: "UPI",
+    then: Joi.string(),
+    otherwise: Joi.optional(),
+  }),
+  cardNumber: Joi.when("paymentMethod", {
+    is: Joi.string().valid("Credit Card", "Debit Card"),
+    then: Joi.string(),
+    otherwise: Joi.optional(),
+  }),
+  expiryDate: Joi.when("paymentMethod", {
+    is: Joi.string().valid("Credit Card", "Debit Card"),
+    then: Joi.string(),
+    otherwise: Joi.optional(),
+  }),
+  cvv: Joi.when("paymentMethod", {
+    is: Joi.string().valid("Credit Card", "Debit Card"),
+    then: Joi.string(),
+    otherwise: Joi.optional(),
+  }),
+});
+
+module.exports.userSearchSchema = Joi.object({
+  location: Joi.string().allow(""),
+  department: Joi.string().allow(""),
+  year: Joi.number()
+    .integer()
+    .min(1900)
+    .max(new Date().getFullYear())
+    .allow(""),
+  interests: Joi.array().items(Joi.string()).allow(null),
+});
+
+module.exports.validateUser = Joi.object({
+  username: Joi.string().required().messages({
+    "string.empty": "Username is required.",
+  }),
+
+  email: Joi.string().email().required().messages({
+    "string.email": "Please provide a valid email.",
+    "string.empty": "Email is required.",
+  }),
+
+  location: Joi.string().required().messages({
+    "string.empty": "Location is required.",
+  }),
+
+  phone: Joi.string().optional(), // Optional phone number
+  dob: Joi.date().optional(), // Optional date of birth
+  city: Joi.string().optional(),
+  country: Joi.string().optional(),
+  graduationYear: Joi.number().optional(),
+  degree: Joi.string().optional(),
+  department: Joi.string().optional(),
+  employer: Joi.string().optional(),
+  jobTitle: Joi.string().optional(),
+  industry: Joi.string().optional(),
+  experience: Joi.number().optional(),
+  skills: Joi.array().items(Joi.string()).optional(),
+  projects: Joi.array().items(Joi.string()).optional(),
+  achievements: Joi.array().items(Joi.string()).optional(),
+  linkedin: Joi.string().uri().optional(),
+  github: Joi.string().uri().optional(),
+  profilePicture: Joi.string().optional(),
+});
+

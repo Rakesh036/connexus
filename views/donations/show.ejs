@@ -31,7 +31,7 @@
             <h1 class="mb-0 flex-grow-1 text-center"><%= donation.title %></h1>
             <p><%= donation.description %></p>
 
-            <form action="/donations/<%= donation._id %>/transactions" method="POST">
+            <form action="/api/payment" method="get">
                 <div class="mb-3">
                     <label for="amount" class="form-label">Donation Amount</label>
                     <input type="number" id="amount" name="transaction[amount]" class="form-control" value="10"

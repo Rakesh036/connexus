@@ -1,34 +1,26 @@
 const mongoose = require("mongoose");
+const Payment = require("./payment");
 const Schema = mongoose.Schema;
 
-const transactionSchema = new Schema(
-  {
-    amount: {
-      type: Number,
-      required: true,
-      min: [10, "Donation amount must be at least 10"],
-    },
-    donor: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-      validate: {
-        validator: mongoose.Types.ObjectId.isValid,
-        message: "Invalid donor ID",
-      },
-    },
-    donation: {
-      type: Schema.Types.ObjectId,
-      ref: "Donation",
-      required: true,
-      validate: {
-        validator: mongoose.Types.ObjectId.isValid,
-        message: "Invalid donation ID",
-      },
-    },
-  },
-  { timestamps: true }
-);
+// const transactionSchema = new Schema(
+//   {
+//     amount: {
+//       type: Number,
+//       required: true,
+//       // min: [10, "Donation amount must be at least 10"],
+//     },
+//     donor: {
+//       type: Schema.Types.ObjectId,
+//       ref: "User",
+//       required: false,
+//     },
+//     payment: {
+//       type: Schema.Types.ObjectId,
+//       ref: "Payment",
+//     },
+//   },
+//   { timestamps: true }
+// );
 
 const donationSchema = new Schema(
   {
@@ -42,8 +34,8 @@ const donationSchema = new Schema(
     description: {
       type: String,
       required: true,
-      minlength: [1, "Description must be at least 10 characters long"],
-      maxlength: [1000, "Description cannot exceed 100 characters"],
+      minlength: [1, "Description must be at least 1 characters long"],
+      maxlength: [1000, "Description cannot exceed 1000 characters"],
       trim: true,
     },
     owner: {
@@ -58,7 +50,7 @@ const donationSchema = new Schema(
     transactions: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Transaction",
+        ref: "Payment",
         validate: {
           validator: mongoose.Types.ObjectId.isValid,
           message: "Invalid transaction ID",
@@ -71,5 +63,5 @@ const donationSchema = new Schema(
 
 module.exports = {
   Donation: mongoose.model("Donation", donationSchema),
-  Transaction: mongoose.model("Transaction", transactionSchema),
+  // Transaction: mongoose.model("Transaction", transactionSchema),
 };
