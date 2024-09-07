@@ -23,7 +23,7 @@ const listingSchema = new Schema({
       "Pledge",
       "Technical Query",
       "Notes",
-      "help",
+      "Help",
       "Other",
     ],
   },
