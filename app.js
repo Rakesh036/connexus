@@ -36,10 +36,16 @@ const gatewayRoutes = require("./routes/paymentGateway");
 const authRoutes = require("./routes/authRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const connectionRoutes = require("./routes/connectionRoutes");
+// const notificationRoutes=require("./routes/notificationRoutes");
+
+// const paymentRoutes = require("./routes/payments");
+
+
 
 // Error Handling
 const ExpressError = require("./utils/expressError");
 const User = require("./models/user");
+const Notification = require("./models/notification");
 
 // Express App Initialization
 const app = express();
@@ -120,6 +126,34 @@ app.use("/groups/:groupId/quizzes", quizRoutes);
 app.use("/successes", successRoutes);
 app.use("/successes/:id/reviews", successReviewRoutes);
 app.use("/api/payment", gatewayRoutes);
+
+
+app.get("/notifications", async (req, res) => {
+  try {
+    console.log("notification routes called");
+    console.log("User ID:", req.user._id); 
+
+    const notifications = await Notification.find({
+      user: req.user._id,
+    }).sort({ createdAt: -1 });
+
+    console.log("notifications: ",notifications);
+    
+    // Find the count of unread notifications for the logged-in user
+    const unreadCount = await Notification.countDocuments({
+      user: req.user._id,
+      isRead: false,
+    });
+
+    console.log("unreadCount of notification is: ", unreadCount);
+
+    res.render("notification", { notifications, unreadCount });
+  } catch (error) {
+    res.status(500).send("Error retrieving notifications");
+  }
+});
+// app.use("/api/payment", gatewayRoutes);
+
 
 // Home Route
 app.get("/", (req, res) => res.redirect("/listings"));

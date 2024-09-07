@@ -184,16 +184,17 @@ module.exports.isTransactionOwner = async (req, res, next) => {
   next();
 };
 
-// Middleware for validating Donation data
+// Middleware to validate a donation
 module.exports.validateDonation = (req, res, next) => {
   const { error } = donationSchema.validate(req.body);
   if (error) {
-    const errMsg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(400, errMsg);
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(msg, 400);
   } else {
     next();
   }
 };
+
 
 // Middleware for validating Transaction data
 module.exports.validateTransaction = (req, res, next) => {
@@ -361,15 +362,40 @@ module.exports.validateSuccessReview = (req, res, next) => {
 
 const { paymentSchema } = require("./schema");
 
+
 module.exports.validatePayment = (req, res, next) => {
+  const paymentSchema = Joi.object({
+    fullName: Joi.string().required(),
+    email: Joi.string().email().optional(),
+    eventTitle: Joi.string().optional(),
+    amount: Joi.number().required().min(0),
+    paymentMethod: Joi.string()
+      .valid("UPI", "Credit Card", "Debit Card")
+      .required(),
+    upiId: Joi.string().when("paymentMethod", {
+      is: "UPI",
+      then: Joi.required(),
+    }),
+    cardNumber: Joi.string().when("paymentMethod", {
+      is: Joi.string().valid("Credit Card", "Debit Card"),
+      then: Joi.required(),
+    }),
+    expiryDate: Joi.string().when("paymentMethod", {
+      is: Joi.string().valid("Credit Card", "Debit Card"),
+      then: Joi.required(),
+    }),
+    // Add other validation rules as necessary
+  });
+
   const { error } = paymentSchema.validate(req.body);
   if (error) {
-    const msg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(msg, 400);
-  } else {
-    next();
+    const msg = error.details.map((el) => el.message).join(", ");
+    req.flash("error", msg);
+    return res.redirect("back"); // Or send an appropriate response for an API
   }
+  next();
 };
+
 
 module.exports.isUser = (req, res, next) => {
   if (!req.isAuthenticated()) {

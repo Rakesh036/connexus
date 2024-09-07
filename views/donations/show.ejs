@@ -11,9 +11,6 @@
                     </a>
                 </div>
 
-                <!-- Title -->
-
-
                 <!-- Flex container for edit and delete buttons -->
                 <% if (currUser && donation.owner && donation.owner.equals(currUser._id)) { %>
                 <div class="d-flex align-items-center">
@@ -28,10 +25,17 @@
                 </div>
                 <% } %>
             </div>
-            <h1 class="mb-0 flex-grow-1 text-center"><%= donation.title %></h1>
+<!-- Title and Emergency Status -->
+<h1 class="mb-0 flex-grow-1 text-center">
+    <%= donation.title %>
+    <% if(donation.isEmergency) { %>
+    <span class="badge bg-danger">Emergency</span>
+    <% } %>
+</h1>
+
             <p><%= donation.description %></p>
 
-            <form action="/api/payment" method="get">
+            <form action="/api/payment/<%=donation._id  %>" method="get">
                 <div class="mb-3">
                     <label for="amount" class="form-label">Donation Amount</label>
                     <input type="number" id="amount" name="transaction[amount]" class="form-control" value="10"
@@ -44,14 +48,20 @@
 
             <hr>
             <br>
+<!-- Transactions Section -->
             <h3>Transactions</h3>
+            <% if (donation.transactions.length > 0) { %>
             <% donation.transactions.forEach(transaction => { %>
             <div class="mb-3 d-flex">
-                <p><strong>Donor:</strong> <%= transaction.donor.username %>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p><strong>Donor:</strong>
+                    <%= transaction.donor ? transaction.donor.username : "Anonymous" %>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <p><strong>Amount:</strong> <%= transaction.amount %> rupees&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <p><strong>Transaction ID:</strong> <%= transaction._id %></p>
             </div>
             <% }) %>
+            <% } else { %>
+            <p>No transactions have been made yet.</p>
+            <% } %>
         </div>
     </div>
 </div>

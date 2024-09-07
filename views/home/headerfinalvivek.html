@@ -1,0 +1,189 @@
+<style>
+  header {
+    background-color: white;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .containerHeader {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 50px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo img {
+    max-height: 50px;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    transition: color 0.3s;
+  }
+
+  .nav-links li a:hover {
+    color: #007bff;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .btn-login {
+    border: 1px solid #007bff;
+    color: #007bff;
+  }
+
+  .btn-login:hover {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .btn-register {
+    background-color: #007bff;
+    color: white;
+    border: none;
+  }
+
+  .btn-register:hover {
+    background-color: #0056b3;
+  }
+
+  /* Mobile Menu (hidden by default) */
+  .menu-icon {
+    display: none;
+    cursor: pointer;
+  }
+
+  .menu-icon div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px;
+    transition: all 0.3s;
+  }
+
+  @media (max-width: 768px) {
+
+    /* Responsive header layout */
+    .menu-icon {
+      display: block;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #f9f9f9;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links li {
+      margin: 10px 0;
+    }
+
+    .buttons {
+      display: none;
+      /* flex-direction: column; */
+    }
+
+    /* Show nav-links and buttons in mobile view */
+    .nav-links.show {
+      display: flex;
+    }
+
+    .buttons.show {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 380px) {
+
+    /* Ensure navigation works on even smaller screens */
+    .container {
+      padding: 10px;
+    }
+
+    .nav-links {
+      padding: 10px;
+    }
+
+    .buttons {
+      padding: 10px;
+    }
+  }
+
+  /* Placeholder content */
+  .content {
+    padding: 50px;
+    text-align: justify;
+  }
+</style>
+
+<header>
+  <div class="containerHeader">
+    <nav>
+      <div class="logo">
+        <a href="/">
+          <img src="/images/connexusLogo.jpeg" alt="Connexus" />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/jobs">Career</a></li>
+        <li><a href="/groups">Find Alumni</a></li>
+        <li><a href="/successes">Success Story</a></li>
+        <li><a href="/donations">Donation</a></li>
+        <li><a href="/listings">Discussion</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/about-us">About Us</a></li>
+      </ul>
+      <div class="buttons">
+        <a href="#" class="btn btn-login">Login</a>
+        <a href="#" class="btn btn-register">Register</a>
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+<script>
+  function toggleMenu() {
+    const navLinks = document.querySelector(".nav-links");
+    const buttons = document.querySelector(".buttons");
+    navLinks.classList.toggle("show");
+    buttons.classList.toggle("show");
+  }
+</script>

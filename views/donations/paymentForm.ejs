@@ -107,8 +107,9 @@
         <div class="gateway-container">
             <h2>Payment Gateway</h2>
             <!-- Form starts here -->
-            <form id="paymentForm" action="/api/payment" method="POST">
+            <form id="paymentForm" action="/api/payment/<%= donationId %>" method="POST">
                 <div class="input-group">
+                    <div class="input-group">
                     <label for="full-name">Full Name</label>
                     <input type="text" id="full-name" name="fullName" placeholder="Enter your full name" required>
                 </div>

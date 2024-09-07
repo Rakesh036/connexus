@@ -1,34 +1,15 @@
 const mongoose = require("mongoose");
 const Payment = require("./payment");
+const Notification = require("./notification");
 const Schema = mongoose.Schema;
-
-// const transactionSchema = new Schema(
-//   {
-//     amount: {
-//       type: Number,
-//       required: true,
-//       // min: [10, "Donation amount must be at least 10"],
-//     },
-//     donor: {
-//       type: Schema.Types.ObjectId,
-//       ref: "User",
-//       required: false,
-//     },
-//     payment: {
-//       type: Schema.Types.ObjectId,
-//       ref: "Payment",
-//     },
-//   },
-//   { timestamps: true }
-// );
 
 const donationSchema = new Schema(
   {
     title: {
       type: String,
       required: true,
-      minlength: [1, "Title must be at least 5 characters long"],
-      maxlength: [200, "Title cannot exceed 20 characters"],
+      minlength: [5, "Title must be at least 5 characters long"],
+      maxlength: [200, "Title cannot exceed 200 characters"],
       trim: true,
     },
     description: {
@@ -57,11 +38,26 @@ const donationSchema = new Schema(
         },
       },
     ],
+    isEmergency: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
 
-module.exports = {
-  Donation: mongoose.model("Donation", donationSchema),
-  // Transaction: mongoose.model("Transaction", transactionSchema),
-};
+donationSchema.post("findOneAndUpdate", async function (doc, next) {
+  const Notification = mongoose.model("Notification");
+  console.log("during updatation in donationSchema");
+
+  // Example: Create a notification for the owner of the donation
+  await Notification.create({
+    user: doc.owner, // Reference the owner of the donation
+    message: `Your donation "${doc.title}" was successfully created.`,
+    link: `/donations/${doc._id}`, // Link to the donation
+  });
+
+  next();
+});
+
+module.exports = mongoose.model("Donation", donationSchema);

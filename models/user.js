@@ -70,6 +70,14 @@ const UserSchema = new Schema({
       ref: "Event",
     },
   ],
+  point:{
+  type: Number,
+    default:0,
+  },
+  isStarAlumni: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 UserSchema.plugin(passportLocalMongoose); // Automatically handle password hashing and user authentication

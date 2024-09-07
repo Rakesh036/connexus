@@ -2,9 +2,17 @@ const express = require("express");
 const router = express.Router();
 const Group = require("../models/group");
 const Quiz = require("../models/quiz");
+const User = require("../models/user");
 const { isLoggedIn, isGroupOwner, isGroupMember } = require("../middleware");
 const { validateGroup, validateQuiz } = require("../middleware");
 const wrapAsync = require("../utils/wrapAsync");
+
+
+
+// Render the page with all users
+// res.render("users/leaderboard", { allUsers });
+
+
 
 // List all groups
 router.get(
@@ -13,9 +21,17 @@ router.get(
   wrapAsync(async (req, res) => {
     const groups = await Group.find({}).populate("owner");
     const currUserT = req.user._id;
+    const allUsers = await User.find({}).sort({ point: -1 }); // Sort all users by points in decreasing order
+
+    // Loop through the users and mark the top 10 as "Star Alumni"
+    allUsers.forEach((user, index) => {
+      user.isStarAlumni = index < 2; // Mark only the top 10 users as Star Alumni
+    });
+
     res.render("groups/index", {
       groups,
       currUserT,
+      allUsers,
       cssFile: "groupIndex.css",
     });
   })

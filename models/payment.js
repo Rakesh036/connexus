@@ -1,4 +1,3 @@
-const { required } = require("joi");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -13,7 +12,6 @@ const paymentSchema = new Schema(
       type: String,
       required: false,
       trim: true,
-      //   lowercase: true,
     },
     eventTitle: {
       type: String,
@@ -32,36 +30,17 @@ const paymentSchema = new Schema(
     },
     upiId: {
       type: String,
-      // required: function () {
-      //     return this.paymentMethod === "UPI";
-      // },
     },
     cardNumber: {
       type: String,
-      required: false,
     },
-
-    //   required: function () {
-    //     return (
-    //       this.paymentMethod === "Credit Card" ||
-    //       this.paymentMethod === "Debit Card"
-    //     );
-    //   },
-    // },
     expiryDate: {
       type: String,
-      required: false,
     },
-    // },
-    // cvv: {
-    //   type: String,
-    //   required: function () {
-    //     return (
-    //       this.paymentMethod === "Credit Card" ||
-    //       this.paymentMethod === "Debit Card"
-    //     );
-    //   },
-    // },
+    donor: {
+      type: Schema.Types.ObjectId,
+      ref: "User", // Assuming the user model is named "User"
+    },
   },
   { timestamps: true }
 );

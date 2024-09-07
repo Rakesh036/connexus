@@ -4,6 +4,8 @@ const { isLoggedIn, isCurrentUser } = require("../middleware");
 const wrapAsync = require("../utils/wrapAsync");
 const User = require("../models/user");
 
+
+
 // View User Profile
 router.get(
   "/profile/:id",

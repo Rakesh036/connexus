@@ -1,25 +1,26 @@
 <header>
-    <div class="container">
+    <div class="containerHeader">
         <nav>
-            <a href="/" class="logo-link">
-                <div class="logo">
-                    <img src="/images/connexusLogo.jpeg" alt="Connexus" width="80px" />
+            <div class="logo">
+                <a href="/">
+                    <img src="/images/connexusLogo.jpeg" alt="Connexus" />
+                </a>
                 </div>
-            </a>
-            <button class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
+        <ul class="nav-links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/jobs">Career</a></li>
                 <li><a href="/groups">Find Alumni</a></li>
                 <li><a href="/successes">Success Story</a></li>
                 <li><a href="/donations">Donation</a></li>
                 <li><a href="/listings">Discussion</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/about-us">About Us</a></li>
+            <a href="/notifications" class="btn btn-light position-relative">
+                <i class="fa fa-bell"></i>
+                <% if (typeof unreadCount !==`undefined`&& unreadCount > 0) { %>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <%= unreadCount %>
+                </span>
+                <% } %>
+            </a>
             </ul>
             <div class="buttons">
                 <% if (!currUser) { %>
@@ -30,20 +31,12 @@
                 <a href="/auth/logout" class="btn btn-login">Log out</a>
                 <% } %>
             </div>
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
         </nav>
     </div>
 </header>
-<script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
 
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-            navLinks.classList.remove('active');
-        }
-    });
-</script>

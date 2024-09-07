@@ -37,8 +37,23 @@
 </style>
 
 <div class="container mt-3">
-    <h1 class="mb-4">All Groups</h1>
-
+<div class="starAlumni">
+    <div class="row">
+        <h1 class="mb-4">By Alumni username</h1>
+        <ul>
+            <% allUsers.forEach((user) => { %>
+            <li>
+                <%= user.username %> &nbsp;&nbsp;
+                <% if (user.isStarAlumni) { %>
+                <strong>(Star Alumni)</strong>
+                <% } %>
+            </li>
+            <% }); %>
+        </ul>
+        </div>
+        </div><br>
+        <hr>
+        <h1 class="mb-4">By Groups</h1><br>
     <a href="/groups/new" class="btn btn-success mb-3">Create New Group</a>
 
     <div class="row">

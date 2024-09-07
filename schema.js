@@ -40,11 +40,11 @@ module.exports.jobReviewSchema = Joi.object({
 // Donation Schema
 module.exports.donationSchema = Joi.object({
   donation: Joi.object({
-    title: Joi.string().required(),
-    description: Joi.string().required(),
-  }).required(),
+    title: Joi.string(),
+    description: Joi.string(),
+    isEmergency:Joi.boolean().optional()
+  }),
 });
-
 // Transaction Schema
 module.exports.transactionSchema = Joi.object({
   transaction: Joi.object({
