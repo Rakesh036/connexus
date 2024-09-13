@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const successreviewSchema = new Schema({
+const successReviewSchema = new Schema({
   comment: {
     type: String,
     required: true,
   },
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now, // Use Date.now instead of Date.now()
   },
   author: {
     type: Schema.Types.ObjectId,
@@ -16,5 +16,5 @@ const successreviewSchema = new Schema({
   },
 });
 
-const SuccessReview = mongoose.model("SuccessReview",successreviewSchema);
+const SuccessReview = mongoose.model("SuccessReview", successReviewSchema);
 module.exports = SuccessReview;

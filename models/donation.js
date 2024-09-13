@@ -15,7 +15,7 @@ const donationSchema = new Schema(
     description: {
       type: String,
       required: true,
-      minlength: [1, "Description must be at least 1 characters long"],
+      minlength: [1, "Description must be at least 1 character long"],
       maxlength: [1000, "Description cannot exceed 1000 characters"],
       trim: true,
     },
@@ -28,7 +28,7 @@ const donationSchema = new Schema(
         message: "Invalid owner ID",
       },
     },
-    transactions: [
+    payments: [
       {
         type: Schema.Types.ObjectId,
         ref: "Payment",
@@ -46,16 +46,48 @@ const donationSchema = new Schema(
   { timestamps: true }
 );
 
+donationSchema.post("save", async function (doc, next) {
+  const Notification = mongoose.model("Notification");
+  console.log("during save a new donation in donationSchema");
+
+  // Create a notification for the owner of the donation
+  await Notification.create({
+    user: doc.owner,
+    message: `Your donation "${doc.title}" was successfully created.`,
+    link: `/donations/${doc._id}`,
+  });
+
+  // Create a specific notification if the donation is an emergency
+  if (doc.isEmergency) {
+    await Notification.create({
+      user: doc.owner,
+      message: `Emergency donation "${doc.title}" created successfully.`,
+      link: `/donations/${doc._id}`,
+    });
+  }
+
+  next();
+});
+
 donationSchema.post("findOneAndUpdate", async function (doc, next) {
   const Notification = mongoose.model("Notification");
-  console.log("during updatation in donationSchema");
+  console.log("during update in donationSchema");
 
-  // Example: Create a notification for the owner of the donation
+  // Create a notification for the owner of the donation
   await Notification.create({
-    user: doc.owner, // Reference the owner of the donation
-    message: `Your donation "${doc.title}" was successfully created.`,
-    link: `/donations/${doc._id}`, // Link to the donation
+    user: doc.owner,
+    message: `Your donation "${doc.title}" was successfully updated.`,
+    link: `/donations/${doc._id}`,
   });
+
+  // Create a specific notification if the donation is an emergency
+  if (doc.isEmergency) {
+    await Notification.create({
+      user: doc.owner,
+      message: `Emergency donation "${doc.title}" updated successfully.`,
+      link: `/donations/${doc._id}`,
+    });
+  }
 
   next();
 });

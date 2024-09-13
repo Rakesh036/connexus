@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const JobReview = require("./jobReview.js"); // Import the JobReview model
+const JobReview = require("./jobReview"); // Import the JobReview model
 
 const jobSchema = new Schema({
   title: {
@@ -39,11 +39,18 @@ const jobSchema = new Schema({
       ref: "JobReview",
     },
   ],
-  owner: { type: Schema.Types.ObjectId, ref: "User" },
-
-  reports: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-
-  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+  owner: { 
+    type: Schema.Types.ObjectId, 
+    ref: "User" 
+  },
+  reports: [{ 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User" 
+  }],
+  likes: [{ 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User" 
+  }],
 });
 
 jobSchema.pre("save", function (next) {
@@ -55,6 +62,7 @@ jobSchema.pre("save", function (next) {
   }
   next();
 });
+
 // Middleware to handle the deletion of reviews when a job is deleted
 jobSchema.post("findOneAndDelete", async (job) => {
   if (job) {

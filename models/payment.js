@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const paymentSchema = new Schema(
   {
@@ -10,18 +10,22 @@ const paymentSchema = new Schema(
     },
     email: {
       type: String,
-      required: false,
       trim: true,
+      validate: {
+        validator: function (v) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+        },
+        message: "Please enter a valid email address.",
+      },
     },
-    eventTitle: {
+    donationTitle: {  // Changed from eventTitle for clarity
       type: String,
-      required: false,
       trim: true,
     },
     amount: {
       type: Number,
       required: true,
-      min: 0,
+      min: [0, "Amount must be a positive number."],
     },
     paymentMethod: {
       type: String,
@@ -30,16 +34,34 @@ const paymentSchema = new Schema(
     },
     upiId: {
       type: String,
+      validate: {
+        validator: function (v) {
+          return this.paymentMethod === "UPI" ? !!v : true;
+        },
+        message: "UPI ID is required for UPI payments.",
+      },
     },
     cardNumber: {
       type: String,
+      validate: {
+        validator: function (v) {
+          return this.paymentMethod === "Credit Card" || this.paymentMethod === "Debit Card" ? !!v && v.length === 4 : true;
+        },
+        message: "Store only the last 4 digits of the card number.",
+      },
     },
     expiryDate: {
       type: String,
+      validate: {
+        validator: function (v) {
+          return this.paymentMethod === "Credit Card" || this.paymentMethod === "Debit Card" ? !!v : true;
+        },
+        message: "Expiry date is required for card payments.",
+      },
     },
     donor: {
       type: Schema.Types.ObjectId,
-      ref: "User", // Assuming the user model is named "User"
+      ref: "User",
     },
   },
   { timestamps: true }

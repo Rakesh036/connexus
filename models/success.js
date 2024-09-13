@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const SuccessReview = require("./successReview.js");
+const SuccessReview = require("./successReview");
 
 const successSchema = new Schema({
   title: {

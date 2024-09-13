@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const notificationSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: "User", // Reference to the user receiving the notification
+    ref: "User",
     required: true,
   },
   message: {
@@ -12,11 +12,11 @@ const notificationSchema = new Schema({
     required: true,
   },
   link: {
-    type: String, // URL link for the notification if applicable
+    type: String,
   },
   isRead: {
     type: Boolean,
-    default: false, // Mark if the user has read the notification
+    default: false,
   },
   createdAt: {
     type: Date,

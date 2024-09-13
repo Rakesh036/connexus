@@ -20,39 +20,34 @@ const LocalStrategy = require("passport-local");
 const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
-const multer = require("multer");
 
-// Route Imports
-const listingsRouter = require("./routes/listing");
-const reviewsRouter = require("./routes/review");
-const jobsRouter = require("./routes/job");
-const jobReviewsRouter = require("./routes/jobReview");
-const donationRoutes = require("./routes/donation");
-const groupRoutes = require("./routes/group");
-const quizRoutes = require("./routes/quiz");
-const successRoutes = require("./routes/success");
-const successReviewRoutes = require("./routes/successReview");
-const gatewayRoutes = require("./routes/paymentGateway");
+// Import routes
 const authRoutes = require("./routes/authRoutes");
-const profileRoutes = require("./routes/profileRoutes");
+const userRoutes = require("./routes/userRoutes");
 const connectionRoutes = require("./routes/connectionRoutes");
-// const notificationRoutes=require("./routes/notificationRoutes");
-
-// const paymentRoutes = require("./routes/payments");
-
-
+const discussionRoutes = require("./routes/discussionRoutes");
+const discussionReviewRoutes = require("./routes/discussionReviewRoutes");
+const jobRoutes = require("./routes/jobRoutes");
+const jobReviewRoutes = require("./routes/jobReviewRoutes");
+const donationRoutes = require("./routes/donationRoutes");
+const groupRoutes = require("./routes/groupRoutes");
+const quizRoutes = require("./routes/quizRoutes");
+const successRoutes = require("./routes/successRoutes");
+const successReviewRoutes = require("./routes/successReviewRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
 
 // Error Handling
 const ExpressError = require("./utils/expressError");
 const User = require("./models/user");
-const Notification = require("./models/notification");
 
 // Express App Initialization
 const app = express();
 
 // Mongoose Connection
-const MONGO_URL = process.env.MONGODB_URL;
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+// const MONGO_URL = process.env.MONGODB_URL;
+const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+
 mongoose
   .connect(MONGO_URL)
   .then(() => console.log("Connected to DB"))
@@ -70,7 +65,7 @@ app.use(methodOverride("_method"));
 // Session and Flash Configuration
 const store = MongoStore.create({
   mongoUrl: MONGO_URL,
-  crypto: { secret: process.env.SECRET },
+  secret: process.env.SECRET,
   touchAfter: 24 * 3600,
 });
 
@@ -89,6 +84,7 @@ const sessionOption = {
     maxAge: 60 * 60 * 24 * 7 * 1000,
   },
 };
+
 app.use(session(sessionOption));
 app.use(flash());
 
@@ -101,62 +97,35 @@ passport.deserializeUser(User.deserializeUser());
 
 // Global Middleware for Flash Messages and Current User
 app.use((req, res, next) => {
+  // console.log("Current User in Middleware:", req.user); // Check if req.user is defined
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
+  // console.log("res.locals.currUser in Middleware:", res.locals.currUser); // Check if res.locals.currUser is set
   next();
-});
-
-// Home Route
-app.get("/", (req, res) => {
-  res.render("home/fullpage.ejs");
 });
 
 // Route Definitions
 app.use("/auth", authRoutes);
-app.use("/users", profileRoutes);
-app.use("/users", connectionRoutes);
-app.use("/listings", listingsRouter);
-app.use("/listings/:id/reviews", reviewsRouter);
-app.use("/jobs", jobsRouter);
-app.use("/jobs/:id/reviews", jobReviewsRouter);
+app.use("/users", userRoutes);
+app.use("/connections", connectionRoutes);
+app.use("/discussions", discussionRoutes);
+app.use("/discussions/:id/reviews", discussionReviewRoutes);
+app.use("/jobs", jobRoutes);
+app.use("/jobs/:id/reviews", jobReviewRoutes);
 app.use("/donations", donationRoutes);
 app.use("/groups", groupRoutes);
 app.use("/groups/:groupId/quizzes", quizRoutes);
 app.use("/successes", successRoutes);
 app.use("/successes/:id/reviews", successReviewRoutes);
-app.use("/api/payment", gatewayRoutes);
-
-
-app.get("/notifications", async (req, res) => {
-  try {
-    console.log("notification routes called");
-    console.log("User ID:", req.user._id); 
-
-    const notifications = await Notification.find({
-      user: req.user._id,
-    }).sort({ createdAt: -1 });
-
-    console.log("notifications: ",notifications);
-    
-    // Find the count of unread notifications for the logged-in user
-    const unreadCount = await Notification.countDocuments({
-      user: req.user._id,
-      isRead: false,
-    });
-
-    console.log("unreadCount of notification is: ", unreadCount);
-
-    res.render("notification", { notifications, unreadCount });
-  } catch (error) {
-    res.status(500).send("Error retrieving notifications");
-  }
-});
-// app.use("/api/payment", gatewayRoutes);
-
+app.use("/api/payment", paymentRoutes);
+app.use("/notifications", notificationRoutes);
 
 // Home Route
-app.get("/", (req, res) => res.redirect("/listings"));
+app.get("/", (req, res) => {
+  console.log("Rendering home page");
+  res.render("home/fullpage",{cssFile:"landing/index.css"});
+});
 
 // Error Handling for Undefined Routes
 app.all("*", (req, res, next) => {
