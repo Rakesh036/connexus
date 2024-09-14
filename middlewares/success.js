@@ -50,10 +50,17 @@ module.exports.isSuccessReviewAuthor = async (req, res, next) => {
 };
 
 module.exports.validateSuccessReview = (req, res, next) => {
+console.log("validate success review validate hone wala h, req.body: ",req.body);
+
   const { error } = successReviewSchema.validate(req.body);
+  console.log("in validate success review after validate fxn");
+  
   if (error) {
+    console.log("validate success review me schema validate hogya error:  ", error);
     const errMsg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(400, errMsg);
   }
+  console.log("validate success review ho gya ab next call hoga");
+  
   next();
 };

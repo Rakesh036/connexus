@@ -30,13 +30,13 @@
 
             <div class="col-6 offset-3" id="comment-section">
                 <% if (currUser) { %>
-                <form action="/successes/<%= successStory._id %>/reviews" method="post" class="needs-validation"
+                <form action="/successes/<%= successStory._id %>/reviews/" method="post" class="needs-validation"
                     novalidate>
                     <hr>
                     <label for="comment" class="form-label">
                         <h5>Leave a Comment</h5>
                     </label>
-                    <textarea name="review[comment]" class="form-control" id="comment" cols="20" rows="3"
+                    <textarea name="successReview[comment]" class="form-control" id="comment" cols="20" rows="3"
                         required></textarea>
                     <div class="invalid-feedback">Please add a comment for the review</div><br>
                     <button type="submit" class="btn btn-outline-dark">Submit</button>
@@ -74,3 +74,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Check if the URL has a fragment identifier
+        if (window.location.hash === '#comment-section') {
+            // Scroll to the comment section
+            document.getElementById('comment-section').scrollIntoView({ behavior: 'smooth' });
+
+            // Use setTimeout to ensure the element is focused after scrolling
+            setTimeout(function () {
+                const commentInput = document.getElementById('comment');
+                if (commentInput) {
+                    commentInput.focus();
+                }
+            }, 1); // Adjust timeout as needed
+        }
+    });
+</script>
