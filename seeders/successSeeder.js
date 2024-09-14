@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Success = require("../models/success");
 const User = require("../models/user");
+const logger = require('../utils/logger'); // Import your logger
 
 const successData = [
   {
@@ -25,14 +26,14 @@ async function successSeeder() {
   try {
     // Clear existing success stories
     await Success.deleteMany({});
-    console.log("Existing success stories cleared.");
+    logger.info("Existing success stories cleared.");
 
     // Fetch all users
     const users = await User.find({});
     const userIds = users.map(user => user._id);
 
     if (userIds.length === 0) {
-      console.log("No users found to assign success stories to.");
+      logger.warn("No users found to assign success stories to.");
       return;
     }
 
@@ -54,14 +55,14 @@ async function successSeeder() {
 
       // Create the success story
       const newSuccessStory = await Success.create(successStory);
-      console.log(`Success story "${successStory.title}" added, created by ${randomUser.username}.`);
+      logger.info(`Success story "${successStory.title}" added, created by ${randomUser.username}.`);
 
       // Optionally, if you want to handle other relationships or further modifications, you can do so here.
     }
 
-    console.log("Success stories seeded successfully!");
+    logger.info("Success stories seeded successfully!");
   } catch (error) {
-    console.error("Error seeding success stories:", error);
+    logger.error("Error seeding success stories:", error);
   }
 }
 

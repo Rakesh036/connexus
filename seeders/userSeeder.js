@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = require("../models/user"); // Adjust the path as necessary
+const logger = require('../utils/logger'); // Import your logger
 
 const users = [
   {
@@ -536,10 +537,10 @@ async function seedUsers() {
   try {
     await User.deleteMany({});
     await User.insertMany(users);
-    console.log("Users seeded successfully");
+    logger.info("Users seeded successfully");
   } catch (error) {
-    console.error("Error seeding users:", error);
+    logger.error("Error seeding users:", error);
   }
 }
 
-module.exports=seedUsers;
+module.exports = seedUsers;

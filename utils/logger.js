@@ -12,6 +12,15 @@ if (!fs.existsSync(logDirectory)) {
   fs.mkdirSync(logDirectory, { recursive: true });
 }
 
+// Function to get current IST time
+const getISTTimestamp = () => {
+  const now = new Date();
+  const istOffset = 5.5 * 60 * 60 * 1000; // IST is UTC+5:30
+  const istTime = new Date(now.getTime() + istOffset);
+  
+  return istTime.toISOString().replace('T', ' ').replace('Z', '');
+};
+
 // Define custom format
 const myFormat = winston.format.printf(({ level, message, timestamp, label }) => {
   return `${timestamp} [${label}] ${level}: ${message}`;
@@ -29,12 +38,12 @@ const transport = new DailyRotateFile({
 const logger = winston.createLogger({
   level: 'info',
   format: winston.format.combine(
-    winston.format.timestamp(),
+    winston.format.timestamp({ format: getISTTimestamp }), // Updated timestamp format
     winston.format.colorize(),
     myFormat
   ),
   transports: [
-    //new winston.transports.Console(),  // For console output
+    new winston.transports.Console(),  // For console output
     transport  // For file output with rotation
   ],
 });

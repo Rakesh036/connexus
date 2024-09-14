@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Group = require('../models/group');
 const User = require('../models/user');
 const logger = require('../utils/logger'); // Import logger
+const { validateGroup } = require('../schemas/groupSchema');
 
 const groupData = [
   {

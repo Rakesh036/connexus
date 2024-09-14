@@ -1,0 +1,1382 @@
+2024-09-14T19:39:55.018Z [undefined] [32minfo[39m: Express app initialized
+2024-09-14T19:39:55.030Z [undefined] [32minfo[39m: Express configured
+2024-09-14T19:39:55.031Z [undefined] [32minfo[39m: Session and flash configured
+2024-09-14T19:39:55.031Z [undefined] [32minfo[39m: Passport configured
+2024-09-14T19:39:55.032Z [undefined] [32minfo[39m: Routes configured
+2024-09-14T19:39:55.034Z [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-14T19:39:55.053Z [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-14T19:42:27.747Z [undefined] [32minfo[39m: Express app initialized
+2024-09-14T19:42:27.757Z [undefined] [32minfo[39m: Express configured
+2024-09-14T19:42:27.759Z [undefined] [32minfo[39m: Session and flash configured
+2024-09-14T19:42:27.759Z [undefined] [32minfo[39m: Passport configured
+2024-09-14T19:42:27.759Z [undefined] [32minfo[39m: Routes configured
+2024-09-14T19:42:27.761Z [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-14T19:42:27.769Z [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-14T19:46:09.097Z [undefined] [32minfo[39m: Express app initialized
+2024-09-14T19:46:09.106Z [undefined] [32minfo[39m: Express configured
+2024-09-14T19:46:09.108Z [undefined] [32minfo[39m: Session and flash configured
+2024-09-14T19:46:09.108Z [undefined] [32minfo[39m: Passport configured
+2024-09-14T19:46:09.108Z [undefined] [32minfo[39m: Routes configured
+2024-09-14T19:46:09.110Z [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-14T19:46:09.125Z [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:20:25.308 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:20:25.319 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:20:25.321 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:20:25.322 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:20:25.322 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:20:25.324 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:20:25.330 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:20:52.589 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:20:52.590 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 01:20:52.591 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 01:20:52.591 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 01:20:54.621 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:20:54.623 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 01:20:55.318 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:20:55.318 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 01:20:55.319 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 01:20:55.319 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 01:20:56.983 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:20:56.983 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 01:20:57.830 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:20:57.831 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 01:20:58.663 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:20:58.664 [undefined] [32minfo[39m: ======= [ROUTE: Get All Jobs] =======
+2024-09-15 01:20:58.664 [undefined] [32minfo[39m: [ACTION: Fetching All Jobs]
+2024-09-15 01:20:58.664 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:20:58.664 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:20:58.664 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:20:58.664 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:20:58.664 [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-15 01:20:58.686 [undefined] [32minfo[39m: Found 21 jobs.
+2024-09-15 01:20:58.710 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:20:58.710 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:20:59.932 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:20:59.932 [undefined] [32minfo[39m: ======= [ROUTE: List Groups] =======
+2024-09-15 01:20:59.933 [undefined] [32minfo[39m: [ACTION: Fetching All Groups]
+2024-09-15 01:20:59.933 [undefined] [32minfo[39m: User ID: %s is fetching the list of all groups
+2024-09-15 01:20:59.933 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:20:59.933 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:20:59.933 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:20:59.933 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:20:59.933 [undefined] [32minfo[39m: Fetching all groups...
+2024-09-15 01:20:59.951 [undefined] [32minfo[39m: Found 11 groups.
+2024-09-15 01:20:59.956 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:20:59.956 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:21:00.784 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:21:00.784 [undefined] [32minfo[39m: ======= [ROUTE: Fetch List of Success Stories] =======
+2024-09-15 01:21:00.784 [undefined] [32minfo[39m: [ACTION: Fetching Success Stories]
+2024-09-15 01:21:00.784 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:21:00.784 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:21:00.784 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:21:00.784 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:21:00.785 [undefined] [32minfo[39m: Fetching all success stories
+2024-09-15 01:21:00.794 [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-15 01:21:00.795 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:21:00.795 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:21:02.183 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:21:02.183 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 01:21:02.183 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 01:21:02.184 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 01:21:03.746 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:21:03.747 [undefined] [32minfo[39m: ======= [ROUTE: List Donations] =======
+2024-09-15 01:21:03.747 [undefined] [32minfo[39m: [ACTION: Fetching List of All Donations]
+2024-09-15 01:21:03.747 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:21:03.747 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:21:03.747 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:21:03.747 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:21:03.747 [undefined] [32minfo[39m: Fetching donations...
+2024-09-15 01:21:03.757 [undefined] [32minfo[39m: Found 18 donations.
+2024-09-15 01:21:03.761 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:21:03.761 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:21:04.749 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:21:04.750 [undefined] [32minfo[39m: ======= [ROUTE: List Discussions] =======
+2024-09-15 01:21:04.750 [undefined] [32minfo[39m: [ACTION: Fetching List of Discussions]
+2024-09-15 01:21:04.750 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:21:04.750 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:21:04.750 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:21:04.750 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:21:04.750 [undefined] [32minfo[39m: ======= [CONTROLLER: Discussion] =======
+2024-09-15 01:21:04.751 [undefined] [32minfo[39m: [ACTION: Index]
+2024-09-15 01:21:04.751 [undefined] [32minfo[39m: Querying all discussions
+2024-09-15 01:21:04.761 [undefined] [32minfo[39m: ======= [END OF ACTION: Index] =======
+
+2024-09-15 01:21:04.761 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:21:04.761 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:21:06.200 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:21:06.201 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 01:21:06.832 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:21:06.833 [undefined] [32minfo[39m: ======= [ROUTE: Get All Jobs] =======
+2024-09-15 01:21:06.833 [undefined] [32minfo[39m: [ACTION: Fetching All Jobs]
+2024-09-15 01:21:06.833 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:21:06.833 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:21:06.833 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:21:06.833 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:21:06.833 [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-15 01:21:06.844 [undefined] [32minfo[39m: Found 21 jobs.
+2024-09-15 01:21:06.850 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:21:06.850 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:21:07.615 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:21:07.615 [undefined] [32minfo[39m: ======= [ROUTE: List Groups] =======
+2024-09-15 01:21:07.615 [undefined] [32minfo[39m: [ACTION: Fetching All Groups]
+2024-09-15 01:21:07.616 [undefined] [32minfo[39m: User ID: %s is fetching the list of all groups
+2024-09-15 01:21:07.616 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:21:07.616 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:21:07.616 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:21:07.616 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:21:07.616 [undefined] [32minfo[39m: Fetching all groups...
+2024-09-15 01:21:07.624 [undefined] [32minfo[39m: Found 11 groups.
+2024-09-15 01:21:07.628 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:21:07.628 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:25:27.802 [undefined] [32minfo[39m: Existing discussions cleared.
+2024-09-15 01:25:27.808 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:25:27.808 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:25:27.810 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.810 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:25:27.813 [undefined] [32minfo[39m: Discussion "How to get started with Node.js?" added.
+2024-09-15 01:25:27.814 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:25:27.814 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:25:27.814 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.814 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:25:27.816 [undefined] [32minfo[39m: Discussion "Looking for internship advice" added.
+2024-09-15 01:25:27.816 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:25:27.816 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:25:27.817 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.817 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:25:27.818 [undefined] [32minfo[39m: Discussion "Sharing my first coding project" added.
+2024-09-15 01:25:27.818 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:25:27.818 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:25:27.818 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.818 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:25:27.819 [undefined] [32minfo[39m: Discussion "Help needed with debugging" added.
+2024-09-15 01:25:27.819 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:25:27.819 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:25:27.820 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.820 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:25:27.821 [undefined] [32minfo[39m: Discussion "General life update" added.
+2024-09-15 01:25:27.821 [undefined] [32minfo[39m: Discussion data seeded successfully!
+2024-09-15 01:25:27.822 [undefined] [32minfo[39m: Existing discussion reviews cleared.
+2024-09-15 01:25:27.838 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:25:27.838 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:25:27.838 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.838 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:25:27.841 [undefined] [32minfo[39m: Review "Great discussion! Thanks for sharing." added.
+2024-09-15 01:25:27.847 [undefined] [32minfo[39m: Discussion "66e5ea2f5708089fbf28d151" updated with new review.
+2024-09-15 01:25:27.847 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:25:27.847 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:25:27.847 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.847 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:25:27.848 [undefined] [32minfo[39m: Review "I had a similar issue, here's how I solved it..." added.
+2024-09-15 01:25:27.848 [undefined] [32minfo[39m: Discussion "66e5ea2f5708089fbf28d155" updated with new review.
+2024-09-15 01:25:27.848 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:25:27.848 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:25:27.849 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.849 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:25:27.850 [undefined] [32minfo[39m: Review "This is a very informative post, thanks!" added.
+2024-09-15 01:25:27.851 [undefined] [32minfo[39m: Discussion "66e5ea2f5708089fbf28d153" updated with new review.
+2024-09-15 01:25:27.851 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:25:27.851 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:25:27.851 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.851 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:25:27.852 [undefined] [32minfo[39m: Review "I appreciate the advice, really helpful!" added.
+2024-09-15 01:25:27.854 [undefined] [32minfo[39m: Discussion "66e5ea2f5708089fbf28d159" updated with new review.
+2024-09-15 01:25:27.854 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:25:27.854 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:25:27.854 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.854 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:25:27.855 [undefined] [32minfo[39m: Review "Congrats on your achievement! Keep going!" added.
+2024-09-15 01:25:27.856 [undefined] [32minfo[39m: Discussion "66e5ea2f5708089fbf28d155" updated with new review.
+2024-09-15 01:25:27.856 [undefined] [32minfo[39m: Discussion review data seeded successfully!
+2024-09-15 01:25:27.857 [undefined] [32minfo[39m: Existing donations cleared.
+2024-09-15 01:25:27.859 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:25:27.859 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:25:27.859 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.859 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:25:27.861 [undefined] [32minfo[39m: Donation "Support for Education" added.
+2024-09-15 01:25:27.863 [undefined] [32minfo[39m: User "66e5ea2f5708089fbf28d144" updated with new donation.
+2024-09-15 01:25:27.863 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:25:27.863 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:25:27.863 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.863 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:25:27.865 [undefined] [32minfo[39m: Donation "Medical Aid" added.
+2024-09-15 01:25:27.866 [undefined] [32minfo[39m: User "66e5ea2f5708089fbf28d140" updated with new donation.
+2024-09-15 01:25:27.866 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:25:27.866 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:25:27.866 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.866 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:25:27.869 [undefined] [32minfo[39m: Donation "Environmental Conservation" added.
+2024-09-15 01:25:27.870 [undefined] [32minfo[39m: User "66e5ea2f5708089fbf28d142" updated with new donation.
+2024-09-15 01:25:27.871 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:25:27.871 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:25:27.871 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.871 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:25:27.873 [undefined] [32minfo[39m: Donation "Support for Local Artisans" added.
+2024-09-15 01:25:27.874 [undefined] [32minfo[39m: User "66e5ea2f5708089fbf28d13d" updated with new donation.
+2024-09-15 01:25:27.874 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:25:27.874 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:25:27.874 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:25:27.874 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:25:27.876 [undefined] [32minfo[39m: Donation "Disaster Relief Fund" added.
+2024-09-15 01:25:27.877 [undefined] [32minfo[39m: User "66e5ea2f5708089fbf28d144" updated with new donation.
+2024-09-15 01:25:27.877 [undefined] [32minfo[39m: Donation data seeded successfully!
+2024-09-15 01:25:27.878 [undefined] [32minfo[39m: Existing groups cleared.
+2024-09-15 01:25:27.879 [undefined] [31merror[39m: Failed to validate group: validateGroup is not defined
+2024-09-15 01:25:27.879 [undefined] [31merror[39m: Failed to validate group: validateGroup is not defined
+2024-09-15 01:25:27.879 [undefined] [31merror[39m: Failed to validate group: validateGroup is not defined
+2024-09-15 01:25:27.879 [undefined] [31merror[39m: Failed to validate group: validateGroup is not defined
+2024-09-15 01:25:27.879 [undefined] [32minfo[39m: Group data seeded successfully!
+2024-09-15 01:25:27.880 [undefined] [32minfo[39m: Existing jobs cleared.
+2024-09-15 01:25:27.881 [undefined] [31merror[39m: Failed to validate job: validateJob is not defined
+2024-09-15 01:25:27.881 [undefined] [31merror[39m: Failed to validate job: validateJob is not defined
+2024-09-15 01:25:27.881 [undefined] [31merror[39m: Failed to validate job: validateJob is not defined
+2024-09-15 01:25:27.881 [undefined] [32minfo[39m: Job data seeded successfully!
+2024-09-15 01:25:27.882 [undefined] [32minfo[39m: Existing job reviews cleared.
+2024-09-15 01:25:27.883 [undefined] [31merror[39m: Failed to validate review: validateJobReview is not defined
+2024-09-15 01:25:27.883 [undefined] [31merror[39m: Failed to validate review: validateJobReview is not defined
+2024-09-15 01:25:27.883 [undefined] [31merror[39m: Failed to validate review: validateJobReview is not defined
+2024-09-15 01:25:27.883 [undefined] [31merror[39m: Failed to validate review: validateJobReview is not defined
+2024-09-15 01:25:27.883 [undefined] [32minfo[39m: Job reviews seeded successfully!
+2024-09-15 01:30:19.429 [undefined] [32minfo[39m: Existing discussions cleared.
+2024-09-15 01:30:19.433 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:30:19.433 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:30:19.434 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.435 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:30:19.438 [undefined] [32minfo[39m: Discussion "How to get started with Node.js?" added.
+2024-09-15 01:30:19.438 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:30:19.438 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:30:19.439 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.439 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:30:19.440 [undefined] [32minfo[39m: Discussion "Looking for internship advice" added.
+2024-09-15 01:30:19.440 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:30:19.440 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:30:19.440 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.440 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:30:19.442 [undefined] [32minfo[39m: Discussion "Sharing my first coding project" added.
+2024-09-15 01:30:19.442 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:30:19.442 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:30:19.442 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.442 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:30:19.443 [undefined] [32minfo[39m: Discussion "Help needed with debugging" added.
+2024-09-15 01:30:19.443 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:30:19.443 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:30:19.443 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.444 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:30:19.444 [undefined] [32minfo[39m: Discussion "General life update" added.
+2024-09-15 01:30:19.445 [undefined] [32minfo[39m: Discussion data seeded successfully!
+2024-09-15 01:30:19.445 [undefined] [32minfo[39m: Existing discussion reviews cleared.
+2024-09-15 01:30:19.448 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:30:19.448 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:30:19.448 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.448 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:30:19.450 [undefined] [32minfo[39m: Review "Great discussion! Thanks for sharing." added.
+2024-09-15 01:30:19.452 [undefined] [32minfo[39m: Discussion "66e5eb53de75f9e1597bc0c8" updated with new review.
+2024-09-15 01:30:19.452 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:30:19.452 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:30:19.452 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.452 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:30:19.453 [undefined] [32minfo[39m: Review "I had a similar issue, here's how I solved it..." added.
+2024-09-15 01:30:19.453 [undefined] [32minfo[39m: Discussion "66e5eb53de75f9e1597bc0c6" updated with new review.
+2024-09-15 01:30:19.453 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:30:19.453 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:30:19.453 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.453 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:30:19.454 [undefined] [32minfo[39m: Review "This is a very informative post, thanks!" added.
+2024-09-15 01:30:19.454 [undefined] [32minfo[39m: Discussion "66e5eb53de75f9e1597bc0c8" updated with new review.
+2024-09-15 01:30:19.455 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:30:19.455 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:30:19.455 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.455 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:30:19.456 [undefined] [32minfo[39m: Review "I appreciate the advice, really helpful!" added.
+2024-09-15 01:30:19.457 [undefined] [32minfo[39m: Discussion "66e5eb53de75f9e1597bc0c6" updated with new review.
+2024-09-15 01:30:19.457 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:30:19.457 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:30:19.457 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.457 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:30:19.458 [undefined] [32minfo[39m: Review "Congrats on your achievement! Keep going!" added.
+2024-09-15 01:30:19.459 [undefined] [32minfo[39m: Discussion "66e5eb53de75f9e1597bc0c8" updated with new review.
+2024-09-15 01:30:19.459 [undefined] [32minfo[39m: Discussion review data seeded successfully!
+2024-09-15 01:30:19.459 [undefined] [32minfo[39m: Existing donations cleared.
+2024-09-15 01:30:19.460 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:30:19.461 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:30:19.461 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.461 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:30:19.463 [undefined] [32minfo[39m: Donation "Support for Education" added.
+2024-09-15 01:30:19.464 [undefined] [32minfo[39m: User "66e5eb53de75f9e1597bc0b2" updated with new donation.
+2024-09-15 01:30:19.464 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:30:19.464 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:30:19.464 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.464 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:30:19.465 [undefined] [32minfo[39m: Donation "Medical Aid" added.
+2024-09-15 01:30:19.466 [undefined] [32minfo[39m: User "66e5eb53de75f9e1597bc0b4" updated with new donation.
+2024-09-15 01:30:19.466 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:30:19.467 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:30:19.467 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.467 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:30:19.468 [undefined] [32minfo[39m: Donation "Environmental Conservation" added.
+2024-09-15 01:30:19.469 [undefined] [32minfo[39m: User "66e5eb53de75f9e1597bc0b3" updated with new donation.
+2024-09-15 01:30:19.470 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:30:19.470 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:30:19.470 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.470 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:30:19.471 [undefined] [32minfo[39m: Donation "Support for Local Artisans" added.
+2024-09-15 01:30:19.472 [undefined] [32minfo[39m: User "66e5eb53de75f9e1597bc0b6" updated with new donation.
+2024-09-15 01:30:19.472 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:30:19.472 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:30:19.472 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.472 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:30:19.474 [undefined] [32minfo[39m: Donation "Disaster Relief Fund" added.
+2024-09-15 01:30:19.475 [undefined] [32minfo[39m: User "66e5eb53de75f9e1597bc0b4" updated with new donation.
+2024-09-15 01:30:19.475 [undefined] [32minfo[39m: Donation data seeded successfully!
+2024-09-15 01:30:19.475 [undefined] [32minfo[39m: Existing groups cleared.
+2024-09-15 01:30:19.477 [undefined] [32minfo[39m: ======= [SCHEMA: Group] =======
+2024-09-15 01:30:19.477 [undefined] [32minfo[39m: [ACTION: Starting validation for Group schema]
+2024-09-15 01:30:19.482 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.482 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Group schema] =======
+
+2024-09-15 01:30:19.484 [undefined] [32minfo[39m: Group "Tech Innovators" added.
+2024-09-15 01:30:19.484 [undefined] [32minfo[39m: ======= [SCHEMA: Group] =======
+2024-09-15 01:30:19.484 [undefined] [32minfo[39m: [ACTION: Starting validation for Group schema]
+2024-09-15 01:30:19.487 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.487 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Group schema] =======
+
+2024-09-15 01:30:19.488 [undefined] [32minfo[39m: Group "Environmental Advocates" added.
+2024-09-15 01:30:19.488 [undefined] [32minfo[39m: ======= [SCHEMA: Group] =======
+2024-09-15 01:30:19.488 [undefined] [32minfo[39m: [ACTION: Starting validation for Group schema]
+2024-09-15 01:30:19.488 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.488 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Group schema] =======
+
+2024-09-15 01:30:19.489 [undefined] [32minfo[39m: Group "Local Artisans Network" added.
+2024-09-15 01:30:19.489 [undefined] [32minfo[39m: ======= [SCHEMA: Group] =======
+2024-09-15 01:30:19.489 [undefined] [32minfo[39m: [ACTION: Starting validation for Group schema]
+2024-09-15 01:30:19.489 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.489 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Group schema] =======
+
+2024-09-15 01:30:19.490 [undefined] [32minfo[39m: Group "Health and Wellness" added.
+2024-09-15 01:30:19.490 [undefined] [32minfo[39m: Group data seeded successfully!
+2024-09-15 01:30:19.490 [undefined] [32minfo[39m: Existing jobs cleared.
+2024-09-15 01:30:19.492 [undefined] [32minfo[39m: ======= [SCHEMA: Job] =======
+2024-09-15 01:30:19.492 [undefined] [32minfo[39m: [ACTION: Starting validation for Job schema]
+2024-09-15 01:30:19.492 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.492 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Job schema] =======
+
+2024-09-15 01:30:19.493 [undefined] [32minfo[39m: Job "Software Engineer" added.
+2024-09-15 01:30:19.493 [undefined] [32minfo[39m: ======= [SCHEMA: Job] =======
+2024-09-15 01:30:19.493 [undefined] [32minfo[39m: [ACTION: Starting validation for Job schema]
+2024-09-15 01:30:19.493 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.493 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Job schema] =======
+
+2024-09-15 01:30:19.494 [undefined] [32minfo[39m: Job "Frontend Developer" added.
+2024-09-15 01:30:19.494 [undefined] [32minfo[39m: ======= [SCHEMA: Job] =======
+2024-09-15 01:30:19.494 [undefined] [32minfo[39m: [ACTION: Starting validation for Job schema]
+2024-09-15 01:30:19.494 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.494 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Job schema] =======
+
+2024-09-15 01:30:19.494 [undefined] [32minfo[39m: Job "Data Analyst Intern" added.
+2024-09-15 01:30:19.494 [undefined] [32minfo[39m: Job data seeded successfully!
+2024-09-15 01:30:19.495 [undefined] [32minfo[39m: Existing job reviews cleared.
+2024-09-15 01:30:19.497 [undefined] [32minfo[39m: ======= [SCHEMA: JobReview] =======
+2024-09-15 01:30:19.497 [undefined] [32minfo[39m: [ACTION: Starting validation for JobReview schema]
+2024-09-15 01:30:19.497 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.497 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for JobReview schema] =======
+
+2024-09-15 01:30:19.497 [undefined] [32minfo[39m: Review added for Job ID "66e5eb53de75f9e1597bc10d".
+2024-09-15 01:30:19.498 [undefined] [32minfo[39m: ======= [SCHEMA: JobReview] =======
+2024-09-15 01:30:19.498 [undefined] [32minfo[39m: [ACTION: Starting validation for JobReview schema]
+2024-09-15 01:30:19.498 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.498 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for JobReview schema] =======
+
+2024-09-15 01:30:19.498 [undefined] [32minfo[39m: Review added for Job ID "66e5eb53de75f9e1597bc10d".
+2024-09-15 01:30:19.499 [undefined] [32minfo[39m: ======= [SCHEMA: JobReview] =======
+2024-09-15 01:30:19.499 [undefined] [32minfo[39m: [ACTION: Starting validation for JobReview schema]
+2024-09-15 01:30:19.499 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.499 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for JobReview schema] =======
+
+2024-09-15 01:30:19.500 [undefined] [32minfo[39m: Review added for Job ID "66e5eb53de75f9e1597bc10f".
+2024-09-15 01:30:19.500 [undefined] [32minfo[39m: ======= [SCHEMA: JobReview] =======
+2024-09-15 01:30:19.500 [undefined] [32minfo[39m: [ACTION: Starting validation for JobReview schema]
+2024-09-15 01:30:19.500 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:30:19.500 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for JobReview schema] =======
+
+2024-09-15 01:30:19.501 [undefined] [32minfo[39m: Review added for Job ID "66e5eb53de75f9e1597bc10f".
+2024-09-15 01:30:19.501 [undefined] [32minfo[39m: Job reviews seeded successfully!
+2024-09-15 01:30:19.502 [undefined] [32minfo[39m: Existing payments cleared.
+2024-09-15 01:30:19.504 [undefined] [32minfo[39m: Payment for donation "Support for Local Artisans" added.
+2024-09-15 01:30:19.505 [undefined] [32minfo[39m: Payment for donation "Medical Aid" added.
+2024-09-15 01:30:19.505 [undefined] [32minfo[39m: Payment for donation "Support for Education" added.
+2024-09-15 01:30:19.505 [undefined] [32minfo[39m: Payment data seeded successfully!
+2024-09-15 01:30:35.386 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:30:35.395 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:30:35.398 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:30:35.398 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:30:35.398 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:30:35.401 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:30:35.409 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:30:48.118 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:30:48.119 [undefined] [32minfo[39m: ======= [ROUTE: Get All Jobs] =======
+2024-09-15 01:30:48.120 [undefined] [32minfo[39m: [ACTION: Fetching All Jobs]
+2024-09-15 01:30:48.121 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:30:48.121 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:30:48.121 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:30:48.121 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:30:48.121 [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-15 01:30:48.135 [undefined] [32minfo[39m: Found 3 jobs.
+2024-09-15 01:30:48.171 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:30:48.171 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:30:50.283 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:30:50.284 [undefined] [32minfo[39m: ======= [ROUTE: Get All Jobs] =======
+2024-09-15 01:30:50.284 [undefined] [32minfo[39m: [ACTION: Fetching All Jobs]
+2024-09-15 01:30:50.284 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:30:50.284 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:30:50.284 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:30:50.284 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:30:50.284 [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-15 01:30:50.291 [undefined] [32minfo[39m: Found 3 jobs.
+2024-09-15 01:30:50.298 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:30:50.298 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:30:51.719 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:30:51.719 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 01:30:53.284 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:30:53.284 [undefined] [32minfo[39m: ======= [ROUTE: Get All Jobs] =======
+2024-09-15 01:30:53.284 [undefined] [32minfo[39m: [ACTION: Fetching All Jobs]
+2024-09-15 01:30:53.284 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:30:53.284 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:30:53.284 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:30:53.284 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:30:53.285 [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-15 01:30:53.289 [undefined] [32minfo[39m: Found 3 jobs.
+2024-09-15 01:30:53.293 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:30:53.293 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:30:54.266 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:30:54.267 [undefined] [32minfo[39m: User not authenticated, redirecting to login.
+2024-09-15 01:30:54.275 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:30:54.276 [undefined] [32minfo[39m: ======= [ROUTE: Login] =======
+2024-09-15 01:30:54.276 [undefined] [32minfo[39m: [ACTION: Rendering Login Form]
+2024-09-15 01:30:54.276 [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-15 01:30:54.276 [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-15 01:30:54.278 [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-15 01:30:59.704 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:30:59.705 [undefined] [32minfo[39m: ======= [ROUTE: Login] =======
+2024-09-15 01:30:59.705 [undefined] [32minfo[39m: [ACTION: Processing Login Form Submission]
+2024-09-15 01:30:59.714 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:30:59.714 [undefined] [32minfo[39m: ======= [ROUTE: Login] =======
+2024-09-15 01:30:59.714 [undefined] [32minfo[39m: [ACTION: Rendering Login Form]
+2024-09-15 01:30:59.714 [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-15 01:30:59.714 [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-15 01:30:59.716 [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-15 01:31:05.514 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:31:05.514 [undefined] [32minfo[39m: ======= [ROUTE: Signup] =======
+2024-09-15 01:31:05.514 [undefined] [32minfo[39m: [ACTION: Rendering Signup Form]
+2024-09-15 01:31:05.514 [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-15 01:31:05.514 [undefined] [32minfo[39m: [ACTION: Render Signup Form]
+2024-09-15 01:31:05.517 [undefined] [32minfo[39m: ======= [END OF ACTION: Render Signup Form] =======
+
+2024-09-15 01:31:27.849 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:31:27.850 [undefined] [32minfo[39m: ======= [ROUTE: Signup] =======
+2024-09-15 01:31:27.850 [undefined] [32minfo[39m: [ACTION: Rendering Signup Form]
+2024-09-15 01:31:27.850 [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-15 01:31:27.850 [undefined] [32minfo[39m: [ACTION: Render Signup Form]
+2024-09-15 01:31:27.854 [undefined] [32minfo[39m: ======= [END OF ACTION: Render Signup Form] =======
+
+2024-09-15 01:31:38.327 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:31:38.327 [undefined] [32minfo[39m: ======= [ROUTE: Signup] =======
+2024-09-15 01:31:38.327 [undefined] [32minfo[39m: [ACTION: Processing Signup Form Submission]
+2024-09-15 01:31:38.327 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:31:38.328 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:31:38.328 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:31:38.328 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:31:38.328 [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-15 01:31:38.328 [undefined] [32minfo[39m: [ACTION: Signup User]
+2024-09-15 01:31:38.328 [undefined] [32minfo[39m: Received data: %o
+2024-09-15 01:31:38.332 [undefined] [32minfo[39m: Creating new user: %o
+2024-09-15 01:31:38.474 [undefined] [32minfo[39m: User successfully registered: %s
+2024-09-15 01:31:38.474 [undefined] [32minfo[39m: ======= [END OF ACTION: Signup User] =======
+
+2024-09-15 01:31:38.475 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:31:38.475 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:31:38.477 [undefined] [32minfo[39m: User logged in successfully.
+2024-09-15 01:31:38.482 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:31:38.483 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 01:31:42.650 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:31:42.650 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 01:31:43.804 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:31:43.804 [undefined] [32minfo[39m: ======= [ROUTE: Get All Jobs] =======
+2024-09-15 01:31:43.804 [undefined] [32minfo[39m: [ACTION: Fetching All Jobs]
+2024-09-15 01:31:43.804 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:31:43.804 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:31:43.804 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:31:43.805 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:31:43.805 [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-15 01:31:43.808 [undefined] [32minfo[39m: Found 3 jobs.
+2024-09-15 01:31:43.812 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:31:43.812 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:31:45.935 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:31:45.935 [undefined] [32minfo[39m: ======= [ROUTE: List Groups] =======
+2024-09-15 01:31:45.935 [undefined] [32minfo[39m: [ACTION: Fetching All Groups]
+2024-09-15 01:31:45.935 [undefined] [32minfo[39m: User ID: %s is fetching the list of all groups
+2024-09-15 01:31:45.936 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:31:45.936 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:31:45.936 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:31:45.936 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:31:45.936 [undefined] [32minfo[39m: Fetching all groups...
+2024-09-15 01:31:45.954 [undefined] [32minfo[39m: Found 4 groups.
+2024-09-15 01:31:45.960 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:31:45.960 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:31:54.754 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:31:54.755 [undefined] [32minfo[39m: ======= [ROUTE: Fetch List of Success Stories] =======
+2024-09-15 01:31:54.755 [undefined] [32minfo[39m: [ACTION: Fetching Success Stories]
+2024-09-15 01:31:54.755 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:31:54.755 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:31:54.755 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:31:54.755 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:31:54.755 [undefined] [32minfo[39m: Fetching all success stories
+2024-09-15 01:31:54.763 [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-15 01:31:54.763 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:31:54.763 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:31:57.768 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:31:57.769 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 01:31:57.769 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 01:31:57.769 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 01:31:59.350 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:31:59.350 [undefined] [32minfo[39m: ======= [ROUTE: List Donations] =======
+2024-09-15 01:31:59.350 [undefined] [32minfo[39m: [ACTION: Fetching List of All Donations]
+2024-09-15 01:31:59.350 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:31:59.350 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:31:59.350 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:31:59.351 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:31:59.351 [undefined] [32minfo[39m: Fetching donations...
+2024-09-15 01:31:59.360 [undefined] [32minfo[39m: Found 5 donations.
+2024-09-15 01:31:59.363 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:31:59.363 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:01.867 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:01.868 [undefined] [32minfo[39m: ======= [ROUTE: List Discussions] =======
+2024-09-15 01:32:01.868 [undefined] [32minfo[39m: [ACTION: Fetching List of Discussions]
+2024-09-15 01:32:01.868 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:01.868 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:01.868 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:01.868 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:01.868 [undefined] [32minfo[39m: ======= [CONTROLLER: Discussion] =======
+2024-09-15 01:32:01.868 [undefined] [32minfo[39m: [ACTION: Index]
+2024-09-15 01:32:01.868 [undefined] [32minfo[39m: Querying all discussions
+2024-09-15 01:32:01.875 [undefined] [32minfo[39m: ======= [END OF ACTION: Index] =======
+
+2024-09-15 01:32:01.876 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:01.876 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:05.750 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:05.751 [undefined] [32minfo[39m: ======= [ROUTE: Fetch List of Success Stories] =======
+2024-09-15 01:32:05.751 [undefined] [32minfo[39m: [ACTION: Fetching Success Stories]
+2024-09-15 01:32:05.751 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:05.751 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:05.751 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:05.751 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:05.752 [undefined] [32minfo[39m: Fetching all success stories
+2024-09-15 01:32:05.758 [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-15 01:32:05.759 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:05.759 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:07.350 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:07.350 [undefined] [32minfo[39m: ======= [ROUTE: List Groups] =======
+2024-09-15 01:32:07.351 [undefined] [32minfo[39m: [ACTION: Fetching All Groups]
+2024-09-15 01:32:07.351 [undefined] [32minfo[39m: User ID: %s is fetching the list of all groups
+2024-09-15 01:32:07.351 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:07.351 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:07.351 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:07.351 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:07.351 [undefined] [32minfo[39m: Fetching all groups...
+2024-09-15 01:32:07.363 [undefined] [32minfo[39m: Found 4 groups.
+2024-09-15 01:32:07.367 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:07.367 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:16.165 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:16.165 [undefined] [32minfo[39m: ======= [ROUTE: Get All Jobs] =======
+2024-09-15 01:32:16.165 [undefined] [32minfo[39m: [ACTION: Fetching All Jobs]
+2024-09-15 01:32:16.165 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:16.165 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:16.166 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:16.166 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:16.166 [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-15 01:32:16.169 [undefined] [32minfo[39m: Found 3 jobs.
+2024-09-15 01:32:16.171 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:16.172 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:18.735 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:18.736 [undefined] [32minfo[39m: ======= [ROUTE: Show Job Details] =======
+2024-09-15 01:32:18.736 [undefined] [32minfo[39m: [ACTION: Fetching Job Details]
+2024-09-15 01:32:18.736 [undefined] [32minfo[39m: Job ID: %s
+2024-09-15 01:32:18.736 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:18.736 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:18.736 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:18.736 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:18.737 [undefined] [32minfo[39m: Fetching job with ID: 66e5eb53de75f9e1597bc10f
+2024-09-15 01:32:18.746 [undefined] [32minfo[39m: Job found:
+2024-09-15 01:32:18.750 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:18.750 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:25.752 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:25.753 [undefined] [32minfo[39m: ======= [ROUTE: Get All Jobs] =======
+2024-09-15 01:32:25.753 [undefined] [32minfo[39m: [ACTION: Fetching All Jobs]
+2024-09-15 01:32:25.753 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:25.753 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:25.753 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:25.753 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:25.753 [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-15 01:32:25.756 [undefined] [32minfo[39m: Found 3 jobs.
+2024-09-15 01:32:25.760 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:25.760 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:27.248 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:27.249 [undefined] [32minfo[39m: ======= [ROUTE: Show Job Details] =======
+2024-09-15 01:32:27.249 [undefined] [32minfo[39m: [ACTION: Fetching Job Details]
+2024-09-15 01:32:27.249 [undefined] [32minfo[39m: Job ID: %s
+2024-09-15 01:32:27.249 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:27.249 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:27.249 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:27.249 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:27.249 [undefined] [32minfo[39m: Fetching job with ID: 66e5eb53de75f9e1597bc10d
+2024-09-15 01:32:27.254 [undefined] [32minfo[39m: Job found:
+2024-09-15 01:32:27.256 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:27.256 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:30.667 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:30.667 [undefined] [32minfo[39m: ======= [ROUTE: Show Job Details] =======
+2024-09-15 01:32:30.667 [undefined] [32minfo[39m: [ACTION: Fetching Job Details]
+2024-09-15 01:32:30.668 [undefined] [32minfo[39m: Job ID: %s
+2024-09-15 01:32:30.668 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:30.668 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:30.668 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:30.668 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:30.668 [undefined] [32minfo[39m: Fetching job with ID: 66e5eb53de75f9e1597bc10b
+2024-09-15 01:32:30.672 [undefined] [32minfo[39m: Job found:
+2024-09-15 01:32:30.676 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:30.676 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:34.918 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:34.919 [undefined] [32minfo[39m: ======= [ROUTE: List Groups] =======
+2024-09-15 01:32:34.919 [undefined] [32minfo[39m: [ACTION: Fetching All Groups]
+2024-09-15 01:32:34.919 [undefined] [32minfo[39m: User ID: %s is fetching the list of all groups
+2024-09-15 01:32:34.919 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:34.919 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:34.919 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:34.919 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:34.919 [undefined] [32minfo[39m: Fetching all groups...
+2024-09-15 01:32:34.935 [undefined] [32minfo[39m: Found 4 groups.
+2024-09-15 01:32:34.939 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:34.939 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:37.717 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:37.717 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:32:37.720 [undefined] [33mwarn[39m: User 66e5eba2268863dc65284fd8 is not a member of group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:32:37.727 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:37.728 [undefined] [32minfo[39m: ======= [ROUTE: List Groups] =======
+2024-09-15 01:32:37.728 [undefined] [32minfo[39m: [ACTION: Fetching All Groups]
+2024-09-15 01:32:37.728 [undefined] [32minfo[39m: User ID: %s is fetching the list of all groups
+2024-09-15 01:32:37.728 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:37.728 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:37.728 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:37.728 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:37.728 [undefined] [32minfo[39m: Fetching all groups...
+2024-09-15 01:32:37.734 [undefined] [32minfo[39m: Found 4 groups.
+2024-09-15 01:32:37.737 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:37.737 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:42.201 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:42.202 [undefined] [32minfo[39m: ======= [ROUTE: Join Group] =======
+2024-09-15 01:32:42.202 [undefined] [32minfo[39m: [ACTION: Joining Group]
+2024-09-15 01:32:42.202 [undefined] [32minfo[39m: User ID: %s is joining group %s
+2024-09-15 01:32:42.202 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:42.202 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:42.202 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:42.202 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:42.202 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 attempting to join group with ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:32:42.211 [undefined] [32minfo[39m: User joined the group:
+2024-09-15 01:32:42.212 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:42.212 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:42.216 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:42.216 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:32:42.218 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 is a member of group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:32:42.218 [undefined] [32minfo[39m: ======= [ROUTE: View Group] =======
+2024-09-15 01:32:42.218 [undefined] [32minfo[39m: [ACTION: Viewing Group Details]
+2024-09-15 01:32:42.218 [undefined] [32minfo[39m: User ID: %s is viewing details for group %s
+2024-09-15 01:32:42.218 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:42.218 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:42.218 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:42.218 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:42.218 [undefined] [32minfo[39m: Fetching group with ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:32:42.221 [undefined] [32minfo[39m: Group found:
+2024-09-15 01:32:42.224 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:42.224 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:32:50.587 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:32:50.588 [undefined] [32minfo[39m: Checking existence of group with ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:32:50.591 [undefined] [32minfo[39m: Group with ID: 66e5eb53de75f9e1597bc101 found
+2024-09-15 01:32:50.591 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:32:50.593 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 is a member of group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:32:50.593 [undefined] [32minfo[39m: ======= [ROUTE: View Quizzes] =======
+2024-09-15 01:32:50.593 [undefined] [32minfo[39m: [ACTION: Viewing Quizzes]
+2024-09-15 01:32:50.593 [undefined] [32minfo[39m: User ID: %s is viewing quizzes for group %s
+2024-09-15 01:32:50.593 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:32:50.593 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:32:50.593 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:32:50.593 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:32:50.594 [undefined] [32minfo[39m: Fetching quizzes for group ID:
+2024-09-15 01:32:50.605 [undefined] [32minfo[39m: Rendered quizzes index page for group ID:
+2024-09-15 01:32:50.605 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:32:50.605 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:35:10.416 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:35:10.417 [undefined] [32minfo[39m: ======= [ROUTE: Show Leaderboard] =======
+2024-09-15 01:35:10.417 [undefined] [32minfo[39m: [ACTION: Viewing Leaderboard]
+2024-09-15 01:35:10.417 [undefined] [32minfo[39m: User ID: %s is viewing leaderboard for quiz %s
+2024-09-15 01:35:10.418 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:35:10.418 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:35:10.418 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:35:10.418 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:35:10.418 [undefined] [32minfo[39m: Fetching leaderboard for quiz ID:
+2024-09-15 01:35:10.424 [undefined] [32minfo[39m: Rendered leaderboard for quiz ID:
+2024-09-15 01:35:10.425 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:35:10.425 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:35:15.366 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:35:15.367 [undefined] [32minfo[39m: ======= [ROUTE: Show Quiz] =======
+2024-09-15 01:35:15.367 [undefined] [32minfo[39m: [ACTION: Viewing Quiz]
+2024-09-15 01:35:15.367 [undefined] [32minfo[39m: User ID: %s is viewing quiz %s
+2024-09-15 01:35:15.367 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:35:15.367 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:35:15.367 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:35:15.367 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:35:15.367 [undefined] [32minfo[39m: Fetching quiz with ID:
+2024-09-15 01:35:15.377 [undefined] [32minfo[39m: Rendered quiz show page for quiz ID:
+2024-09-15 01:35:15.377 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:35:15.377 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:35:27.453 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:35:27.454 [undefined] [32minfo[39m: ======= [ROUTE: Show Quiz] =======
+2024-09-15 01:35:27.454 [undefined] [32minfo[39m: [ACTION: Viewing Quiz]
+2024-09-15 01:35:27.454 [undefined] [32minfo[39m: User ID: %s is viewing quiz %s
+2024-09-15 01:35:27.454 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:35:27.454 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:35:27.454 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:35:27.454 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:35:27.454 [undefined] [32minfo[39m: Fetching quiz with ID:
+2024-09-15 01:35:27.461 [undefined] [32minfo[39m: Rendered quiz show page for quiz ID:
+2024-09-15 01:35:27.462 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:35:27.462 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:35:54.138 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:35:54.139 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:35:54.141 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 is a member of group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:35:54.142 [undefined] [32minfo[39m: ======= [ROUTE: Submit Quiz] =======
+2024-09-15 01:35:54.142 [undefined] [32minfo[39m: [ACTION: Submitting Quiz]
+2024-09-15 01:35:54.142 [undefined] [32minfo[39m: User ID: %s is submitting quiz %s
+2024-09-15 01:35:54.142 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:35:54.142 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:35:54.142 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:35:54.142 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:35:54.142 [undefined] [32minfo[39m: Submitting quiz with ID:
+2024-09-15 01:35:54.153 [undefined] [32minfo[39m: Quiz submitted with score:
+2024-09-15 01:35:54.154 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:35:54.154 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:35:54.162 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:35:54.162 [undefined] [32minfo[39m: Checking existence of group with ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:35:54.164 [undefined] [32minfo[39m: Group with ID: 66e5eb53de75f9e1597bc101 found
+2024-09-15 01:35:54.164 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:35:54.166 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 is a member of group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:35:54.166 [undefined] [32minfo[39m: ======= [ROUTE: View Quizzes] =======
+2024-09-15 01:35:54.166 [undefined] [32minfo[39m: [ACTION: Viewing Quizzes]
+2024-09-15 01:35:54.166 [undefined] [32minfo[39m: User ID: %s is viewing quizzes for group %s
+2024-09-15 01:35:54.166 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:35:54.166 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:35:54.166 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:35:54.166 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:35:54.166 [undefined] [32minfo[39m: Fetching quizzes for group ID:
+2024-09-15 01:35:54.172 [undefined] [32minfo[39m: Rendered quizzes index page for group ID:
+2024-09-15 01:35:54.173 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:35:54.173 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:35:55.816 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:35:55.817 [undefined] [32minfo[39m: ======= [ROUTE: Show Leaderboard] =======
+2024-09-15 01:35:55.817 [undefined] [32minfo[39m: [ACTION: Viewing Leaderboard]
+2024-09-15 01:35:55.817 [undefined] [32minfo[39m: User ID: %s is viewing leaderboard for quiz %s
+2024-09-15 01:35:55.817 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:35:55.817 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:35:55.817 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:35:55.817 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:35:55.817 [undefined] [32minfo[39m: Fetching leaderboard for quiz ID:
+2024-09-15 01:35:55.825 [undefined] [32minfo[39m: Rendered leaderboard for quiz ID:
+2024-09-15 01:35:55.826 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:35:55.826 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:00.467 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:00.468 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:36:00.470 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 is a member of group ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:36:00.470 [undefined] [32minfo[39m: ======= [ROUTE: View Group] =======
+2024-09-15 01:36:00.470 [undefined] [32minfo[39m: [ACTION: Viewing Group Details]
+2024-09-15 01:36:00.470 [undefined] [32minfo[39m: User ID: %s is viewing details for group %s
+2024-09-15 01:36:00.470 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:00.470 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:00.470 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:00.470 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:00.470 [undefined] [32minfo[39m: Fetching group with ID: 66e5eb53de75f9e1597bc101
+2024-09-15 01:36:00.476 [undefined] [32minfo[39m: Group found:
+2024-09-15 01:36:00.481 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:00.481 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:07.750 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:07.751 [undefined] [32minfo[39m: ======= [ROUTE: List Groups] =======
+2024-09-15 01:36:07.751 [undefined] [32minfo[39m: [ACTION: Fetching All Groups]
+2024-09-15 01:36:07.751 [undefined] [32minfo[39m: User ID: %s is fetching the list of all groups
+2024-09-15 01:36:07.751 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:07.751 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:07.751 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:07.751 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:07.751 [undefined] [32minfo[39m: Fetching all groups...
+2024-09-15 01:36:07.762 [undefined] [32minfo[39m: Found 4 groups.
+2024-09-15 01:36:07.766 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:07.766 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:11.390 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:11.391 [undefined] [32minfo[39m: ======= [ROUTE: Join Group] =======
+2024-09-15 01:36:11.391 [undefined] [32minfo[39m: [ACTION: Joining Group]
+2024-09-15 01:36:11.391 [undefined] [32minfo[39m: User ID: %s is joining group %s
+2024-09-15 01:36:11.391 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:11.391 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:11.391 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:11.391 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:11.391 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 attempting to join group with ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:11.396 [undefined] [32minfo[39m: User joined the group:
+2024-09-15 01:36:11.398 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:11.398 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:11.405 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:11.405 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:11.407 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 is a member of group ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:11.408 [undefined] [32minfo[39m: ======= [ROUTE: View Group] =======
+2024-09-15 01:36:11.408 [undefined] [32minfo[39m: [ACTION: Viewing Group Details]
+2024-09-15 01:36:11.408 [undefined] [32minfo[39m: User ID: %s is viewing details for group %s
+2024-09-15 01:36:11.408 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:11.408 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:11.408 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:11.408 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:11.408 [undefined] [32minfo[39m: Fetching group with ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:11.412 [undefined] [32minfo[39m: Group found:
+2024-09-15 01:36:11.415 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:11.415 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:12.885 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:12.885 [undefined] [32minfo[39m: Checking existence of group with ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:12.887 [undefined] [32minfo[39m: Group with ID: 66e5eb53de75f9e1597bc103 found
+2024-09-15 01:36:12.887 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:12.889 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 is a member of group ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:12.889 [undefined] [32minfo[39m: ======= [ROUTE: View Quizzes] =======
+2024-09-15 01:36:12.889 [undefined] [32minfo[39m: [ACTION: Viewing Quizzes]
+2024-09-15 01:36:12.889 [undefined] [32minfo[39m: User ID: %s is viewing quizzes for group %s
+2024-09-15 01:36:12.889 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:12.889 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:12.889 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:12.889 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:12.889 [undefined] [32minfo[39m: Fetching quizzes for group ID:
+2024-09-15 01:36:12.896 [undefined] [32minfo[39m: Rendered quizzes index page for group ID:
+2024-09-15 01:36:12.896 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:12.896 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:14.919 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:14.920 [undefined] [32minfo[39m: ======= [ROUTE: Show Quiz] =======
+2024-09-15 01:36:14.920 [undefined] [32minfo[39m: [ACTION: Viewing Quiz]
+2024-09-15 01:36:14.920 [undefined] [32minfo[39m: User ID: %s is viewing quiz %s
+2024-09-15 01:36:14.920 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:14.920 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:14.920 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:14.920 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:14.920 [undefined] [32minfo[39m: Fetching quiz with ID:
+2024-09-15 01:36:14.929 [undefined] [32minfo[39m: Rendered quiz show page for quiz ID:
+2024-09-15 01:36:14.929 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:14.929 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:36.535 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:36.536 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:36.538 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 is a member of group ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:36.538 [undefined] [32minfo[39m: ======= [ROUTE: Submit Quiz] =======
+2024-09-15 01:36:36.538 [undefined] [32minfo[39m: [ACTION: Submitting Quiz]
+2024-09-15 01:36:36.539 [undefined] [32minfo[39m: User ID: %s is submitting quiz %s
+2024-09-15 01:36:36.539 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:36.539 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:36.539 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:36.539 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:36.539 [undefined] [32minfo[39m: Submitting quiz with ID:
+2024-09-15 01:36:36.546 [undefined] [32minfo[39m: Quiz submitted with score:
+2024-09-15 01:36:36.546 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:36.546 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:36.552 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:36.553 [undefined] [32minfo[39m: Checking existence of group with ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:36.555 [undefined] [32minfo[39m: Group with ID: 66e5eb53de75f9e1597bc103 found
+2024-09-15 01:36:36.556 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:36.557 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 is a member of group ID: 66e5eb53de75f9e1597bc103
+2024-09-15 01:36:36.557 [undefined] [32minfo[39m: ======= [ROUTE: View Quizzes] =======
+2024-09-15 01:36:36.557 [undefined] [32minfo[39m: [ACTION: Viewing Quizzes]
+2024-09-15 01:36:36.557 [undefined] [32minfo[39m: User ID: %s is viewing quizzes for group %s
+2024-09-15 01:36:36.558 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:36.558 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:36.558 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:36.558 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:36.558 [undefined] [32minfo[39m: Fetching quizzes for group ID:
+2024-09-15 01:36:36.563 [undefined] [32minfo[39m: Rendered quizzes index page for group ID:
+2024-09-15 01:36:36.563 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:36.563 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:37.836 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:37.837 [undefined] [32minfo[39m: ======= [ROUTE: Show Leaderboard] =======
+2024-09-15 01:36:37.837 [undefined] [32minfo[39m: [ACTION: Viewing Leaderboard]
+2024-09-15 01:36:37.837 [undefined] [32minfo[39m: User ID: %s is viewing leaderboard for quiz %s
+2024-09-15 01:36:37.837 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:37.837 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:37.837 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:37.837 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:37.837 [undefined] [32minfo[39m: Fetching leaderboard for quiz ID:
+2024-09-15 01:36:37.844 [undefined] [32minfo[39m: Rendered leaderboard for quiz ID:
+2024-09-15 01:36:37.844 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:37.844 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:50.185 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:50.186 [undefined] [32minfo[39m: ======= [ROUTE: List Groups] =======
+2024-09-15 01:36:50.186 [undefined] [32minfo[39m: [ACTION: Fetching All Groups]
+2024-09-15 01:36:50.186 [undefined] [32minfo[39m: User ID: %s is fetching the list of all groups
+2024-09-15 01:36:50.186 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:50.186 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:50.186 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:50.186 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:50.186 [undefined] [32minfo[39m: Fetching all groups...
+2024-09-15 01:36:50.197 [undefined] [32minfo[39m: Found 4 groups.
+2024-09-15 01:36:50.200 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:50.200 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:52.916 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:52.916 [undefined] [32minfo[39m: ======= [ROUTE: Join Group] =======
+2024-09-15 01:36:52.916 [undefined] [32minfo[39m: [ACTION: Joining Group]
+2024-09-15 01:36:52.916 [undefined] [32minfo[39m: User ID: %s is joining group %s
+2024-09-15 01:36:52.916 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:52.916 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:52.916 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:52.916 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:52.916 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 attempting to join group with ID: 66e5eb53de75f9e1597bc105
+2024-09-15 01:36:52.920 [undefined] [32minfo[39m: User joined the group:
+2024-09-15 01:36:52.921 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:52.921 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:52.927 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:52.928 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc105
+2024-09-15 01:36:52.930 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 is a member of group ID: 66e5eb53de75f9e1597bc105
+2024-09-15 01:36:52.930 [undefined] [32minfo[39m: ======= [ROUTE: View Group] =======
+2024-09-15 01:36:52.930 [undefined] [32minfo[39m: [ACTION: Viewing Group Details]
+2024-09-15 01:36:52.930 [undefined] [32minfo[39m: User ID: %s is viewing details for group %s
+2024-09-15 01:36:52.930 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:52.930 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:52.930 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:52.931 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:52.931 [undefined] [32minfo[39m: Fetching group with ID: 66e5eb53de75f9e1597bc105
+2024-09-15 01:36:52.937 [undefined] [32minfo[39m: Group found:
+2024-09-15 01:36:52.941 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:52.941 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:54.383 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:54.384 [undefined] [32minfo[39m: Checking existence of group with ID: 66e5eb53de75f9e1597bc105
+2024-09-15 01:36:54.386 [undefined] [32minfo[39m: Group with ID: 66e5eb53de75f9e1597bc105 found
+2024-09-15 01:36:54.386 [undefined] [32minfo[39m: Checking membership for user 66e5eba2268863dc65284fd8 in group ID: 66e5eb53de75f9e1597bc105
+2024-09-15 01:36:54.387 [undefined] [32minfo[39m: User 66e5eba2268863dc65284fd8 is a member of group ID: 66e5eb53de75f9e1597bc105
+2024-09-15 01:36:54.387 [undefined] [32minfo[39m: ======= [ROUTE: View Quizzes] =======
+2024-09-15 01:36:54.387 [undefined] [32minfo[39m: [ACTION: Viewing Quizzes]
+2024-09-15 01:36:54.387 [undefined] [32minfo[39m: User ID: %s is viewing quizzes for group %s
+2024-09-15 01:36:54.387 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:54.387 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:54.387 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:54.387 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:54.387 [undefined] [32minfo[39m: Fetching quizzes for group ID:
+2024-09-15 01:36:54.394 [undefined] [32minfo[39m: Rendered quizzes index page for group ID:
+2024-09-15 01:36:54.394 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:54.394 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:36:58.168 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 01:36:58.169 [undefined] [32minfo[39m: ======= [ROUTE: Show Quiz] =======
+2024-09-15 01:36:58.169 [undefined] [32minfo[39m: [ACTION: Viewing Quiz]
+2024-09-15 01:36:58.169 [undefined] [32minfo[39m: User ID: %s is viewing quiz %s
+2024-09-15 01:36:58.169 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 01:36:58.169 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 01:36:58.169 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 01:36:58.169 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 01:36:58.169 [undefined] [32minfo[39m: Fetching quiz with ID:
+2024-09-15 01:36:58.175 [undefined] [32minfo[39m: Rendered quiz show page for quiz ID:
+2024-09-15 01:36:58.175 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 01:36:58.175 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 01:41:49.476 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:41:49.486 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:41:49.487 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:41:49.487 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:41:49.487 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:41:49.490 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:41:49.499 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:42:58.873 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:42:58.883 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:42:58.884 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:42:58.884 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:42:58.884 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:42:58.886 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:42:58.895 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:43:28.473 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:43:28.482 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:43:28.484 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:43:28.484 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:43:28.485 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:43:28.486 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:43:28.496 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:43:37.731 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:43:37.742 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:43:37.744 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:43:37.745 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:43:37.745 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:43:37.748 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:43:37.774 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:43:41.914 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:43:41.923 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:43:41.925 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:43:41.925 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:43:41.926 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:43:41.927 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:43:41.934 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:43:46.931 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:43:46.941 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:43:46.943 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:43:46.943 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:43:46.943 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:43:46.945 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:43:46.950 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:43:48.588 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:43:48.598 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:43:48.600 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:43:48.600 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:43:48.600 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:43:48.602 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:43:48.611 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:43:55.533 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:43:55.543 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:43:55.544 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:43:55.545 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:43:55.545 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:43:55.547 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:43:55.554 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:43:58.293 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:43:58.304 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:43:58.305 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:43:58.305 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:43:58.306 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:43:58.308 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:43:58.315 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:44:38.977 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:44:38.987 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:44:38.989 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:44:38.989 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:44:38.989 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:44:38.991 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:44:38.998 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:45:17.399 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:45:17.410 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:45:17.411 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:45:17.411 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:45:17.411 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:45:17.413 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:45:17.420 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:45:42.923 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:45:42.933 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:45:42.934 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:45:42.934 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:45:42.935 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:45:42.936 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:45:42.942 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:45:48.265 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:45:48.275 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:45:48.277 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:45:48.277 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:45:48.277 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:45:48.279 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:45:48.284 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:45:50.369 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:45:50.379 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:45:50.381 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:45:50.381 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:45:50.381 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:45:50.383 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:45:50.388 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:46:13.322 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:46:13.332 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:46:13.334 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:46:13.334 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:46:13.334 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:46:13.336 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:46:13.348 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:46:49.769 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:46:49.779 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:46:49.781 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:46:49.781 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:46:49.781 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:46:49.783 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:46:49.790 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:47:09.128 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 01:47:09.147 [undefined] [32minfo[39m: Old data cleared.
+2024-09-15 01:47:09.164 [undefined] [31merror[39m: Error seeding users: E11000 duplicate key error collection: wanderlust.users index: email_1 dup key: { email: "priya@domain.com" }
+2024-09-15 01:47:09.165 [undefined] [32minfo[39m: Existing discussions cleared.
+2024-09-15 01:47:09.169 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:47:09.169 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:47:09.170 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.170 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:47:09.173 [undefined] [32minfo[39m: Discussion "How to get started with Node.js?" added.
+2024-09-15 01:47:09.173 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:47:09.173 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:47:09.173 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.173 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:47:09.174 [undefined] [32minfo[39m: Discussion "Looking for internship advice" added.
+2024-09-15 01:47:09.174 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:47:09.174 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:47:09.175 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.175 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:47:09.176 [undefined] [32minfo[39m: Discussion "Sharing my first coding project" added.
+2024-09-15 01:47:09.176 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:47:09.176 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:47:09.176 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.176 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:47:09.177 [undefined] [32minfo[39m: Discussion "Help needed with debugging" added.
+2024-09-15 01:47:09.177 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion] =======
+2024-09-15 01:47:09.177 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion schema]
+2024-09-15 01:47:09.177 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.177 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion schema] =======
+
+2024-09-15 01:47:09.178 [undefined] [32minfo[39m: Discussion "General life update" added.
+2024-09-15 01:47:09.178 [undefined] [32minfo[39m: Discussion data seeded successfully!
+2024-09-15 01:47:09.178 [undefined] [32minfo[39m: Existing discussion reviews cleared.
+2024-09-15 01:47:09.181 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:47:09.181 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:47:09.181 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.181 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:47:09.183 [undefined] [32minfo[39m: Review "Great discussion! Thanks for sharing." added.
+2024-09-15 01:47:09.185 [undefined] [32minfo[39m: Discussion "66e5ef458e018f2bccb860b3" updated with new review.
+2024-09-15 01:47:09.185 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:47:09.185 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:47:09.185 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.185 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:47:09.186 [undefined] [32minfo[39m: Review "I had a similar issue, here's how I solved it..." added.
+2024-09-15 01:47:09.187 [undefined] [32minfo[39m: Discussion "66e5ef458e018f2bccb860b3" updated with new review.
+2024-09-15 01:47:09.187 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:47:09.187 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:47:09.187 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.187 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:47:09.187 [undefined] [32minfo[39m: Review "This is a very informative post, thanks!" added.
+2024-09-15 01:47:09.188 [undefined] [32minfo[39m: Discussion "66e5ef458e018f2bccb860af" updated with new review.
+2024-09-15 01:47:09.188 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:47:09.188 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:47:09.188 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.188 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:47:09.189 [undefined] [32minfo[39m: Review "I appreciate the advice, really helpful!" added.
+2024-09-15 01:47:09.190 [undefined] [32minfo[39m: Discussion "66e5ef458e018f2bccb860b1" updated with new review.
+2024-09-15 01:47:09.190 [undefined] [32minfo[39m: ======= [SCHEMA: Discussion Review] =======
+2024-09-15 01:47:09.190 [undefined] [32minfo[39m: [ACTION: Starting validation for Discussion Review schema]
+2024-09-15 01:47:09.190 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.190 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Discussion Review schema] =======
+
+2024-09-15 01:47:09.191 [undefined] [32minfo[39m: Review "Congrats on your achievement! Keep going!" added.
+2024-09-15 01:47:09.192 [undefined] [32minfo[39m: Discussion "66e5ef458e018f2bccb860b1" updated with new review.
+2024-09-15 01:47:09.192 [undefined] [32minfo[39m: Discussion review data seeded successfully!
+2024-09-15 01:47:09.193 [undefined] [32minfo[39m: Existing donations cleared.
+2024-09-15 01:47:09.194 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:47:09.194 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:47:09.194 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.194 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:47:09.197 [undefined] [32minfo[39m: Donation "Support for Education" added.
+2024-09-15 01:47:09.198 [undefined] [32minfo[39m: User "66e5ef458e018f2bccb860a2" updated with new donation.
+2024-09-15 01:47:09.198 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:47:09.198 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:47:09.198 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.198 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:47:09.200 [undefined] [32minfo[39m: Donation "Medical Aid" added.
+2024-09-15 01:47:09.201 [undefined] [32minfo[39m: User "66e5ef458e018f2bccb860a0" updated with new donation.
+2024-09-15 01:47:09.201 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:47:09.201 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:47:09.201 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.201 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:47:09.202 [undefined] [32minfo[39m: Donation "Environmental Conservation" added.
+2024-09-15 01:47:09.202 [undefined] [32minfo[39m: User "66e5ef458e018f2bccb8609b" updated with new donation.
+2024-09-15 01:47:09.202 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:47:09.202 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:47:09.203 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.203 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:47:09.204 [undefined] [32minfo[39m: Donation "Support for Local Artisans" added.
+2024-09-15 01:47:09.206 [undefined] [32minfo[39m: User "66e5ef458e018f2bccb8609f" updated with new donation.
+2024-09-15 01:47:09.206 [undefined] [32minfo[39m: ======= [SCHEMA: Donation] =======
+2024-09-15 01:47:09.206 [undefined] [32minfo[39m: [ACTION: Starting validation for Donation schema]
+2024-09-15 01:47:09.206 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.206 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Donation schema] =======
+
+2024-09-15 01:47:09.208 [undefined] [32minfo[39m: Donation "Disaster Relief Fund" added.
+2024-09-15 01:47:09.209 [undefined] [32minfo[39m: User "66e5ef458e018f2bccb8609d" updated with new donation.
+2024-09-15 01:47:09.209 [undefined] [32minfo[39m: Donation data seeded successfully!
+2024-09-15 01:47:09.210 [undefined] [32minfo[39m: Existing groups cleared.
+2024-09-15 01:47:09.212 [undefined] [32minfo[39m: ======= [SCHEMA: Group] =======
+2024-09-15 01:47:09.212 [undefined] [32minfo[39m: [ACTION: Starting validation for Group schema]
+2024-09-15 01:47:09.218 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.218 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Group schema] =======
+
+2024-09-15 01:47:09.220 [undefined] [32minfo[39m: Group "Tech Innovators" added.
+2024-09-15 01:47:09.220 [undefined] [32minfo[39m: ======= [SCHEMA: Group] =======
+2024-09-15 01:47:09.220 [undefined] [32minfo[39m: [ACTION: Starting validation for Group schema]
+2024-09-15 01:47:09.224 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.224 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Group schema] =======
+
+2024-09-15 01:47:09.225 [undefined] [32minfo[39m: Group "Environmental Advocates" added.
+2024-09-15 01:47:09.225 [undefined] [32minfo[39m: ======= [SCHEMA: Group] =======
+2024-09-15 01:47:09.225 [undefined] [32minfo[39m: [ACTION: Starting validation for Group schema]
+2024-09-15 01:47:09.225 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.225 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Group schema] =======
+
+2024-09-15 01:47:09.226 [undefined] [32minfo[39m: Group "Local Artisans Network" added.
+2024-09-15 01:47:09.226 [undefined] [32minfo[39m: ======= [SCHEMA: Group] =======
+2024-09-15 01:47:09.226 [undefined] [32minfo[39m: [ACTION: Starting validation for Group schema]
+2024-09-15 01:47:09.226 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.226 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Group schema] =======
+
+2024-09-15 01:47:09.226 [undefined] [32minfo[39m: Group "Health and Wellness" added.
+2024-09-15 01:47:09.226 [undefined] [32minfo[39m: Group data seeded successfully!
+2024-09-15 01:47:09.227 [undefined] [32minfo[39m: Existing jobs cleared.
+2024-09-15 01:47:09.228 [undefined] [32minfo[39m: ======= [SCHEMA: Job] =======
+2024-09-15 01:47:09.228 [undefined] [32minfo[39m: [ACTION: Starting validation for Job schema]
+2024-09-15 01:47:09.228 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.228 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Job schema] =======
+
+2024-09-15 01:47:09.229 [undefined] [32minfo[39m: Job "Software Engineer" added.
+2024-09-15 01:47:09.229 [undefined] [32minfo[39m: ======= [SCHEMA: Job] =======
+2024-09-15 01:47:09.229 [undefined] [32minfo[39m: [ACTION: Starting validation for Job schema]
+2024-09-15 01:47:09.229 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.229 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Job schema] =======
+
+2024-09-15 01:47:09.230 [undefined] [32minfo[39m: Job "Frontend Developer" added.
+2024-09-15 01:47:09.230 [undefined] [32minfo[39m: ======= [SCHEMA: Job] =======
+2024-09-15 01:47:09.230 [undefined] [32minfo[39m: [ACTION: Starting validation for Job schema]
+2024-09-15 01:47:09.230 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.230 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for Job schema] =======
+
+2024-09-15 01:47:09.231 [undefined] [32minfo[39m: Job "Data Analyst Intern" added.
+2024-09-15 01:47:09.231 [undefined] [32minfo[39m: Job data seeded successfully!
+2024-09-15 01:47:09.231 [undefined] [32minfo[39m: Existing job reviews cleared.
+2024-09-15 01:47:09.233 [undefined] [32minfo[39m: ======= [SCHEMA: JobReview] =======
+2024-09-15 01:47:09.233 [undefined] [32minfo[39m: [ACTION: Starting validation for JobReview schema]
+2024-09-15 01:47:09.233 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.233 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for JobReview schema] =======
+
+2024-09-15 01:47:09.234 [undefined] [32minfo[39m: Review added for Job ID "66e5ef458e018f2bccb860f6".
+2024-09-15 01:47:09.234 [undefined] [32minfo[39m: ======= [SCHEMA: JobReview] =======
+2024-09-15 01:47:09.234 [undefined] [32minfo[39m: [ACTION: Starting validation for JobReview schema]
+2024-09-15 01:47:09.235 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.235 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for JobReview schema] =======
+
+2024-09-15 01:47:09.235 [undefined] [32minfo[39m: Review added for Job ID "66e5ef458e018f2bccb860f8".
+2024-09-15 01:47:09.236 [undefined] [32minfo[39m: ======= [SCHEMA: JobReview] =======
+2024-09-15 01:47:09.236 [undefined] [32minfo[39m: [ACTION: Starting validation for JobReview schema]
+2024-09-15 01:47:09.236 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.236 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for JobReview schema] =======
+
+2024-09-15 01:47:09.236 [undefined] [32minfo[39m: Review added for Job ID "66e5ef458e018f2bccb860f8".
+2024-09-15 01:47:09.237 [undefined] [32minfo[39m: ======= [SCHEMA: JobReview] =======
+2024-09-15 01:47:09.237 [undefined] [32minfo[39m: [ACTION: Starting validation for JobReview schema]
+2024-09-15 01:47:09.237 [undefined] [32minfo[39m: [Validation passed successfully]
+2024-09-15 01:47:09.237 [undefined] [32minfo[39m: ======= [END OF ACTION: Validation for JobReview schema] =======
+
+2024-09-15 01:47:09.237 [undefined] [32minfo[39m: Review added for Job ID "66e5ef458e018f2bccb860fa".
+2024-09-15 01:47:09.238 [undefined] [32minfo[39m: Job reviews seeded successfully!
+2024-09-15 01:47:09.238 [undefined] [32minfo[39m: Existing payments cleared.
+2024-09-15 01:47:09.241 [undefined] [32minfo[39m: Payment for donation "Disaster Relief Fund" added.
+2024-09-15 01:47:09.241 [undefined] [32minfo[39m: Payment for donation "Environmental Conservation" added.
+2024-09-15 01:47:09.242 [undefined] [32minfo[39m: Payment for donation "Environmental Conservation" added.
+2024-09-15 01:47:09.242 [undefined] [32minfo[39m: Payment data seeded successfully!
+2024-09-15 01:47:09.243 [undefined] [32minfo[39m: Existing quizzes cleared.
+2024-09-15 01:47:09.249 [undefined] [32minfo[39m: Quiz "JavaScript Basics" added, created by ananya_g.
+2024-09-15 01:47:09.250 [undefined] [32minfo[39m: Group "66e5ef458e018f2bccb860f2" updated with new quiz.
+2024-09-15 01:47:09.251 [undefined] [32minfo[39m: Quiz "Node.js Fundamentals" added, created by ananya_g.
+2024-09-15 01:47:09.252 [undefined] [32minfo[39m: Group "66e5ef458e018f2bccb860f2" updated with new quiz.
+2024-09-15 01:47:09.253 [undefined] [32minfo[39m: Quiz "MongoDB Basics" added, created by priya_m.
+2024-09-15 01:47:09.253 [undefined] [32minfo[39m: Group "66e5ef458e018f2bccb860f0" updated with new quiz.
+2024-09-15 01:47:09.254 [undefined] [32minfo[39m: Quiz "React.js Essentials" added, created by ananya_g.
+2024-09-15 01:47:09.255 [undefined] [32minfo[39m: Group "66e5ef458e018f2bccb860ec" updated with new quiz.
+2024-09-15 01:47:09.255 [undefined] [32minfo[39m: Quiz data seeded successfully!
+2024-09-15 01:47:09.256 [undefined] [32minfo[39m: Existing success stories cleared.
+2024-09-15 01:47:09.258 [undefined] [32minfo[39m: Success story "Achieved Promotion at Work" added, created by sandeep_rao.
+2024-09-15 01:47:09.259 [undefined] [32minfo[39m: Success story "Completed Marathon" added, created by priya_m.
+2024-09-15 01:47:09.259 [undefined] [32minfo[39m: Success story "Launched My Own Business" added, created by priya_m.
+2024-09-15 01:47:09.260 [undefined] [32minfo[39m: Success story "Graduated with Honors" added, created by ananya_g.
+2024-09-15 01:47:09.260 [undefined] [32minfo[39m: Success stories seeded successfully!
+2024-09-15 01:47:09.260 [undefined] [32minfo[39m: Existing success reviews cleared.
+2024-09-15 01:47:09.263 [undefined] [32minfo[39m: Review added: "Incredible story, really inspiring!"
+2024-09-15 01:47:09.263 [undefined] [32minfo[39m: Success story "66e5ef458e018f2bccb8612e" updated with new review.
+2024-09-15 01:47:09.264 [undefined] [32minfo[39m: Review added: "Great journey, I learned a lot from this."
+2024-09-15 01:47:09.265 [undefined] [32minfo[39m: Success story "66e5ef458e018f2bccb86130" updated with new review.
+2024-09-15 01:47:09.265 [undefined] [32minfo[39m: Review added: "I can relate to this experience."
+2024-09-15 01:47:09.266 [undefined] [32minfo[39m: Success story "66e5ef458e018f2bccb86132" updated with new review.
+2024-09-15 01:47:09.266 [undefined] [32minfo[39m: Success reviews seeded successfully!
+2024-09-15 01:47:09.266 [undefined] [32minfo[39m: Database successfully seeded!

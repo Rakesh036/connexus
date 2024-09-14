@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Quiz = require("../models/quiz");
 const Group = require("../models/group");
+const logger = require('../utils/logger'); // Import logger
 
 const quizData = [
   {
@@ -109,13 +110,13 @@ async function quizSeeder() {
   try {
     // Clear existing quizzes
     await Quiz.deleteMany({});
-    console.log("Existing quizzes cleared.");
+    logger.info("Existing quizzes cleared.");
 
     // Fetch all groups with their owners
     const groups = await Group.find({}).populate("owner");
 
     if (groups.length === 0) {
-      console.log("No groups found to assign quizzes to.");
+      logger.warn("No groups found to assign quizzes to.");
       return;
     }
 
@@ -127,16 +128,16 @@ async function quizSeeder() {
 
       // Create the quiz
       const newQuiz = await Quiz.create(quiz);
-      console.log(`Quiz "${quiz.title}" added, created by ${randomGroup.owner.username}.`);
+      logger.info(`Quiz "${quiz.title}" added, created by ${randomGroup.owner.username}.`);
 
       // Update the group's quizzes array with the newly created quiz
       await Group.findByIdAndUpdate(randomGroup._id, { $push: { quizzes: newQuiz._id } });
-      console.log(`Group "${randomGroup._id}" updated with new quiz.`);
+      logger.info(`Group "${randomGroup._id}" updated with new quiz.`);
     }
 
-    console.log("Quiz data seeded successfully!");
+    logger.info("Quiz data seeded successfully!");
   } catch (error) {
-    console.error("Error seeding quiz data:", error);
+    logger.error("Error seeding quiz data:", error);
   }
 }
 

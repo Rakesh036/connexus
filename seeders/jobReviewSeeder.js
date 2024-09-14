@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const Job = require("../models/job");
 const JobReview = require("../models/jobReview");
 const User = require("../models/user");
+
+const { validateJobReview} = require('../schemas/jobReviewSchema');
 const logger = require("../utils/logger"); // Import logger
 
 const reviewData = [

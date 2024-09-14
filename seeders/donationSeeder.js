@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Donation = require('../models/donation');
 const User = require('../models/user');
-const { validateDonation } = require('../utils/validation'); // Import validation function
+const { validateDonation } = require('../schemas/donationSchema'); // Import validation function
 const logger = require('../utils/logger'); // Import logger
 
 const donationData = [

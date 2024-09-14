@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const DiscussionReview = require('../models/discussionReview');
 const Discussion = require('../models/discussion');
 const User = require('../models/user');
-const { validateDiscussionReview } = require('../utils/validation'); // Import validation function
+const { validateDiscussionReview } = require("../schemas/discussionReviewSchema"); // Import validation function
 const logger = require('../utils/logger'); // Import the logger
 
 const discussionReviewData = [

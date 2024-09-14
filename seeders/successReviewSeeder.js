@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const SuccessReview = require("../models/successReview");
 const Success = require("../models/success");
 const User = require("../models/user");
+const logger = require('../utils/logger'); // Import logger
 
 const successReviewData = [
   {
@@ -20,7 +21,7 @@ async function successReviewSeeder() {
   try {
     // Clear existing success reviews
     await SuccessReview.deleteMany({});
-    console.log("Existing success reviews cleared.");
+    logger.info("Existing success reviews cleared.");
 
     // Fetch all success stories and user IDs
     const successStories = await Success.find({});
@@ -29,7 +30,7 @@ async function successReviewSeeder() {
     const userIds = users.map(user => user._id);
 
     if (successIds.length === 0 || userIds.length === 0) {
-      console.log("No success stories or users found.");
+      logger.warn("No success stories or users found.");
       return;
     }
 
@@ -41,16 +42,16 @@ async function successReviewSeeder() {
 
       // Create the review
       const newReview = await SuccessReview.create(review);
-      console.log(`Review added: "${review.comment}"`);
+      logger.info(`Review added: "${review.comment}"`);
 
       // Update the success story's reviews array
       await Success.findByIdAndUpdate(review.success, { $push: { reviews: newReview._id } });
-      console.log(`Success story "${review.success}" updated with new review.`);
+      logger.info(`Success story "${review.success}" updated with new review.`);
     }
 
-    console.log("Success reviews seeded successfully!");
+    logger.info("Success reviews seeded successfully!");
   } catch (error) {
-    console.error("Error seeding success reviews:", error);
+    logger.error("Error seeding success reviews:", error);
   }
 }
 
