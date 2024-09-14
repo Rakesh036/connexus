@@ -25,42 +25,39 @@
                 </div>
                 <% } %>
             </div>
-<!-- Title and Emergency Status -->
-<h1 class="mb-0 flex-grow-1 text-center">
-    <%= donation.title %>
-    <% if(donation.isEmergency) { %>
-    <span class="badge bg-danger">Emergency</span>
-    <% } %>
-</h1>
+
+            <!-- Title and Emergency Status -->
+            <h1 class="mb-0 flex-grow-1 text-center">
+                <%= donation.title %>
+                <% if(donation.isEmergency) { %>
+                <span class="badge bg-danger">Emergency</span>
+                <% } %>
+            </h1>
 
             <p><%= donation.description %></p>
 
-            <form action="/api/payment/<%=donation._id  %>" method="get">
-                <div class="mb-3">
-                    <label for="amount" class="form-label">Donation Amount</label>
-                    <input type="number" id="amount" name="transaction[amount]" class="form-control" value="10"
-                        required>
-                </div>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fa-solid fa-donate"></i> Donate
+            <form action="/api/payment/<%= donation._id  %>" method="get" class="me-2">
+                <button type="submit" class="btn btn-primary mt-2">
+                    <i class="fa fa-donate"></i> Donate
                 </button>
             </form>
 
             <hr>
             <br>
-<!-- Transactions Section -->
-            <h3>Transactions</h3>
-            <% if (donation.transactions.length > 0) { %>
-            <% donation.transactions.forEach(transaction => { %>
+
+            <!-- Payments Section -->
+            <h3>Payments</h3>
+            <% if (donation.payments.length > 0) { %>
+            <% donation.payments.forEach(payment => { %>
             <div class="mb-3 d-flex">
                 <p><strong>Donor:</strong>
-                    <%= transaction.donor ? transaction.donor.username : "Anonymous" %>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p><strong>Amount:</strong> <%= transaction.amount %> rupees&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p><strong>Transaction ID:</strong> <%= transaction._id %></p>
+                    <%= payment.donor ? payment.donor.username : "Anonymous" %>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p><strong>Amount:</strong> <%= payment.amount %> rupees&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p><strong>Transaction ID:</strong> <%= payment._id %></p>
             </div>
             <% }) %>
             <% } else { %>
-            <p>No transactions have been made yet.</p>
+            <p>No payments have been made yet.</p>
             <% } %>
         </div>
     </div>
