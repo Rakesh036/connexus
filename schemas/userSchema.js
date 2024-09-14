@@ -1,5 +1,6 @@
 const Joi = require("joi");
 
+// Define the schema
 module.exports.userSchema = Joi.object({
   username: Joi.string().required().messages({
     "string.empty": "Username is required.",
@@ -29,3 +30,17 @@ module.exports.userSchema = Joi.object({
   github: Joi.string().uri().optional(),
   profilePicture: Joi.string().optional(),
 });
+
+// Debugging example
+const debugLog = (msg) => console.log(`DEBUG: ${msg}`);
+
+module.exports.validateUser = (data) => {
+  debugLog("Starting validation for user schema...");
+  const { error } = module.exports.userSchema.validate(data, { abortEarly: false });
+  if (error) {
+    debugLog(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
+    throw new Error(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
+  }
+  debugLog("Validation passed successfully.");
+  return true;
+};

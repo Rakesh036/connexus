@@ -1,5 +1,6 @@
 const Joi = require("joi");
 
+// Define the schema
 module.exports.quizSchema = Joi.object({
   quiz: Joi.object({
     title: Joi.string().required().messages({
@@ -29,3 +30,17 @@ module.exports.quizSchema = Joi.object({
       }),
   }).required(),
 });
+
+// Debugging example
+const debugLog = (msg) => console.log(`DEBUG: ${msg}`);
+
+module.exports.validateQuiz = (data) => {
+  debugLog("Starting validation for quiz schema...");
+  const { error } = module.exports.quizSchema.validate(data, { abortEarly: false });
+  if (error) {
+    debugLog(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
+    throw new Error(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
+  }
+  debugLog("Validation passed successfully.");
+  return true;
+};

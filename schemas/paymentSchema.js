@@ -1,5 +1,6 @@
 const Joi = require("joi");
 
+// Define the schema
 module.exports.paymentSchema = Joi.object({
   fullName: Joi.string().required(),
   email: Joi.string().email().optional(),
@@ -29,3 +30,17 @@ module.exports.paymentSchema = Joi.object({
     otherwise: Joi.optional(),
   }),
 });
+
+// Debugging example
+const debugLog = (msg) => console.log(`DEBUG: ${msg}`);
+
+module.exports.validatePayment = (data) => {
+  debugLog("Starting validation for payment schema...");
+  const { error } = module.exports.paymentSchema.validate(data, { abortEarly: false });
+  if (error) {
+    debugLog(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
+    throw new Error(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
+  }
+  debugLog("Validation passed successfully.");
+  return true;
+};
