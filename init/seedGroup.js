@@ -4,9 +4,12 @@ const initData = require("./datagroup.js");
 // const Listing = require("../models/listing.js");
 const Group = require("../models/group.js");
 // const MONGO_URL = process.env.MONGODB_URL;
-const MONGO_URL =
-  "mongodb+srv://connexus:8OkBfZhbtEqkwe5Z@cluster0.0rxh1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+// const MONGO_URL =
+  // "mongodb+srv://connexus:8OkBfZhbtEqkwe5Z@cluster0.0rxh1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
+
+  
+const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 main()
   .then(() => {
     console.log("connected to DB");
@@ -32,7 +35,7 @@ const initDB = async () => {
   await Group.deleteMany({});
   initData.data = initData.data.map((obj) => ({
     ...obj,
-    owner: "66d9a26220baccb632154580",
+    owner: "66e585d17d7bc95fe6c0e13c",
   }));
   await Group.insertMany(initData.data);
   console.log("DB initialized");

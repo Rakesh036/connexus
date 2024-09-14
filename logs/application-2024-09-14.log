@@ -127,3 +127,189 @@
 2024-09-14T12:18:03.677Z [undefined] [32minfo[39m: Notifications retrieved:
 2024-09-14T12:18:03.679Z [undefined] [32minfo[39m: Unread notifications count:
 2024-09-14T12:18:03.684Z [undefined] [32minfo[39m: Notification page rendered successfully
+2024-09-14T12:41:17.914Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T12:41:17.927Z [undefined] [32minfo[39m: Found 0 jobs.
+2024-09-14T12:41:19.456Z [undefined] [32minfo[39m: User not authenticated, redirecting to login.
+2024-09-14T12:41:19.470Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:41:19.471Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-14T12:41:19.480Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-14T12:41:23.593Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:41:23.594Z [undefined] [32minfo[39m: [ACTION: Render Signup Form]
+2024-09-14T12:41:23.605Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Signup Form] =======
+
+2024-09-14T12:42:27.019Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:42:27.021Z [undefined] [32minfo[39m: [ACTION: Signup User]
+2024-09-14T12:42:27.022Z [undefined] [32minfo[39m: Received data: %o
+2024-09-14T12:42:27.030Z [undefined] [32minfo[39m: Creating new user: %o
+2024-09-14T12:42:27.346Z [undefined] [32minfo[39m: User successfully registered: %s
+2024-09-14T12:42:27.348Z [undefined] [32minfo[39m: ======= [END OF ACTION: Signup User] =======
+
+2024-09-14T12:42:27.355Z [undefined] [32minfo[39m: User logged in successfully.
+2024-09-14T12:42:40.860Z [undefined] [32minfo[39m: Viewing profile for user with ID:
+2024-09-14T12:42:56.908Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T12:42:56.910Z [undefined] [32minfo[39m: Found 0 jobs.
+2024-09-14T12:43:04.646Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T12:43:04.650Z [undefined] [32minfo[39m: Found 0 jobs.
+2024-09-14T12:43:06.990Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:43:07.005Z [undefined] [32minfo[39m: Found 0 groups.
+2024-09-14T12:43:13.454Z [undefined] [32minfo[39m: ======= [CONTROLLER: Discussion] =======
+2024-09-14T12:43:13.455Z [undefined] [32minfo[39m: [ACTION: Index]
+2024-09-14T12:43:13.456Z [undefined] [32minfo[39m: Querying all discussions
+2024-09-14T12:43:13.464Z [undefined] [32minfo[39m: ======= [END OF ACTION: Index] =======
+
+2024-09-14T12:44:56.249Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:44:56.250Z [undefined] [32minfo[39m: [ACTION: Logout User]
+2024-09-14T12:44:56.251Z [undefined] [32minfo[39m: ======= [END OF ACTION: Logout User] =======
+
+2024-09-14T12:44:56.256Z [undefined] [32minfo[39m: User logged out successfully.
+2024-09-14T12:44:57.996Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:44:57.997Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-14T12:44:58.000Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-14T12:45:05.924Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:45:05.924Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-14T12:45:05.928Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-14T12:45:15.633Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:45:15.634Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-14T12:45:15.637Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-14T12:45:21.200Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:45:21.201Z [undefined] [32minfo[39m: [ACTION: Render Signup Form]
+2024-09-14T12:45:21.206Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Signup Form] =======
+
+2024-09-14T12:45:28.810Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:45:28.811Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-14T12:45:28.815Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-14T12:46:03.990Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:46:04.004Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:46:09.547Z [undefined] [32minfo[39m: Rendered new success story form
+2024-09-14T12:46:27.838Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:46:27.839Z [undefined] [32minfo[39m: [ACTION: Logout User]
+2024-09-14T12:46:27.840Z [undefined] [32minfo[39m: ======= [END OF ACTION: Logout User] =======
+
+2024-09-14T12:46:27.846Z [undefined] [32minfo[39m: User logged out successfully.
+2024-09-14T12:46:30.123Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:46:30.124Z [undefined] [32minfo[39m: [ACTION: Render Signup Form]
+2024-09-14T12:46:30.127Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Signup Form] =======
+
+2024-09-14T12:47:13.959Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T12:47:13.960Z [undefined] [32minfo[39m: [ACTION: Signup User]
+2024-09-14T12:47:13.961Z [undefined] [32minfo[39m: Received data: %o
+2024-09-14T12:47:13.963Z [undefined] [32minfo[39m: Creating new user: %o
+2024-09-14T12:47:14.228Z [undefined] [32minfo[39m: User successfully registered: %s
+2024-09-14T12:47:14.229Z [undefined] [32minfo[39m: ======= [END OF ACTION: Signup User] =======
+
+2024-09-14T12:47:14.233Z [undefined] [32minfo[39m: User logged in successfully.
+2024-09-14T12:47:17.631Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:47:17.641Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:47:19.408Z [undefined] [32minfo[39m: Rendered new success story form
+2024-09-14T12:48:09.854Z [undefined] [32minfo[39m: Validating success schema...
+2024-09-14T12:48:09.857Z [undefined] [31merror[39m: Validation error: "success" is required
+2024-09-14T12:48:09.857Z [undefined] [31merror[39m: Error in validateSuccess middleware: "success" is required
+2024-09-14T12:48:12.585Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:48:12.589Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:48:16.438Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:48:16.445Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:48:17.917Z [undefined] [32minfo[39m: Rendered new success story form
+2024-09-14T12:48:32.959Z [undefined] [32minfo[39m: Validating success schema...
+2024-09-14T12:48:32.960Z [undefined] [31merror[39m: Validation error: "success" is required
+2024-09-14T12:48:32.961Z [undefined] [31merror[39m: Error in validateSuccess middleware: "success" is required
+2024-09-14T12:48:38.963Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:48:38.972Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:48:40.344Z [undefined] [32minfo[39m: Rendered new success story form
+2024-09-14T12:48:55.287Z [undefined] [32minfo[39m: Validating success schema...
+2024-09-14T12:48:55.288Z [undefined] [31merror[39m: Validation error: "success" is required
+2024-09-14T12:48:55.288Z [undefined] [31merror[39m: Error in validateSuccess middleware: "success" is required
+2024-09-14T12:48:58.008Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:48:58.016Z [undefined] [32minfo[39m: Found 0 groups.
+2024-09-14T12:48:59.775Z [undefined] [32minfo[39m: Rendering new group form.
+2024-09-14T12:49:10.266Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:49:10.272Z [undefined] [32minfo[39m: Found 0 groups.
+2024-09-14T12:49:14.269Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:49:14.274Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:49:22.535Z [undefined] [32minfo[39m: Fetching donations...
+2024-09-14T12:49:22.538Z [undefined] [32minfo[39m: Found 0 donations.
+2024-09-14T12:49:25.513Z [undefined] [32minfo[39m: ======= [CONTROLLER: Discussion] =======
+2024-09-14T12:49:25.514Z [undefined] [32minfo[39m: [ACTION: Index]
+2024-09-14T12:49:25.515Z [undefined] [32minfo[39m: Querying all discussions
+2024-09-14T12:49:25.524Z [undefined] [32minfo[39m: ======= [END OF ACTION: Index] =======
+
+2024-09-14T12:49:30.973Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T12:49:30.976Z [undefined] [32minfo[39m: Found 0 jobs.
+2024-09-14T12:49:33.739Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:49:33.746Z [undefined] [32minfo[39m: Found 0 groups.
+2024-09-14T12:51:35.273Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:51:35.280Z [undefined] [32minfo[39m: Found 0 groups.
+2024-09-14T13:04:47.521Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T13:04:47.553Z [undefined] [32minfo[39m: Found 11 groups.
+2024-09-14T13:04:52.013Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T13:04:52.034Z [undefined] [32minfo[39m: Found 11 groups.
+2024-09-14T13:04:53.617Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T13:04:53.630Z [undefined] [32minfo[39m: Found 20 jobs.
+2024-09-14T13:04:56.227Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T13:04:56.233Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T13:04:59.634Z [undefined] [32minfo[39m: Fetching donations...
+2024-09-14T13:04:59.640Z [undefined] [32minfo[39m: Found 0 donations.
+2024-09-14T13:05:03.152Z [undefined] [32minfo[39m: ======= [CONTROLLER: Discussion] =======
+2024-09-14T13:05:03.154Z [undefined] [32minfo[39m: [ACTION: Index]
+2024-09-14T13:05:03.155Z [undefined] [32minfo[39m: Querying all discussions
+2024-09-14T13:05:03.186Z [undefined] [32minfo[39m: ======= [END OF ACTION: Index] =======
+
+2024-09-14T13:05:23.333Z [undefined] [32minfo[39m: Fetching donations...
+2024-09-14T13:05:23.336Z [undefined] [32minfo[39m: Found 0 donations.
+2024-09-14T15:00:33.892Z [undefined] [32minfo[39m: Fetching donations...
+2024-09-14T15:00:33.937Z [undefined] [32minfo[39m: Found 5 donations.
+2024-09-14T15:01:28.045Z [undefined] [32minfo[39m: ======= [CONTROLLER: Discussion] =======
+2024-09-14T15:01:28.046Z [undefined] [32minfo[39m: [ACTION: Index]
+2024-09-14T15:01:28.047Z [undefined] [32minfo[39m: Querying all discussions
+2024-09-14T15:01:28.070Z [undefined] [32minfo[39m: ======= [END OF ACTION: Index] =======
+
+2024-09-14T15:01:30.655Z [undefined] [32minfo[39m: Fetching donations...
+2024-09-14T15:01:30.684Z [undefined] [32minfo[39m: Found 5 donations.
+2024-09-14T15:01:32.603Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T15:01:32.616Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T15:01:34.202Z [undefined] [32minfo[39m: User not authenticated, redirecting to login.
+2024-09-14T15:01:34.216Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T15:01:34.217Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-14T15:01:34.223Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-14T15:01:35.278Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T15:01:35.299Z [undefined] [32minfo[39m: Found 20 jobs.
+2024-09-14T15:01:40.888Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T15:01:40.901Z [undefined] [32minfo[39m: Found 20 jobs.
+2024-09-14T15:01:42.288Z [undefined] [32minfo[39m: User not authenticated, redirecting to login.
+2024-09-14T15:01:42.299Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T15:01:42.300Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-14T15:01:42.307Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-14T15:01:55.251Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T15:01:55.252Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-14T15:01:55.257Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-14T15:02:01.983Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T15:02:01.983Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-14T15:02:01.986Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-14T15:02:10.495Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T15:02:10.495Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-14T15:02:10.501Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-14T15:02:16.885Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T15:02:16.886Z [undefined] [32minfo[39m: [ACTION: Render Signup Form]
+2024-09-14T15:02:16.896Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Signup Form] =======
+
+2024-09-14T15:02:28.793Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-14T15:02:28.794Z [undefined] [32minfo[39m: [ACTION: Signup User]
+2024-09-14T15:02:28.794Z [undefined] [32minfo[39m: Received data: %o
+2024-09-14T15:02:28.798Z [undefined] [32minfo[39m: Creating new user: %o
+2024-09-14T15:02:29.071Z [undefined] [32minfo[39m: User successfully registered: %s
+2024-09-14T15:02:29.072Z [undefined] [32minfo[39m: ======= [END OF ACTION: Signup User] =======
+
+2024-09-14T15:02:29.077Z [undefined] [32minfo[39m: User logged in successfully.
+2024-09-14T15:02:31.767Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T15:02:31.793Z [undefined] [32minfo[39m: Found 11 groups.
+2024-09-14T15:02:58.549Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T15:02:58.559Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
