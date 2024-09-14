@@ -8,7 +8,9 @@ const PaymentController = require("../controllers/paymentController");
 
 // Route to render payment form
 router.get("/:donationId", isLoggedIn, (req, res, next) => {
-    logger.info(`User ${req.user._id} is accessing the payment form for donation ID: ${req.params.donationId}`);
+    logger.info("======= [ROUTE: Render Payment Form] =======");
+    logger.info("[ACTION: Accessing Payment Form]");
+    logger.info("User ID: %s is accessing the payment form for donation ID: %s", req.user._id, req.params.donationId);
     next();
 }, PaymentController.renderPaymentForm);
 
@@ -17,12 +19,15 @@ router.post(
   "/:donationId",
   isLoggedIn,
   (req, res, next) => {
-    logger.info(`User ${req.user._id} is submitting payment for donation ID: ${req.params.donationId}`);
+    logger.info("======= [ROUTE: Handle Payment Submission] =======");
+    logger.info("[ACTION: Submitting Payment]");
+    logger.info("User ID: %s is submitting payment for donation ID: %s", req.user._id, req.params.donationId);
     next();
   },
   validatePayment, // Add validation middleware here
   (req, res, next) => {
-    logger.info(`Payment validation completed for donation ID: ${req.params.donationId}`);
+    logger.info("[ACTION: Payment Validation Completed]");
+    logger.info("Payment validation completed for donation ID: %s", req.params.donationId);
     next();
   },
   PaymentController.processPayment

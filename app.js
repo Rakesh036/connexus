@@ -1,6 +1,6 @@
- // Unhandled Rejection Handler
+// Unhandled Rejection Handler
 process.on("unhandledRejection", (reason, promise) => {
-  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+  logger.error("Unhandled Rejection at:", { promise, reason });
   process.exit(1);
 });
 
@@ -8,7 +8,6 @@ process.on("unhandledRejection", (reason, promise) => {
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-// my name is ritesh
 
 // Imports
 const express = require("express");
@@ -21,6 +20,7 @@ const LocalStrategy = require("passport-local");
 const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
+const logger = require("./utils/logger");
 
 // Import routes
 const authRoutes = require("./routes/authRoutes");
@@ -44,15 +44,15 @@ const User = require("./models/user");
 
 // Express App Initialization
 const app = express();
+logger.info("Express app initialized");
 
 // Mongoose Connection
-// const MONGO_URL = process.env.MONGODB_URL;
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 mongoose
   .connect(MONGO_URL)
-  .then(() => console.log("Connected to DB"))
-  .catch((err) => console.error("Error connecting to MongoDB:", err));
+  .then(() => logger.info("Connected to MongoDB"))
+  .catch((err) => logger.error("Error connecting to MongoDB:", err));
 
 // Express Configuration
 app.engine("ejs", ejsMate);
@@ -63,6 +63,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
+logger.info("Express configured");
+
 // Session and Flash Configuration
 const store = MongoStore.create({
   mongoUrl: MONGO_URL,
@@ -71,7 +73,7 @@ const store = MongoStore.create({
 });
 
 store.on("error", (err) => {
-  console.log("Error in session store", err);
+  logger.error("Error in session store", err);
 });
 
 const sessionOption = {
@@ -89,6 +91,8 @@ const sessionOption = {
 app.use(session(sessionOption));
 app.use(flash());
 
+logger.info("Session and flash configured");
+
 // Passport Configuration
 app.use(passport.initialize());
 app.use(passport.session());
@@ -96,13 +100,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+logger.info("Passport configured");
+
 // Global Middleware for Flash Messages and Current User
 app.use((req, res, next) => {
-  // console.log("Current User in Middleware:", req.user); // Check if req.user is defined
+  logger.info("[Middleware] Setting flash messages and current user");
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
-  // console.log("res.locals.currUser in Middleware:", res.locals.currUser); // Check if res.locals.currUser is set
   next();
 });
 
@@ -122,18 +127,23 @@ app.use("/successes/:id/reviews", successReviewRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/notifications", notificationRoutes);
 
+logger.info("Routes configured");
+
 // Home Route
 app.get("/", (req, res) => {
+  logger.info("Rendering home page");
   res.render("home/fullpage.ejs", { cssFile: "landing/index.css" });
 });
 
 // Error Handling for Undefined Routes
 app.all("*", (req, res, next) => {
+  logger.warn("Undefined route: %s %s", req.method, req.originalUrl);
   next(new ExpressError(404, "Page Not Found!"));
 });
 
 // General Error Handler
 app.use((err, req, res, next) => {
+  logger.error("General error handler: %o", err);
   const { statusCode = 500, message = "Something went wrong" } = err;
   res.status(statusCode).render("error", { message });
 });
@@ -141,5 +151,5 @@ app.use((err, req, res, next) => {
 // Server Setup
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  logger.info(`Server is running on port ${PORT}`);
 });

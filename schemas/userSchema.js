@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const logger = require("../utils/logger"); // Ensure the path to your logger is correct
 
 // Define the schema
 module.exports.userSchema = Joi.object({
@@ -31,16 +32,22 @@ module.exports.userSchema = Joi.object({
   profilePicture: Joi.string().optional(),
 });
 
-// Debugging example
-const debugLog = (msg) => console.log(`DEBUG: ${msg}`);
-
+// Logging-based validation
 module.exports.validateUser = (data) => {
-  debugLog("Starting validation for user schema...");
+  logger.info("======= [SCHEMA: User] =======");
+  logger.info("[ACTION: Starting validation for User schema]");
+  logger.debug("Received data for validation: %o", data);
+
   const { error } = module.exports.userSchema.validate(data, { abortEarly: false });
+
   if (error) {
-    debugLog(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
-    throw new Error(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
+    const errorMessage = error.details.map(el => el.message).join(", ");
+    logger.error(`[VALIDATION ERROR] ${errorMessage}`);
+    throw new Error(`Validation error: ${errorMessage}`);
   }
-  debugLog("Validation passed successfully.");
+
+  logger.info("[Validation passed successfully]");
+  logger.info("======= [END OF ACTION: Validation for User schema] =======\n");
+
   return true;
 };

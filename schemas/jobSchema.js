@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const logger = require("../utils/logger"); // Ensure the path to your logger is correct
 
 // Define the schema
 module.exports.jobSchema = Joi.object({
@@ -14,16 +15,22 @@ module.exports.jobSchema = Joi.object({
   }).required(),
 });
 
-// Debugging example
-const debugLog = (msg) => console.log(`DEBUG: ${msg}`);
-
+// Logging-based validation
 module.exports.validateJob = (data) => {
-  debugLog("Starting validation for job schema...");
+  logger.info("======= [SCHEMA: Job] =======");
+  logger.info("[ACTION: Starting validation for Job schema]");
+  logger.debug("Received data for validation: %o", data);
+
   const { error } = module.exports.jobSchema.validate(data, { abortEarly: false });
+
   if (error) {
-    debugLog(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
-    throw new Error(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
+    const errorMessage = error.details.map(el => el.message).join(", ");
+    logger.error(`[VALIDATION ERROR] ${errorMessage}`);
+    throw new Error(`Validation error: ${errorMessage}`);
   }
-  debugLog("Validation passed successfully.");
+
+  logger.info("[Validation passed successfully]");
+  logger.info("======= [END OF ACTION: Validation for Job schema] =======\n");
+
   return true;
 };

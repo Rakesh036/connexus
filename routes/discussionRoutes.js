@@ -8,11 +8,17 @@ const { isDiscussionOwner, validateDiscussion } = require("../middlewares/discus
 // Route to list discussions and create a new discussion
 router
   .route("/")
-  .get(discussionController.index)
+  .get((req, res, next) => {
+    logger.info("======= [ROUTE: List Discussions] =======");
+    logger.info("[ACTION: Fetching List of Discussions]");
+    next();
+  }, discussionController.index)
   .post(
     isLoggedIn,
     (req, res, next) => {
-      logger.info(`User ${req.user._id} is creating a new discussion`);
+      logger.info("======= [ROUTE: Create Discussion] =======");
+      logger.info("[ACTION: Creating New Discussion]");
+      logger.info("User ID: %s is creating a new discussion", req.user._id);
       next();
     },
     validateDiscussion,
@@ -25,7 +31,9 @@ router
   .get(
     isLoggedIn,
     (req, res, next) => {
-      logger.info(`User ${req.user._id} is requesting the form to create a new discussion`);
+      logger.info("======= [ROUTE: New Discussion Form] =======");
+      logger.info("[ACTION: Requesting New Discussion Form]");
+      logger.info("User ID: %s is requesting the form to create a new discussion", req.user._id);
       next();
     },
     discussionController.new
@@ -36,7 +44,9 @@ router
   .route("/:id")
   .get(
     (req, res, next) => {
-      logger.info(`Fetching details for discussion ${req.params.id}`);
+      logger.info("======= [ROUTE: View Discussion] =======");
+      logger.info("[ACTION: Fetching Discussion Details]");
+      logger.info("Fetching details for discussion ID: %s", req.params.id);
       next();
     },
     discussionController.show
@@ -44,7 +54,9 @@ router
   .put(
     isLoggedIn,
     (req, res, next) => {
-      logger.info(`User ${req.user._id} is attempting to update discussion ${req.params.id}`);
+      logger.info("======= [ROUTE: Update Discussion] =======");
+      logger.info("[ACTION: Attempting to Update Discussion]");
+      logger.info("User ID: %s is attempting to update discussion ID: %s", req.user._id, req.params.id);
       next();
     },
     isDiscussionOwner,
@@ -54,7 +66,9 @@ router
   .delete(
     isLoggedIn,
     (req, res, next) => {
-      logger.info(`User ${req.user._id} is attempting to delete discussion ${req.params.id}`);
+      logger.info("======= [ROUTE: Delete Discussion] =======");
+      logger.info("[ACTION: Attempting to Delete Discussion]");
+      logger.info("User ID: %s is attempting to delete discussion ID: %s", req.user._id, req.params.id);
       next();
     },
     isDiscussionOwner,
@@ -67,7 +81,9 @@ router
   .get(
     isLoggedIn,
     (req, res, next) => {
-      logger.info(`User ${req.user._id} is requesting the form to edit discussion ${req.params.id}`);
+      logger.info("======= [ROUTE: Edit Discussion Form] =======");
+      logger.info("[ACTION: Requesting Edit Discussion Form]");
+      logger.info("User ID: %s is requesting the form to edit discussion ID: %s", req.user._id, req.params.id);
       next();
     },
     isDiscussionOwner,
@@ -80,7 +96,9 @@ router
   .get(
     isLoggedIn,
     (req, res, next) => {
-      logger.info(`User ${req.user._id} is liking discussion ${req.params.id}`);
+      logger.info("======= [ROUTE: Like Discussion] =======");
+      logger.info("[ACTION: Liking Discussion]");
+      logger.info("User ID: %s is liking discussion ID: %s", req.user._id, req.params.id);
       next();
     },
     discussionController.like
@@ -91,7 +109,9 @@ router
   .get(
     isLoggedIn,
     (req, res, next) => {
-      logger.info(`User ${req.user._id} is commenting on discussion ${req.params.id}`);
+      logger.info("======= [ROUTE: Comment on Discussion] =======");
+      logger.info("[ACTION: Commenting on Discussion]");
+      logger.info("User ID: %s is commenting on discussion ID: %s", req.user._id, req.params.id);
       next();
     },
     discussionController.comment
@@ -102,7 +122,9 @@ router
   .get(
     isLoggedIn,
     (req, res, next) => {
-      logger.info(`User ${req.user._id} is reporting discussion ${req.params.id}`);
+      logger.info("======= [ROUTE: Report Discussion] =======");
+      logger.info("[ACTION: Reporting Discussion]");
+      logger.info("User ID: %s is reporting discussion ID: %s", req.user._id, req.params.id);
       next();
     },
     discussionController.report

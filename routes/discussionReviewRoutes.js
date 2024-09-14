@@ -11,10 +11,16 @@ router
   .post(
     isLoggedIn,
     (req, res, next) => {
-      logger.info(`User ${req.user._id} is attempting to create a discussion review for discussion ${req.params.id}`);
+      logger.info("======= [ROUTE: Create Discussion Review] =======");
+      logger.info("[ACTION: Creating Discussion Review]");
+      logger.info("User ID: %s is attempting to create a discussion review for discussion ID: %s", req.user._id, req.params.id);
       next();
     },
     validateDiscussionReview,
+    (req, res, next) => {
+      logger.debug("Discussion review validation completed. Proceeding to controller.");
+      next();
+    },
     discussionReviewController.create
   );
 
@@ -24,10 +30,16 @@ router
   .delete(
     isLoggedIn,
     (req, res, next) => {
-      logger.info(`User ${req.user._id} is attempting to delete discussion review ${req.params.reviewId}`);
+      logger.info("======= [ROUTE: Delete Discussion Review] =======");
+      logger.info("[ACTION: Deleting Discussion Review]");
+      logger.info("User ID: %s is attempting to delete discussion review ID: %s", req.user._id, req.params.reviewId);
       next();
     },
     isDiscussionReviewAuthor,
+    (req, res, next) => {
+      logger.debug("Discussion review author validation completed. Proceeding to controller.");
+      next();
+    },
     discussionReviewController.delete
   );
 
