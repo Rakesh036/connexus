@@ -8,7 +8,7 @@ const successReviewSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now, // Use Date.now instead of Date.now()
+    default: Date.now, // Ensure Date.now is a function reference
   },
   author: {
     type: Schema.Types.ObjectId,

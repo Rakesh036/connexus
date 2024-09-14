@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Payment = require("../models/payment");
 const Donation = require("../models/donation");
 const User = require("../models/user");
+const logger = require("../utils/logger"); // Import logger
 
 const paymentData = [
   {
@@ -34,7 +35,7 @@ async function paymentSeeder() {
   try {
     // Clear existing payments
     await Payment.deleteMany({});
-    console.log("Existing payments cleared.");
+    logger.info("Existing payments cleared.");
 
     // Fetch all donations
     const donations = await Donation.find({});
@@ -49,12 +50,12 @@ async function paymentSeeder() {
 
       // Create the payment
       await Payment.create(payment);
-      console.log(`Payment for donation "${payment.donationTitle}" added.`);
+      logger.info(`Payment for donation "${payment.donationTitle}" added.`);
     }
 
-    console.log("Payment data seeded successfully!");
+    logger.info("Payment data seeded successfully!");
   } catch (error) {
-    console.error("Error seeding payment data:", error);
+    logger.error("Error seeding payment data:", error);
   }
 }
 

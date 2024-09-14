@@ -5,7 +5,7 @@ const logger = require("../utils/logger"); // Ensure the path to your logger is 
 module.exports.paymentSchema = Joi.object({
   fullName: Joi.string().required(),
   email: Joi.string().email().optional(),
-  eventTitle: Joi.string().optional(),
+  donationTitle: Joi.string().optional(), // Changed from eventTitle for consistency
   amount: Joi.number().positive().required(),
   paymentMethod: Joi.string()
     .valid("UPI", "Credit Card", "Debit Card")

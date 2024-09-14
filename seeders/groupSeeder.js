@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
-const Group = require("../models/group");
-const User = require("../models/user");
+const mongoose = require('mongoose');
+const Group = require('../models/group');
+const User = require('../models/user');
+const logger = require('../utils/logger'); // Import logger
 
 const groupData = [
   {
@@ -38,13 +39,21 @@ async function groupSeeder() {
   try {
     // Clear existing groups
     await Group.deleteMany({});
-    console.log("Existing groups cleared.");
+    logger.info("Existing groups cleared.");
 
     // Fetch all user IDs
     const users = await User.find({});
     const userIds = users.map(user => user._id);
 
     for (const group of groupData) {
+      // Validate the group data
+      try {
+        await validateGroup(group);
+      } catch (validationError) {
+        logger.error(`Failed to validate group: ${validationError.message}`);
+        continue; // Skip this group and move to the next one
+      }
+
       // Pick a random owner ID
       const ownerId = userIds[Math.floor(Math.random() * userIds.length)];
 
@@ -61,12 +70,12 @@ async function groupSeeder() {
         members: randomMembers,
         memberCount: randomMembers.length + 1, // Include the owner in the count
       });
-      console.log(`Group "${newGroup.name}" added.`);
+      logger.info(`Group "${newGroup.name}" added.`);
     }
 
-    console.log("Group data seeded successfully!");
+    logger.info("Group data seeded successfully!");
   } catch (error) {
-    console.error("Error seeding group data:", error);
+    logger.error("Error seeding group data:", error);
   }
 }
 

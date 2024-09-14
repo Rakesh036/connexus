@@ -129,24 +129,25 @@ userSchema.plugin(passportLocalMongoose);
 
 // Middleware to handle user-related data deletion
 userSchema.pre("remove", async function (next) {
-  const userId = this._id;
+  try {
+    const userId = this._id;
 
-  // Remove all user-related references
-  await mongoose.model("Job").deleteMany({ owner: userId });
-  await mongoose.model("Discussion").deleteMany({ owner: userId });
-  await mongoose.model("Event").deleteMany({ organiser: userId });
+    await mongoose.model("Job").deleteMany({ owner: userId });
+    await mongoose.model("Discussion").deleteMany({ owner: userId });
+    await mongoose.model("Event").deleteMany({ organiser: userId });
 
-  // Remove the user from group memberships and quiz participation
-  await mongoose.model("Group").updateMany({}, { $pull: { members: userId } });
-  await mongoose.model("Quiz").updateMany({}, { $pull: { participants: userId } });
+    await mongoose.model("Group").updateMany({}, { $pull: { members: userId } });
+    await mongoose.model("Quiz").updateMany({}, { $pull: { participants: userId } });
 
-  // Handle donations: Replace user reference with "anonymous user"
-  const anonymousUser = await mongoose.model("User").findOne({ username: "anonymous user" });
-  if (anonymousUser) {
-    await mongoose.model("Donation").updateMany({ owner: userId }, { owner: anonymousUser._id });
+    const anonymousUser = await mongoose.model("User").findOne({ username: "anonymous user" });
+    if (anonymousUser) {
+      await mongoose.model("Donation").updateMany({ owner: userId }, { owner: anonymousUser._id });
+    }
+
+    next();
+  } catch (error) {
+    next(error);
   }
-
-  next();
 });
 
 module.exports = mongoose.model("User", userSchema);

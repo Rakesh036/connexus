@@ -1,6 +1,8 @@
-const mongoose = require("mongoose");
-const Discussion = require("../models/discussion");
-const User = require("../models/user");
+const mongoose = require('mongoose');
+const Discussion = require('../models/discussion');
+const User = require('../models/user');
+const { validateDiscussion } = require('../utils/validation'); // Import the validation function
+const logger = require('../utils/logger'); // Import the logger
 
 const discussionData = [
   {
@@ -35,24 +37,32 @@ async function discussionSeeder() {
   try {
     // Clear existing discussions
     await Discussion.deleteMany({});
-    console.log("Existing discussions cleared.");
+    logger.info("Existing discussions cleared.");
 
     // Fetch all user IDs
     const users = await User.find({});
     const userIds = users.map(user => user._id);
 
     for (const discussion of discussionData) {
+      // Validate the discussion data
+      try {
+        validateDiscussion(discussion);
+      } catch (validationError) {
+        logger.error(`Failed to validate discussion: ${validationError.message}`);
+        continue; // Skip this entry and move to the next one
+      }
+
       // Assign a random user as the owner of the discussion
       discussion.owner = userIds[Math.floor(Math.random() * userIds.length)];
 
       // Create the discussion
       const newDiscussion = await Discussion.create(discussion);
-      console.log(`Discussion "${discussion.title}" added.`);
+      logger.info(`Discussion "${discussion.title}" added.`);
     }
 
-    console.log("Discussion data seeded successfully!");
+    logger.info("Discussion data seeded successfully!");
   } catch (error) {
-    console.error("Error seeding discussion data:", error);
+    logger.error("Error seeding discussion data:", error);
   }
 }
 

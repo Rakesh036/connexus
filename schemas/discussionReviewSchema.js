@@ -1,10 +1,9 @@
-const Joi = require("joi");
-const logger = require("../utils/logger"); // Import logger
+const Joi = require('joi');
+const logger = require('../utils/logger'); // Import logger
 
+// Define the schema
 module.exports.discussionReviewSchema = Joi.object({
-  discussionReview: Joi.object({
-    comment: Joi.string().required(),
-  }).required(),
+  comment: Joi.string().required(),
 });
 
 // Logging schema validation

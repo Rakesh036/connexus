@@ -113,7 +113,7 @@ async function quizSeeder() {
 
     // Fetch all groups with their owners
     const groups = await Group.find({}).populate("owner");
-    
+
     if (groups.length === 0) {
       console.log("No groups found to assign quizzes to.");
       return;

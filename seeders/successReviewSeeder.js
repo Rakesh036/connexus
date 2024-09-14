@@ -28,6 +28,11 @@ async function successReviewSeeder() {
     const successIds = successStories.map(success => success._id);
     const userIds = users.map(user => user._id);
 
+    if (successIds.length === 0 || userIds.length === 0) {
+      console.log("No success stories or users found.");
+      return;
+    }
+
     for (const review of successReviewData) {
       // Pick a random success story ID for the review
       review.success = successIds[Math.floor(Math.random() * successIds.length)];

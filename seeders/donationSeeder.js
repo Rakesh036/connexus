@@ -1,7 +1,8 @@
-const mongoose = require("mongoose");
-const Donation = require("../models/donation");
-const User = require("../models/user");
-const Notification = require("../models/notification");
+const mongoose = require('mongoose');
+const Donation = require('../models/donation');
+const User = require('../models/user');
+const { validateDonation } = require('../utils/validation'); // Import validation function
+const logger = require('../utils/logger'); // Import logger
 
 const donationData = [
   {
@@ -36,28 +37,36 @@ async function donationSeeder() {
   try {
     // Clear existing donations
     await Donation.deleteMany({});
-    console.log("Existing donations cleared.");
+    logger.info("Existing donations cleared.");
 
     // Fetch all user IDs
     const users = await User.find({});
     const userIds = users.map(user => user._id);
 
     for (const donation of donationData) {
+      // Validate the donation data
+      try {
+        validateDonation(donation);
+      } catch (validationError) {
+        logger.error(`Failed to validate donation: ${validationError.message}`);
+        continue; // Skip this donation and move to the next one
+      }
+
       // Pick a random user ID
       donation.owner = userIds[Math.floor(Math.random() * userIds.length)];
 
       // Create the donation
       const newDonation = await Donation.create(donation);
-      console.log(`Donation "${donation.title}" added.`);
+      logger.info(`Donation "${donation.title}" added.`);
 
       // Update the user's donations array
       await User.findByIdAndUpdate(donation.owner, { $push: { donations: newDonation._id } });
-      console.log(`User "${donation.owner}" updated with new donation.`);
+      logger.info(`User "${donation.owner}" updated with new donation.`);
     }
 
-    console.log("Donation data seeded successfully!");
+    logger.info("Donation data seeded successfully!");
   } catch (error) {
-    console.error("Error seeding donation data:", error);
+    logger.error("Error seeding donation data:", error);
   }
 }
 

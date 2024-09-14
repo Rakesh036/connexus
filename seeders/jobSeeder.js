@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Job = require("../models/job");
 const User = require("../models/user");
+const logger = require("../utils/logger"); // Import logger
 
 const jobData = [
   {
@@ -34,26 +35,32 @@ async function jobSeeder() {
   try {
     // Clear existing jobs
     await Job.deleteMany({});
-    console.log("Existing jobs cleared.");
+    logger.info("Existing jobs cleared.");
 
     // Fetch all user IDs
     const users = await User.find({});
     const userIds = users.map(user => user._id);
 
     for (const job of jobData) {
+      // Validate the job data
+      try {
+        await validateJob(job);
+      } catch (validationError) {
+        logger.error(`Failed to validate job: ${validationError.message}`);
+        continue; // Skip this job and move to the next one
+      }
+
       // Pick a random user ID for the job owner
       job.owner = userIds[Math.floor(Math.random() * userIds.length)];
 
       // Create the job
       const newJob = await Job.create(job);
-      console.log(`Job "${job.title}" added.`);
-
-      // Optionally, add logic to automatically seed reviews, likes, or reports if needed
+      logger.info(`Job "${job.title}" added.`);
     }
 
-    console.log("Job data seeded successfully!");
+    logger.info("Job data seeded successfully!");
   } catch (error) {
-    console.error("Error seeding job data:", error);
+    logger.error("Error seeding job data:", error);
   }
 }
 

@@ -45,7 +45,7 @@ const paymentSchema = new Schema(
       type: String,
       validate: {
         validator: function (v) {
-          return this.paymentMethod === "Credit Card" || this.paymentMethod === "Debit Card" ? !!v && v.length === 4 : true;
+          return this.paymentMethod === "Credit Card" || this.paymentMethod === "Debit Card" ? (!!v && v.length === 4) : true;
         },
         message: "Store only the last 4 digits of the card number.",
       },
