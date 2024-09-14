@@ -3,11 +3,11 @@ const wrapAsync = require("../utils/wrapAsync");
 
 module.exports.index = wrapAsync(async (req, res) => {
   const jobs = await Job.find({}).populate("likes").populate("reports");
-  res.render("jobs/index", { jobs, cssFile: "jobIndex.css" });
+  res.render("jobs/index", { jobs, cssFile: "job/jobIndex.css" });
 });
 
 module.exports.renderNewForm = (req, res) => {
-  res.render("jobs/new", { cssFile: "jobNew.css" });
+  res.render("jobs/new", { cssFile: "job/jobNew.css" });
 };
 
 module.exports.create = wrapAsync(async (req, res) => {
@@ -42,7 +42,7 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
     return res.redirect("/jobs");
   }
 
-  res.render("jobs/edit", { job, cssFile: "jobEdit.css" });
+  res.render("jobs/edit", { job, cssFile: "job/jobEdit.css" });
 });
 
 module.exports.update = wrapAsync(async (req, res) => {

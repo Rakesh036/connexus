@@ -65,7 +65,7 @@ app.use(methodOverride("_method"));
 // Session and Flash Configuration
 const store = MongoStore.create({
   mongoUrl: MONGO_URL,
-  secret: process.env.SECRET,
+  secret: "fdfhgjgjkgjh",
   touchAfter: 24 * 3600,
 });
 
@@ -75,7 +75,7 @@ store.on("error", (err) => {
 
 const sessionOption = {
   store,
-  secret: process.env.SECRET,
+  secret:"fdfhgjgjkgjh",
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -123,8 +123,7 @@ app.use("/notifications", notificationRoutes);
 
 // Home Route
 app.get("/", (req, res) => {
-  console.log("Rendering home page");
-  res.render("home/fullpage",{cssFile:"landing/index.css"});
+  res.render("home/fullpage.ejs",{cssFile:"landing/index.css"});
 });
 
 // Error Handling for Undefined Routes

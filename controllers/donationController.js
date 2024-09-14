@@ -18,7 +18,7 @@ module.exports.index = wrapAsync(async (req, res) => {
 
     res.render("donations/index.ejs", {
       donations,
-      cssFile: "donateIndex.css",
+      cssFile: "donate/donateIndex.css",
     });
   } catch (err) {
     console.error(err);
@@ -28,7 +28,7 @@ module.exports.index = wrapAsync(async (req, res) => {
 });
 
 module.exports.renderNewForm = (req, res) => {
-  res.render("donations/new.ejs", { cssFile: "donateNew.css" });
+  res.render("donations/new.ejs", { cssFile: "donate/donateNew.css" });
 };
 
 module.exports.create = wrapAsync(async (req, res) => {
@@ -57,7 +57,10 @@ module.exports.show = wrapAsync(async (req, res) => {
     return res.redirect("/donations");
   }
 
-  res.render("donations/show.ejs", { donation, cssFile: "donateShow.css" });
+  res.render("donations/show.ejs", {
+    donation,
+    cssFile: "donate/donateShow.css",
+  });
 });
 
 module.exports.renderEditForm = wrapAsync(async (req, res) => {
@@ -66,7 +69,10 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
     req.flash("error", "Donation not found.");
     return res.redirect("/donations");
   }
-  res.render("donations/edit.ejs", { donation, cssFile: "donateEdit.css" });
+  res.render("donations/edit.ejs", {
+    donation,
+    cssFile: "donate/donateEdit.css",
+  });
 });
 
 module.exports.update = wrapAsync(async (req, res) => {
