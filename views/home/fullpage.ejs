@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Connexus</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <% if (typeof cssFile !== 'undefined' && cssFile) { %>
-  <link rel="stylesheet" href="/css/<%= cssFile %>">
-  <% } %>
-</head>
-<body>
-  <%- include('../includes/navbar.ejs') %>
+<%- layout("/layouts/boilerplate") -%>
+<div>
+  <!-- Hero Section -->
   <div class="page1hero">
     <section class="hero">
       <div class="hero-content">
@@ -37,8 +27,9 @@
     </div>
   </div>
 
+  <!-- Challenges Section -->
   <section class="challenges-section">
-    <div class="container">
+    <div>
       <h2 class="main-title">Challenges Faced by Alumni Associations</h2>
       <div class="challenges-grid">
         <div class="challenge-item">
@@ -58,8 +49,9 @@
     </div>
   </section>
 
+  <!-- How It Works Section -->
   <section class="how-it-works">
-    <div class="container">
+    <div>
       <h2>How It Works</h2>
       <div class="steps-container">
         <div class="steps">
@@ -86,8 +78,10 @@
           </div>
           <div class="step">
             <div class="step-number">4</div>
-            <h3>Grow</h3>
-            <p>Leverage networking opportunities for career advancement.</p>
+            <div class="step-content">
+              <h3>Grow</h3>
+              <p>Leverage networking opportunities for career advancement.</p>
+            </div>
           </div>
         </div>
         <div class="steps-image">
@@ -97,8 +91,9 @@
     </div>
   </section>
 
+  <!-- Features Section -->
   <section class="features-section">
-    <div class="features-container">
+    <div>
       <div class="features-header">
         <h2>Empowering Alumni Connections</h2>
         <p>Our platform provides the tools you need to stay connected and engaged.</p>
@@ -131,10 +126,46 @@
             <p>Contribute to your college's growth with our secure donation portal.</p>
           </div>
         </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <img src="/images/global_conn2.png" alt="Global Connections icon" />
+          </div>
+          <div class="feature-content">
+            <h3>Global Connections</h3>
+            <p>Connect with alumni based on shared interests and locations.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <img src="/images/track_achievement2.png" alt="Track Achievements icon" />
+          </div>
+          <div class="feature-content">
+            <h3>Track Achievements</h3>
+            <p>Keep track of alumni achievements and milestones.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <img src="/images/Mentorship2.png" alt="Mentorship icon" />
+          </div>
+          <div class="feature-content">
+            <h3>Mentorship Opportunities</h3>
+            <p>Find mentors or become one to guide fellow alumni.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <%- include('../includes/footer.ejs') %>
-</body>
-</html>
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div>
+      <h2>You're still here!</h2>
+      <p class="quote">
+        "Don't let your alumni network become a thing of the past. Start connecting with your peers today and join our
+        dynamic alumni community!"
+      </p>
+      <a href="#" class="cta-button">Get started</a>
+    </div>
+  </section>
+</div>
