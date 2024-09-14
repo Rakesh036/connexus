@@ -1,3 +1,6 @@
 {
-  "recommendations": ["seangilbertson.auto-collapse-folders"]
+  "recommendations": [
+    "seangilbertson.auto-collapse-folders",
+    "mhutchie.git-graph"
+  ]
 }
