@@ -2,34 +2,3 @@
 2024-09-14T10:05:08.334Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
 2024-09-14T10:05:08.346Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
 
-2024-09-14T11:35:11.487Z [undefined] [32minfo[39m: User logging out
-2024-09-14T11:35:11.489Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
-2024-09-14T11:35:11.489Z [undefined] [32minfo[39m: [ACTION: Logout User]
-2024-09-14T11:35:11.489Z [undefined] [32minfo[39m: ======= [END OF ACTION: Logout User] =======
-
-2024-09-14T11:35:11.508Z [undefined] [32minfo[39m: User logged out successfully.
-2024-09-14T11:35:13.023Z [undefined] [32minfo[39m: Rendering login form
-2024-09-14T11:35:13.024Z [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
-2024-09-14T11:35:13.024Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
-2024-09-14T11:35:13.029Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
-
-2024-09-14T11:35:17.260Z [undefined] [32minfo[39m: Processing login form submission
-2024-09-14T11:35:17.433Z [undefined] [32minfo[39m: Redirecting to: /
-2024-09-14T11:35:56.711Z [undefined] [32minfo[39m: Fetching all jobs...
-2024-09-14T11:35:56.749Z [undefined] [32minfo[39m: Found 21 jobs.
-2024-09-14T11:35:59.492Z [undefined] [32minfo[39m: User 66db707330ffb6fc07fe58e1 attempting to like job with ID: 66e4f71c8d15ac2942ce4f5f
-2024-09-14T11:35:59.506Z [undefined] [32minfo[39m: User unliked the job:
-2024-09-14T11:35:59.514Z [undefined] [32minfo[39m: Fetching all jobs...
-2024-09-14T11:35:59.522Z [undefined] [32minfo[39m: Found 21 jobs.
-2024-09-14T11:36:01.789Z [undefined] [32minfo[39m: User 66db707330ffb6fc07fe58e1 attempting to report job with ID: 66e4f71c8d15ac2942ce4f5f
-2024-09-14T11:36:01.794Z [undefined] [32minfo[39m: User removed report from job:
-2024-09-14T11:36:01.801Z [undefined] [32minfo[39m: Fetching all jobs...
-2024-09-14T11:36:01.809Z [undefined] [32minfo[39m: Found 21 jobs.
-2024-09-14T11:36:29.307Z [undefined] [32minfo[39m: Fetching job with ID: 66e4f71c8d15ac2942ce4f5f
-2024-09-14T11:36:29.313Z [undefined] [32minfo[39m: Job found:
-2024-09-14T11:37:02.375Z [undefined] [32minfo[39m: Fetching all jobs...
-2024-09-14T11:37:02.387Z [undefined] [32minfo[39m: Found 21 jobs.
-2024-09-14T11:37:04.518Z [undefined] [32minfo[39m: Fetching donations...
-2024-09-14T11:37:04.530Z [undefined] [32minfo[39m: Found 18 donations.
-2024-09-14T11:37:23.925Z [undefined] [32minfo[39m: Fetching donation with ID: 66e51ae798b4606f56fbd7ae
-2024-09-14T11:37:23.931Z [undefined] [32minfo[39m: Donation found:

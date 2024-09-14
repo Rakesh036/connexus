@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\SIH integration\\connexus\\logs\\.b6cb58b341642cebb6a2edf2be6460bbc94dcafa-audit.json",
+    "files": [
+        {
+            "date": 1726312746433,
+            "name": "D:\\SIH integration\\connexus\\logs\\application-2024-09-14.log",
+            "hash": "8b438400acb14f75d3d0e87e3dfad44b7b664da2c046dfcc931e42ecd813bd16"
+        }
+    ],
+    "hashType": "sha256"
+}

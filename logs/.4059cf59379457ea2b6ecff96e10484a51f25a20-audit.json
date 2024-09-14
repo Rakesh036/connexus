@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "E:\\SIH github\\connexus\\logs\\.4059cf59379457ea2b6ecff96e10484a51f25a20-audit.json",
+    "files": [
+        {
+            "date": 1726317114687,
+            "name": "E:\\SIH github\\connexus\\logs\\application-2024-09-14.log",
+            "hash": "4738a9b3aee3a8c2ad024d11c3c231f24045d8132084bc63e812ba4593a94b02"
+        }
+    ],
+    "hashType": "sha256"
+}

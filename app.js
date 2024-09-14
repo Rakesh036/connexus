@@ -8,6 +8,7 @@ process.on("unhandledRejection", (reason, promise) => {
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
+// my name is ritesh
 
 // Imports
 const express = require("express");
@@ -75,7 +76,7 @@ store.on("error", (err) => {
 
 const sessionOption = {
   store,
-  secret:"fdfhgjgjkgjh",
+  secret: "fdfhgjgjkgjh",
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -123,7 +124,7 @@ app.use("/notifications", notificationRoutes);
 
 // Home Route
 app.get("/", (req, res) => {
-  res.render("home/fullpage.ejs",{cssFile:"landing/index.css"});
+  res.render("home/fullpage.ejs", { cssFile: "landing/index.css" });
 });
 
 // Error Handling for Undefined Routes
