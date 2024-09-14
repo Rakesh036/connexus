@@ -2,6 +2,7 @@ const Payment = require("../models/payment");
 const Donation = require("../models/donation");
 const User = require("../models/user");
 const Notification = require("../models/notification");
+const logger = require("../utils/logger");
 
 module.exports.renderPaymentForm = (req, res) => {
   const { donationId } = req.params;
@@ -23,6 +24,7 @@ module.exports.processPayment = async (req, res) => {
   const { donationId } = req.params;
 
   if (!donationId) {
+    logger.error("Donation ID is missing.");
     req.flash("error", "Donation ID is missing.");
     return res.redirect("/donations");
   }
@@ -30,6 +32,8 @@ module.exports.processPayment = async (req, res) => {
   const donorId = req.user._id;
 
   try {
+    logger.info("Processing payment for donation ID:", donationId);
+
     const payment = new Payment({
       fullName,
       email,
@@ -44,6 +48,7 @@ module.exports.processPayment = async (req, res) => {
     });
 
     await payment.save();
+    logger.info("Payment saved successfully with ID:", payment._id);
 
     await Donation.findByIdAndUpdate(donationId, {
       $push: { payments: payment._id },
@@ -68,10 +73,12 @@ module.exports.processPayment = async (req, res) => {
       link: `/donations/${donationId}`,
     });
 
+    logger.info("Notifications created for donation ID:", donationId);
+
     req.flash("success", `Payment successful! Transaction ID: ${payment._id}`);
     res.redirect(`/donations/${donationId}`);
   } catch (error) {
-    console.error(error);
+    logger.error("Error processing payment:", error);
     req.flash("error", "Error processing payment.");
     res.redirect(`/donations/${donationId}`);
   }

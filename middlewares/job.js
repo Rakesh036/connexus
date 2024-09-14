@@ -3,54 +3,96 @@ const { jobSchema } = require("../schemas/jobSchema");
 const JobReview = require("../models/jobReview");
 const { jobReviewSchema } = require("../schemas/jobReviewSchema");
 const ExpressError = require("../utils/expressError");
+const logger = require("../utils/logger"); // Import the logger
 
 module.exports.isJobOwner = async (req, res, next) => {
   const { id } = req.params;
   try {
+    logger.info(`Checking ownership for job ID: ${id}`);
+
     const job = await Job.findById(id).populate("owner");
+
     if (!job) {
+      logger.warn(`Job with ID: ${id} not found`);
       req.flash("error", "Job not found!");
       return res.redirect("/jobs");
     }
+
+    logger.info(`Job owner ID: ${job.owner._id}, Logged-in user ID: ${res.locals.currUser._id}`);
+
     if (!job.owner._id.equals(res.locals.currUser._id)) {
+      logger.warn("Ownership mismatch. User is not authorized.");
       req.flash("error", "You don't have permission");
       return res.redirect(`/jobs/${id}`);
     }
+
+    logger.info("Ownership confirmed. Proceeding to the next middleware.");
     next();
   } catch (e) {
+    logger.error(`Error in isJobOwner middleware: ${e.message}`);
     next(e);
   }
 };
 
 module.exports.validateJob = (req, res, next) => {
-  const { error } = jobSchema.validate(req.body);
-  if (error) {
-    const errMsg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(400, errMsg);
+  try {
+    logger.info("Validating job schema...");
+    logger.debug(`Request body: ${JSON.stringify(req.body)}`);
+
+    const { error } = jobSchema.validate(req.body);
+
+    if (error) {
+      const errMsg = error.details.map((el) => el.message).join(",");
+      logger.error(`Validation error: ${errMsg}`);
+      throw new ExpressError(400, errMsg);
+    }
+
+    logger.info("Job schema validation passed. Proceeding to the next middleware.");
+    next();
+  } catch (e) {
+    logger.error(`Error in validateJob middleware: ${e.message}`);
+    next(e);
   }
-  next();
 };
 
 module.exports.validateJobReview = (req, res, next) => {
-  // console.log("validateJobReview me schema validate hone wala h: req.body:  ", req.body);
-  
-  const { error } = jobReviewSchema.validate(req.body);
-  if (error) {
-    // console.log("validateJobReview me schema validate hogya error:  ", error);
-    const errMsg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(400, errMsg);
-  }
-  // console.log("validateJobReview me schema validate ho gya");
-  next();
-};
+  try {
+    logger.info("Validating job review schema...");
+    logger.debug(`Request body: ${JSON.stringify(req.body)}`);
 
+    const { error } = jobReviewSchema.validate(req.body);
+
+    if (error) {
+      const errMsg = error.details.map((el) => el.message).join(",");
+      logger.error(`Validation error: ${errMsg}`);
+      throw new ExpressError(400, errMsg);
+    }
+
+    logger.info("Job review schema validation passed. Proceeding to the next middleware.");
+    next();
+  } catch (e) {
+    logger.error(`Error in validateJobReview middleware: ${e.message}`);
+    next(e);
+  }
+};
 
 module.exports.isJobReviewAuthor = async (req, res, next) => {
   const { id, reviewId } = req.params;
-  const jobReview = await JobReview.findById(reviewId);
-  if (!jobReview.author.equals(res.locals.currUser._id)) {
-    req.flash("error", "You don't have permission");
-    return res.redirect(`/jobs/${id}`);
+  try {
+    logger.info(`Checking review author for review ID: ${reviewId} in job ID: ${id}`);
+
+    const jobReview = await JobReview.findById(reviewId);
+
+    if (!jobReview.author.equals(res.locals.currUser._id)) {
+      logger.warn("Review author mismatch. User is not authorized.");
+      req.flash("error", "You don't have permission");
+      return res.redirect(`/jobs/${id}`);
+    }
+
+    logger.info("Review author confirmed. Proceeding to the next middleware.");
+    next();
+  } catch (e) {
+    logger.error(`Error in isJobReviewAuthor middleware: ${e.message}`);
+    next(e);
   }
-  next();
 };

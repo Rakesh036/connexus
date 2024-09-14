@@ -1,33 +1,34 @@
-const  Donation = require("../models/donation");
+const Donation = require("../models/donation");
 const { donationSchema } = require("../schemas/donationSchema");
 const ExpressError = require("../utils/expressError");
+const logger = require("../utils/logger"); // Import the logger
 
 // Middleware to check if the logged-in user is the owner of the donation
 module.exports.isDonationOwner = async (req, res, next) => {
   try {
     const { id } = req.params;
-    console.log(`Checking ownership for donation ID: ${id}`); // Debugging line
+    logger.info(`Checking ownership for donation ID: ${id}`);
 
     const donation = await Donation.findById(id);
     
     if (!donation) {
-      console.log(`Donation with ID: ${id} not found`); // Debugging line
+      logger.warn(`Donation with ID: ${id} not found`);
       req.flash("error", "Donation not found.");
       return res.redirect("/donations");
     }
 
-    console.log(`Donation owner ID: ${donation.owner}, Logged-in user ID: ${req.user._id}`); // Debugging line
+    logger.info(`Donation owner ID: ${donation.owner}, Logged-in user ID: ${req.user._id}`);
 
     if (!donation.owner.equals(req.user._id)) {
-      console.log("Ownership mismatch. User is not authorized."); // Debugging line
+      logger.warn("Ownership mismatch. User is not authorized.");
       req.flash("error", "You do not have permission to modify this donation.");
       return res.redirect(`/donations/${id}`);
     }
 
-    console.log("Ownership confirmed. Proceeding to the next middleware."); // Debugging line
+    logger.info("Ownership confirmed. Proceeding to the next middleware.");
     next();
   } catch (err) {
-    console.log("Error in isDonationOwner middleware:", err); // Debugging line
+    logger.error(`Error in isDonationOwner middleware: ${err.message}`);
     next(err);
   }
 };
@@ -35,23 +36,25 @@ module.exports.isDonationOwner = async (req, res, next) => {
 // Middleware to validate donation schema
 module.exports.validateDonation = (req, res, next) => {
   try {
-    console.log("Validating donation schema..."); // Debugging line
-    console.log("before i use === to set true false from string to boolean req.body:", req.body); // Debugging line
+    logger.info("Validating donation schema...");
+    logger.debug(`Request body before conversion: ${JSON.stringify(req.body)}`);
+
     // Convert isEmergency to a boolean
     req.body.donation.isEmergency = req.body.donation.isEmergency === 'true';
-    console.log("after that set === req.body:", req.body); // Debugging line
+    logger.debug(`Request body after conversion: ${JSON.stringify(req.body)}`);
+
     const { error } = donationSchema.validate(req.body);
 
     if (error) {
       const msg = error.details.map((el) => el.message).join(",");
-      console.log(`Validation error: ${msg}`); // Debugging line
+      logger.error(`Validation error: ${msg}`);
       throw new ExpressError(msg, 400);
     }
 
-    console.log("Donation schema validation passed. Proceeding to the next middleware."); // Debugging line
+    logger.info("Donation schema validation passed. Proceeding to the next middleware.");
     next();
   } catch (err) {
-    console.log("Error in validateDonation middleware:", err); // Debugging line
+    logger.error(`Error in validateDonation middleware: ${err.message}`);
     next(err);
   }
 };
