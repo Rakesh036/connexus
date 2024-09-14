@@ -7,7 +7,9 @@ const { isLoggedIn } = require("../middlewares/auth");
 
 // Route to get notifications
 router.get("/", isLoggedIn, (req, res, next) => {
-    logger.info(`User ${req.user._id} is requesting notifications`);
+    logger.info("======= [ROUTE: Get Notifications] =======");
+    logger.info("[ACTION: Requesting Notifications]");
+    logger.info("User ID: %s is requesting notifications", req.user._id);
     next();
 }, notificationController.getNotifications);
 

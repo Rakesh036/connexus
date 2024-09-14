@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const logger = require("../utils/logger"); // Importing your custom logger
 
 // Define the schema
 module.exports.discussionSchema = Joi.object({
@@ -9,16 +10,22 @@ module.exports.discussionSchema = Joi.object({
   }).required(),
 });
 
-// Debugging example
-const debugLog = (msg) => console.log(`DEBUG: ${msg}`);
-
+// Logging example
 module.exports.validateDiscussion = (data) => {
-  debugLog("Starting validation for discussion schema...");
+  logger.info("======= [SCHEMA: Discussion] =======");
+  logger.info("[ACTION: Starting validation for Discussion schema]");
+  logger.debug("Received data for validation: %o", data);
+
   const { error } = module.exports.discussionSchema.validate(data);
+
   if (error) {
-    debugLog(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
-    throw new Error(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
+    const errorMessage = error.details.map(el => el.message).join(", ");
+    logger.error(`[VALIDATION ERROR] ${errorMessage}`);
+    throw new Error(`Validation error: ${errorMessage}`);
   }
-  debugLog("Validation passed successfully.");
+
+  logger.info("[Validation passed successfully]");
+  logger.info("======= [END OF ACTION: Validation for Discussion schema] =======\n");
+
   return true;
 };

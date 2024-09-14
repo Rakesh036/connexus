@@ -15,12 +15,15 @@ router.post(
   "/",
   isLoggedIn,
   (req, res, next) => {
-    logger.info(`User ${req.user._id} is creating a new success review`);
+    logger.info("======= [ROUTE: Create Success Review] =======");
+    logger.info("[ACTION: Creating New Success Review]");
+    logger.info("User ID: %s is creating a new success review", req.user._id);
     next();
   },
   validateSuccessReview,
   (req, res, next) => {
-    logger.info(`Success review validation completed`);
+    logger.info("[ACTION: Validation Completed]");
+    logger.info("Validation for the success review passed");
     next();
   },
   successReviewController.create
@@ -31,7 +34,9 @@ router.delete(
   "/:reviewId",
   isLoggedIn,
   (req, res, next) => {
-    logger.info(`User ${req.user._id} is attempting to delete success review ${req.params.reviewId}`);
+    logger.info("======= [ROUTE: Delete Success Review] =======");
+    logger.info("[ACTION: Attempting to Delete Review]");
+    logger.info("User ID: %s is attempting to delete success review %s", req.user._id, req.params.reviewId);
     next();
   },
   isSuccessReviewAuthor,
@@ -43,7 +48,9 @@ router.get(
   "/:reviewId/comment",
   isLoggedIn,
   (req, res, next) => {
-    logger.info(`User ${req.user._id} is commenting on success review ${req.params.reviewId}`);
+    logger.info("======= [ROUTE: Comment on Success Review] =======");
+    logger.info("[ACTION: Commenting on Review]");
+    logger.info("User ID: %s is commenting on success review %s", req.user._id, req.params.reviewId);
     next();
   },
   successReviewController.comment

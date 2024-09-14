@@ -9,7 +9,9 @@ router.get(
   "/profile/:id/connections",
   isLoggedIn,
   (req, res, next) => {
-    logger.info(`User ${req.user._id} is attempting to view connections for profile ${req.params.id}`);
+    logger.info("======= [ROUTE: View Connections] =======");
+    logger.info("[ACTION: Viewing Connections]");
+    logger.info("User ID: %s is attempting to view connections for profile ID: %s", req.user._id, req.params.id);
     next();
   },
   ConnectionController.viewConnections
@@ -20,7 +22,9 @@ router.post(
   "/connect/:id",
   isLoggedIn,
   (req, res, next) => {
-    logger.info(`User ${req.user._id} is sending a connection request to user ${req.params.id}`);
+    logger.info("======= [ROUTE: Send Connection Request] =======");
+    logger.info("[ACTION: Sending Connection Request]");
+    logger.info("User ID: %s is sending a connection request to user ID: %s", req.user._id, req.params.id);
     next();
   },
   ConnectionController.sendConnectionRequest

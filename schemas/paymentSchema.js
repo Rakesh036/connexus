@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const logger = require("../utils/logger"); // Ensure the path to your logger is correct
 
 // Define the schema
 module.exports.paymentSchema = Joi.object({
@@ -31,16 +32,22 @@ module.exports.paymentSchema = Joi.object({
   }),
 });
 
-// Debugging example
-const debugLog = (msg) => console.log(`DEBUG: ${msg}`);
-
+// Logging-based validation
 module.exports.validatePayment = (data) => {
-  debugLog("Starting validation for payment schema...");
+  logger.info("======= [SCHEMA: Payment] =======");
+  logger.info("[ACTION: Starting validation for Payment schema]");
+  logger.debug("Received data for validation: %o", data);
+
   const { error } = module.exports.paymentSchema.validate(data, { abortEarly: false });
+
   if (error) {
-    debugLog(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
-    throw new Error(`Validation error: ${error.details.map(el => el.message).join(", ")}`);
+    const errorMessage = error.details.map(el => el.message).join(", ");
+    logger.error(`[VALIDATION ERROR] ${errorMessage}`);
+    throw new Error(`Validation error: ${errorMessage}`);
   }
-  debugLog("Validation passed successfully.");
+
+  logger.info("[Validation passed successfully]");
+  logger.info("======= [END OF ACTION: Validation for Payment schema] =======\n");
+
   return true;
 };
