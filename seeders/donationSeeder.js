@@ -1,38 +1,32 @@
 const mongoose = require("mongoose");
 const Donation = require("../models/donation");
+const User = require("../models/user");
 const Notification = require("../models/notification");
 
 const donationData = [
   {
     title: "Support for Education",
-    description:
-      "A donation to support education for underprivileged children.",
-    owner: new  mongoose.Types.ObjectId("66e59f8b8ab71b0c88c0505d"), // Example user ID
+    description: "A donation to support education for underprivileged children.",
     isEmergency: false,
   },
   {
     title: "Medical Aid",
     description: "Emergency medical aid for a critical case.",
-    owner: new  mongoose.Types.ObjectId("66e59f8b8ab71b0c88c0505e"), // Example user ID
     isEmergency: true,
   },
   {
     title: "Environmental Conservation",
     description: "Funding for a project aimed at environmental conservation.",
-    owner: new  mongoose.Types.ObjectId("66e59f8b8ab71b0c88c0505f"), // Example user ID
     isEmergency: false,
   },
   {
     title: "Support for Local Artisans",
-    description:
-      "Helping local artisans with financial support to grow their businesses.",
-    owner: new  mongoose.Types.ObjectId("66e59f8b8ab71b0c88c05060"), // Example user ID
+    description: "Helping local artisans with financial support to grow their businesses.",
     isEmergency: false,
   },
   {
     title: "Disaster Relief Fund",
     description: "Aid for disaster relief efforts in affected areas.",
-    owner: new  mongoose.Types.ObjectId("66e59f8b8ab71b0c88c05061"), // Example user ID
     isEmergency: true,
   },
   // Add more donation entries as needed
@@ -40,12 +34,25 @@ const donationData = [
 
 async function donationSeeder() {
   try {
-    await Donation.deleteMany({}); // Clear existing donations
+    // Clear existing donations
+    await Donation.deleteMany({});
     console.log("Existing donations cleared.");
 
+    // Fetch all user IDs
+    const users = await User.find({});
+    const userIds = users.map(user => user._id);
+
     for (const donation of donationData) {
-      await Donation.create(donation); // Insert each donation
+      // Pick a random user ID
+      donation.owner = userIds[Math.floor(Math.random() * userIds.length)];
+
+      // Create the donation
+      const newDonation = await Donation.create(donation);
       console.log(`Donation "${donation.title}" added.`);
+
+      // Update the user's donations array
+      await User.findByIdAndUpdate(donation.owner, { $push: { donations: newDonation._id } });
+      console.log(`User "${donation.owner}" updated with new donation.`);
     }
 
     console.log("Donation data seeded successfully!");

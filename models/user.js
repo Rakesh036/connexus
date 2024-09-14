@@ -66,6 +66,12 @@ const userSchema = new Schema({
       ref: "User",
     },
   ],
+  groupCreated: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Group"
+    }
+  ],
   groupJoined: [
     {
       type: Schema.Types.ObjectId,
@@ -90,10 +96,10 @@ const userSchema = new Schema({
       ref: "Job",
     },
   ],
-  listingPosts: [
+  discussionPosts: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Listing",
+      ref: "Discussion",
     },
   ],
   eventsOrganised: [
@@ -115,7 +121,7 @@ const userSchema = new Schema({
   isStarAlumni: {
     type: Boolean,
     default: false,
-  }
+  },
 });
 
 // Passport-Local-Mongoose plugin for authentication
@@ -127,7 +133,7 @@ userSchema.pre("remove", async function (next) {
 
   // Remove all user-related references
   await mongoose.model("Job").deleteMany({ owner: userId });
-  await mongoose.model("Listing").deleteMany({ owner: userId });
+  await mongoose.model("Discussion").deleteMany({ owner: userId });
   await mongoose.model("Event").deleteMany({ organiser: userId });
 
   // Remove the user from group memberships and quiz participation
