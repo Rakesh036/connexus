@@ -2,3 +2,128 @@
 2024-09-14T10:05:08.334Z [undefined] [32minfo[39m: [ACTION: Render Login Form]
 2024-09-14T10:05:08.346Z [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
 
+2024-09-14T11:42:08.887Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:42:08.907Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:42:10.391Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T11:42:10.401Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T11:42:11.410Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T11:42:11.419Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T11:42:13.257Z [undefined] [32minfo[39m: Fetching donations...
+2024-09-14T11:42:13.265Z [undefined] [32minfo[39m: Found 8 donations.
+2024-09-14T11:42:14.074Z [undefined] [32minfo[39m: ======= [CONTROLLER: Discussion] =======
+2024-09-14T11:42:14.074Z [undefined] [32minfo[39m: [ACTION: Index]
+2024-09-14T11:42:14.075Z [undefined] [32minfo[39m: Querying all discussions
+2024-09-14T11:42:14.087Z [undefined] [32minfo[39m: ======= [END OF ACTION: Index] =======
+
+2024-09-14T11:42:15.061Z [undefined] [32minfo[39m: Fetching donations...
+2024-09-14T11:42:15.067Z [undefined] [32minfo[39m: Found 8 donations.
+2024-09-14T11:43:04.499Z [undefined] [32minfo[39m: Notification route called
+2024-09-14T11:43:04.501Z [undefined] [32minfo[39m: Fetching notifications for user ID:
+2024-09-14T11:43:04.505Z [undefined] [32minfo[39m: Notifications retrieved:
+2024-09-14T11:43:04.511Z [undefined] [32minfo[39m: Unread notifications count:
+2024-09-14T11:43:04.542Z [undefined] [32minfo[39m: Notification page rendered successfully
+2024-09-14T11:43:05.934Z [undefined] [32minfo[39m: Notification route called
+2024-09-14T11:43:05.935Z [undefined] [32minfo[39m: Fetching notifications for user ID:
+2024-09-14T11:43:05.937Z [undefined] [32minfo[39m: Notifications retrieved:
+2024-09-14T11:43:05.940Z [undefined] [32minfo[39m: Unread notifications count:
+2024-09-14T11:43:05.942Z [undefined] [32minfo[39m: Notification page rendered successfully
+2024-09-14T11:52:39.228Z [undefined] [32minfo[39m: Fetching donations...
+2024-09-14T11:52:39.232Z [undefined] [32minfo[39m: Found 8 donations.
+2024-09-14T11:52:43.632Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T11:52:43.637Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T11:52:44.960Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:52:44.968Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:54:11.092Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:54:11.101Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:54:12.384Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:54:12.392Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:54:12.553Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:54:12.561Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:54:12.714Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:54:12.718Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:54:12.907Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:54:12.914Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:54:13.087Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:54:13.096Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:54:54.186Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:54:54.193Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:54:54.931Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:54:54.935Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:54:55.088Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:54:55.095Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:54:55.253Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T11:54:55.259Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T11:55:48.561Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T11:55:48.566Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T11:57:17.872Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T11:57:17.878Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T11:57:18.785Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T11:57:18.795Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T11:58:50.621Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T11:58:50.628Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T11:58:51.882Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T11:58:51.892Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T12:00:26.474Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:00:26.479Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T12:01:13.267Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:01:13.274Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T12:02:52.199Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:02:52.206Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T12:02:53.167Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:02:53.174Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T12:02:53.725Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:02:53.735Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T12:04:07.602Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:04:07.608Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T12:04:08.878Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:04:08.888Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T12:04:30.897Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T12:04:30.902Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T12:04:48.123Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:04:48.131Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:07:09.545Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:07:09.552Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:07:58.224Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:07:58.229Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:09:22.244Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:09:22.248Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:09:23.268Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:09:23.274Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:10:10.464Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:10:10.468Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:10:11.254Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:10:11.259Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:10:11.445Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:10:11.450Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:10:11.620Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:10:11.625Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:11:34.303Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:11:34.308Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:11:35.351Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:11:35.356Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:11:36.083Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:11:36.088Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:11:36.328Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:11:36.333Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:11:36.550Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:11:36.553Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:11:37.051Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:11:37.057Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:11:37.256Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:11:37.261Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:17:07.562Z [undefined] [32minfo[39m: Notification route called
+2024-09-14T12:17:07.563Z [undefined] [32minfo[39m: Fetching notifications for user ID:
+2024-09-14T12:17:07.566Z [undefined] [32minfo[39m: Notifications retrieved:
+2024-09-14T12:17:07.569Z [undefined] [32minfo[39m: Unread notifications count:
+2024-09-14T12:17:07.572Z [undefined] [32minfo[39m: Notification page rendered successfully
+2024-09-14T12:17:27.718Z [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-14T12:17:27.723Z [undefined] [32minfo[39m: Found 5 jobs.
+2024-09-14T12:17:31.544Z [undefined] [32minfo[39m: Fetching all groups...
+2024-09-14T12:17:31.552Z [undefined] [32minfo[39m: Found 3 groups.
+2024-09-14T12:17:34.505Z [undefined] [32minfo[39m: Fetching all success stories
+2024-09-14T12:17:34.512Z [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-14T12:18:03.674Z [undefined] [32minfo[39m: Notification route called
+2024-09-14T12:18:03.675Z [undefined] [32minfo[39m: Fetching notifications for user ID:
+2024-09-14T12:18:03.677Z [undefined] [32minfo[39m: Notifications retrieved:
+2024-09-14T12:18:03.679Z [undefined] [32minfo[39m: Unread notifications count:
+2024-09-14T12:18:03.684Z [undefined] [32minfo[39m: Notification page rendered successfully
