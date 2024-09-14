@@ -1380,3 +1380,10 @@
 2024-09-15 01:47:09.266 [undefined] [32minfo[39m: Success story "66e5ef458e018f2bccb86132" updated with new review.
 2024-09-15 01:47:09.266 [undefined] [32minfo[39m: Success reviews seeded successfully!
 2024-09-15 01:47:09.266 [undefined] [32minfo[39m: Database successfully seeded!
+2024-09-15 01:50:06.839 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 01:50:06.854 [undefined] [32minfo[39m: Express configured
+2024-09-15 01:50:06.857 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 01:50:06.858 [undefined] [32minfo[39m: Passport configured
+2024-09-15 01:50:06.859 [undefined] [32minfo[39m: Routes configured
+2024-09-15 01:50:06.864 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 01:50:06.875 [undefined] [32minfo[39m: Connected to MongoDB
