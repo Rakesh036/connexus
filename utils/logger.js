@@ -34,7 +34,7 @@ const logger = winston.createLogger({
     myFormat
   ),
   transports: [
-    new winston.transports.Console(),  // For console output
+    //new winston.transports.Console(),  // For console output
     transport  // For file output with rotation
   ],
 });
