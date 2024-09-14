@@ -17,7 +17,7 @@ module.exports.listGroups = wrapAsync(async (req, res) => {
       groups,
       currUserT,
       allUsers,
-      cssFile: "groupIndex.css",
+      cssFile: "/group/groupIndex.css",
     });
   } catch (err) {
     console.error(err);

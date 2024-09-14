@@ -21,7 +21,7 @@ module.exports.index = wrapAsync(async (req, res) => {
 
     res.render("donations/index.ejs", {
       donations,
-      cssFile: "donateIndex.css",
+      cssFile: "donate/donateIndex.css",
     });
   } catch (err) {
     console.error("Error fetching donations:", err); // Debugging line
@@ -32,14 +32,13 @@ module.exports.index = wrapAsync(async (req, res) => {
 
 module.exports.renderNewForm = (req, res) => {
   console.log("Rendering new donation form."); // Debugging line
-  res.render("donations/new.ejs", { cssFile: "donateNew.css" });
+  res.render("donations/new.ejs", { cssFile: "donate/donateNew.css" });
 };
 
 module.exports.create = wrapAsync(async (req, res) => {
   try {
     console.log("Creating new donation...");
-    
-    
+
     const newDonation = new Donation(req.body.donation);
     newDonation.owner = req.user._id;
     await newDonation.save();
@@ -71,7 +70,10 @@ module.exports.show = wrapAsync(async (req, res) => {
     }
 
     console.log("Donation found:", donation._id); // Debugging line
-    res.render("donations/show.ejs", { donation, cssFile: "donateShow.css" });
+    res.render("donations/show.ejs", {
+      donation,
+      cssFile: "donate/donateShow.css",
+    });
   } catch (err) {
     console.error("Error fetching donation:", err); // Debugging line
     req.flash("error", "Unable to retrieve the donation.");
@@ -88,7 +90,10 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
       req.flash("error", "Donation not found.");
       return res.redirect("/donations");
     }
-    res.render("donations/edit.ejs", { donation, cssFile: "donateEdit.css" });
+    res.render("donations/edit.ejs", {
+      donation,
+      cssFile: "donate/donateEdit.css",
+    });
   } catch (err) {
     console.error("Error fetching donation for editing:", err); // Debugging line
     req.flash("error", "Failed to load donation for editing.");
@@ -103,13 +108,13 @@ module.exports.update = wrapAsync(async (req, res) => {
     const donation = await Donation.findByIdAndUpdate(req.params.id, {
       ...req.body.donation,
     });
-    
+
     if (!donation) {
       console.log("Donation not found for update.");
       req.flash("error", "Donation not found.");
       return res.redirect("/donations");
     }
-    
+
     console.log("Donation updated successfully:", donation._id);
     req.flash("success", "Donation updated successfully.");
     res.redirect(`/donations/${req.params.id}`);
@@ -156,7 +161,9 @@ module.exports.createPayment = wrapAsync(async (req, res) => {
     donation.payments.push(payment._id);
     await donation.save();
 
-    console.log(`Payment created and added to donation with ID: ${donation._id}`); // Debugging line
+    console.log(
+      `Payment created and added to donation with ID: ${donation._id}`
+    ); // Debugging line
     req.flash("success", "Thank you for your donation!");
     res.redirect(`/donations/${req.params.id}`);
   } catch (err) {

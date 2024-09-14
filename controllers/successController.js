@@ -5,7 +5,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 // Index - Show all success stories
 module.exports.index = wrapAsync(async (req, res) => {
   const successes = await Success.find({});
-  res.render("success/index.ejs", { successes, cssFile: "successIndex.css" });
+  res.render("success/index.ejs", { successes, cssFile: "success/successIndex.css" });
 });
 
 // Show - Display a specific success story
@@ -21,12 +21,15 @@ module.exports.show = wrapAsync(async (req, res) => {
     req.flash("error", "Success story does not exist!");
     return res.redirect("/successes");
   }
-  res.render("success/show.ejs", { successStory, cssFile: "successShow.css" });
+  res.render("success/show.ejs", {
+    successStory,
+    cssFile: "success/successShow.css",
+  });
 });
 
 // New - Render form to create a new success story
 module.exports.renderNewForm = wrapAsync(async (req, res) => {
-  res.render("success/new.ejs", { cssFile: "successNew.css" });
+  res.render("success/new.ejs", { cssFile: "success/successNew.css" });
 });
 
 // Create - Add a new success story
@@ -46,7 +49,10 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
     req.flash("error", "Success story not found!");
     return res.redirect("/successes");
   }
-  res.render("success/edit.ejs", { successStory, cssFile: "successEdit.css" });
+  res.render("success/edit.ejs", {
+    successStory,
+    cssFile: "success/successEdit.css",
+  });
 });
 
 // Update - Update a success story

@@ -14,12 +14,12 @@ module.exports.index = wrapAsync(async (req, res) => {
 
   res.render("discussions/index", {
     discussions,
-    cssFile: "discussionIndex.css",
+    cssFile: "listing/discussionIndex.css",
   });
 });
 
 module.exports.new = (req, res) => {
-  res.render("discussions/new", { cssFile: "discussionNew.css" });
+  res.render("discussions/new", { cssFile: "listing/discussionNew.css" });
 };
 
 module.exports.create = wrapAsync(async (req, res) => {
@@ -34,14 +34,14 @@ module.exports.show = wrapAsync(async (req, res) => {
   const discussion = await Discussion.findById(req.params.id)
     .populate({
       path: "reviews",
-      populate: { path: "author" }
+      populate: { path: "author" },
     })
     .populate("owner");
   if (!discussion) {
     req.flash("error", "Discussion does not exist!");
     return res.redirect("/discussions");
   }
-  res.render("discussions/show", { discussion, cssFile: "discussionShow.css" });
+  res.render("discussions/show", { discussion, cssFile: "listing/discussionShow.css" });
 });
 
 module.exports.edit = wrapAsync(async (req, res) => {
@@ -50,7 +50,10 @@ module.exports.edit = wrapAsync(async (req, res) => {
     req.flash("error", "Discussion does not exist!");
     return res.redirect("/discussions");
   }
-  res.render("discussions/edit", { discussion, cssFile: "discussionEdit.css" });
+  res.render("discussions/edit", {
+    discussion,
+    cssFile: "listing/discussionedit.css",
+  });
 });
 
 module.exports.update = wrapAsync(async (req, res) => {
@@ -75,7 +78,7 @@ module.exports.like = wrapAsync(async (req, res) => {
     return res.redirect("/discussions");
   }
 
-  const hasLiked = discussion.likes.some(like => like.equals(userId));
+  const hasLiked = discussion.likes.some((like) => like.equals(userId));
 
   if (hasLiked) {
     await Discussion.findByIdAndUpdate(id, { $pull: { likes: userId } });
@@ -106,7 +109,9 @@ module.exports.report = wrapAsync(async (req, res) => {
     return res.redirect("/discussions");
   }
 
-  const hasReported = discussion.reports.some(report => report.equals(userId));
+  const hasReported = discussion.reports.some((report) =>
+    report.equals(userId)
+  );
 
   if (hasReported) {
     await Discussion.findByIdAndUpdate(id, { $pull: { reports: userId } });

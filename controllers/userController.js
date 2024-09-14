@@ -8,18 +8,22 @@ module.exports.viewProfile = wrapAsync(async (req, res) => {
     req.flash("error", "User not found");
     return res.redirect("/");
   }
-  res.render("users/profile", { user, cssFile: "userShow.css" });
+  res.render("users/profile", { user, cssFile: "user/userShow.css" });
 });
 
 // Edit User Profile Form
 module.exports.editProfileForm = wrapAsync(async (req, res) => {
-  res.render("users/edit", { user: req.user, cssFile: "userEdit.css" });
+  res.render("users/edit", { user: req.user, cssFile: "user/userEdit.css" });
 });
 
 // Update User Profile
 module.exports.updateProfile = wrapAsync(async (req, res) => {
   const { username, email } = req.body;
-  const user = await User.findByIdAndUpdate(req.params.id, { username, email }, { new: true });
+  const user = await User.findByIdAndUpdate(
+    req.params.id,
+    { username, email },
+    { new: true }
+  );
   req.flash("success", "Profile updated successfully");
   res.redirect(`/profile/${user._id}`);
 });
