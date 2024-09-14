@@ -14,12 +14,12 @@ module.exports.index = wrapAsync(async (req, res) => {
 
   res.render("discussions/index", {
     discussions,
-    cssFile: "listing/discussionIndex.css",
+    cssFile: "discussion/discussionIndex.css",
   });
 });
 
 module.exports.new = (req, res) => {
-  res.render("discussions/new", { cssFile: "listing/discussionNew.css" });
+  res.render("discussions/new", { cssFile: "discussion/discussionNew.css" });
 };
 
 module.exports.create = wrapAsync(async (req, res) => {
@@ -41,7 +41,10 @@ module.exports.show = wrapAsync(async (req, res) => {
     req.flash("error", "Discussion does not exist!");
     return res.redirect("/discussions");
   }
-  res.render("discussions/show", { discussion, cssFile: "listing/discussionShow.css" });
+  res.render("discussions/show", {
+    discussion,
+    cssFile: "discussion/discussionShow.css",
+  });
 });
 
 module.exports.edit = wrapAsync(async (req, res) => {
@@ -52,7 +55,7 @@ module.exports.edit = wrapAsync(async (req, res) => {
   }
   res.render("discussions/edit", {
     discussion,
-    cssFile: "listing/discussionedit.css",
+    cssFile: "discussion/discussionedit.css",
   });
 });
 

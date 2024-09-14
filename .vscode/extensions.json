@@ -1,6 +1,10 @@
 {
+<<<<<<< HEAD
   "recommendations": [
     "seangilbertson.auto-collapse-folders",
     "mhutchie.git-graph"
   ]
+=======
+  "recommendations": ["seangilbertson.auto-collapse-folders"]
+>>>>>>> landing-page
 }

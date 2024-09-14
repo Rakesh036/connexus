@@ -31,7 +31,7 @@ module.exports.show = wrapAsync(async (req, res) => {
     return res.redirect("/jobs");
   }
 
-  res.render("jobs/show", { job, cssFile: "jobShow.css" });
+  res.render("jobs/show", { job, cssFile: "job/jobShow.css" });
 });
 
 module.exports.renderEditForm = wrapAsync(async (req, res) => {

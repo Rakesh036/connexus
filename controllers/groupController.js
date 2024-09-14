@@ -27,7 +27,7 @@ module.exports.listGroups = wrapAsync(async (req, res) => {
 });
 
 module.exports.renderNewForm = (req, res) => {
-  res.render("groups/new", { cssFile: "groupNew.css" });
+  res.render("groups/new", { cssFile: "group/groupNew.css" });
 };
 
 module.exports.createGroup = wrapAsync(async (req, res) => {
@@ -45,7 +45,7 @@ module.exports.showGroup = wrapAsync(async (req, res) => {
     req.flash("error", "Group does not exist!");
     return res.redirect("/groups");
   }
-  res.render("groups/show", { group, cssFile: "groupShow.css" });
+  res.render("groups/show", { group, cssFile: "group/groupShow.css" });
 });
 
 module.exports.renderEditForm = wrapAsync(async (req, res) => {
@@ -54,7 +54,7 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
     req.flash("error", "Group not found");
     return res.redirect("/groups");
   }
-  res.render("groups/edit", { group, cssFile: "groupEdit.css" });
+  res.render("groups/edit", { group, cssFile: "group/groupEdit.css" });
 });
 
 module.exports.updateGroup = wrapAsync(async (req, res) => {

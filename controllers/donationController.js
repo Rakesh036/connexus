@@ -72,6 +72,7 @@ module.exports.show = wrapAsync(async (req, res) => {
     console.log("Donation found:", donation._id); // Debugging line
     res.render("donations/show.ejs", {
       donation,
+
       cssFile: "donate/donateShow.css",
     });
   } catch (err) {
@@ -92,6 +93,7 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
     }
     res.render("donations/edit.ejs", {
       donation,
+
       cssFile: "donate/donateEdit.css",
     });
   } catch (err) {
