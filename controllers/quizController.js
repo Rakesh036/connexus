@@ -10,12 +10,12 @@ module.exports.viewQuizzes = wrapAsync(async (req, res) => {
     req.flash("error", "Group not found.");
     return res.redirect("/groups");
   }
-  res.render("quizzes/index", { group, cssFile: "quizIndex.css" });
+  res.render("quizzes/index", { group, cssFile: "quiz/quizIndex.css" });
 });
 
 module.exports.showNewQuizForm = wrapAsync(async (req, res) => {
   const group = req.group; // Get the group from the isGroup middleware
-  res.render("quizzes/new", { group, cssFile: "quizNew.css" });
+  res.render("quizzes/new", { group, cssFile: "quiz/quizNew.css" });
 });
 
 module.exports.createQuiz = wrapAsync(async (req, res) => {
@@ -56,7 +56,7 @@ module.exports.showQuiz = wrapAsync(async (req, res) => {
     quiz,
     groupId,
     currUser: req.user._id,
-    cssFile: "quizShow.css",
+    cssFile: "quiz/quizShow.css",
   });
 });
 
@@ -66,7 +66,7 @@ module.exports.showEditQuizForm = wrapAsync(async (req, res) => {
   if (!quiz) {
     throw new ExpressError("Quiz not found", 404);
   }
-  res.render("quizzes/edit", { quiz, groupId, cssFile: "quizEdit.css" });
+  res.render("quizzes/edit", { quiz, groupId, cssFile: "quiz/quizEdit.css" });
 });
 
 module.exports.updateQuiz = wrapAsync(async (req, res) => {
@@ -123,7 +123,7 @@ module.exports.showLeaderboard = wrapAsync(async (req, res) => {
     groupId,
     leaderboard,
     userScore,
-    cssFile: "quizLeaderboard.css",
+    cssFile: "quiz/quizLeaderboard.css",
   });
 });
 
@@ -133,5 +133,5 @@ module.exports.startQuiz = wrapAsync(async (req, res) => {
   if (!quiz) {
     throw new ExpressError("Quiz not found", 404);
   }
-  res.render("quizzes/show", { quiz, groupId, cssFile: "quizShow.css" });
+  res.render("quizzes/show", { quiz, groupId, cssFile: "quiz/quizShow.css" });
 });

@@ -12,7 +12,7 @@ module.exports.getNotifications = async (req, res) => {
       isRead: false,
     });
 
-    res.render("notification", { notifications, unreadCount });
+    res.render("notification", { notifications, unreadCount,cssFile:"notification/notificationIndex.css" });
   } catch (error) {
     console.error(error);
     res.status(500).send("Error retrieving notifications");
