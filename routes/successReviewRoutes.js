@@ -14,13 +14,8 @@ router.post("/", isLoggedIn, validateSuccessReview, successReviewController.crea
 // Delete a review
 router.delete("/:reviewId", isLoggedIn, isSuccessReviewAuthor, successReviewController.delete);
 
-// Like a review
-router.get("/:reviewId/like", isLoggedIn, successReviewController.toggleLike);
-
 // Comment on a review (redirects to comment section)
 router.get("/:reviewId/comment", isLoggedIn, successReviewController.comment);
 
-// Report a review
-router.get("/:reviewId/report", isLoggedIn, successReviewController.toggleReport);
 
 module.exports = router;

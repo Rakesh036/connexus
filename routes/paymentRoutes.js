@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const wrapAsync = require("../utils/wrapAsync");
 const { isLoggedIn } = require("../middlewares/auth");
 const { validatePayment } = require("../middlewares/payment");  // Import validatePayment middleware
 const PaymentController = require("../controllers/paymentController");
@@ -13,7 +12,7 @@ router.post(
   "/:donationId",
   isLoggedIn,
   validatePayment,  // Add validation middleware here
-  wrapAsync(PaymentController.processPayment)
+  PaymentController.processPayment
 );
 
 module.exports = router;

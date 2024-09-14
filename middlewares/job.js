@@ -1,7 +1,7 @@
 const Job = require("../models/job");
 const { jobSchema } = require("../schemas/jobSchema");
 const JobReview = require("../models/jobReview");
-const jobReviewSchema = require("../schemas/jobReviewSchema");
+const { jobReviewSchema } = require("../schemas/jobReviewSchema");
 const ExpressError = require("../utils/expressError");
 
 module.exports.isJobOwner = async (req, res, next) => {
@@ -32,13 +32,18 @@ module.exports.validateJob = (req, res, next) => {
 };
 
 module.exports.validateJobReview = (req, res, next) => {
+  // console.log("validateJobReview me schema validate hone wala h: req.body:  ", req.body);
+  
   const { error } = jobReviewSchema.validate(req.body);
   if (error) {
+    // console.log("validateJobReview me schema validate hogya error:  ", error);
     const errMsg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(400, errMsg);
   }
+  // console.log("validateJobReview me schema validate ho gya");
   next();
 };
+
 
 module.exports.isJobReviewAuthor = async (req, res, next) => {
   const { id, reviewId } = req.params;

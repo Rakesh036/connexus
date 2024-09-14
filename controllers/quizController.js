@@ -73,7 +73,7 @@ module.exports.updateQuiz = wrapAsync(async (req, res) => {
   const { id, groupId } = req.params;
   await Quiz.findByIdAndUpdate(id, { ...req.body.quiz });
   req.flash("success", "Successfully updated the quiz!");
-  res.redirect(`/groups/${groupId}/quizzes/${id}`);
+  res.redirect(`/groups/${groupId}/quizzes`);
 });
 
 module.exports.deleteQuiz = wrapAsync(async (req, res) => {

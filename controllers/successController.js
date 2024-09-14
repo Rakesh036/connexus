@@ -65,3 +65,48 @@ module.exports.delete = wrapAsync(async (req, res) => {
   req.flash("success", "Success story deleted!");
   res.redirect("/successes");
 });
+
+// Like or unlike a successPost
+module.exports.toggleLike = wrapAsync(async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user._id;
+
+  const successStory = await Success.findById(id);
+  if (!successStory) {
+    req.flash("error", "successStory does not exist!");
+    return res.redirect(`/successes`);
+  }
+
+  const hasLiked = successStory.likes.some((like) => like.equals(userId));
+  if (hasLiked) {
+    await Success.findByIdAndUpdate(id, { $pull: { likes: userId } });
+  } else {
+    await Success.findByIdAndUpdate(id, { $push: { likes: userId } });
+  }
+
+  res.redirect(`/successes`);
+});
+
+// Report a successPost
+module.exports.toggleReport = wrapAsync(async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user._id;
+
+  const successStory = await Success.findById(reviewId);
+  if (!review) {
+    req.flash("error", "Review does not exist!");
+    return res.redirect(`/successes`);
+  }
+
+  const hasReported = successStory.reports.some((report) => report.equals(userId));
+
+  if (hasReported) {
+    await Success.findByIdAndUpdate(id, { $pull: { reports: userId } });
+  } else {
+    await Success.findByIdAndUpdate(id, { $push: { reports: userId } });
+  }
+
+  req.flash("success", "Review reported!");
+  res.redirect(`/successes`);
+});
+
