@@ -8,7 +8,7 @@ const { isLoggedIn, isCurrentUser } = require("../middlewares/auth");
 router.get("/profile/:id", isLoggedIn, (req, res, next) => {
   logger.info("======= [ROUTE: View User Profile] =======");
   logger.info("[ACTION: Accessing Profile View]");
-  logger.info("User ID: %s is viewing profile of User ID: %s", req.user._id, req.params.id);
+  logger.info(`User ID: ${req.user._id} is viewing profile of User ID: ${req.params.id}`);
   next();
 }, usersController.viewProfile);
 
@@ -16,7 +16,7 @@ router.get("/profile/:id", isLoggedIn, (req, res, next) => {
 router.get("/profile/:id/edit", isLoggedIn, isCurrentUser, (req, res, next) => {
   logger.info("======= [ROUTE: Edit User Profile] =======");
   logger.info("[ACTION: Accessing Edit Profile Form]");
-  logger.info("User ID: %s is accessing edit profile form for User ID: %s", req.user._id, req.params.id);
+  logger.info(`User ID: ${req.user._id} is accessing edit profile form for User ID: ${req.params.id}`);
   next();
 }, usersController.editProfileForm);
 
@@ -24,7 +24,7 @@ router.get("/profile/:id/edit", isLoggedIn, isCurrentUser, (req, res, next) => {
 router.put("/profile/:id", isLoggedIn, isCurrentUser, (req, res, next) => {
   logger.info("======= [ROUTE: Update User Profile] =======");
   logger.info("[ACTION: Updating Profile]");
-  logger.info("User ID: %s is updating profile of User ID: %s", req.user._id, req.params.id);
+  logger.info(`User ID: ${req.user._id} is updating profile of User ID: ${req.params.id}`);
   next();
 }, usersController.updateProfile);
 
@@ -32,7 +32,7 @@ router.put("/profile/:id", isLoggedIn, isCurrentUser, (req, res, next) => {
 router.get("/search", (req, res, next) => {
   logger.info("======= [ROUTE: Search Users] =======");
   logger.info("[ACTION: Searching for Users]");
-  logger.info("User ID: %s is searching for users", req.user ? req.user._id : 'guest');
+  logger.info(`User ID: ${req.user ? req.user._id : 'guest'} is searching for users`);
   next();
 }, usersController.searchUsers);
 

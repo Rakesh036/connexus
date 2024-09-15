@@ -15,9 +15,9 @@ module.exports.quizSchema = Joi.object({
           }),
           options: Joi.array()
             .items(Joi.string().required())
-            .length(4)
+            .min(2) // Changed from length(4) to min(2) to align with your Mongoose schema
             .messages({
-              "array.length": "Each question must have exactly 4 options",
+              "array.min": "Each question must have at least 2 options",
               "string.empty": "Option text cannot be empty",
             }),
           correctAnswer: Joi.number().integer().required().messages({

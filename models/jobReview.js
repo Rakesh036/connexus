@@ -5,6 +5,7 @@ const jobReviewSchema = new Schema({
   comment: {
     type: String,
     required: true,
+    trim: true, // Trim whitespace from the comment
   },
   createdAt: {
     type: Date,

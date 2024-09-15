@@ -1,7 +1,7 @@
 const Group = require("../models/group");
 const { groupSchema } = require("../schemas/groupSchema");
 const ExpressError = require("../utils/expressError");
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('groupMiddleware'); // Specify label
 
 // Middleware to check if the group exists
 module.exports.isGroup = async (req, res, next) => {

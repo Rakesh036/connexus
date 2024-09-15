@@ -3,16 +3,14 @@ const logger = require("../utils/logger"); // Ensure the path to your logger is 
 
 // Define the schema
 module.exports.jobSchema = Joi.object({
-  job: Joi.object({
-    title: Joi.string().required(),
-    salary: Joi.number().required(),
-    location: Joi.string().required(),
-    jobType: Joi.string()
-      .valid("Full-time", "Part-time", "Internship")
-      .required(),
-    companyName: Joi.string().required(),
-    applyLink: Joi.string().uri().required(),
-  }).required(),
+  title: Joi.string().required().trim(),
+  salary: Joi.number().required(),
+  location: Joi.string().required().trim(),
+  jobType: Joi.string()
+    .valid("Full-time", "Part-time", "Internship")
+    .required(),
+  companyName: Joi.string().required().trim(),
+  applyLink: Joi.string().uri().required().trim(),
 });
 
 // Logging-based validation

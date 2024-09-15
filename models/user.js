@@ -7,113 +7,127 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
-    unique: true, // Ensure unique usernames
+    unique: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true, // Ensure unique emails
-    lowercase: true, // Normalize email to lowercase
+    unique: true,
+    lowercase: true,
   },
   phone: {
     type: String,
+    default: ''
   },
   dob: {
     type: Date,
+    default: null
   },
   city: {
     type: String,
+    default: ''
   },
   country: {
     type: String,
+    default: ''
   },
   graduationYear: {
     type: Number,
+    default: null
   },
   degree: {
     type: String,
+    default: ''
   },
   department: {
     type: String,
+    default: ''
   },
   employer: {
     type: String,
+    default: ''
   },
   jobTitle: {
     type: String,
+    default: ''
   },
   industry: {
     type: String,
+    default: ''
   },
   experience: {
-    type: Number, // in years
+    type: Number,
+    default: 0
   },
-  skills: [String],
-  projects: [String],
-  achievements: [String],
+  skills: {
+    type: [String],
+    default: []
+  },
+  projects: {
+    type: [String],
+    default: []
+  },
+  achievements: {
+    type: [String],
+    default: []
+  },
   linkedin: {
     type: String,
+    default: ''
   },
   github: {
     type: String,
+    default: ''
   },
   profilePicture: {
-    type: String, // Store path to the profile picture
+    type: String,
+    default: ''
   },
-  connections: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
-  groupCreated: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Group"
-    }
-  ],
-  groupJoined: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Group",
-    },
-  ],
-  quizParticipated: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Quiz",
-    },
-  ],
-  donations: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Donation",
-    },
-  ],
-  jobPosts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Job",
-    },
-  ],
-  discussionPosts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Discussion",
-    },
-  ],
-  eventsOrganised: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Event",
-    },
-  ],
-  eventsJoined: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Event",
-    },
-  ],
+  connections: [{
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    default: []
+  }],
+  groupCreated: [{
+    type: Schema.Types.ObjectId,
+    ref: "Group",
+    default: []
+  }],
+  groupJoined: [{
+    type: Schema.Types.ObjectId,
+    ref: "Group",
+    default: []
+  }],
+  quizParticipated: [{
+    type: Schema.Types.ObjectId,
+    ref: "Quiz",
+    default: []
+  }],
+  donations: [{
+    type: Schema.Types.ObjectId,
+    ref: "Donation",
+    default: []
+  }],
+  jobPosts: [{
+    type: Schema.Types.ObjectId,
+    ref: "Job",
+    default: []
+  }],
+  discussionPosts: [{
+    type: Schema.Types.ObjectId,
+    ref: "Discussion",
+    default: []
+  }],
+  eventsOrganised: [{
+    type: Schema.Types.ObjectId,
+    ref: "Event",
+    default: []
+  }],
+  eventsJoined: [{
+    type: Schema.Types.ObjectId,
+    ref: "Event",
+    default: []
+  }],
   points: {
     type: Number,
     default: 0,
@@ -129,24 +143,25 @@ userSchema.plugin(passportLocalMongoose);
 
 // Middleware to handle user-related data deletion
 userSchema.pre("remove", async function (next) {
-  const userId = this._id;
+  try {
+    const userId = this._id;
 
-  // Remove all user-related references
-  await mongoose.model("Job").deleteMany({ owner: userId });
-  await mongoose.model("Discussion").deleteMany({ owner: userId });
-  await mongoose.model("Event").deleteMany({ organiser: userId });
+    await mongoose.model("Job").deleteMany({ owner: userId });
+    await mongoose.model("Discussion").deleteMany({ owner: userId });
+    await mongoose.model("Event").deleteMany({ organiser: userId });
 
-  // Remove the user from group memberships and quiz participation
-  await mongoose.model("Group").updateMany({}, { $pull: { members: userId } });
-  await mongoose.model("Quiz").updateMany({}, { $pull: { participants: userId } });
+    await mongoose.model("Group").updateMany({}, { $pull: { members: userId } });
+    await mongoose.model("Quiz").updateMany({}, { $pull: { participants: userId } });
 
-  // Handle donations: Replace user reference with "anonymous user"
-  const anonymousUser = await mongoose.model("User").findOne({ username: "anonymous user" });
-  if (anonymousUser) {
-    await mongoose.model("Donation").updateMany({ owner: userId }, { owner: anonymousUser._id });
+    const anonymousUser = await mongoose.model("User").findOne({ username: "anonymous user" });
+    if (anonymousUser) {
+      await mongoose.model("Donation").updateMany({ owner: userId }, { owner: anonymousUser._id });
+    }
+
+    next();
+  } catch (error) {
+    next(error);
   }
-
-  next();
 });
 
 module.exports = mongoose.model("User", userSchema);

@@ -1,55 +1,126 @@
 <%- layout("/layouts/boilerplate") -%>
-<div class="container mt-5">
-    <h2 class="mb-4">My Profile</h2>
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-4 text-center">
-                    <!-- Check if profilePicture exists, otherwise use default image -->
-                    <img src="<%= user.profilePicture ? user.profilePicture : '/images/default-profile.png' %>"
-                        class="img-fluid rounded-circle mb-3" alt="Profile Picture" width="150" height="150" />
-                    <!-- Check if firstName and lastName exist -->
-                    <h5><%= user.firstName ? user.firstName : 'First Name' %>
-                        <%= user.lastName ? user.lastName : 'Last Name' %></h5>
-                    <!-- Check if batchYear exists -->
-                    <p class="text-muted">Batch of <%= user.batchYear ? user.batchYear : 'N/A' %></p>
-                </div>
-                <div class="col-md-8">
-                    <h5>About Me</h5>
-                    <!-- Check if aboutMe exists -->
-                    <p><%= user.aboutMe ? user.aboutMe : 'No bio available.' %></p>
-                    <h5>Contact Information</h5>
-                    <!-- Check if email exists -->
-                    <p>Email: <%= user.email ? user.email : 'N/A' %></p>
-                    <!-- Check if contactNumber exists -->
-                    <p>Phone: <%= user.contactNumber ? user.contactNumber : 'N/A' %></p>
-                    <h5>Social Media</h5>
-                    <!-- Check if LinkedIn, Facebook, Instagram exist -->
-                    <p>
-                        LinkedIn:
-                        <a href="<%= user.linkedin ? user.linkedin : '#' %>"><%= user.linkedin ? user.linkedin : 'N/A' %></a>
-                    </p>
-                    <p>
-                        Facebook:
-                        <a href="<%= user.facebook ? user.facebook : '#' %>"><%= user.facebook ? user.facebook : 'N/A' %></a>
-                    </p>
-                    <p>
-                        Instagram:
-                        <a href="<%= user.instagram ? user.instagram : '#' %>"><%= user.instagram ? user.instagram : 'N/A' %></a>
-                    </p>
-                    <h5>Interests</h5>
-                    <!-- Check if interests array exists and has items -->
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-lg-4 text-center">
+            <% if (user.profilePicture) { %>
+                <img src="<%= user.profilePicture %>" alt="Profile Picture" class="img-fluid rounded-circle mb-3">
+            <% } else { %>
+                <i class="fa-solid fa-user fa-5x mb-3"></i>
+            <% } %>
+            <h1><%= user.username %></h1>
+            <p class="lead"><%= user.jobTitle %> at <%= user.employer %></p>
+            <p><strong>Email:</strong> <%= user.email %></p>
+            <p><strong>Phone:</strong> <%= user.phone || 'N/A' %></p>
+            <p><strong>Location:</strong> <%= user.city %>, <%= user.country %></p>
+            <p><strong>Date of Birth:</strong> <%= user.dob ? user.dob.toDateString() : 'N/A' %></p>
+            <p><strong>Experience:</strong> <%= user.experience %> years</p>
+            <p><strong>Skills:</strong> <%= user.skills.length ? user.skills.join(", ") : 'None' %></p>
+            <p><strong>Points:</strong> <%= user.points %></p>
+            <p><strong>Star Alumni:</strong> <%= user.isStarAlumni ? 'Yes' : 'No' %></p>
+        </div>
+        <div class="col-lg-8">
+            <div class="mb-4">
+                <h2>Projects</h2>
+                <% if (user.projects.length) { %>
                     <ul>
-                        <% if (user.interests && user.interests.length > 0) { %>
-                        <% user.interests.forEach(function(interest) { %>
-                        <li><%= interest %></li>
-                        <% }); %>
-                        <% } else { %>
-                        <li>No interests listed.</li>
-                        <% } %>
+                        <% user.projects.forEach(project => { %>
+                            <li><%= project %></li>
+                        <% }) %>
                     </ul>
-                    <a href="/users/profile/<%=user._id  %>/edit" class="btn btn-primary">Edit Profile</a>
-                </div>
+                <% } else { %>
+                    <p>No projects listed.</p>
+                <% } %>
+            </div>
+
+            <div class="mb-4">
+                <h2>Achievements</h2>
+                <% if (user.achievements.length) { %>
+                    <ul>
+                        <% user.achievements.forEach(achievement => { %>
+                            <li><%= achievement %></li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No achievements listed.</p>
+                <% } %>
+            </div>
+
+            <div class="mb-4">
+                <h2>Job Postings</h2>
+                <% if (user.jobPosts.length) { %>
+                    <ul>
+                        <% user.jobPosts.forEach(jobPost => { %>
+                            <li><a href="/job-posts/<%= jobPost._id %>"><%= jobPost.title %></a></li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No job postings.</p>
+                <% } %>
+            </div>
+
+            <div class="mb-4">
+                <h2>Discussion Posts</h2>
+                <% if (user.discussionPosts.length) { %>
+                    <ul>
+                        <% user.discussionPosts.forEach(discussionPost => { %>
+                            <li><a href="/discussion-posts/<%= discussionPost._id %>"><%= discussionPost.title %></a></li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No discussion posts.</p>
+                <% } %>
+            </div>
+
+            <div class="mb-4">
+                <h2>Groups Joined</h2>
+                <% if (user.groupJoined.length) { %>
+                    <ul>
+                        <% user.groupJoined.forEach(group => { %>
+                            <li><a href="/groups/<%= group._id %>"><%= group.name %></a></li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No groups joined.</p>
+                <% } %>
+            </div>
+
+            <div class="mb-4">
+                <h2>Quizzes Participated</h2>
+                <% if (user.quizParticipated.length) { %>
+                    <ul>
+                        <% user.quizParticipated.forEach(quiz => { %>
+                            <li><a href="/quizzes/<%= quiz._id %>"><%= quiz.title %></a></li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No quizzes participated in.</p>
+                <% } %>
+            </div>
+
+            <div class="mb-4">
+                <h2>Events Organized</h2>
+                <% if (user.eventsOrganised.length) { %>
+                    <ul>
+                        <% user.eventsOrganised.forEach(event => { %>
+                            <li><a href="/events/<%= event._id %>"><%= event.title %></a></li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No events organized.</p>
+                <% } %>
+            </div>
+
+            <div class="mb-4">
+                <h2>Events Joined</h2>
+                <% if (user.eventsJoined.length) { %>
+                    <ul>
+                        <% user.eventsJoined.forEach(event => { %>
+                            <li><a href="/events/<%= event._id %>"><%= event.title %></a></li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No events joined.</p>
+                <% } %>
             </div>
         </div>
     </div>

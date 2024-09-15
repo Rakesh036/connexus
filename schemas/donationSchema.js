@@ -1,13 +1,11 @@
-const Joi = require("joi");
-const logger = require("../utils/logger"); // Importing your custom logger
+const Joi = require('joi');
+const logger = require('../utils/logger'); // Importing your custom logger
 
 // Define the schema
 module.exports.donationSchema = Joi.object({
-  donation: Joi.object({
-    title: Joi.string().required(),
-    description: Joi.string().required(),
-    isEmergency: Joi.boolean().optional(),
-  }).required(),
+  title: Joi.string().min(5).max(200).required(),
+  description: Joi.string().min(1).max(1000).required(),
+  isEmergency: Joi.boolean().optional(),
 });
 
 // Logging-based validation

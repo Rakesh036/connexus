@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const SuccessReview = require("./successReview");
+const SuccessReview = require("./successReview"); // Ensure the path is correct
 
 const successSchema = new Schema({
   title: {
@@ -33,7 +33,7 @@ const successSchema = new Schema({
   ],
 });
 
-successSchema.post("findOneAndDelete", async (successStory) => {
+successSchema.post("findOneAndDelete", async function(successStory) {
   if (successStory) {
     await SuccessReview.deleteMany({ _id: { $in: successStory.reviews } });
   }

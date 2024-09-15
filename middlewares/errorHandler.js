@@ -1,4 +1,4 @@
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('errorHandler'); // Specify label
 
 module.exports.errorHandler = (err, req, res, next) => {
   const middlewareName = err.middlewareName || "Unknown Middleware";

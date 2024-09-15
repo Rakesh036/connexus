@@ -1,7 +1,7 @@
 const Quiz = require("../models/quiz");
 const { quizSchema } = require("../schemas/quizSchema");
 const ExpressError = require("../utils/expressError");
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('quizMiddleware'); // Specify label
 
 // Middleware to validate quiz data using Joi
 module.exports.validateQuiz = (req, res, next) => {

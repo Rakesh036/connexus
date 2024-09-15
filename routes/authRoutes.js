@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('routes/auth'); // Use a specific label for auth routes
 const {
   renderSignupForm,
   signupUser,
@@ -19,6 +19,7 @@ router.route("/signup")
   .post((req, res, next) => {
     logger.info("======= [ROUTE: Signup] =======");
     logger.info("[ACTION: Processing Signup Form Submission]");
+    logger.info(`Received data: ${JSON.stringify(req.body)}`);
     next();
   }, signupUser);
 
@@ -32,6 +33,7 @@ router.route("/login")
   .post((req, res, next) => {
     logger.info("======= [ROUTE: Login] =======");
     logger.info("[ACTION: Processing Login Form Submission]");
+    logger.info(`Received data: ${JSON.stringify(req.body)}`);
     loginUser(req, res, (err) => {
       if (err) {
         logger.error(`Login Error: ${err.message}`);
@@ -39,7 +41,7 @@ router.route("/login")
       }
       req.flash("success", "Welcome back!");
       const redirectUrl = res.locals.redirectUrl || "/";
-      logger.info(`Redirecting to: ${redirectUrl}`);
+      logger.info(`Login successful. Redirecting to: ${redirectUrl}`);
       res.redirect(redirectUrl);
     });
   });
@@ -53,6 +55,7 @@ router.get("/logout", (req, res, next) => {
       logger.error(`Logout Error: ${err.message}`);
       return next(err);
     }
+    logger.info("User logged out successfully.");
     res.redirect("/");
   });
 });

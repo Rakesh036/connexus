@@ -1,22 +1,31 @@
-const Joi = require("joi");
-const logger = require("../utils/logger"); // Importing your custom logger
+const Joi = require('joi');
+const logger = require('../utils/logger'); // Import your custom logger
 
 // Define the schema
-module.exports.discussionSchema = Joi.object({
-  discussion: Joi.object({
-    title: Joi.string().required(),
-    description: Joi.string().required(),
-    queryType: Joi.string().required(),
-  }).required(),
+const discussionSchema = Joi.object({
+  title: Joi.string().required(),
+  description: Joi.string().required(),
+  queryType: Joi.string().valid(
+    "Job",
+    "Internship",
+    "General Query",
+    "Life Update",
+    "Achievement",
+    "Pledge",
+    "Technical Query",
+    "Notes",
+    "Help",
+    "Other"
+  ).required()
 });
 
-// Logging example
+// Validate function
 module.exports.validateDiscussion = (data) => {
   logger.info("======= [SCHEMA: Discussion] =======");
   logger.info("[ACTION: Starting validation for Discussion schema]");
   logger.debug("Received data for validation: %o", data);
 
-  const { error } = module.exports.discussionSchema.validate(data);
+  const { error } = discussionSchema.validate(data);
 
   if (error) {
     const errorMessage = error.details.map(el => el.message).join(", ");

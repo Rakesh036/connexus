@@ -1,5 +1,5 @@
 const Joi = require("joi");
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('paymentMiddleware'); // Specify label
 
 // Middleware to validate payment details using Joi
 module.exports.validatePayment = (req, res, next) => {

@@ -10,9 +10,10 @@ module.exports.successSchema = Joi.object({
     description: Joi.string().required().messages({
       "string.empty": "Description is required",
     }),
-    image: Joi.string().allow("", null).messages({
-      "string.base": "Image must be a string",
-    }),
+    image: Joi.object({
+      url: Joi.string().allow("", null),
+      filename: Joi.string().allow("", null),
+    }).optional(),
   }).required().messages({
     "object.required": "Success object is required",
   }),

@@ -1,7 +1,7 @@
 const Donation = require("../models/donation");
 const { donationSchema } = require("../schemas/donationSchema");
 const ExpressError = require("../utils/expressError");
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('donationMiddleware'); // Specify label
 
 // Middleware to check if the logged-in user is the owner of the donation
 module.exports.isDonationOwner = async (req, res, next) => {

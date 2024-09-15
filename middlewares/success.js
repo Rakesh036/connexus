@@ -3,7 +3,7 @@ const SuccessReview = require("../models/successReview");
 const { successReviewSchema } = require("../schemas/successReviewSchema");
 const { successSchema } = require("../schemas/successSchema");
 const ExpressError = require("../utils/expressError");
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('successMiddleware'); // Specify label
 
 // Middleware to check if the logged-in user is the owner of the success story
 module.exports.isStoryOwner = async (req, res, next) => {

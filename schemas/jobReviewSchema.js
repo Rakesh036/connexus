@@ -1,10 +1,10 @@
 const Joi = require("joi");
-const logger = require("../utils/logger"); // Import your custom logger
+const logger = require("../utils/logger"); // Ensure the path to your logger is correct
 
 // Define the schema
 module.exports.jobReviewSchema = Joi.object({
   jobReview: Joi.object({
-    comment: Joi.string().required(),
+    comment: Joi.string().required().trim(),
   }).required(),
 });
 
