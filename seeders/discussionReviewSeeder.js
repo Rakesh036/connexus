@@ -1,9 +1,11 @@
-const mongoose = require('mongoose');
-const DiscussionReview = require('../models/discussionReview');
-const Discussion = require('../models/discussion');
-const User = require('../models/user');
-const { validateDiscussionReview } = require('../utils/validation'); // Import validation function
-const logger = require('../utils/logger'); // Import the logger
+const mongoose = require("mongoose");
+const DiscussionReview = require("../models/discussionReview");
+const Discussion = require("../models/discussion");
+const User = require("../models/user");
+const {
+  validateDiscussionReview,
+} = require("../schemas/discussionReviewSchema"); // Import validation function
+const logger = require("../utils/logger")("discussionReviewSeeder"); // Import the logger
 
 const discussionReviewData = [
   {
@@ -179,8 +181,8 @@ async function discussionReviewSeeder() {
     // Fetch all discussion and user IDs
     const discussions = await Discussion.find({});
     const users = await User.find({});
-    const discussionIds = discussions.map(discussion => discussion._id);
-    const userIds = users.map(user => user._id);
+    const discussionIds = discussions.map((discussion) => discussion._id);
+    const userIds = users.map((user) => user._id);
 
     for (const review of discussionReviewData) {
       // Validate the review data
@@ -193,14 +195,17 @@ async function discussionReviewSeeder() {
 
       // Assign a random discussion and user (author) to each review
       review.author = userIds[Math.floor(Math.random() * userIds.length)];
-      const randomDiscussion = discussionIds[Math.floor(Math.random() * discussionIds.length)];
+      const randomDiscussion =
+        discussionIds[Math.floor(Math.random() * discussionIds.length)];
 
       // Create the review
       const newReview = await DiscussionReview.create(review);
       logger.info(`Review "${review.comment}" added.`);
 
       // Update the discussion's reviews array
-      await Discussion.findByIdAndUpdate(randomDiscussion, { $push: { reviews: newReview._id } });
+      await Discussion.findByIdAndUpdate(randomDiscussion, {
+        $push: { reviews: newReview._id },
+      });
       logger.info(`Discussion "${randomDiscussion}" updated with new review.`);
     }
 

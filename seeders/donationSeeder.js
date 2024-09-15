@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Donation = require("../models/donation");
 const User = require("../models/user");
 const { validateDonation } = require("../schemas/donationSchema"); // Import validation function
-const logger = require("../utils/logger"); // Import logger
+const logger = require("../utils/logger")("donationSeeder"); // Import logger
 
 const donationData = [
   {

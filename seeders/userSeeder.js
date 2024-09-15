@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("../models/user"); // Adjust the path as necessary
-const logger = require('../utils/logger'); // Import your logger
-
+const logger = require('../utils/logger')("userSeeder"); // Import your logger
+const { userValidate } = require("../schemas/userSchema");
 const users = [
   {
     username: "priya_m",

@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const SuccessReview = require("../models/successReview");
 const Success = require("../models/success");
 const User = require("../models/user");
-const logger = require("../utils/logger"); // Import logger
-
+const logger = require("../utils/logger")("successReviewSeeder"); // Import logger
+const { successReviewValidate } = require("../schemas/successReviewSchema");
 const successReviewData = [
   { comment: "Incredible story, really inspiring!" },
   { comment: "Great journey, I learned a lot from this." },

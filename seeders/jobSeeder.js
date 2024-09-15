@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Job = require("../models/job");
 const User = require("../models/user");
 const { validateJob } = require("../schemas/jobSchema");
-const logger = require("../utils/logger"); // Import logger
+const logger = require("../utils/logger")("jobSeeder"); // Import logger
 
 const jobData = [
   // Healthcare
