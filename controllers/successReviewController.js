@@ -1,7 +1,7 @@
 const Success = require("../models/success");
 const SuccessReview = require("../models/successReview");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('successReviewController'); // Specify label
 
 // Create a new review for a success story
 module.exports.create = wrapAsync(async (req, res) => {

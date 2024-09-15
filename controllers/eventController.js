@@ -1,6 +1,6 @@
 const Event = require("../models/event");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('eventController');
 
 module.exports.index = wrapAsync(async (req, res) => {
   logger.info("Fetching all events...");

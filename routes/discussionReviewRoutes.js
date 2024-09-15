@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('route'); // Import the logger with 'route' label
 const discussionReviewController = require("../controllers/discussionReviewController");
 const { isLoggedIn } = require("../middlewares/auth");
 const { isDiscussionReviewAuthor, validateDiscussionReview } = require("../middlewares/discussion");
@@ -12,8 +12,7 @@ router
     isLoggedIn,
     (req, res, next) => {
       logger.info("======= [ROUTE: Create Discussion Review] =======");
-      logger.info("[ACTION: Creating Discussion Review]");
-      logger.info("User ID: %s is attempting to create a discussion review for discussion ID: %s", req.user._id, req.params.id);
+      logger.info(`[ACTION: Creating Discussion Review] User ID: ${req.user._id} is attempting to create a discussion review for discussion ID: ${req.params.id}`);
       next();
     },
     validateDiscussionReview,
@@ -31,8 +30,7 @@ router
     isLoggedIn,
     (req, res, next) => {
       logger.info("======= [ROUTE: Delete Discussion Review] =======");
-      logger.info("[ACTION: Deleting Discussion Review]");
-      logger.info("User ID: %s is attempting to delete discussion review ID: %s", req.user._id, req.params.reviewId);
+      logger.info(`[ACTION: Deleting Discussion Review] User ID: ${req.user._id} is attempting to delete discussion review ID: ${req.params.reviewId}`);
       next();
     },
     isDiscussionReviewAuthor,

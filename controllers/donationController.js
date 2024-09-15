@@ -1,7 +1,7 @@
 const Donation = require("../models/donation");
 const Payment = require("../models/payment");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('donationController'); // Specify label
 
 module.exports.index = wrapAsync(async (req, res) => {
   logger.info("Fetching donations...");

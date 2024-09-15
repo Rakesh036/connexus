@@ -1,8 +1,7 @@
 const Discussion = require("../models/discussion");
 const DiscussionReview = require("../models/discussionReview");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
-
+const logger = require("../utils/logger")('discussionReviewController'); // Specify label
 module.exports.create = wrapAsync(async (req, res) => {
   logger.info("======= [CONTROLLER: DiscussionReview] =======");
   logger.info("[ACTION: Create Review]");

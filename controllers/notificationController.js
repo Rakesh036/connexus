@@ -1,5 +1,5 @@
 const Notification = require("../models/notification");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('notificationController');
 
 module.exports.getNotifications = async (req, res) => {
   logger.info("Notification route called");

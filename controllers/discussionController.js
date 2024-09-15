@@ -1,7 +1,7 @@
 const Discussion = require("../models/discussion");
 const User = require("../models/user");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('discussionController');
 
 module.exports.index = wrapAsync(async (req, res) => {
   logger.info("======= [CONTROLLER: Discussion] =======");

@@ -1,7 +1,7 @@
 const Job = require("../models/job");
 const JobReview = require("../models/jobReview");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('jobReviewController'); // Specify label
 
 // Create a new job review
 module.exports.create = wrapAsync(async (req, res) => {

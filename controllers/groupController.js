@@ -2,7 +2,7 @@ const Group = require("../models/group");
 const Quiz = require("../models/quiz");
 const User = require("../models/user");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('groupController'); // Specify label
 
 module.exports.listGroups = wrapAsync(async (req, res) => {
   logger.info("Fetching all groups...");

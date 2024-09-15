@@ -2,7 +2,8 @@ const Payment = require("../models/payment");
 const Donation = require("../models/donation");
 const User = require("../models/user");
 const Notification = require("../models/notification");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('paymentController'); // Specify label
+
 
 module.exports.renderPaymentForm = (req, res) => {
   const { donationId } = req.params;

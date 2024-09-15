@@ -60,7 +60,8 @@ const transport = new DailyRotateFile({
   filename: logFilePath,
   datePattern: 'YYYY-MM-DD',
   maxSize: '20m',
-  maxFiles: '14d'
+  maxFiles: '14d',
+  zippedArchive: true,
 });
 
 // Create the logger instance

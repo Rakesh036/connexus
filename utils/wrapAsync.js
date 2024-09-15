@@ -1,4 +1,4 @@
-const logger = require("./logger"); // Assuming logger is in the same utils folder
+const logger = require("./logger")('utilsWrapAsync'); // Specify label // Assuming logger is in the same utils folder
 
 module.exports = (fn) => {
   return (req, res, next) => {

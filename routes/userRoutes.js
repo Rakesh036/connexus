@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('userRoutes'); // Specify label
 const usersController = require("../controllers/userController");
 const { isLoggedIn, isCurrentUser } = require("../middlewares/auth");
 

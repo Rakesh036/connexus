@@ -1,7 +1,7 @@
 const Success = require("../models/success");
 const ExpressError = require("../utils/expressError");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('successController'); // Specify label
 
 module.exports.index = wrapAsync(async (req, res) => {
   try {

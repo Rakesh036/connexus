@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const { getUserProfile } = require('../utils/userUtils');
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('userController'); // Specify label
 
 // View User Profile
 module.exports.viewProfile = wrapAsync(async (req, res) => {

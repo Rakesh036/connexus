@@ -2,7 +2,7 @@ const Quiz = require("../models/quiz");
 const Group = require("../models/group");
 const ExpressError = require("../utils/expressError");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('quizController'); // Specify label
 
 module.exports.viewQuizzes = wrapAsync(async (req, res) => {
   const { groupId } = req.params;

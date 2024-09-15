@@ -1,8 +1,10 @@
 const Job = require("../models/job");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('jobController'); // Specify label
 
 module.exports.index = wrapAsync(async (req, res) => {
+  console.log("controller index");
+  
   logger.info("Fetching all jobs...");
   try {
     const jobs = await Job.find({}).populate("likes").populate("reports");

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('router'); // Specify label
 
 const { isLoggedIn } = require("../middlewares/auth");
 const { validatePayment } = require("../middlewares/payment"); // Import validatePayment middleware
@@ -10,7 +10,7 @@ const PaymentController = require("../controllers/paymentController");
 router.get("/:donationId", isLoggedIn, (req, res, next) => {
     logger.info("======= [ROUTE: Render Payment Form] =======");
     logger.info("[ACTION: Accessing Payment Form]");
-    logger.info("User ID: %s is accessing the payment form for donation ID: %s", req.user._id, req.params.donationId);
+    logger.info(`User ID: ${req.user._id} is accessing the payment form for donation ID: ${req.params.donationId}`);
     next();
 }, PaymentController.renderPaymentForm);
 
@@ -21,13 +21,13 @@ router.post(
   (req, res, next) => {
     logger.info("======= [ROUTE: Handle Payment Submission] =======");
     logger.info("[ACTION: Submitting Payment]");
-    logger.info("User ID: %s is submitting payment for donation ID: %s", req.user._id, req.params.donationId);
+    logger.info(`User ID: ${req.user._id} is submitting payment for donation ID: ${req.params.donationId}`);
     next();
   },
   validatePayment, // Add validation middleware here
   (req, res, next) => {
     logger.info("[ACTION: Payment Validation Completed]");
-    logger.info("Payment validation completed for donation ID: %s", req.params.donationId);
+    logger.info(`Payment validation completed for donation ID: ${req.params.donationId}`);
     next();
   },
   PaymentController.processPayment
