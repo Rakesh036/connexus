@@ -23,7 +23,9 @@ module.exports.isDiscussionOwner = async (req, res, next) => {
 };
 
 module.exports.validateDiscussion = (req, res, next) => {
-  const { error } = discussionSchema.validate(req.body);
+  console.log("validate discussion: req.body.discussion: ",req.body.discussion);
+  
+  const { error } = discussionSchema.validate(req.body.discussion);
   if (error) {
     const errMsg = error.details.map((el) => el.message).join(",");
     logger.error(`Discussion validation failed: ${errMsg}`);

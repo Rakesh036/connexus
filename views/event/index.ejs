@@ -1,5 +1,9 @@
 <%- layout("/layouts/boilerplate") -%>
-
+<style>
+.r1{
+    display: flex;
+    justify-content: space-between;
+}</style>
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="mb-0">Events</h1>
@@ -37,25 +41,35 @@
                         <h5 class="card-title"><%= event.title %></h5>
                         <p class="card-text"><%= event.description.substring(0, 50) %>...</p>
                         <p class="card-text"><small class="text-muted">Date: <%= event.date.toDateString() %> | Time: <%= event.time %></small></p>
-                        <p class="card-text"><small class="text-muted">Organized by: <%= event.organiser %></small></p>
+                    <div class="r1">
+                        <p class="card-text"><small class="text-muted">Organized by: <%= event.organiser.username %></small></p>
+                        <a href="/events/<%= event._id %>/join" class="btn btn-success btn-sm me-2">Join Event</a>
+                    </div>
                     </div>
                     <div class="lowerpart">
+                        <!-- Buttons -->
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex">
                                 <!-- Like button -->
                                 <a href="/events/<%= event._id %>/like" class="btn btn-like btn-sm me-2">
-                                    <%= event.likes.length %>&nbsp;
-                                    <% if (currUser && event.likes.findIndex(like => like.equals(currUser._id)) > -1) { %>
-                                    <i class="fa-solid fa-thumbs-up"></i>
-                                    <% } else { %>
-                                    <i class="fa-regular fa-thumbs-up"></i>
-                                    <% } %>
+                                    <i class="fa fa-thumbs-up"></i> <%= event.likes.length %>
                                 </a>
-                                <!-- Join button -->
-                                <a href="/events/<%= event._id %>/join" class="btn btn-success btn-sm me-2">Join Event</a>
+<!-- Comment button -->
+<a href="/events/<%= event._id %>/comment" class="btn btn-comment btn-sm me-2">
+    <i class="fa fa-comment"></i>
+</a>
+
+<!-- Report button with report count -->
+<a href="/events/<%= event._id %>/report" class="btn btn-report btn-sm">
+    <%= event.reports.length %> <i class="fa fa-flag"></i>
+</a>
                             </div>
+                            <!-- join button -->
+                            <!-- <a href="/events/<%= event._id %>/join" class="btn btn-success btn-sm me-2">Join Event</a> -->
                             <!-- Read more button -->
-                            <a href="/events/<%= event._id %>" class="btn btn-primary btn-sm readmore">Read More</a>
+                            <a href="/events/<%= event._id %>" class="btn btn-primary btn-sm readmore">
+                                Read More
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -65,3 +79,4 @@
     </div>
     <% } %>
 </div>
+

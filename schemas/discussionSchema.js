@@ -1,8 +1,8 @@
 const Joi = require('joi');
-const logger = require('../utils/logger'); // Import your custom logger
+const logger = require('../utils/logger')('discussionValidation'); // Import your custom logger
 
 // Define the schema
-const discussionSchema = Joi.object({
+module.exports.discussionSchema = Joi.object({
   title: Joi.string().required(),
   description: Joi.string().required(),
   queryType: Joi.string().valid(

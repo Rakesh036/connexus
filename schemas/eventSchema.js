@@ -1,38 +1,31 @@
-// schemas/eventSchema.js
 const Joi = require('joi');
 
-// Schema for validating event data
 const eventSchema = Joi.object({
   title: Joi.string().min(1).max(200).required(),
-  description: Joi.string().min(1).max(1000).required(),
-  organiser: Joi.string().required(),
+  description: Joi.string().max(1000).default('No description provided'),
   date: Joi.date().required(),
-  time: Joi.string().required(),
-  isOnline: Joi.boolean(),
-  link: Joi.string().uri().when('isOnline', { is: true, then: Joi.required() }),
-  venue: Joi.string().when('isOnline', { is: false, then: Joi.required() }),
+  time: Joi.string().default('00:00'),
+  isOnline: Joi.boolean().default(false),
+  link: Joi.string().uri().allow('').default('') // Allow empty string and default to empty
+    .when('isOnline', { is: true, then: Joi.required(), otherwise: Joi.optional() }),
+  venue: Joi.string().allow('').default('') // Allow empty string for venue
+    .when('isOnline', { is: false, then: Joi.required(), otherwise: Joi.optional() }),
   images: Joi.array().items(
     Joi.object({
-      url: Joi.string().uri(),
-      filename: Joi.string(),
+      url: Joi.string().uri().default(''),
+      filename: Joi.string().default(''),
     })
-  ),
+  ).default([]),
   chiefGuests: Joi.array().items(
     Joi.object({
-      name: Joi.string().required(),
+      name: Joi.string().default(''),
       image: Joi.object({
-        url: Joi.string().uri(),
-        filename: Joi.string(),
-      }),
+        url: Joi.string().uri().default(''),
+        filename: Joi.string().default(''),
+      }).default({}),
     })
-  ),
-  joinMembers: Joi.array().items(Joi.string()),
-  reviews: Joi.array().items(Joi.string()),
-  likes: Joi.array().items(Joi.string()),
-  reports: Joi.array().items(Joi.string()),
-  group: Joi.string(),
-  donation: Joi.string(),
-  isDonationRequired: Joi.boolean(),
+  ).default([]),
+  isDonationRequired: Joi.boolean().default(false),
 });
 
-module.exports = { eventSchema };
+module.exports = eventSchema;

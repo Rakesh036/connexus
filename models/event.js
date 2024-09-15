@@ -12,18 +12,15 @@ const eventSchema = new Schema({
     required: true,
     trim: true,
     minlength: [1, "Title must be at least 1 character long"],
-    maxlength: [200, "Title cannot exceed 200 characters"],
   },
   description: {
     type: String,
-    required: true,
     trim: true,
-    minlength: [1, "Description must be at least 1 character long"],
-    maxlength: [1000, "Description cannot exceed 1000 characters"],
+    default: "No description provided",
   },
   organiser: {
     type: Schema.Types.ObjectId,
-    ref: "User", // Reference to the event organiser
+    ref: "User",
     required: true,
   },
   date: {
@@ -31,30 +28,32 @@ const eventSchema = new Schema({
     required: true,
   },
   time: {
-    type: String, // Time when the event is going to happen (e.g., "14:00")
-    required: true,
+    type: String,
+    default: "00:00",
   },
   isOnline: {
     type: Boolean,
-    default: false, // Default set to false
+    default: false,
   },
   link: {
-    type: String, // Link for online events
+    type: String,
+    default: "",
     required: function () { return this.isOnline; }, // Required if the event is online
   },
   venue: {
-    type: String, // Venue for offline events
+    type: String,
+    default: "",
     required: function () { return !this.isOnline; }, // Required if the event is offline
   },
   images: [
     {
       url: {
-        type: String, // URL to the image
-        required: false, // Image is optional
+        type: String,
+        default: "",
       },
       filename: {
-        type: String, // Filename of the image
-        required: false, // Filename is optional
+        type: String,
+        default: "",
       },
     },
   ],
@@ -62,16 +61,16 @@ const eventSchema = new Schema({
     {
       name: {
         type: String,
-        required: true, // Name of chief guest
+        default: "",
       },
       image: {
         url: {
           type: String,
-          required: false, // URL for chief guest's image
+          default: "",
         },
         filename: {
           type: String,
-          required: false, // Filename for chief guest's image
+          default: "",
         },
       },
     },
@@ -79,13 +78,13 @@ const eventSchema = new Schema({
   joinMembers: [
     {
       type: Schema.Types.ObjectId,
-      ref: "User", // Reference to users joining the event
+      ref: "User",
     },
   ],
   reviews: [
     {
       type: Schema.Types.ObjectId,
-      ref: "EventReview", // Reference to reviews
+      ref: "EventReview",
     },
   ],
   likes: [
@@ -102,17 +101,15 @@ const eventSchema = new Schema({
   ],
   group: {
     type: Schema.Types.ObjectId,
-    ref: "Group", // Reference to the Group model, if applicable
-    required: false, // Optional, if not all events are associated with groups
+    ref: "Group",
   },
   donation: {
     type: Schema.Types.ObjectId,
-    ref: "Donation", // Reference to the Donation model, if applicable
-    required: false,
+    ref: "Donation",
   },
   isDonationRequired: {
     type: Boolean,
-    default: false, // Flag for whether a donation is required
+    default: false,
   },
 }, { timestamps: true });
 

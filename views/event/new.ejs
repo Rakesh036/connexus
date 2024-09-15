@@ -5,7 +5,7 @@
     <div class="col-6 offset-3">
       <h1 class="mt-4">Create New Event</h1>
   
-  <form action="/events" method="POST" enctype="multipart/form-data">
+  <form action="/events" method="POST">
     <div class="mb-3">
       <label for="title" class="form-label">Event Title</label>
       <input type="text" class="form-control" id="title" name="event[title]" required minlength="1" maxlength="200">
@@ -50,10 +50,10 @@
       <input type="text" class="form-control" id="chiefGuests" name="event[chiefGuests]">
     </div>
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label for="eventImage" class="form-label">Event Image</label>
       <input type="file" class="form-control" id="eventImage" name="event[eventImage]">
-    </div>
+    </div> -->
 
     <div class="mb-3">
       <label for="isDonationRequired" class="form-label">Is donation required?</label>

@@ -52,10 +52,13 @@ module.exports.create = wrapAsync(async (req, res) => {
     await newDiscussion.save();
 
     logger.info(`New discussion created with ID: ${newDiscussion._id}`);
+    // Find the user and update their discussionPosts array
+    const user = await User.findById(req.user._id);
+    user.discussionPosts.push(newDiscussion._id);
+    await user.save();
 
     req.flash("success", "New discussion created!");
     res.redirect("/discussions");
-
   } catch (err) {
     logger.error(`Error creating discussion: ${err}`);
     req.flash("error", "Failed to create discussion.");

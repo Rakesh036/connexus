@@ -30,22 +30,22 @@ module.exports.renderNewForm = (req, res) => {
 
 // Create a New Event
 module.exports.create = wrapAsync(async (req, res) => {
-  logger.info("Creating new event...");
+  logger.info("inside create eventController ");
   try {
     console.log("inside event creation, req.body: ", req.body);
-    console.log("inside event creation, req.body.event: ", req.body.event);
-    console.log("inside event creation, req.file: ", req.file);
-    console.log("inside event creation, req.user._id:", req.user._id);
-    
-    
+    // console.log("inside event creation, req.body.event: ", req.body.event);
+    // console.log("inside event creation, req.file: ", req.file);
+    // console.log("inside event creation, req.user._id:", req.user._id);
+
     const newEvent = new Event(req.body.event);
     newEvent.organiser = req.user._id;
+    console.log("newEvent is: ", newEvent);
     await newEvent.save();
-    logger.info("New event created with ID:", newEvent._id);
+    logger.info(`New event created with ID: ${newEvent._id}`);
     req.flash("success", "New event created!");
     res.redirect(`/events/${newEvent._id}`);
   } catch (err) {
-    logger.error("Error creating event:", err);
+    logger.error(`Error creating event: ${err}`);
     req.flash("error", "Failed to create event.");
     res.redirect("/events");
   }
@@ -56,15 +56,15 @@ module.exports.show = wrapAsync(async (req, res) => {
   const eventId = req.params.id;
   logger.info(`Fetching event with ID: ${eventId}`);
   try {
-    const event = await Event.findById(eventId)
-      .populate({
-        path: "reviews",
-        populate: { path: "reviewer" },
-      })
-      .populate("organiser")
-      .populate("group") // Populate group
-      .populate("likes")
-      .populate("reports");
+    const event = await Event.findById(eventId);
+    // .populate({
+    //   path: "reviews",
+    //   populate: { path: "reviewer" },
+    // })
+    // .populate("organiser")
+    // .populate("group") // Populate group
+    // .populate("likes")
+    // .populate("reports");
 
     if (!event) {
       logger.info("Event not found.");
@@ -233,3 +233,90 @@ module.exports.addReview = wrapAsync(async (req, res) => {
     res.redirect(`/events/${eventId}`);
   }
 });
+
+// Join Event
+module.exports.joinEvent = wrapAsync(async (req, res) => {
+  const eventId = req.params.id;
+  const userId = req.user._id;
+  
+  logger.info(`User ${userId} attempting to join event with ID: ${eventId}`);
+  
+  try {
+    const event = await Event.findById(eventId);
+
+    if (!event) {
+      logger.info("Event not found.");
+      req.flash("error", "Event does not exist!");
+      return res.redirect("/events");
+    }
+
+    // Check if the user is already a member of the event
+    const isMember = event.joinMembers.some((member) => member.equals(userId));
+
+    if (isMember) {
+      req.flash("info", "You have already joined this event.");
+      return res.redirect(`/events/${eventId}`);
+    }
+
+    // Add user to the joinMembers array
+    event.joinMembers.push(userId);
+    await event.save();
+
+    // Add the event to the user's joinedEvents array
+    await User.findByIdAndUpdate(userId, {
+      $push: { joinedEvents: eventId },
+    });
+
+    logger.info(`User ${userId} joined event ${eventId}`);
+    req.flash("success", "Successfully joined the event!");
+    res.redirect(`/events/${eventId}`);
+    
+  } catch (err) {
+    logger.error("Error joining event:", err);
+    req.flash("error", "Failed to join event.");
+    res.redirect("/events");
+  }
+});
+
+
+// Leave Event
+module.exports.leaveEvent = wrapAsync(async (req, res) => {
+  const eventId = req.params.id;
+  const userId = req.user._id;
+
+  logger.info(`User ${userId} attempting to leave event with ID: ${eventId}`);
+
+  try {
+    const event = await Event.findById(eventId);
+
+    if (!event) {
+      logger.info("Event not found.");
+      req.flash("error", "Event does not exist!");
+      return res.redirect("/events");
+    }
+
+    // Check if the user is a member of the event
+    const isMember = event.joinMembers.some((member) => member.equals(userId));
+
+    if (!isMember) {
+      req.flash("info", "You are not a member of this event.");
+      return res.redirect(`/events/${eventId}`);
+    }
+
+    // Remove user from the joinMembers array
+    await Event.findByIdAndUpdate(eventId, { $pull: { joinMembers: userId } });
+
+    // Remove the event from the user's joinedEvents array
+    await User.findByIdAndUpdate(userId, { $pull: { joinedEvents: eventId } });
+
+    logger.info(`User ${userId} left event ${eventId}`);
+    req.flash("success", "You have successfully left the event.");
+    res.redirect(`/events/${eventId}`);
+
+  } catch (err) {
+    logger.error("Error leaving event:", err);
+    req.flash("error", "Failed to leave event.");
+    res.redirect("/events");
+  }
+});
+

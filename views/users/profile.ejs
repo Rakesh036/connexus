@@ -63,7 +63,7 @@
                 <% if (user.discussionPosts.length) { %>
                     <ul>
                         <% user.discussionPosts.forEach(discussionPost => { %>
-                            <li><a href="/discussion-posts/<%= discussionPost._id %>"><%= discussionPost.title %></a></li>
+                            <li><a href="/discussions/<%= discussionPost._id %>"><%= discussionPost.title %></a></li>
                         <% }) %>
                     </ul>
                 <% } else { %>

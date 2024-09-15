@@ -5,22 +5,31 @@ const { storage } = require("../cloudConfig.js");
 const upload = multer({ storage });
 const logger = require("../utils/logger")('eventRoutes');
 const eventController = require("../controllers/eventController");
+const { isLoggedIn } = require("../middlewares/auth");
+const {
+  validateEvent,
+  // isEventOwner,
+} = require("../middlewares/event");
 
 // Route to get all events and create a new event
 router
   .route("/")
   .get((req, res, next) => {
     logger.info("======= [ROUTE: Get All Events] =======");
-    logger.info("[ACTION: Fetching All Events]");
+    // logger.info("[ACTION: Fetching All Events]");
     next();
   }, eventController.index) // Ensure this method exists in eventController
   .post((req, res, next) => {
     logger.info("======= [ROUTE: Create New Event] =======");
-    logger.info("[ACTION: Creating New Event]");
-    logger.info(`User ID: ${req.user ? req.user._id : 'Not logged in'} is creating a new event`);
-    logger.debug(`Request body: ${JSON.stringify(req.body)}`);
+    // logger.info("[ACTION: Creating New Event]");
+    console.log("inside post event route, req.body: ", req.body);
+    // console.log("inside post event route, req.file: ", req.file);
+    // console.log("inside post event route, req.user._id:", req.user._id);
+
+    logger.info(`User ID: ${req.user ? req.user._id : 'Not logged in'} is trying to creating a new event`);
+    // logger.debug(`Request body: ${JSON.stringify(req.body)}`);
     next();
-  }, eventController.create); // Ensure this method exists in eventController
+  }, validateEvent,eventController.create); // Ensure this method exists in eventController
 
 // Route to render the form for creating a new event
 router.route("/new").get((req, res, next) => {
@@ -74,5 +83,19 @@ router.route("/:id/report").get((req, res, next) => {
   logger.info(`User ID: ${req.user ? req.user._id : 'Not logged in'} is reporting event ID: ${req.params.id}`);
   next();
 }, eventController.report); // Ensure this method exists in eventController
+router.route("/:id/join").get((req, res, next) => {
+  logger.info("======= [ROUTE: join Event] =======");
+  logger.info("[ACTION: joining Event]");
+  logger.info(`User ID: ${req.user ? req.user._id : 'Not logged in'} is joning event ID: ${req.params.id}`);
+  next();
+}, isLoggedIn,eventController.joinEvent); // Ensure this method exists in eventController
+
+router.route("/:id/leave").get((req, res, next) => {
+  logger.info("======= [ROUTE: leave Event] =======");
+  logger.info("[ACTION: leaving Event]");
+  logger.info(`User ID: ${req.user ? req.user._id : 'Not logged in'} is leaving event ID: ${req.params.id}`);
+  next();
+}, isLoggedIn,eventController.leaveEvent); // Ensure this method exists in eventController
+
 
 module.exports = router;
