@@ -9,7 +9,7 @@ const donationSeeder = require("./donationSeeder");
 const groupSeeder = require("./groupSeeder");
 const jobSeeder = require("./jobSeeder");
 const jobReviewSeeder = require("./jobReviewSeeder");
-const notificationSeeder = require("./notificationSeeder");
+// const notificationSeeder = require("./notificationSeeder");
 const paymentSeeder = require("./paymentSeeder");
 const quizSeeder = require("./quizSeeder");
 const successSeeder = require("./successSeeder");
@@ -38,6 +38,7 @@ async function runSeeds() {
       require("../models/quiz").deleteMany({}),
       require("../models/success").deleteMany({}),
       require("../models/successReview").deleteMany({}),
+      require("../models/user").deleteMany({}),
     ]);
     logger.info("Old data cleared.");
 

@@ -7,113 +7,127 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
-    unique: true, // Ensure unique usernames
+    unique: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true, // Ensure unique emails
-    lowercase: true, // Normalize email to lowercase
+    unique: true,
+    lowercase: true,
   },
   phone: {
     type: String,
+    default: ''
   },
   dob: {
     type: Date,
+    default: null
   },
   city: {
     type: String,
+    default: ''
   },
   country: {
     type: String,
+    default: ''
   },
   graduationYear: {
     type: Number,
+    default: null
   },
   degree: {
     type: String,
+    default: ''
   },
   department: {
     type: String,
+    default: ''
   },
   employer: {
     type: String,
+    default: ''
   },
   jobTitle: {
     type: String,
+    default: ''
   },
   industry: {
     type: String,
+    default: ''
   },
   experience: {
-    type: Number, // in years
+    type: Number,
+    default: 0
   },
-  skills: [String],
-  projects: [String],
-  achievements: [String],
+  skills: {
+    type: [String],
+    default: []
+  },
+  projects: {
+    type: [String],
+    default: []
+  },
+  achievements: {
+    type: [String],
+    default: []
+  },
   linkedin: {
     type: String,
+    default: ''
   },
   github: {
     type: String,
+    default: ''
   },
   profilePicture: {
-    type: String, // Store path to the profile picture
+    type: String,
+    default: ''
   },
-  connections: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
-  groupCreated: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Group"
-    }
-  ],
-  groupJoined: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Group",
-    },
-  ],
-  quizParticipated: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Quiz",
-    },
-  ],
-  donations: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Donation",
-    },
-  ],
-  jobPosts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Job",
-    },
-  ],
-  discussionPosts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Discussion",
-    },
-  ],
-  eventsOrganised: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Event",
-    },
-  ],
-  eventsJoined: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Event",
-    },
-  ],
+  connections: [{
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    default: []
+  }],
+  groupCreated: [{
+    type: Schema.Types.ObjectId,
+    ref: "Group",
+    default: []
+  }],
+  groupJoined: [{
+    type: Schema.Types.ObjectId,
+    ref: "Group",
+    default: []
+  }],
+  quizParticipated: [{
+    type: Schema.Types.ObjectId,
+    ref: "Quiz",
+    default: []
+  }],
+  donations: [{
+    type: Schema.Types.ObjectId,
+    ref: "Donation",
+    default: []
+  }],
+  jobPosts: [{
+    type: Schema.Types.ObjectId,
+    ref: "Job",
+    default: []
+  }],
+  discussionPosts: [{
+    type: Schema.Types.ObjectId,
+    ref: "Discussion",
+    default: []
+  }],
+  eventsOrganised: [{
+    type: Schema.Types.ObjectId,
+    ref: "Event",
+    default: []
+  }],
+  eventsJoined: [{
+    type: Schema.Types.ObjectId,
+    ref: "Event",
+    default: []
+  }],
   points: {
     type: Number,
     default: 0,

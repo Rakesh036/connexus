@@ -2,22 +2,26 @@ const User = require("../models/user");
 const wrapAsync = require("../utils/wrapAsync");
 const logger = require("../utils/logger");
 
-// View User Profile
+// Example usage in your controller function
 module.exports.viewProfile = wrapAsync(async (req, res) => {
   const userId = req.params.id;
+  // console.log("user profile get request, req.params.id:", userId); // For debugging
+
   try {
-    logger.info("Viewing profile for user with ID:", userId);
+    logger.info(`Viewing profile for user with ID: ${userId}`);
 
     const user = await User.findById(userId);
     if (!user) {
-      logger.error("User not found with ID:", userId);
+      logger.error(`User not found with ID: ${userId}`);
       req.flash("error", "User not found");
       return res.redirect("/");
     }
 
     res.render("users/profile", { user, cssFile: "user/userShow.css" });
   } catch (error) {
-    logger.error("Error viewing profile for user with ID:", userId, error);
+    logger.error(
+      `Error viewing profile for user with ID: ${userId}, Error: ${error.message}`
+    );
     req.flash("error", "Error viewing profile");
     res.redirect("/");
   }
@@ -25,7 +29,8 @@ module.exports.viewProfile = wrapAsync(async (req, res) => {
 
 // Edit User Profile Form
 module.exports.editProfileForm = wrapAsync(async (req, res) => {
-  logger.info("Rendering edit profile form for user ID:", req.user._id);
+  const userId = req.user._id;
+  logger.info(`Rendering edit profile form for user ID: ${userId}`);
   res.render("users/edit", { user: req.user, cssFile: "user/userEdit.css" });
 });
 
@@ -34,7 +39,7 @@ module.exports.updateProfile = wrapAsync(async (req, res) => {
   const { username, email } = req.body;
   const userId = req.params.id;
   try {
-    logger.info("Updating profile for user ID:", userId);
+    logger.info(`Updating profile for user ID: ${userId}`);
 
     const user = await User.findByIdAndUpdate(
       userId,
@@ -43,16 +48,18 @@ module.exports.updateProfile = wrapAsync(async (req, res) => {
     );
 
     if (!user) {
-      logger.error("User not found with ID:", userId);
+      logger.error(`User not found with ID: ${userId}`);
       req.flash("error", "User not found");
       return res.redirect(`/profile/${userId}`);
     }
 
-    logger.info("Profile updated successfully for user ID:", userId);
+    logger.info(`Profile updated successfully for user ID: ${userId}`);
     req.flash("success", "Profile updated successfully");
     res.redirect(`/profile/${userId}`);
   } catch (error) {
-    logger.error("Error updating profile for user ID:", userId, error);
+    logger.error(
+      `Error updating profile for user ID: ${userId}, Error: ${error.message}`
+    );
     req.flash("error", "Error updating profile");
     res.redirect(`/profile/${userId}`);
   }
@@ -70,13 +77,17 @@ module.exports.searchUsers = wrapAsync(async (req, res) => {
   const limit = 10; // Results per page
   const skip = (page - 1) * limit;
   try {
-    logger.info("Searching users with filter:", filter, "Page:", page);
+    logger.info(
+      `Searching users with filter: ${JSON.stringify(filter)}, Page: ${page}`
+    );
 
     const users = await User.find(filter).skip(skip).limit(limit);
     const count = await User.countDocuments(filter);
 
     if (users.length === 0) {
-      logger.info("No users found matching search criteria:", filter);
+      logger.info(
+        `No users found matching search criteria: ${JSON.stringify(filter)}`
+      );
       req.flash("info", "No users found matching your search criteria.");
     }
 
@@ -87,7 +98,11 @@ module.exports.searchUsers = wrapAsync(async (req, res) => {
       cssFile: "user/userSearch.css"
     });
   } catch (error) {
-    logger.error("Error searching users with filter:", filter, error);
+    logger.error(
+      `Error searching users with filter: ${JSON.stringify(filter)}, Error: ${
+        error.message
+      }`
+    );
     req.flash("error", "Error searching users");
     res.redirect("/");
   }

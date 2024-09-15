@@ -5,14 +5,16 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4 text-center">
-                    <!-- Check if profilePicture exists, otherwise use default image -->
-                    <img src="<%= user.profilePicture ? user.profilePicture : '/images/default-profile.png' %>"
-                        class="img-fluid rounded-circle mb-3" alt="Profile Picture" width="150" height="150" />
-                    <!-- Check if firstName and lastName exist -->
-                    <h5><%= user.firstName ? user.firstName : 'First Name' %>
-                        <%= user.lastName ? user.lastName : 'Last Name' %></h5>
-                    <!-- Check if batchYear exists -->
-                    <p class="text-muted">Batch of <%= user.batchYear ? user.batchYear : 'N/A' %></p>
+                    <!-- Check if profilePicture exists, otherwise use Font Awesome icon -->
+                    <% if (user.profilePicture) { %>
+                        <img src="<%= user.profilePicture %>" class="img-fluid rounded-circle mb-3" alt="Profile Picture" width="150" height="150" />
+                    <% } else { %>
+                        <i class="fa-solid fa-user fa-5x mb-3"></i>
+                    <% } %>
+                    <!-- Check if username exists -->
+                    <h5><%= user.username ? user.username : 'Username' %></h5>
+                    <!-- Check if graduationYear exists -->
+                    <p class="text-muted">Batch of <%= user.graduationYear ? user.graduationYear : 'N/A' %></p>
                 </div>
                 <div class="col-md-8">
                     <h5>About Me</h5>
@@ -21,22 +23,51 @@
                     <h5>Contact Information</h5>
                     <!-- Check if email exists -->
                     <p>Email: <%= user.email ? user.email : 'N/A' %></p>
-                    <!-- Check if contactNumber exists -->
-                    <p>Phone: <%= user.contactNumber ? user.contactNumber : 'N/A' %></p>
+                    <!-- Check if phone exists -->
+                    <p>Phone: <%= user.phone ? user.phone : 'N/A' %></p>
                     <h5>Social Media</h5>
-                    <!-- Check if LinkedIn, Facebook, Instagram exist -->
+                    <!-- Check if LinkedIn, GitHub exist -->
                     <p>
                         LinkedIn:
                         <a href="<%= user.linkedin ? user.linkedin : '#' %>"><%= user.linkedin ? user.linkedin : 'N/A' %></a>
                     </p>
                     <p>
-                        Facebook:
-                        <a href="<%= user.facebook ? user.facebook : '#' %>"><%= user.facebook ? user.facebook : 'N/A' %></a>
+                        GitHub:
+                        <a href="<%= user.github ? user.github : '#' %>"><%= user.github ? user.github : 'N/A' %></a>
                     </p>
-                    <p>
-                        Instagram:
-                        <a href="<%= user.instagram ? user.instagram : '#' %>"><%= user.instagram ? user.instagram : 'N/A' %></a>
-                    </p>
+                    <h5>Skills</h5>
+                    <!-- Check if skills array exists and has items -->
+                    <ul>
+                        <% if (user.skills && user.skills.length > 0) { %>
+                        <% user.skills.forEach(function(skill) { %>
+                        <li><%= skill %></li>
+                        <% }); %>
+                        <% } else { %>
+                        <li>No skills listed.</li>
+                        <% } %>
+                    </ul>
+                    <h5>Projects</h5>
+                    <!-- Check if projects array exists and has items -->
+                    <ul>
+                        <% if (user.projects && user.projects.length > 0) { %>
+                        <% user.projects.forEach(function(project) { %>
+                        <li><%= project %></li>
+                        <% }); %>
+                        <% } else { %>
+                        <li>No projects listed.</li>
+                        <% } %>
+                    </ul>
+                    <h5>Achievements</h5>
+                    <!-- Check if achievements array exists and has items -->
+                    <ul>
+                        <% if (user.achievements && user.achievements.length > 0) { %>
+                        <% user.achievements.forEach(function(achievement) { %>
+                        <li><%= achievement %></li>
+                        <% }); %>
+                        <% } else { %>
+                        <li>No achievements listed.</li>
+                        <% } %>
+                    </ul>
                     <h5>Interests</h5>
                     <!-- Check if interests array exists and has items -->
                     <ul>
@@ -48,7 +79,7 @@
                         <li>No interests listed.</li>
                         <% } %>
                     </ul>
-                    <a href="/users/profile/<%=user._id  %>/edit" class="btn btn-primary">Edit Profile</a>
+                    <a href="/users/profile/<%= user._id %>/edit" class="btn btn-primary">Edit Profile</a>
                 </div>
             </div>
         </div>
