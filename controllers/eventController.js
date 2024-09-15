@@ -32,6 +32,12 @@ module.exports.renderNewForm = (req, res) => {
 module.exports.create = wrapAsync(async (req, res) => {
   logger.info("Creating new event...");
   try {
+    console.log("inside event creation, req.body: ", req.body);
+    console.log("inside event creation, req.body.event: ", req.body.event);
+    console.log("inside event creation, req.file: ", req.file);
+    console.log("inside event creation, req.user._id:", req.user._id);
+    
+    
     const newEvent = new Event(req.body.event);
     newEvent.organiser = req.user._id;
     await newEvent.save();

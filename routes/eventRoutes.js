@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const { storage } = require("../cloudConfig.js");
+const upload = multer({ storage });
 const logger = require("../utils/logger")('eventRoutes');
 const eventController = require("../controllers/eventController");
 
@@ -14,18 +17,17 @@ router
   .post((req, res, next) => {
     logger.info("======= [ROUTE: Create New Event] =======");
     logger.info("[ACTION: Creating New Event]");
-    logger.info("User ID: %s is creating a new event", req.user ? req.user._id : 'Not logged in');
-    logger.debug("Request body: %s", JSON.stringify(req.body));
+    logger.info(`User ID: ${req.user ? req.user._id : 'Not logged in'} is creating a new event`);
+    logger.debug(`Request body: ${JSON.stringify(req.body)}`);
     next();
   }, eventController.create); // Ensure this method exists in eventController
 
-
-
-  router.route("/new").get((req, res, next) => {
-    logger.info("======= [ROUTE: Render New Event Form] =======");
-    logger.info("[ACTION: Rendering New Event Form]");
-    next();
-  }, eventController.renderNewForm);
+// Route to render the form for creating a new event
+router.route("/new").get((req, res, next) => {
+  logger.info("======= [ROUTE: Render New Event Form] =======");
+  logger.info("[ACTION: Rendering New Event Form]");
+  next();
+}, eventController.renderNewForm);
 
 // Route to get, update, and delete a specific event
 router
@@ -33,31 +35,28 @@ router
   .get((req, res, next) => {
     logger.info("======= [ROUTE: Get Event Details] =======");
     logger.info("[ACTION: Fetching Event Details]");
-    logger.info("Event ID: %s", req.params.id);
+    logger.info(`Event ID: ${req.params.id}`);
     next();
   }, eventController.show) // Ensure this method exists in eventController
   .put((req, res, next) => {
     logger.info("======= [ROUTE: Update Event] =======");
     logger.info("[ACTION: Updating Event]");
-    logger.info("User ID: %s is updating event ID: %s", req.user ? req.user._id : 'Not logged in', req.params.id);
-    logger.debug("Request body: %s", JSON.stringify(req.body));
+    logger.info(`User ID: ${req.user ? req.user._id : 'Not logged in'} is updating event ID: ${req.params.id}`);
+    logger.debug(`Request body: ${JSON.stringify(req.body)}`);
     next();
   }, eventController.update) // Ensure this method exists in eventController
   .delete((req, res, next) => {
     logger.info("======= [ROUTE: Delete Event] =======");
     logger.info("[ACTION: Deleting Event]");
-    logger.info("User ID: %s is deleting event ID: %s", req.user ? req.user._id : 'Not logged in', req.params.id);
+    logger.info(`User ID: ${req.user ? req.user._id : 'Not logged in'} is deleting event ID: ${req.params.id}`);
     next();
   }, eventController.delete); // Ensure this method exists in eventController
-
-// Route to render the form for creating a new event
- // Ensure this method exists in eventController
 
 // Route to render the edit form for a specific event
 router.route("/:id/edit").get((req, res, next) => {
   logger.info("======= [ROUTE: Render Edit Event Form] =======");
   logger.info("[ACTION: Rendering Edit Event Form]");
-  logger.info("User ID: %s is requesting to edit event ID: %s", req.user ? req.user._id : 'Not logged in', req.params.id);
+  logger.info(`User ID: ${req.user ? req.user._id : 'Not logged in'} is requesting to edit event ID: ${req.params.id}`);
   next();
 }, eventController.renderEditForm); // Ensure this method exists in eventController
 
@@ -65,14 +64,14 @@ router.route("/:id/edit").get((req, res, next) => {
 router.route("/:id/like").get((req, res, next) => {
   logger.info("======= [ROUTE: Like Event] =======");
   logger.info("[ACTION: Liking Event]");
-  logger.info("User ID: %s is liking event ID: %s", req.user ? req.user._id : 'Not logged in', req.params.id);
+  logger.info(`User ID: ${req.user ? req.user._id : 'Not logged in'} is liking event ID: ${req.params.id}`);
   next();
 }, eventController.like); // Ensure this method exists in eventController
 
 router.route("/:id/report").get((req, res, next) => {
   logger.info("======= [ROUTE: Report Event] =======");
   logger.info("[ACTION: Reporting Event]");
-  logger.info("User ID: %s is reporting event ID: %s", req.user ? req.user._id : 'Not logged in', req.params.id);
+  logger.info(`User ID: ${req.user ? req.user._id : 'Not logged in'} is reporting event ID: ${req.params.id}`);
   next();
 }, eventController.report); // Ensure this method exists in eventController
 

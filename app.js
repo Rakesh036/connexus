@@ -46,7 +46,7 @@ const User = require("./models/user");
 
 // Express App Initialization
 const app = express();
-logger.info("Express app initialized");
+// logger.info("Express app initialized");
 
 // Mongoose Connection
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
@@ -65,7 +65,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-logger.info("Express configured");
+// logger.info("Express configured");
 
 // Session and Flash Configuration
 const store = MongoStore.create({
@@ -93,7 +93,7 @@ const sessionOption = {
 app.use(session(sessionOption));
 app.use(flash());
 
-logger.info("Session and flash configured");
+// logger.info("Session and flash configured");
 
 // Passport Configuration
 app.use(passport.initialize());
@@ -102,11 +102,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-logger.info("Passport configured");
+// logger.info("Passport configured");
 
 // Global Middleware for Flash Messages and Current User
 app.use((req, res, next) => {
-  logger.info("[Middleware] Setting flash messages and current user");
+  // logger.info("[Middleware] Setting flash messages and current user");
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
@@ -131,7 +131,7 @@ app.use("/notifications", notificationRoutes);
 app.use("/events", eventRoutes);
 app.use("/events/:id/reviews", eventReviewRoutes);
 
-logger.info("Routes configured");
+// logger.info("Routes configured");
 
 // Home Route
 app.get("/", (req, res) => {
@@ -141,13 +141,13 @@ app.get("/", (req, res) => {
 
 // Error Handling for Undefined Routes
 app.all("*", (req, res, next) => {
-  logger.warn("Undefined route: %s %s", req.method, req.originalUrl);
+  // logger.warn("Undefined route: %s %s", req.method, req.originalUrl);
   next(new ExpressError(404, "Page Not Found!"));
 });
 
 // General Error Handler
 app.use((err, req, res, next) => {
-  logger.error("General error handler: %o", err);
+  // logger.error("General error handler: %o", err);
   const { statusCode = 500, message = "Something went wrong" } = err;
   res.status(statusCode).render("error", { message });
 });

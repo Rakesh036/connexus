@@ -1,32 +1,35 @@
 <%- layout("layouts/boilerplate") -%>
 
 <div class="container">
-  <h1 class="my-4">Create New Event</h1>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h1 class="mt-4">Create New Event</h1>
   
   <form action="/events" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
       <label for="title" class="form-label">Event Title</label>
-      <input type="text" class="form-control" id="title" name="title" required minlength="1" maxlength="200">
+      <input type="text" class="form-control" id="title" name="event[title]" required minlength="1" maxlength="200">
     </div>
 
     <div class="mb-3">
       <label for="description" class="form-label">Event Description</label>
-      <textarea class="form-control" id="description" name="description" required minlength="1" maxlength="1000"></textarea>
+      <textarea class="form-control" id="description" name="event[description]" required minlength="1"
+        maxlength="1000"></textarea>
     </div>
 
     <div class="mb-3">
       <label for="date" class="form-label">Event Date</label>
-      <input type="date" class="form-control" id="date" name="date" required>
+      <input type="date" class="form-control" id="date" name="event[date]" required>
     </div>
 
     <div class="mb-3">
       <label for="time" class="form-label">Event Time</label>
-      <input type="time" class="form-control" id="time" name="time" required>
+      <input type="time" class="form-control" id="time" name="event[time]" required>
     </div>
 
     <div class="mb-3">
       <label for="isOnline" class="form-label">Is the event online?</label>
-      <select class="form-select" id="isOnline" name="isOnline" required onchange="toggleEventLocation()">
+      <select class="form-select" id="isOnline" name="event[isOnline]" required onchange="toggleEventLocation()">
         <option value="false">No</option>
         <option value="true">Yes</option>
       </select>
@@ -34,27 +37,27 @@
 
     <div class="mb-3" id="venueField">
       <label for="venue" class="form-label">Event Venue</label>
-      <input type="text" class="form-control" id="venue" name="venue">
+      <input type="text" class="form-control" id="venue" name="event[venue]">
     </div>
 
     <div class="mb-3 d-none" id="linkField">
       <label for="link" class="form-label">Event Link</label>
-      <input type="url" class="form-control" id="link" name="link">
+      <input type="url" class="form-control" id="link" name="event[link]">
     </div>
 
     <div class="mb-3">
       <label for="chiefGuests" class="form-label">Chief Guests (add multiple by comma)</label>
-      <input type="text" class="form-control" id="chiefGuests" name="chiefGuests">
+      <input type="text" class="form-control" id="chiefGuests" name="event[chiefGuests]">
     </div>
 
     <div class="mb-3">
       <label for="eventImage" class="form-label">Event Image</label>
-      <input type="file" class="form-control" id="eventImage" name="eventImage">
+      <input type="file" class="form-control" id="eventImage" name="event[eventImage]">
     </div>
 
     <div class="mb-3">
       <label for="isDonationRequired" class="form-label">Is donation required?</label>
-      <select class="form-select" id="isDonationRequired" name="isDonationRequired">
+      <select class="form-select" id="isDonationRequired" name="event[isDonationRequired]">
         <option value="false">No</option>
         <option value="true">Yes</option>
       </select>
@@ -62,6 +65,8 @@
 
     <button type="submit" class="btn btn-primary">Create Event</button>
   </form>
+  </div>
+  </div>
 </div>
 
 <script>
