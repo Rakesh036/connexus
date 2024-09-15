@@ -3,7 +3,7 @@ const { discussionSchema } = require("../schemas/discussionSchema");
 const DiscussionReview = require("../models/discussionReview");
 const { discussionReviewSchema } = require("../schemas/discussionReviewSchema");
 const ExpressError = require("../utils/expressError");
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('middleware'); // Specify label
 
 module.exports.isDiscussionOwner = async (req, res, next) => {
   try {

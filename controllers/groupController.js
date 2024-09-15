@@ -23,7 +23,7 @@ module.exports.listGroups = wrapAsync(async (req, res) => {
       cssFile: "/group/groupIndex.css",
     });
   } catch (err) {
-    logger.error("Error fetching groups:", err);
+    logger.error(`Error fetching groups: ${err}`);
     req.flash("error", "Unable to retrieve groups at the moment.");
     res.redirect("/");
   }
@@ -41,10 +41,10 @@ module.exports.createGroup = wrapAsync(async (req, res) => {
     group.owner = req.user._id;
     group.members.push(req.user._id);
     await group.save();
-    logger.info("New group created with ID:", group._id);
+    logger.info(`New group created with ID: ${group._id}`);
     res.redirect(`/groups`);
   } catch (err) {
-    logger.error("Error creating group:", err);
+    logger.error(`Error creating group: ${err}`);
     req.flash("error", "Failed to create group.");
     res.redirect("/groups");
   }
@@ -60,10 +60,10 @@ module.exports.showGroup = wrapAsync(async (req, res) => {
       req.flash("error", "Group does not exist!");
       return res.redirect("/groups");
     }
-    logger.info("Group found:", group._id);
+    logger.info(`Group found: ${group._id}`);
     res.render("groups/show", { group, cssFile: "group/groupShow.css" });
   } catch (err) {
-    logger.error("Error fetching group:", err);
+    logger.error(`Error fetching group: ${err}`);
     req.flash("error", "Unable to retrieve group.");
     res.redirect("/groups");
   }
@@ -79,10 +79,10 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
       req.flash("error", "Group not found");
       return res.redirect("/groups");
     }
-    logger.info("Group found for editing:", group._id);
+    logger.info(`Group found for editing: ${group._id}`);
     res.render("groups/edit", { group, cssFile: "group/groupEdit.css" });
   } catch (err) {
-    logger.error("Error fetching group for editing:", err);
+    logger.error(`Error fetching group for editing: ${err}`);
     req.flash("error", "Failed to load group for editing.");
     res.redirect("/groups");
   }
@@ -91,13 +91,13 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
 module.exports.updateGroup = wrapAsync(async (req, res) => {
   const { groupId } = req.params;
   logger.info(`Updating group with ID: ${groupId}`);
-  logger.info("Request Body:", req.body);
+  logger.info(`Request Body: ${JSON.stringify(req.body)}`);
   try {
     const group = await Group.findByIdAndUpdate(groupId, { ...req.body.group });
-    logger.info("Group updated successfully:", group._id);
+    logger.info(`Group updated successfully: ${group._id}`);
     res.redirect(`/groups/${group._id}`);
   } catch (err) {
-    logger.error("Error updating group:", err);
+    logger.error(`Error updating group: ${err}`);
     req.flash("error", "Failed to update group.");
     res.redirect("/groups");
   }
@@ -125,11 +125,11 @@ module.exports.joinGroup = wrapAsync(async (req, res) => {
     group.memberCount += 1;
     await group.save();
 
-    logger.info("User joined the group:", group._id);
+    logger.info(`User joined the group: ${group._id}`);
     req.flash("success", "You have joined the group");
     res.redirect(`/groups/${group._id}`);
   } catch (err) {
-    logger.error("Error joining group:", err);
+    logger.error(`Error joining group: ${err}`);
     req.flash("error", "Failed to join group.");
     res.redirect(`/groups/${group._id}`);
   }
@@ -157,11 +157,11 @@ module.exports.leaveGroup = wrapAsync(async (req, res) => {
     group.memberCount -= 1;
     await group.save();
 
-    logger.info("User left the group:", group._id);
+    logger.info(`User left the group: ${group._id}`);
     req.flash("success", "You have left the group");
     res.redirect(`/groups/${group._id}`);
   } catch (err) {
-    logger.error("Error leaving group:", err);
+    logger.error(`Error leaving group: ${err}`);
     req.flash("error", "Failed to leave group.");
     res.redirect(`/groups/${group._id}`);
   }
@@ -172,10 +172,10 @@ module.exports.deleteGroup = wrapAsync(async (req, res) => {
   logger.info(`Deleting group with ID: ${groupId}`);
   try {
     await Group.findByIdAndDelete(groupId);
-    logger.info("Group deleted successfully:", groupId);
+    logger.info(`Group deleted successfully: ${groupId}`);
     res.redirect("/groups");
   } catch (err) {
-    logger.error("Error deleting group:", err);
+    logger.error(`Error deleting group: ${err}`);
     req.flash("error", "Failed to delete group.");
     res.redirect("/groups");
   }
@@ -203,7 +203,7 @@ module.exports.deleteGroup = wrapAsync(async (req, res) => {
 //     req.flash("error", "Quiz not found");
 //     return res.redirect(`/groups/${groupId}`);
 //   }
-//   logger.info("Quiz found:", quiz._id);
+//   logger.info(`Quiz found: ${quiz._id}`);
 //   res.render("quizzes/show", { quiz });
 // });
 

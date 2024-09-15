@@ -25,7 +25,7 @@ module.exports.index = wrapAsync(async (req, res) => {
     });
 
   } catch (err) {
-    logger.error("Error retrieving discussions:", err);
+    logger.error(`Error retrieving discussions: ${err}`);
     res.status(500).send("Internal Server Error");
   }
 
@@ -44,20 +44,20 @@ module.exports.new = (req, res) => {
 module.exports.create = wrapAsync(async (req, res) => {
   logger.info("======= [CONTROLLER: Discussion] =======");
   logger.info("[ACTION: Create]");
-  logger.info("Request Body:", req.body);
+  logger.info(`Request Body: ${JSON.stringify(req.body)}`);
 
   try {
     const newDiscussion = new Discussion(req.body.discussion);
     newDiscussion.owner = req.user._id;
     await newDiscussion.save();
 
-    logger.info("New discussion created with ID:", newDiscussion._id);
+    logger.info(`New discussion created with ID: ${newDiscussion._id}`);
 
     req.flash("success", "New discussion created!");
     res.redirect("/discussions");
 
   } catch (err) {
-    logger.error("Error creating discussion:", err);
+    logger.error(`Error creating discussion: ${err}`);
     req.flash("error", "Failed to create discussion.");
     res.redirect("/discussions/new");
   }
@@ -84,7 +84,7 @@ module.exports.show = wrapAsync(async (req, res) => {
       return res.redirect("/discussions");
     }
 
-    logger.info("Discussion found:", discussion._id);
+    logger.info(`Discussion found: ${discussion._id}`);
 
     res.render("discussions/show", {
       discussion,
@@ -92,7 +92,7 @@ module.exports.show = wrapAsync(async (req, res) => {
     });
 
   } catch (err) {
-    logger.error("Error retrieving discussion:", err);
+    logger.error(`Error retrieving discussion: ${err}`);
     req.flash("error", "Failed to retrieve discussion.");
     res.redirect("/discussions");
   }
@@ -114,7 +114,7 @@ module.exports.edit = wrapAsync(async (req, res) => {
       return res.redirect("/discussions");
     }
 
-    logger.info("Discussion found for edit:", discussion._id);
+    logger.info(`Discussion found for edit: ${discussion._id}`);
 
     res.render("discussions/edit", {
       discussion,
@@ -122,7 +122,7 @@ module.exports.edit = wrapAsync(async (req, res) => {
     });
 
   } catch (err) {
-    logger.error("Error retrieving discussion for edit:", err);
+    logger.error(`Error retrieving discussion for edit: ${err}`);
     req.flash("error", "Failed to retrieve discussion for editing.");
     res.redirect("/discussions");
   }
@@ -139,12 +139,12 @@ module.exports.update = wrapAsync(async (req, res) => {
     await Discussion.findByIdAndUpdate(req.params.id, { ...req.body.discussion });
     req.flash("success", "Discussion updated!");
 
-    logger.info("Discussion updated:", req.params.id);
+    logger.info(`Discussion updated: ${req.params.id}`);
 
     res.redirect(`/discussions/${req.params.id}`);
 
   } catch (err) {
-    logger.error("Error updating discussion:", err);
+    logger.error(`Error updating discussion: ${err}`);
     req.flash("error", "Failed to update discussion.");
     res.redirect(`/discussions/${req.params.id}/edit`);
   }
@@ -161,12 +161,12 @@ module.exports.delete = wrapAsync(async (req, res) => {
     await Discussion.findByIdAndDelete(req.params.id);
     req.flash("success", "Discussion deleted!");
 
-    logger.info("Discussion deleted:", req.params.id);
+    logger.info(`Discussion deleted: ${req.params.id}`);
 
     res.redirect("/discussions");
 
   } catch (err) {
-    logger.error("Error deleting discussion:", err);
+    logger.error(`Error deleting discussion: ${err}`);
     req.flash("error", "Failed to delete discussion.");
     res.redirect("/discussions");
   }
@@ -203,7 +203,7 @@ module.exports.like = wrapAsync(async (req, res) => {
     res.redirect(`/discussions`);
 
   } catch (err) {
-    logger.error("Error processing like:", err);
+    logger.error(`Error processing like: ${err}`);
     req.flash("error", "Failed to process like.");
     res.redirect(`/discussions`);
   }
@@ -228,7 +228,7 @@ module.exports.comment = wrapAsync(async (req, res) => {
     res.redirect(`/discussions/${req.params.id}#comment-section`);
 
   } catch (err) {
-    logger.error("Error processing comment:", err);
+    logger.error(`Error processing comment: ${err}`);
     req.flash("error", "Failed to process comment.");
     res.redirect(`/discussions/${req.params.id}`);
   }
@@ -266,7 +266,7 @@ module.exports.report = wrapAsync(async (req, res) => {
     res.redirect(`/discussions`);
 
   } catch (err) {
-    logger.error("Error processing report:", err);
+    logger.error(`Error processing report: ${err}`);
     req.flash("error", "Failed to report discussion.");
     res.redirect(`/discussions`);
   }

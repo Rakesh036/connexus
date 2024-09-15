@@ -32,7 +32,14 @@ module.exports.processPayment = async (req, res) => {
   const donorId = req.user._id;
 
   try {
-    logger.info("Processing payment for donation ID:", donationId);
+    logger.info(`Processing payment for donation ID: ${donationId}`);
+
+    // Validate required fields
+    if (!fullName || !email || !amount || !paymentMethod) {
+      logger.error("Missing required payment details.");
+      req.flash("error", "Please provide all required payment details.");
+      return res.redirect(`/donations/${donationId}`);
+    }
 
     const payment = new Payment({
       fullName,
@@ -48,7 +55,7 @@ module.exports.processPayment = async (req, res) => {
     });
 
     await payment.save();
-    logger.info("Payment saved successfully with ID:", payment._id);
+    logger.info(`Payment saved successfully with ID: ${payment._id}`);
 
     await Donation.findByIdAndUpdate(donationId, {
       $push: { payments: payment._id },
@@ -73,13 +80,13 @@ module.exports.processPayment = async (req, res) => {
       link: `/donations/${donationId}`,
     });
 
-    logger.info("Notifications created for donation ID:", donationId);
+    logger.info(`Notifications created for donation ID: ${donationId}`);
 
     req.flash("success", `Payment successful! Transaction ID: ${payment._id}`);
     res.redirect(`/donations/${donationId}`);
   } catch (error) {
-    logger.error("Error processing payment:", error);
-    req.flash("error", "Error processing payment.");
+    logger.error(`Error processing payment for donation ID: ${donationId} - ${error}`);
+    req.flash("error", "Error processing payment. Please try again.");
     res.redirect(`/donations/${donationId}`);
   }
 };

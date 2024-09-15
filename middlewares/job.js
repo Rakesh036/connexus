@@ -3,8 +3,9 @@ const { jobSchema } = require("../schemas/jobSchema");
 const JobReview = require("../models/jobReview");
 const { jobReviewSchema } = require("../schemas/jobReviewSchema");
 const ExpressError = require("../utils/expressError");
-const logger = require("../utils/logger"); // Import the logger
+const logger = require("../utils/logger")('jobMiddleware'); // Specify label
 
+// Middleware to check if the logged-in user is the owner of the job
 module.exports.isJobOwner = async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -34,6 +35,7 @@ module.exports.isJobOwner = async (req, res, next) => {
   }
 };
 
+// Middleware to validate job schema
 module.exports.validateJob = (req, res, next) => {
   try {
     logger.info("Validating job schema...");
@@ -55,6 +57,7 @@ module.exports.validateJob = (req, res, next) => {
   }
 };
 
+// Middleware to validate job review schema
 module.exports.validateJobReview = (req, res, next) => {
   try {
     logger.info("Validating job review schema...");
@@ -76,12 +79,21 @@ module.exports.validateJobReview = (req, res, next) => {
   }
 };
 
+// Middleware to check if the logged-in user is the author of the job review
 module.exports.isJobReviewAuthor = async (req, res, next) => {
   const { id, reviewId } = req.params;
   try {
     logger.info(`Checking review author for review ID: ${reviewId} in job ID: ${id}`);
 
     const jobReview = await JobReview.findById(reviewId);
+
+    if (!jobReview) {
+      logger.warn(`Job review with ID: ${reviewId} not found`);
+      req.flash("error", "Review not found");
+      return res.redirect(`/jobs/${id}`);
+    }
+
+    logger.info(`Review author ID: ${jobReview.author}, Logged-in user ID: ${res.locals.currUser._id}`);
 
     if (!jobReview.author.equals(res.locals.currUser._id)) {
       logger.warn("Review author mismatch. User is not authorized.");

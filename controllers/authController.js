@@ -1,8 +1,7 @@
 const User = require("../models/user");
 const passport = require("passport");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
-const bcrypt = require('bcrypt');
+const logger = require("../utils/logger")('controller'); // Specify label
 
 module.exports.renderSignupForm = (req, res) => {
   logger.info("======= [CONTROLLER: User] =======");

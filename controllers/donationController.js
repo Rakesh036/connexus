@@ -6,8 +6,7 @@ const logger = require("../utils/logger");
 module.exports.index = wrapAsync(async (req, res) => {
   logger.info("Fetching donations...");
   try {
-    const filter =
-      req.query.filter === "emergency" ? { isEmergency: true } : {};
+    const filter = req.query.filter === "emergency" ? { isEmergency: true } : {};
     const donations = await Donation.find(filter)
       .populate({
         path: "payments",
@@ -25,7 +24,7 @@ module.exports.index = wrapAsync(async (req, res) => {
       cssFile: "donate/donateIndex.css",
     });
   } catch (err) {
-    logger.error("Error fetching donations:", err);
+    logger.error(`Error fetching donations: ${err}`);
     req.flash("error", "Unable to retrieve donations at the moment.");
     res.redirect("/");
   }
@@ -42,11 +41,11 @@ module.exports.create = wrapAsync(async (req, res) => {
     const newDonation = new Donation(req.body.donation);
     newDonation.owner = req.user._id;
     await newDonation.save();
-    logger.info("New donation created with ID:", newDonation._id);
+    logger.info(`New donation created with ID: ${newDonation._id}`);
     req.flash("success", "New donation created!");
     res.redirect("/donations");
   } catch (err) {
-    logger.error("Error creating donation:", err);
+    logger.error(`Error creating donation: ${err}`);
     req.flash("error", "Failed to create donation.");
     res.redirect("/donations");
   }
@@ -70,13 +69,13 @@ module.exports.show = wrapAsync(async (req, res) => {
       return res.redirect("/donations");
     }
 
-    logger.info("Donation found:", donation._id);
+    logger.info(`Donation found: ${donation._id}`);
     res.render("donations/show.ejs", {
       donation,
       cssFile: "donate/donateShow.css",
     });
   } catch (err) {
-    logger.error("Error fetching donation:", err);
+    logger.error(`Error fetching donation: ${err}`);
     req.flash("error", "Unable to retrieve the donation.");
     res.redirect("/donations");
   }
@@ -96,7 +95,7 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
       cssFile: "donate/donateEdit.css",
     });
   } catch (err) {
-    logger.error("Error fetching donation for editing:", err);
+    logger.error(`Error fetching donation for editing: ${err}`);
     req.flash("error", "Failed to load donation for editing.");
     res.redirect("/donations");
   }
@@ -104,7 +103,7 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
 
 module.exports.update = wrapAsync(async (req, res) => {
   logger.info(`Updating donation with ID: ${req.params.id}`);
-  logger.info("Request Body:", req.body);
+  logger.info(`Request Body: ${JSON.stringify(req.body)}`);
   try {
     const donation = await Donation.findByIdAndUpdate(req.params.id, {
       ...req.body.donation,
@@ -116,11 +115,11 @@ module.exports.update = wrapAsync(async (req, res) => {
       return res.redirect("/donations");
     }
 
-    logger.info("Donation updated successfully:", donation._id);
+    logger.info(`Donation updated successfully: ${donation._id}`);
     req.flash("success", "Donation updated successfully.");
     res.redirect(`/donations/${req.params.id}`);
   } catch (err) {
-    logger.error("Error updating donation:", err);
+    logger.error(`Error updating donation: ${err}`);
     req.flash("error", "Failed to update donation.");
     res.redirect("/donations");
   }
@@ -135,11 +134,11 @@ module.exports.delete = wrapAsync(async (req, res) => {
       req.flash("error", "Donation not found.");
       return res.redirect("/donations");
     }
-    logger.info("Donation deleted successfully:", donation._id);
+    logger.info(`Donation deleted successfully: ${donation._id}`);
     req.flash("success", "Donation deleted successfully.");
     res.redirect("/donations");
   } catch (err) {
-    logger.error("Error deleting donation:", err);
+    logger.error(`Error deleting donation: ${err}`);
     req.flash("error", "Failed to delete donation.");
     res.redirect("/donations");
   }
@@ -166,7 +165,7 @@ module.exports.createPayment = wrapAsync(async (req, res) => {
     req.flash("success", "Thank you for your donation!");
     res.redirect(`/donations/${req.params.id}`);
   } catch (err) {
-    logger.error("Error creating payment:", err);
+    logger.error(`Error creating payment: ${err}`);
     req.flash("error", "Failed to process your payment.");
     res.redirect(`/donations/${req.params.id}`);
   }

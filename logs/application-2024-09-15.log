@@ -4751,3 +4751,940 @@ Use mongoose.model(name, schema)
 2024-09-15 09:27:19.587 [undefined] [32minfo[39m: Routes configured
 2024-09-15 09:27:19.590 [undefined] [32minfo[39m: Server is running on port 8080
 2024-09-15 09:27:19.603 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 09:38:24.859 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 09:38:24.881 [undefined] [32minfo[39m: Express configured
+2024-09-15 09:38:24.884 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 09:38:24.884 [undefined] [32minfo[39m: Passport configured
+2024-09-15 09:38:24.885 [undefined] [32minfo[39m: Routes configured
+2024-09-15 09:38:24.889 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 09:38:24.908 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 09:38:28.025 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:38:28.026 [undefined] [32minfo[39m: ======= [ROUTE: Fetch List of Success Stories] =======
+2024-09-15 09:38:28.026 [undefined] [32minfo[39m: [ACTION: Fetching Success Stories]
+2024-09-15 09:38:28.026 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:38:28.026 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:38:28.027 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:38:28.027 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:38:28.027 [undefined] [32minfo[39m: Fetching all success stories
+2024-09-15 09:38:28.040 [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-15 09:38:28.040 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:38:28.040 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:38:34.815 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:38:34.816 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 09:38:34.816 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 09:38:34.816 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 09:38:34.816 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:38:34.816 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:38:34.816 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:38:34.816 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:38:34.817 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595d578bc45e8263e7e1
+2024-09-15 09:38:34.826 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:38:34.826 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:38:38.250 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:38:38.250 [undefined] [32minfo[39m: ======= [ROUTE: Fetch List of Success Stories] =======
+2024-09-15 09:38:38.251 [undefined] [32minfo[39m: [ACTION: Fetching Success Stories]
+2024-09-15 09:38:38.251 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:38:38.251 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:38:38.251 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:38:38.251 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:38:38.251 [undefined] [32minfo[39m: Fetching all success stories
+2024-09-15 09:38:38.260 [undefined] [32minfo[39m: Successfully fetched and rendered success stories
+2024-09-15 09:38:38.260 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:38:38.260 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:38:39.569 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:38:39.570 [undefined] [32minfo[39m: ======= [ROUTE: List Groups] =======
+2024-09-15 09:38:39.570 [undefined] [32minfo[39m: [ACTION: Fetching All Groups]
+2024-09-15 09:38:39.570 [undefined] [32minfo[39m: User ID: %s is fetching the list of all groups
+2024-09-15 09:38:39.570 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:38:39.570 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:38:39.570 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:38:39.571 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:38:39.571 [undefined] [32minfo[39m: Fetching all groups...
+2024-09-15 09:38:39.600 [undefined] [32minfo[39m: Found 4 groups.
+2024-09-15 09:38:39.603 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:38:39.603 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:38:41.051 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:38:41.052 [undefined] [32minfo[39m: ======= [ROUTE: Get All Jobs] =======
+2024-09-15 09:38:41.052 [undefined] [32minfo[39m: [ACTION: Fetching All Jobs]
+2024-09-15 09:38:41.052 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:38:41.052 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:38:41.052 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:38:41.052 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:38:41.052 [undefined] [32minfo[39m: Fetching all jobs...
+2024-09-15 09:38:41.058 [undefined] [32minfo[39m: Found 3 jobs.
+2024-09-15 09:38:41.098 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:38:41.098 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:38:43.184 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:38:43.185 [undefined] [32minfo[39m: ======= [ROUTE: Show Job Details] =======
+2024-09-15 09:38:43.185 [undefined] [32minfo[39m: [ACTION: Fetching Job Details]
+2024-09-15 09:38:43.185 [undefined] [32minfo[39m: Job ID: %s
+2024-09-15 09:38:43.185 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:38:43.185 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:38:43.185 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:38:43.185 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:38:43.185 [undefined] [32minfo[39m: Fetching job with ID: 66e6595e578bc45e8263e83a
+2024-09-15 09:38:43.191 [undefined] [32minfo[39m: Job found:
+2024-09-15 09:38:43.196 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:38:43.196 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:38:49.651 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:38:49.651 [undefined] [32minfo[39m: ======= [ROUTE: List Groups] =======
+2024-09-15 09:38:49.651 [undefined] [32minfo[39m: [ACTION: Fetching All Groups]
+2024-09-15 09:38:49.651 [undefined] [32minfo[39m: User ID: %s is fetching the list of all groups
+2024-09-15 09:38:49.652 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:38:49.652 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:38:49.652 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:38:49.652 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:38:49.652 [undefined] [32minfo[39m: Fetching all groups...
+2024-09-15 09:38:49.665 [undefined] [32minfo[39m: Found 4 groups.
+2024-09-15 09:38:49.669 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:38:49.669 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:38:52.034 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:38:52.035 [undefined] [32minfo[39m: Checking membership for user 66e6595d578bc45e8263e7e1 in group ID: 66e6595e578bc45e8263e82c
+2024-09-15 09:38:52.037 [undefined] [32minfo[39m: User 66e6595d578bc45e8263e7e1 is a member of group ID: 66e6595e578bc45e8263e82c
+2024-09-15 09:38:52.037 [undefined] [32minfo[39m: ======= [ROUTE: View Group] =======
+2024-09-15 09:38:52.037 [undefined] [32minfo[39m: [ACTION: Viewing Group Details]
+2024-09-15 09:38:52.037 [undefined] [32minfo[39m: User ID: %s is viewing details for group %s
+2024-09-15 09:38:52.037 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:38:52.038 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:38:52.038 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:38:52.038 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:38:52.038 [undefined] [32minfo[39m: Fetching group with ID: 66e6595e578bc45e8263e82c
+2024-09-15 09:38:52.045 [undefined] [32minfo[39m: Group found:
+2024-09-15 09:38:52.048 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:38:52.048 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:38:53.569 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:38:53.570 [undefined] [32minfo[39m: Checking existence of group with ID: 66e6595e578bc45e8263e82c
+2024-09-15 09:38:53.573 [undefined] [32minfo[39m: Group with ID: 66e6595e578bc45e8263e82c found
+2024-09-15 09:38:53.573 [undefined] [32minfo[39m: Checking membership for user 66e6595d578bc45e8263e7e1 in group ID: 66e6595e578bc45e8263e82c
+2024-09-15 09:38:53.576 [undefined] [32minfo[39m: User 66e6595d578bc45e8263e7e1 is a member of group ID: 66e6595e578bc45e8263e82c
+2024-09-15 09:38:53.576 [undefined] [32minfo[39m: ======= [ROUTE: View Quizzes] =======
+2024-09-15 09:38:53.576 [undefined] [32minfo[39m: [ACTION: Viewing Quizzes]
+2024-09-15 09:38:53.576 [undefined] [32minfo[39m: User ID: %s is viewing quizzes for group %s
+2024-09-15 09:38:53.576 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:38:53.576 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:38:53.576 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:38:53.577 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:38:53.577 [undefined] [32minfo[39m: Fetching quizzes for group ID:
+2024-09-15 09:38:53.589 [undefined] [32minfo[39m: Rendered quizzes index page for group ID:
+2024-09-15 09:38:53.590 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:38:53.590 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:39:03.216 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:39:03.217 [undefined] [32minfo[39m: ======= [ROUTE: Show Leaderboard] =======
+2024-09-15 09:39:03.217 [undefined] [32minfo[39m: [ACTION: Viewing Leaderboard]
+2024-09-15 09:39:03.217 [undefined] [32minfo[39m: User ID: %s is viewing leaderboard for quiz %s
+2024-09-15 09:39:03.217 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:39:03.217 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:39:03.217 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:39:03.218 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:39:03.218 [undefined] [32minfo[39m: Fetching leaderboard for quiz ID:
+2024-09-15 09:39:03.225 [undefined] [32minfo[39m: Rendered leaderboard for quiz ID:
+2024-09-15 09:39:03.225 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:39:03.225 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:39:19.800 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:39:19.800 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 09:39:19.800 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 09:39:19.800 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 09:39:19.801 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:39:19.801 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:39:19.801 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:39:19.801 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:39:19.801 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595d578bc45e8263e7e1
+2024-09-15 09:39:19.807 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:39:19.807 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:48:30.775 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:48:30.776 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 09:48:30.776 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 09:48:30.776 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 09:48:30.776 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:48:30.776 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:48:30.776 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:48:30.777 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:48:30.777 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595d578bc45e8263e7e1
+2024-09-15 09:48:30.788 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:48:30.788 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:48:30.825 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:48:30.828 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 09:48:30.828 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 09:48:30.829 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 09:49:20.950 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:49:20.951 [undefined] [32minfo[39m: ======= [ROUTE: Logout] =======
+2024-09-15 09:49:20.951 [undefined] [32minfo[39m: [ACTION: User Logging Out]
+2024-09-15 09:49:20.951 [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-15 09:49:20.951 [undefined] [32minfo[39m: [ACTION: Logout User]
+2024-09-15 09:49:20.952 [undefined] [32minfo[39m: ======= [END OF ACTION: Logout User] =======
+
+2024-09-15 09:49:20.979 [undefined] [32minfo[39m: User logged out successfully.
+2024-09-15 09:49:21.005 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:49:21.006 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 09:49:22.564 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:49:22.565 [undefined] [32minfo[39m: ======= [ROUTE: Login] =======
+2024-09-15 09:49:22.565 [undefined] [32minfo[39m: [ACTION: Rendering Login Form]
+2024-09-15 09:49:22.565 [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-15 09:49:22.565 [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-15 09:49:22.568 [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-15 09:49:26.767 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:49:26.768 [undefined] [32minfo[39m: ======= [ROUTE: Login] =======
+2024-09-15 09:49:26.768 [undefined] [32minfo[39m: [ACTION: Processing Login Form Submission]
+2024-09-15 09:49:26.940 [undefined] [32minfo[39m: Redirecting to: /
+2024-09-15 09:49:26.947 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:49:26.947 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 09:49:28.185 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:49:28.185 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 09:49:28.185 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 09:49:28.185 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 09:49:28.185 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:49:28.186 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:49:28.186 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:49:28.186 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:49:28.186 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 09:49:28.192 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:49:28.192 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:49:28.215 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:49:28.215 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 09:49:28.215 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 09:49:28.215 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 09:51:45.756 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:51:45.757 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 09:51:45.757 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 09:51:45.757 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 09:51:45.757 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:51:45.757 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:51:45.757 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:51:45.757 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:51:45.757 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 09:51:45.762 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:51:45.763 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:51:45.808 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:51:45.808 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 09:51:45.808 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 09:51:45.808 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 09:52:52.204 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:52:52.204 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 09:52:52.205 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 09:52:52.205 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 09:52:52.205 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:52:52.205 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:52:52.205 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:52:52.205 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:52:52.205 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 09:52:52.212 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:52:52.212 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:52:52.239 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:52:52.239 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 09:52:52.239 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 09:52:52.239 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 09:52:52.932 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:52:52.933 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 09:52:52.933 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 09:52:52.933 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 09:52:52.933 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:52:52.933 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:52:52.933 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:52:52.933 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:52:52.933 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 09:52:52.939 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:52:52.939 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:52:52.960 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:52:52.961 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 09:52:52.961 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 09:52:52.961 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 09:52:53.426 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:52:53.426 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 09:52:53.426 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 09:52:53.426 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 09:52:53.426 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:52:53.426 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:52:53.426 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:52:53.426 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:52:53.427 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 09:52:53.433 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:52:53.433 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:52:53.457 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:52:53.457 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 09:52:53.457 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 09:52:53.458 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 09:52:56.033 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:52:56.033 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 09:52:56.033 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 09:52:56.033 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 09:52:56.034 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:52:56.034 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:52:56.034 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:52:56.034 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:52:56.034 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 09:52:56.039 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:52:56.039 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:52:56.067 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:52:56.067 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 09:52:56.067 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 09:52:56.067 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 09:54:25.216 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:54:25.216 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 09:54:25.216 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 09:54:25.216 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 09:54:25.216 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:54:25.216 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:54:25.216 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:54:25.216 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:54:25.216 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 09:54:25.221 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:54:25.221 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:54:25.243 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:54:25.244 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 09:54:25.244 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 09:54:25.244 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 09:56:42.855 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:56:42.856 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 09:56:42.856 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 09:56:42.856 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 09:56:42.856 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 09:56:42.856 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 09:56:42.856 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 09:56:42.857 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 09:56:42.857 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 09:56:42.864 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 09:56:42.864 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 09:56:42.885 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 09:56:42.885 [undefined] [33mwarn[39m: Undefined route: %s %s
+2024-09-15 09:56:42.885 [undefined] [31merror[39m: ExpressError created: StatusCode=404, Message=Page Not Found!
+2024-09-15 09:56:42.885 [undefined] [31merror[39m: General error handler: %o
+2024-09-15 10:00:28.026 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:00:28.026 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:00:28.026 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:00:28.026 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:00:28.027 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:00:28.027 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:00:28.027 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:00:28.027 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:00:28.027 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:00:28.035 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:00:28.035 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:42:44.742 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 10:42:44.761 [undefined] [32minfo[39m: Express configured
+2024-09-15 10:42:44.764 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 10:42:44.764 [undefined] [32minfo[39m: Passport configured
+2024-09-15 10:42:44.765 [undefined] [32minfo[39m: Routes configured
+2024-09-15 10:42:44.769 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 10:42:44.789 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 10:42:45.584 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 10:42:45.608 [undefined] [32minfo[39m: Express configured
+2024-09-15 10:42:45.611 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 10:42:45.612 [undefined] [32minfo[39m: Passport configured
+2024-09-15 10:42:45.612 [undefined] [32minfo[39m: Routes configured
+2024-09-15 10:42:45.618 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 10:42:45.635 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 10:42:47.901 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 10:42:47.917 [undefined] [32minfo[39m: Express configured
+2024-09-15 10:42:47.920 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 10:42:47.920 [undefined] [32minfo[39m: Passport configured
+2024-09-15 10:42:47.920 [undefined] [32minfo[39m: Routes configured
+2024-09-15 10:42:47.923 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 10:42:47.938 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 10:42:54.541 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:42:54.542 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:42:54.543 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:42:54.544 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:42:54.544 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:42:54.544 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:42:54.544 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:42:54.544 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:42:54.544 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:42:54.556 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:42:54.561 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:42:54.561 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:42:54.577 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:42:54.577 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:42:55.846 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:42:55.846 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:42:55.846 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:42:55.846 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:42:55.847 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:42:55.847 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:42:55.847 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:42:55.847 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:42:55.847 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:42:55.852 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:42:55.853 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:42:55.854 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:42:55.862 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:42:55.863 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:42:56.877 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:42:56.878 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:42:56.878 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:42:56.878 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:42:56.878 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:42:56.879 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:42:56.879 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:42:56.879 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:42:56.879 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:42:56.885 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:42:56.887 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:42:56.887 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:42:56.899 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:42:56.899 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:42:59.429 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:42:59.430 [undefined] [32minfo[39m: ======= [ROUTE: List Discussions] =======
+2024-09-15 10:42:59.430 [undefined] [32minfo[39m: [ACTION: Fetching List of Discussions]
+2024-09-15 10:42:59.430 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:42:59.430 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:42:59.430 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:42:59.430 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:42:59.430 [undefined] [32minfo[39m: ======= [CONTROLLER: Discussion] =======
+2024-09-15 10:42:59.431 [undefined] [32minfo[39m: [ACTION: Index]
+2024-09-15 10:42:59.431 [undefined] [32minfo[39m: Querying all discussions
+2024-09-15 10:42:59.439 [undefined] [32minfo[39m: ======= [END OF ACTION: Index] =======
+
+2024-09-15 10:42:59.440 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:42:59.440 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:43:00.376 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:00.376 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:43:00.377 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:43:00.377 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:43:00.377 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:43:00.377 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:43:00.377 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:43:00.377 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:43:00.377 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:43:00.381 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:43:00.383 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:43:00.383 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:43:00.391 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:00.391 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:43:01.459 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:01.459 [undefined] [32minfo[39m: ======= [ROUTE: Logout] =======
+2024-09-15 10:43:01.459 [undefined] [32minfo[39m: [ACTION: User Logging Out]
+2024-09-15 10:43:01.459 [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-15 10:43:01.460 [undefined] [32minfo[39m: [ACTION: Logout User]
+2024-09-15 10:43:01.460 [undefined] [32minfo[39m: ======= [END OF ACTION: Logout User] =======
+
+2024-09-15 10:43:01.466 [undefined] [32minfo[39m: User logged out successfully.
+2024-09-15 10:43:01.474 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:01.475 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:43:02.573 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:02.574 [undefined] [32minfo[39m: ======= [ROUTE: Login] =======
+2024-09-15 10:43:02.574 [undefined] [32minfo[39m: [ACTION: Rendering Login Form]
+2024-09-15 10:43:02.574 [undefined] [32minfo[39m: ======= [CONTROLLER: User] =======
+2024-09-15 10:43:02.574 [undefined] [32minfo[39m: [ACTION: Render Login Form]
+2024-09-15 10:43:02.577 [undefined] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+2024-09-15 10:43:07.172 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:07.173 [undefined] [32minfo[39m: ======= [ROUTE: Login] =======
+2024-09-15 10:43:07.173 [undefined] [32minfo[39m: [ACTION: Processing Login Form Submission]
+2024-09-15 10:43:07.347 [undefined] [32minfo[39m: Redirecting to: /
+2024-09-15 10:43:07.354 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:07.354 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:43:08.679 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:08.679 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:43:08.679 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:43:08.679 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:43:08.679 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:43:08.680 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:43:08.680 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:43:08.680 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:43:08.680 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:43:08.683 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:43:08.684 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:43:08.684 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:43:08.691 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:08.691 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:43:10.474 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:10.474 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:43:10.474 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:43:10.474 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:43:10.474 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:43:10.474 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:43:10.474 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:43:10.475 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:43:10.475 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:43:10.478 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:43:10.479 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:43:10.479 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:43:10.486 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:10.487 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:43:11.059 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:11.060 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:43:11.060 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:43:11.060 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:43:11.060 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:43:11.060 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:43:11.060 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:43:11.060 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:43:11.060 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:43:11.063 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:43:11.065 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:43:11.065 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:43:11.073 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:11.073 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:43:11.610 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:11.611 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:43:11.611 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:43:11.611 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:43:11.611 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:43:11.611 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:43:11.611 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:43:11.611 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:43:11.612 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:43:11.614 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:43:11.615 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:43:11.615 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:43:11.625 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:11.625 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:43:12.210 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:12.210 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:43:12.211 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:43:12.211 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:43:12.211 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:43:12.211 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:43:12.211 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:43:12.211 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:43:12.211 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:43:12.214 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:43:12.216 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:43:12.216 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:43:12.222 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:12.222 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:43:13.091 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:13.092 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:43:13.092 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:43:13.092 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:43:13.092 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:43:13.092 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:43:13.092 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:43:13.092 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:43:13.092 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:43:13.095 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:43:13.096 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:43:13.096 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:43:13.104 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:13.105 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:43:13.773 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:13.774 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:43:13.774 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:43:13.774 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:43:13.774 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:43:13.774 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:43:13.774 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:43:13.774 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:43:13.774 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:43:13.777 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:43:13.778 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:43:13.778 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:43:13.785 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:43:13.785 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:44:37.813 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 10:44:37.828 [undefined] [32minfo[39m: Express configured
+2024-09-15 10:44:37.831 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 10:44:37.831 [undefined] [32minfo[39m: Passport configured
+2024-09-15 10:44:37.832 [undefined] [32minfo[39m: Routes configured
+2024-09-15 10:44:37.834 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 10:44:37.848 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 10:44:44.016 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:44:44.018 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:44:53.910 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:44:53.912 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:44:57.444 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:44:57.445 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:44:57.445 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:44:57.445 [undefined] [32minfo[39m: User ID: %s is viewing profile of User ID: %s
+2024-09-15 10:44:57.445 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:44:57.446 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:44:57.446 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:44:57.446 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:44:57.446 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:44:57.462 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:44:57.465 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:44:57.465 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:44:57.474 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:44:57.475 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:46:30.646 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 10:46:30.661 [undefined] [32minfo[39m: Express configured
+2024-09-15 10:46:30.664 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 10:46:30.664 [undefined] [32minfo[39m: Passport configured
+2024-09-15 10:46:30.665 [undefined] [32minfo[39m: Routes configured
+2024-09-15 10:46:30.668 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 10:46:30.681 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 10:46:36.377 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:46:36.379 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:46:36.380 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:46:36.381 [undefined] [32minfo[39m: User ID: 66e6595e578bc45e8263e7e7 is viewing profile of User ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:46:36.381 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:46:36.381 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:46:36.381 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:46:36.381 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:46:36.381 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:46:36.392 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:46:36.396 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:46:36.397 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:46:36.404 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:46:36.405 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:50:07.994 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 10:50:08.009 [undefined] [32minfo[39m: Express configured
+2024-09-15 10:50:08.011 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 10:50:08.012 [undefined] [32minfo[39m: Passport configured
+2024-09-15 10:50:08.012 [undefined] [32minfo[39m: Routes configured
+2024-09-15 10:50:08.015 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 10:50:08.028 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 10:50:15.395 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:50:15.397 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:50:20.032 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:50:20.032 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:50:20.033 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:50:20.033 [undefined] [32minfo[39m: User ID: 66e6595e578bc45e8263e7e7 is viewing profile of User ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:50:20.033 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:50:20.033 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:50:20.033 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:50:20.033 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:50:20.033 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:50:20.043 [undefined] [31merror[39m: Error viewing profile for user with ID: 66e6595e578bc45e8263e7e7, Error: Error fetching user profile: Schema hasn't been registered for model "Event".
+Use mongoose.model(name, schema)
+2024-09-15 10:50:20.045 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:50:20.045 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+2024-09-15 10:50:20.050 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:50:20.051 [undefined] [32minfo[39m: Rendering home page
+2024-09-15 10:51:07.309 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 10:51:07.324 [undefined] [32minfo[39m: Express configured
+2024-09-15 10:51:07.327 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 10:51:07.327 [undefined] [32minfo[39m: Passport configured
+2024-09-15 10:51:07.327 [undefined] [32minfo[39m: Routes configured
+2024-09-15 10:51:07.330 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 10:51:07.344 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 10:51:09.222 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 10:51:09.237 [undefined] [32minfo[39m: Express configured
+2024-09-15 10:51:09.240 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 10:51:09.240 [undefined] [32minfo[39m: Passport configured
+2024-09-15 10:51:09.240 [undefined] [32minfo[39m: Routes configured
+2024-09-15 10:51:09.243 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 10:51:09.259 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 10:51:15.552 [undefined] [32minfo[39m: Express app initialized
+2024-09-15 10:51:15.567 [undefined] [32minfo[39m: Express configured
+2024-09-15 10:51:15.570 [undefined] [32minfo[39m: Session and flash configured
+2024-09-15 10:51:15.570 [undefined] [32minfo[39m: Passport configured
+2024-09-15 10:51:15.570 [undefined] [32minfo[39m: Routes configured
+2024-09-15 10:51:15.573 [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-15 10:51:15.585 [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-15 10:51:21.375 [undefined] [32minfo[39m: [Middleware] Setting flash messages and current user
+2024-09-15 10:51:21.377 [undefined] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+2024-09-15 10:51:21.378 [undefined] [32minfo[39m: [ACTION: Accessing Profile View]
+2024-09-15 10:51:21.379 [undefined] [32minfo[39m: User ID: 66e6595e578bc45e8263e7e7 is viewing profile of User ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:51:21.379 [undefined] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+2024-09-15 10:51:21.379 [undefined] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+2024-09-15 10:51:21.379 [undefined] [32minfo[39m: Request URL: %s
+2024-09-15 10:51:21.379 [undefined] [32minfo[39m: Request Method: %s
+2024-09-15 10:51:21.379 [undefined] [32minfo[39m: Viewing profile for user with ID: 66e6595e578bc45e8263e7e7
+2024-09-15 10:51:21.398 [undefined] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+2024-09-15 10:51:21.399 [undefined] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+11:29:26 [app] [32minfo[39m: Express app initialized
+11:29:26 [app] [32minfo[39m: Express configured
+11:29:26 [app] [32minfo[39m: Session and flash configured
+11:29:26 [app] [32minfo[39m: Passport configured
+11:29:26 [app] [32minfo[39m: Routes configured
+11:29:26 [app] [32minfo[39m: Server is running on port 8080
+11:29:26 [app] [32minfo[39m: Connected to MongoDB
+11:29:38 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:29:42 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:29:44 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:33:05 [app] [32minfo[39m: Express app initialized
+11:33:05 [app] [32minfo[39m: Express configured
+11:33:05 [app] [32minfo[39m: Session and flash configured
+11:33:05 [app] [32minfo[39m: Passport configured
+11:33:05 [app] [32minfo[39m: Routes configured
+11:33:05 [app] [32minfo[39m: Server is running on port 8080
+11:33:05 [app] [32minfo[39m: Connected to MongoDB
+11:33:19 [app] [32minfo[39m: Express app initialized
+11:33:19 [app] [32minfo[39m: Express configured
+11:33:19 [app] [32minfo[39m: Session and flash configured
+11:33:19 [app] [32minfo[39m: Passport configured
+11:33:19 [app] [32minfo[39m: Routes configured
+11:33:19 [app] [32minfo[39m: Server is running on port 8080
+11:33:19 [app] [32minfo[39m: Connected to MongoDB
+11:33:33 [app] [32minfo[39m: Express app initialized
+11:33:33 [app] [32minfo[39m: Express configured
+11:33:33 [app] [32minfo[39m: Session and flash configured
+11:33:33 [app] [32minfo[39m: Passport configured
+11:33:33 [app] [32minfo[39m: Routes configured
+11:33:33 [app] [32minfo[39m: Server is running on port 8080
+11:33:33 [app] [32minfo[39m: Connected to MongoDB
+11:33:49 [app] [32minfo[39m: Express app initialized
+11:33:49 [app] [32minfo[39m: Express configured
+11:33:49 [app] [32minfo[39m: Session and flash configured
+11:33:49 [app] [32minfo[39m: Passport configured
+11:33:49 [app] [32minfo[39m: Routes configured
+11:33:49 [app] [32minfo[39m: Server is running on port 8080
+11:33:49 [app] [32minfo[39m: Connected to MongoDB
+11:34:00 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:34:00 [routes/auth] [32minfo[39m: ======= [ROUTE: Login] =======
+11:34:00 [routes/auth] [32minfo[39m: [ACTION: Rendering Login Form]
+11:34:00 [controller] [32minfo[39m: ======= [CONTROLLER: User] =======
+11:34:00 [controller] [32minfo[39m: [ACTION: Render Login Form]
+11:34:00 [controller] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+11:34:04 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:34:04 [routes/auth] [32minfo[39m: ======= [ROUTE: Login] =======
+11:34:04 [routes/auth] [32minfo[39m: [ACTION: Processing Login Form Submission]
+11:34:04 [routes/auth] [32minfo[39m: Received data: %o
+11:34:04 [routes/auth] [32minfo[39m: Login successful. Redirecting to: %s
+11:34:04 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:34:04 [app] [32minfo[39m: Rendering home page
+11:37:50 [app] [32minfo[39m: Express app initialized
+11:37:50 [app] [32minfo[39m: Express configured
+11:37:50 [app] [32minfo[39m: Session and flash configured
+11:37:50 [app] [32minfo[39m: Passport configured
+11:37:50 [app] [32minfo[39m: Routes configured
+11:37:50 [app] [32minfo[39m: Server is running on port 8080
+11:37:50 [app] [32minfo[39m: Connected to MongoDB
+11:38:42 [app] [32minfo[39m: Express app initialized
+11:38:42 [app] [32minfo[39m: Express configured
+11:38:42 [app] [32minfo[39m: Session and flash configured
+11:38:42 [app] [32minfo[39m: Passport configured
+11:38:42 [app] [32minfo[39m: Routes configured
+11:38:42 [app] [32minfo[39m: Server is running on port 8080
+11:38:42 [app] [32minfo[39m: Connected to MongoDB
+11:38:56 [app] [32minfo[39m: Express app initialized
+11:38:56 [app] [32minfo[39m: Express configured
+11:38:56 [app] [32minfo[39m: Session and flash configured
+11:38:56 [app] [32minfo[39m: Passport configured
+11:38:56 [app] [32minfo[39m: Routes configured
+11:38:56 [app] [32minfo[39m: Server is running on port 8080
+11:38:56 [app] [32minfo[39m: Connected to MongoDB
+11:39:04 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:39:04 [routes/auth] [32minfo[39m: ======= [ROUTE: Logout] =======
+11:39:04 [routes/auth] [32minfo[39m: [ACTION: User Logging Out]
+11:39:04 [controller] [32minfo[39m: ======= [CONTROLLER: User] =======
+11:39:04 [controller] [32minfo[39m: [ACTION: Logout User]
+11:39:04 [controller] [32minfo[39m: ======= [END OF ACTION: Logout User] =======
+
+11:39:04 [controller] [32minfo[39m: User logged out successfully.
+11:39:04 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:39:04 [app] [32minfo[39m: Rendering home page
+11:39:06 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:39:06 [routes/auth] [32minfo[39m: ======= [ROUTE: Login] =======
+11:39:06 [routes/auth] [32minfo[39m: [ACTION: Rendering Login Form]
+11:39:06 [controller] [32minfo[39m: ======= [CONTROLLER: User] =======
+11:39:06 [controller] [32minfo[39m: [ACTION: Render Login Form]
+11:39:06 [controller] [32minfo[39m: ======= [END OF ACTION: Render Login Form] =======
+
+11:39:11 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:39:11 [routes/auth] [32minfo[39m: ======= [ROUTE: Login] =======
+11:39:11 [routes/auth] [32minfo[39m: [ACTION: Processing Login Form Submission]
+11:39:11 [routes/auth] [32minfo[39m: Received data: {"username":"m","password":"m"}
+11:39:11 [routes/auth] [32minfo[39m: Login successful. Redirecting to: /
+11:39:11 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:39:11 [app] [32minfo[39m: Rendering home page
+11:39:32 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:39:40 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:39:40 [middleware] [32minfo[39m: [ACTION: Check Authentication] User is authenticated.
+11:39:40 [middleware] [32minfo[39m: ======= [END OF ACTION: isLoggedIn] =======
+
+11:41:37 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+11:42:14 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+12:02:06 [app] [32minfo[39m: Express app initialized
+12:02:06 [app] [32minfo[39m: Express configured
+12:02:06 [app] [32minfo[39m: Session and flash configured
+12:02:06 [app] [32minfo[39m: Passport configured
+12:02:06 [app] [32minfo[39m: Routes configured
+12:02:06 [app] [32minfo[39m: Server is running on port 8080
+12:02:06 [app] [32minfo[39m: Connected to MongoDB
+12:02:25 [app] [32minfo[39m: Express app initialized
+12:02:25 [app] [32minfo[39m: Express configured
+12:02:25 [app] [32minfo[39m: Session and flash configured
+12:02:25 [app] [32minfo[39m: Passport configured
+12:02:25 [app] [32minfo[39m: Routes configured
+12:02:25 [app] [32minfo[39m: Server is running on port 8080
+12:02:25 [app] [32minfo[39m: Connected to MongoDB
+12:02:54 [app] [32minfo[39m: Express app initialized
+12:02:54 [app] [32minfo[39m: Express configured
+12:02:54 [app] [32minfo[39m: Session and flash configured
+12:02:54 [app] [32minfo[39m: Passport configured
+12:02:54 [app] [32minfo[39m: Routes configured
+12:02:54 [app] [32minfo[39m: Server is running on port 8080
+12:02:55 [app] [32minfo[39m: Connected to MongoDB
+12:03:11 [app] [32minfo[39m: Express app initialized
+12:03:11 [app] [32minfo[39m: Express configured
+12:03:11 [app] [32minfo[39m: Session and flash configured
+12:03:11 [app] [32minfo[39m: Passport configured
+12:03:11 [app] [32minfo[39m: Routes configured
+12:03:11 [app] [32minfo[39m: Server is running on port 8080
+12:03:11 [app] [32minfo[39m: Connected to MongoDB
+12:03:25 [app] [32minfo[39m: Express app initialized
+12:03:25 [app] [32minfo[39m: Express configured
+12:03:25 [app] [32minfo[39m: Session and flash configured
+12:03:25 [app] [32minfo[39m: Passport configured
+12:03:25 [app] [32minfo[39m: Routes configured
+12:03:25 [app] [32minfo[39m: Server is running on port 8080
+12:03:25 [app] [32minfo[39m: Connected to MongoDB
+12:04:12 [app] [32minfo[39m: Express app initialized
+12:04:12 [app] [32minfo[39m: Express configured
+12:04:12 [app] [32minfo[39m: Session and flash configured
+12:04:12 [app] [32minfo[39m: Passport configured
+12:04:12 [app] [32minfo[39m: Routes configured
+12:04:12 [app] [32minfo[39m: Server is running on port 8080
+12:04:12 [app] [32minfo[39m: Connected to MongoDB
+12:04:39 [app] [32minfo[39m: Express app initialized
+12:04:39 [app] [32minfo[39m: Express configured
+12:04:39 [app] [32minfo[39m: Session and flash configured
+12:04:39 [app] [32minfo[39m: Passport configured
+12:04:39 [app] [32minfo[39m: Routes configured
+12:04:39 [app] [32minfo[39m: Server is running on port 8080
+12:04:39 [app] [32minfo[39m: Connected to MongoDB
+12:04:55 [app] [32minfo[39m: Express app initialized
+12:04:55 [app] [32minfo[39m: Express configured
+12:04:55 [app] [32minfo[39m: Session and flash configured
+12:04:55 [app] [32minfo[39m: Passport configured
+12:04:55 [app] [32minfo[39m: Routes configured
+12:04:55 [app] [32minfo[39m: Server is running on port 8080
+12:04:55 [app] [32minfo[39m: Connected to MongoDB
+12:05:12 [app] [32minfo[39m: Express app initialized
+12:05:12 [app] [32minfo[39m: Express configured
+12:05:12 [app] [32minfo[39m: Session and flash configured
+12:05:12 [app] [32minfo[39m: Passport configured
+12:05:12 [app] [32minfo[39m: Routes configured
+12:05:13 [app] [32minfo[39m: Server is running on port 8080
+12:05:13 [app] [32minfo[39m: Connected to MongoDB
+12:05:28 [app] [32minfo[39m: Express app initialized
+12:05:28 [app] [32minfo[39m: Express configured
+12:05:28 [app] [32minfo[39m: Session and flash configured
+12:05:28 [app] [32minfo[39m: Passport configured
+12:05:28 [app] [32minfo[39m: Routes configured
+12:05:28 [app] [32minfo[39m: Server is running on port 8080
+12:05:28 [app] [32minfo[39m: Connected to MongoDB
+12:06:07 [app] [32minfo[39m: Express app initialized
+12:06:07 [app] [32minfo[39m: Express configured
+12:06:07 [app] [32minfo[39m: Session and flash configured
+12:06:07 [app] [32minfo[39m: Passport configured
+12:06:07 [app] [32minfo[39m: Routes configured
+12:06:07 [app] [32minfo[39m: Server is running on port 8080
+12:06:07 [app] [32minfo[39m: Connected to MongoDB
+12:06:12 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+12:06:13 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+12:06:13 [middleware] [32minfo[39m: [ACTION: Check Authentication] User is authenticated.
+12:06:13 [middleware] [32minfo[39m: ======= [END OF ACTION: isLoggedIn] =======
+
+12:06:14 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+12:14:09 [app] [32minfo[39m: Express app initialized
+12:14:09 [app] [32minfo[39m: Express configured
+12:14:09 [app] [32minfo[39m: Session and flash configured
+12:14:09 [app] [32minfo[39m: Passport configured
+12:14:09 [app] [32minfo[39m: Routes configured
+12:14:09 [app] [32minfo[39m: Server is running on port 8080
+12:14:09 [app] [32minfo[39m: Connected to MongoDB
+12:14:11 [app] [32minfo[39m: Express app initialized
+12:14:11 [app] [32minfo[39m: Express configured
+12:14:11 [app] [32minfo[39m: Session and flash configured
+12:14:11 [app] [32minfo[39m: Passport configured
+12:14:11 [app] [32minfo[39m: Routes configured
+12:14:11 [app] [32minfo[39m: Server is running on port 8080
+12:14:11 [app] [32minfo[39m: Connected to MongoDB
+12:14:12 [app] [32minfo[39m: Express app initialized
+12:14:12 [app] [32minfo[39m: Express configured
+12:14:12 [app] [32minfo[39m: Session and flash configured
+12:14:12 [app] [32minfo[39m: Passport configured
+12:14:12 [app] [32minfo[39m: Routes configured
+12:14:12 [app] [32minfo[39m: Server is running on port 8080
+12:14:12 [app] [32minfo[39m: Connected to MongoDB
+12:14:35 [app] [32minfo[39m: Express app initialized
+12:14:35 [app] [32minfo[39m: Express configured
+12:14:35 [app] [32minfo[39m: Session and flash configured
+12:14:35 [app] [32minfo[39m: Passport configured
+12:14:35 [app] [32minfo[39m: Routes configured
+12:14:35 [app] [32minfo[39m: Server is running on port 8080
+12:14:35 [app] [32minfo[39m: Connected to MongoDB
+12:14:46 [app] [32minfo[39m: Express app initialized
+12:14:46 [app] [32minfo[39m: Express configured
+12:14:46 [app] [32minfo[39m: Session and flash configured
+12:14:46 [app] [32minfo[39m: Passport configured
+12:14:46 [app] [32minfo[39m: Routes configured
+12:14:46 [app] [32minfo[39m: Server is running on port 8080
+12:14:46 [app] [32minfo[39m: Connected to MongoDB
+12:14:52 [app] [32minfo[39m: Express app initialized
+12:14:52 [app] [32minfo[39m: Express configured
+12:14:52 [app] [32minfo[39m: Session and flash configured
+12:14:52 [app] [32minfo[39m: Passport configured
+12:14:52 [app] [32minfo[39m: Routes configured
+12:14:52 [app] [32minfo[39m: Server is running on port 8080
+12:14:52 [app] [32minfo[39m: Connected to MongoDB
+12:15:32 [app] [32minfo[39m: Express app initialized
+12:15:32 [app] [32minfo[39m: Express configured
+12:15:32 [app] [32minfo[39m: Session and flash configured
+12:15:32 [app] [32minfo[39m: Passport configured
+12:15:32 [app] [32minfo[39m: Routes configured
+12:15:32 [app] [32minfo[39m: Server is running on port 8080
+12:15:32 [app] [32minfo[39m: Connected to MongoDB
+12:15:42 [app] [32minfo[39m: Express app initialized
+12:15:42 [app] [32minfo[39m: Express configured
+12:15:42 [app] [32minfo[39m: Session and flash configured
+12:15:42 [app] [32minfo[39m: Passport configured
+12:15:42 [app] [32minfo[39m: Routes configured
+12:15:42 [app] [32minfo[39m: Server is running on port 8080
+12:15:42 [app] [32minfo[39m: Connected to MongoDB
+12:15:55 [app] [32minfo[39m: Express app initialized
+12:15:55 [app] [32minfo[39m: Express configured
+12:15:55 [app] [32minfo[39m: Session and flash configured
+12:15:55 [app] [32minfo[39m: Passport configured
+12:15:55 [app] [32minfo[39m: Routes configured
+12:15:55 [app] [32minfo[39m: Server is running on port 8080
+12:15:55 [app] [32minfo[39m: Connected to MongoDB
+12:16:02 [app] [32minfo[39m: Express app initialized
+12:16:02 [app] [32minfo[39m: Express configured
+12:16:02 [app] [32minfo[39m: Session and flash configured
+12:16:02 [app] [32minfo[39m: Passport configured
+12:16:02 [app] [32minfo[39m: Routes configured
+12:16:02 [app] [32minfo[39m: Server is running on port 8080
+12:16:02 [app] [32minfo[39m: Connected to MongoDB
+12:16:49 [app] [32minfo[39m: Express app initialized
+12:16:49 [app] [32minfo[39m: Express configured
+12:16:49 [app] [32minfo[39m: Session and flash configured
+12:16:49 [app] [32minfo[39m: Passport configured
+12:16:49 [app] [32minfo[39m: Routes configured
+12:16:49 [app] [32minfo[39m: Server is running on port 8080
+12:16:49 [app] [32minfo[39m: Connected to MongoDB

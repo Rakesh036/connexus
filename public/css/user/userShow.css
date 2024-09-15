@@ -1,61 +1,85 @@
-   body {
-       font-family: Arial, sans-serif;
-       background-color: #f4f4f4;
-       margin: 0;
-       /* padding: 20px; */
-   }
+/* General container styling */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
 
-   .profile-header {
-       background-color: #4d84e2;
-       color: white;
-       padding: 20px;
-       border-radius: 8px;
-       text-align: center;
-       margin-bottom: 30px;
-   }
+/* Profile Picture and Info Section */
+.text-center {
+    text-align: center;
+}
 
-   .profile-header h2 {
-       margin: 0;
-   }
+/* Profile Picture styling */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
 
-   .profile-container {
-       max-width: 900px;
-       margin: 0 auto;
-   }
+.rounded-circle {
+    border-radius: 50%;
+}
 
-   .basic-info,
-   .section {
-       background-color: #fff;
-       padding: 20px;
-       margin-bottom: 20px;
-       border-radius: 8px;
-       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-   }
+.mb-3 {
+    margin-bottom: 1rem;
+}
 
-   .basic-info h3,
-   .section h3 {
-       margin-bottom: 15px;
-       color: #4d84e2;
-   }
+/* User Information Styling */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
 
-   .section-list {
-       list-style-type: none;
-       padding: 0;
-   }
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
 
-   .section-list li {
-       margin-bottom: 10px;
-       padding: 10px;
-       background-color: #f9f9f9;
-       border-radius: 5px;
-       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-   }
+p {
+    margin-bottom: 1rem;
+}
 
-   .section-list li a {
-       color: #4d84e2;
-       text-decoration: none;
-   }
+strong {
+    font-weight: 600;
+}
 
-   .section-list li a:hover {
-       text-decoration: underline;
-   }
+/* Lists */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 0.5rem;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Section Headers */
+h2 {
+    font-size: 1.75rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+    color: #343a40;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col-lg-4, .col-lg-8 {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}

@@ -1,4 +1,3 @@
-// utils/expressError.js
 const logger = require("./logger"); // Ensure the path to your logger is correct
 
 class ExpressError extends Error {
@@ -7,8 +6,8 @@ class ExpressError extends Error {
     this.statusCode = statusCode;
     this.message = message;
 
-    // Log error details
-    logger.error(`ExpressError created: StatusCode=${statusCode}, Message=${message}`);
+    // Log error details, including the stack trace if available
+    logger.error(`ExpressError created: StatusCode=${statusCode}, Message=${message}${this.stack ? `, StackTrace=${this.stack}` : ''}`);
   }
 }
 

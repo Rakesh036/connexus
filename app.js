@@ -1,4 +1,6 @@
 // Unhandled Rejection Handler
+const logger = require("./utils/logger")('app'); // Ensure label for consistency
+
 process.on("unhandledRejection", (reason, promise) => {
   logger.error("Unhandled Rejection at:", { promise, reason });
   process.exit(1);
@@ -20,7 +22,6 @@ const LocalStrategy = require("passport-local");
 const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
-const logger = require("./utils/logger");
 
 // Import routes
 const authRoutes = require("./routes/authRoutes");
@@ -68,7 +69,7 @@ logger.info("Express configured");
 // Session and Flash Configuration
 const store = MongoStore.create({
   mongoUrl: MONGO_URL,
-  secret: "fdfhgjgjkgjh",
+  secret: process.env.SESSION_SECRET || "defaultsecret", // Use environment variable or default
   touchAfter: 24 * 3600,
 });
 
@@ -78,7 +79,7 @@ store.on("error", (err) => {
 
 const sessionOption = {
   store,
-  secret: "fdfhgjgjkgjh",
+  secret: process.env.SESSION_SECRET || "defaultsecret", // Use environment variable or default
   resave: false,
   saveUninitialized: true,
   cookie: {
