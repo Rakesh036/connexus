@@ -1,7 +1,8 @@
 const Event = require("../models/event");
 const EventReview = require("../models/eventReview");
 const wrapAsync = require("../utils/wrapAsync");
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('eventReviewController');
+
 
 // Define methods
 const index = wrapAsync(async (req, res) => {

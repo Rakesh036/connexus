@@ -1,0 +1,280 @@
+15:06:16 [app] [32minfo[39m: Express app initialized
+15:06:16 [app] [32minfo[39m: Express configured
+15:06:16 [app] [32minfo[39m: Session and flash configured
+15:06:16 [app] [32minfo[39m: Passport configured
+15:06:16 [app] [32minfo[39m: Routes configured
+15:06:16 [app] [32minfo[39m: Server is running on port 8080
+15:06:16 [app] [32minfo[39m: Connected to MongoDB
+15:06:28 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:06:28 [app] [32minfo[39m: Rendering home page
+15:06:29 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:06:29 [router] [32minfo[39m: ======= [ROUTE: Get All Jobs] =======
+15:06:29 [router] [32minfo[39m: [ACTION: Fetching All Jobs]
+15:06:29 [utilsWrapAsync] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+15:06:29 [utilsWrapAsync] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+15:06:29 [utilsWrapAsync] [32minfo[39m: Request URL: /jobs
+15:06:29 [utilsWrapAsync] [32minfo[39m: Request Method: GET
+15:06:29 [jobController] [32minfo[39m: Fetching all jobs...
+15:06:29 [jobController] [32minfo[39m: Found 3 jobs.
+15:06:29 [utilsWrapAsync] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+15:06:29 [utilsWrapAsync] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+15:06:29 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:06:29 [middleware] [32minfo[39m: [ACTION: Check Authentication] User is authenticated.
+15:06:29 [middleware] [32minfo[39m: ======= [END OF ACTION: isLoggedIn] =======
+
+15:06:29 [route] [32minfo[39m: ======= [ROUTE: List Groups] =======
+15:06:29 [route] [32minfo[39m: [ACTION: Fetching All Groups]
+15:06:29 [route] [32minfo[39m: User ID: 66e6595e578bc45e8263e7e7 is fetching the list of all groups
+15:06:29 [utilsWrapAsync] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+15:06:29 [utilsWrapAsync] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+15:06:29 [utilsWrapAsync] [32minfo[39m: Request URL: /groups
+15:06:29 [utilsWrapAsync] [32minfo[39m: Request Method: GET
+15:06:29 [groupController] [32minfo[39m: Fetching all groups...
+15:06:29 [groupController] [32minfo[39m: Found 4 groups.
+15:06:29 [utilsWrapAsync] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+15:06:29 [utilsWrapAsync] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+15:06:30 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:07:26 [app] [32minfo[39m: Express app initialized
+15:07:26 [app] [32minfo[39m: Express configured
+15:07:26 [app] [32minfo[39m: Session and flash configured
+15:07:26 [app] [32minfo[39m: Passport configured
+15:07:26 [app] [32minfo[39m: Routes configured
+15:07:26 [app] [32minfo[39m: Server is running on port 8080
+15:07:26 [app] [32minfo[39m: Connected to MongoDB
+15:07:31 [app] [32minfo[39m: Express app initialized
+15:07:31 [app] [32minfo[39m: Express configured
+15:07:31 [app] [32minfo[39m: Session and flash configured
+15:07:31 [app] [32minfo[39m: Passport configured
+15:07:31 [app] [32minfo[39m: Routes configured
+15:07:31 [app] [32minfo[39m: Server is running on port 8080
+15:07:31 [app] [32minfo[39m: Connected to MongoDB
+15:07:37 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:07:37 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:08:04 [app] [32minfo[39m: Express app initialized
+15:08:04 [app] [32minfo[39m: Express configured
+15:08:04 [app] [32minfo[39m: Session and flash configured
+15:08:04 [app] [32minfo[39m: Passport configured
+15:08:04 [app] [32minfo[39m: Routes configured
+15:08:04 [app] [32minfo[39m: Server is running on port 8080
+15:08:04 [app] [32minfo[39m: Connected to MongoDB
+15:08:06 [app] [32minfo[39m: Express app initialized
+15:08:06 [app] [32minfo[39m: Express configured
+15:08:06 [app] [32minfo[39m: Session and flash configured
+15:08:06 [app] [32minfo[39m: Passport configured
+15:08:06 [app] [32minfo[39m: Routes configured
+15:08:06 [app] [32minfo[39m: Server is running on port 8080
+15:08:06 [app] [32minfo[39m: Connected to MongoDB
+15:08:10 [app] [32minfo[39m: Express app initialized
+15:08:10 [app] [32minfo[39m: Express configured
+15:08:10 [app] [32minfo[39m: Session and flash configured
+15:08:10 [app] [32minfo[39m: Passport configured
+15:08:10 [app] [32minfo[39m: Routes configured
+15:08:10 [app] [32minfo[39m: Server is running on port 8080
+15:08:10 [app] [32minfo[39m: Connected to MongoDB
+15:08:13 [app] [32minfo[39m: Express app initialized
+15:08:13 [app] [32minfo[39m: Express configured
+15:08:13 [app] [32minfo[39m: Session and flash configured
+15:08:13 [app] [32minfo[39m: Passport configured
+15:08:13 [app] [32minfo[39m: Routes configured
+15:08:13 [app] [32minfo[39m: Server is running on port 8080
+15:08:14 [app] [32minfo[39m: Connected to MongoDB
+15:08:21 [app] [32minfo[39m: Express app initialized
+15:08:21 [app] [32minfo[39m: Express configured
+15:08:21 [app] [32minfo[39m: Session and flash configured
+15:08:21 [app] [32minfo[39m: Passport configured
+15:08:21 [app] [32minfo[39m: Routes configured
+15:08:21 [app] [32minfo[39m: Server is running on port 8080
+15:08:21 [app] [32minfo[39m: Connected to MongoDB
+15:08:28 [app] [32minfo[39m: Express app initialized
+15:08:28 [app] [32minfo[39m: Express configured
+15:08:28 [app] [32minfo[39m: Session and flash configured
+15:08:28 [app] [32minfo[39m: Passport configured
+15:08:28 [app] [32minfo[39m: Routes configured
+15:08:28 [app] [32minfo[39m: Server is running on port 8080
+15:08:28 [app] [32minfo[39m: Connected to MongoDB
+15:08:34 [app] [32minfo[39m: Express app initialized
+15:08:34 [app] [32minfo[39m: Express configured
+15:08:34 [app] [32minfo[39m: Session and flash configured
+15:08:34 [app] [32minfo[39m: Passport configured
+15:08:34 [app] [32minfo[39m: Routes configured
+15:08:34 [app] [32minfo[39m: Server is running on port 8080
+15:08:34 [app] [32minfo[39m: Connected to MongoDB
+15:08:39 [app] [32minfo[39m: Express app initialized
+15:08:39 [app] [32minfo[39m: Express configured
+15:08:39 [app] [32minfo[39m: Session and flash configured
+15:08:39 [app] [32minfo[39m: Passport configured
+15:08:39 [app] [32minfo[39m: Routes configured
+15:08:39 [app] [32minfo[39m: Server is running on port 8080
+15:08:39 [app] [32minfo[39m: Connected to MongoDB
+15:08:40 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:08:40 [eventRoutes] [32minfo[39m: ======= [ROUTE: Get All Events] =======
+15:08:40 [eventRoutes] [32minfo[39m: [ACTION: Fetching All Events]
+15:08:40 [utilsWrapAsync] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+15:08:40 [utilsWrapAsync] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+15:08:40 [utilsWrapAsync] [32minfo[39m: Request URL: /events
+15:08:40 [utilsWrapAsync] [32minfo[39m: Request Method: GET
+15:08:40 [eventController] [32minfo[39m: Fetching all events...
+15:08:40 [eventController] [32minfo[39m: Found 0 events.
+15:08:40 [utilsWrapAsync] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+15:08:40 [utilsWrapAsync] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+15:08:40 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:08:43 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:08:43 [eventRoutes] [32minfo[39m: ======= [ROUTE: Get All Events] =======
+15:08:43 [eventRoutes] [32minfo[39m: [ACTION: Fetching All Events]
+15:08:43 [utilsWrapAsync] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+15:08:43 [utilsWrapAsync] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+15:08:43 [utilsWrapAsync] [32minfo[39m: Request URL: /events
+15:08:43 [utilsWrapAsync] [32minfo[39m: Request Method: GET
+15:08:43 [eventController] [32minfo[39m: Fetching all events...
+15:08:43 [eventController] [32minfo[39m: Found 0 events.
+15:08:43 [utilsWrapAsync] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+15:08:43 [utilsWrapAsync] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+15:08:43 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:08:44 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:08:44 [eventRoutes] [32minfo[39m: ======= [ROUTE: Get All Events] =======
+15:08:44 [eventRoutes] [32minfo[39m: [ACTION: Fetching All Events]
+15:08:44 [utilsWrapAsync] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+15:08:44 [utilsWrapAsync] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+15:08:44 [utilsWrapAsync] [32minfo[39m: Request URL: /events
+15:08:44 [utilsWrapAsync] [32minfo[39m: Request Method: GET
+15:08:44 [eventController] [32minfo[39m: Fetching all events...
+15:08:44 [eventController] [32minfo[39m: Found 0 events.
+15:08:44 [utilsWrapAsync] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+15:08:44 [utilsWrapAsync] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+15:08:44 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:08:48 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:08:48 [successRoutes] [32minfo[39m: ======= [ROUTE: Fetch List of Success Stories] =======
+15:08:48 [successRoutes] [32minfo[39m: [ACTION: Fetching Success Stories]
+15:08:48 [utilsWrapAsync] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+15:08:48 [utilsWrapAsync] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+15:08:48 [utilsWrapAsync] [32minfo[39m: Request URL: /successes
+15:08:48 [utilsWrapAsync] [32minfo[39m: Request Method: GET
+15:08:48 [successController] [32minfo[39m: Fetching all success stories
+15:08:48 [successController] [32minfo[39m: Successfully fetched and rendered success stories
+15:08:48 [utilsWrapAsync] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+15:08:48 [utilsWrapAsync] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+15:08:50 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:08:50 [middleware] [32minfo[39m: [ACTION: Check Authentication] User is authenticated.
+15:08:50 [middleware] [32minfo[39m: ======= [END OF ACTION: isLoggedIn] =======
+
+15:09:00 [app] [32minfo[39m: Express app initialized
+15:09:00 [app] [32minfo[39m: Express configured
+15:09:00 [app] [32minfo[39m: Session and flash configured
+15:09:00 [app] [32minfo[39m: Passport configured
+15:09:00 [app] [32minfo[39m: Routes configured
+15:09:00 [app] [32minfo[39m: Server is running on port 8080
+15:09:00 [app] [32minfo[39m: Connected to MongoDB
+15:09:01 [app] [32minfo[39m: Express app initialized
+15:09:01 [app] [32minfo[39m: Express configured
+15:09:01 [app] [32minfo[39m: Session and flash configured
+15:09:01 [app] [32minfo[39m: Passport configured
+15:09:01 [app] [32minfo[39m: Routes configured
+15:09:01 [app] [32minfo[39m: Server is running on port 8080
+15:09:01 [app] [32minfo[39m: Connected to MongoDB
+15:09:10 [app] [32minfo[39m: Express app initialized
+15:09:10 [app] [32minfo[39m: Express configured
+15:09:10 [app] [32minfo[39m: Session and flash configured
+15:09:10 [app] [32minfo[39m: Passport configured
+15:09:10 [app] [32minfo[39m: Routes configured
+15:09:10 [app] [32minfo[39m: Server is running on port 8080
+15:09:10 [app] [32minfo[39m: Connected to MongoDB
+15:09:12 [app] [32minfo[39m: Express app initialized
+15:09:12 [app] [32minfo[39m: Express configured
+15:09:12 [app] [32minfo[39m: Session and flash configured
+15:09:12 [app] [32minfo[39m: Passport configured
+15:09:12 [app] [32minfo[39m: Routes configured
+15:09:12 [app] [32minfo[39m: Server is running on port 8080
+15:09:12 [app] [32minfo[39m: Connected to MongoDB
+15:09:16 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:09:16 [middleware] [32minfo[39m: [ACTION: Check Authentication] User is authenticated.
+15:09:16 [middleware] [32minfo[39m: ======= [END OF ACTION: isLoggedIn] =======
+
+15:09:16 [notificationRoutes] [32minfo[39m: ======= [ROUTE: Get Notifications] =======
+15:09:16 [notificationRoutes] [32minfo[39m: [ACTION: Requesting Notifications]
+15:09:16 [notificationRoutes] [32minfo[39m: User ID: %s is requesting notifications
+15:09:16 [notificationController] [32minfo[39m: Notification route called
+15:09:16 [notificationController] [32minfo[39m: Fetching notifications for user ID:
+15:09:16 [notificationController] [32minfo[39m: Notifications retrieved:
+15:09:16 [notificationController] [32minfo[39m: Unread notifications count:
+15:09:16 [notificationController] [32minfo[39m: Notification page rendered successfully
+15:09:17 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:09:17 [middleware] [32minfo[39m: [ACTION: Check Authentication] User is authenticated.
+15:09:17 [middleware] [32minfo[39m: ======= [END OF ACTION: isLoggedIn] =======
+
+15:09:17 [userRoutes] [32minfo[39m: ======= [ROUTE: View User Profile] =======
+15:09:17 [userRoutes] [32minfo[39m: [ACTION: Accessing Profile View]
+15:09:17 [userRoutes] [32minfo[39m: User ID: 66e6595e578bc45e8263e7e7 is viewing profile of User ID: 66e6595e578bc45e8263e7e7
+15:09:17 [utilsWrapAsync] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+15:09:17 [utilsWrapAsync] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+15:09:17 [utilsWrapAsync] [32minfo[39m: Request URL: /users/profile/66e6595e578bc45e8263e7e7
+15:09:17 [utilsWrapAsync] [32minfo[39m: Request Method: GET
+15:09:17 [userController] [32minfo[39m: Fetching profile for user with ID: 66e6595e578bc45e8263e7e7
+15:09:17 [utilsWrapAsync] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+15:09:17 [utilsWrapAsync] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+15:09:21 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:09:21 [successRoutes] [32minfo[39m: ======= [ROUTE: Fetch List of Success Stories] =======
+15:09:21 [successRoutes] [32minfo[39m: [ACTION: Fetching Success Stories]
+15:09:21 [utilsWrapAsync] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+15:09:21 [utilsWrapAsync] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+15:09:21 [utilsWrapAsync] [32minfo[39m: Request URL: /successes
+15:09:21 [utilsWrapAsync] [32minfo[39m: Request Method: GET
+15:09:21 [successController] [32minfo[39m: Fetching all success stories
+15:09:21 [successController] [32minfo[39m: Successfully fetched and rendered success stories
+15:09:21 [utilsWrapAsync] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+15:09:21 [utilsWrapAsync] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+15:09:21 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:09:21 [middleware] [32minfo[39m: [ACTION: Check Authentication] User is authenticated.
+15:09:21 [middleware] [32minfo[39m: ======= [END OF ACTION: isLoggedIn] =======
+
+15:09:21 [route] [32minfo[39m: ======= [ROUTE: List Groups] =======
+15:09:21 [route] [32minfo[39m: [ACTION: Fetching All Groups]
+15:09:21 [route] [32minfo[39m: User ID: 66e6595e578bc45e8263e7e7 is fetching the list of all groups
+15:09:21 [utilsWrapAsync] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+15:09:21 [utilsWrapAsync] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+15:09:21 [utilsWrapAsync] [32minfo[39m: Request URL: /groups
+15:09:21 [utilsWrapAsync] [32minfo[39m: Request Method: GET
+15:09:21 [groupController] [32minfo[39m: Fetching all groups...
+15:09:21 [groupController] [32minfo[39m: Found 4 groups.
+15:09:21 [utilsWrapAsync] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+15:09:21 [utilsWrapAsync] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+15:09:22 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:09:22 [router] [32minfo[39m: ======= [ROUTE: Get All Jobs] =======
+15:09:22 [router] [32minfo[39m: [ACTION: Fetching All Jobs]
+15:09:22 [utilsWrapAsync] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+15:09:22 [utilsWrapAsync] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+15:09:22 [utilsWrapAsync] [32minfo[39m: Request URL: /jobs
+15:09:22 [utilsWrapAsync] [32minfo[39m: Request Method: GET
+15:09:22 [jobController] [32minfo[39m: Fetching all jobs...
+15:09:22 [jobController] [32minfo[39m: Found 3 jobs.
+15:09:22 [utilsWrapAsync] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+15:09:22 [utilsWrapAsync] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+15:09:22 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:09:22 [app] [32minfo[39m: Rendering home page
+15:09:24 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:09:24 [middleware] [32minfo[39m: [ACTION: Check Authentication] User is authenticated.
+15:09:24 [middleware] [32minfo[39m: ======= [END OF ACTION: isLoggedIn] =======
+
+15:09:24 [route] [32minfo[39m: ======= [ROUTE: List Groups] =======
+15:09:24 [route] [32minfo[39m: [ACTION: Fetching All Groups]
+15:09:24 [route] [32minfo[39m: User ID: 66e6595e578bc45e8263e7e7 is fetching the list of all groups
+15:09:24 [utilsWrapAsync] [32minfo[39m: ======= [MIDDLEWARE: wrapAsync] =======
+15:09:24 [utilsWrapAsync] [32minfo[39m: [ACTION: Wrapping async function: anonymous function]
+15:09:24 [utilsWrapAsync] [32minfo[39m: Request URL: /groups
+15:09:24 [utilsWrapAsync] [32minfo[39m: Request Method: GET
+15:09:24 [groupController] [32minfo[39m: Fetching all groups...
+15:09:24 [groupController] [32minfo[39m: Found 4 groups.
+15:09:24 [utilsWrapAsync] [32minfo[39m: [END OF ACTION: Async function anonymous function completed]
+15:09:24 [utilsWrapAsync] [32minfo[39m: ======= [END OF MIDDLEWARE: wrapAsync] =======
+
+15:09:31 [app] [32minfo[39m: [Middleware] Setting flash messages and current user
+15:09:31 [app] [32minfo[39m: Rendering home page

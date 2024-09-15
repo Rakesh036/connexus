@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('eventRoutes');
 const eventController = require("../controllers/eventController");
 
 // Route to get all events and create a new event

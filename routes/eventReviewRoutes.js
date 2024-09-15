@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
-const logger = require("../utils/logger");
+const logger = require("../utils/logger")('eventReviewRoutes');
+
 
 const eventReviewController = require("../controllers/eventReviewController");
 
