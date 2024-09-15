@@ -1,13 +1,20 @@
 const Event = require("../models/event");
+const EventReview = require("../models/eventReview"); // Assuming the event review model
+const User = require("../models/user"); // Assuming the user model
 const wrapAsync = require("../utils/wrapAsync");
 const logger = require("../utils/logger")('eventController');
 
+// Fetch All Events
 module.exports.index = wrapAsync(async (req, res) => {
   logger.info("Fetching all events...");
   try {
-    const events = await Event.find({}).populate("likes").populate("reports");
+    const events = await Event.find({})
+      .populate("likes")
+      .populate("reports")
+      .populate("organiser")
+      .populate("group"); // Populate group if needed
     logger.info(`Found ${events.length} events.`);
-    res.render("events/index", { events, cssFile: "event/eventIndex.css" });
+    res.render("event/index", { events, cssFile: "event/eventIndex.css" });
   } catch (err) {
     logger.error("Error fetching events:", err);
     req.flash("error", "Unable to retrieve events at the moment.");
@@ -15,11 +22,13 @@ module.exports.index = wrapAsync(async (req, res) => {
   }
 });
 
+// Render Form for New Event
 module.exports.renderNewForm = (req, res) => {
   logger.info("Rendering new event form.");
-  res.render("events/new", { cssFile: "event/eventNew.css" });
+  res.render("event/new", { cssFile: "event/eventNew.css" });
 };
 
+// Create a New Event
 module.exports.create = wrapAsync(async (req, res) => {
   logger.info("Creating new event...");
   try {
@@ -28,7 +37,7 @@ module.exports.create = wrapAsync(async (req, res) => {
     await newEvent.save();
     logger.info("New event created with ID:", newEvent._id);
     req.flash("success", "New event created!");
-    res.redirect("/events");
+    res.redirect(`/events/${newEvent._id}`);
   } catch (err) {
     logger.error("Error creating event:", err);
     req.flash("error", "Failed to create event.");
@@ -36,6 +45,7 @@ module.exports.create = wrapAsync(async (req, res) => {
   }
 });
 
+// Show Event Details
 module.exports.show = wrapAsync(async (req, res) => {
   const eventId = req.params.id;
   logger.info(`Fetching event with ID: ${eventId}`);
@@ -43,9 +53,12 @@ module.exports.show = wrapAsync(async (req, res) => {
     const event = await Event.findById(eventId)
       .populate({
         path: "reviews",
-        populate: { path: "author" },
+        populate: { path: "reviewer" },
       })
-      .populate("organiser");
+      .populate("organiser")
+      .populate("group") // Populate group
+      .populate("likes")
+      .populate("reports");
 
     if (!event) {
       logger.info("Event not found.");
@@ -54,7 +67,7 @@ module.exports.show = wrapAsync(async (req, res) => {
     }
 
     logger.info("Event found:", event._id);
-    res.render("events/show", { event, cssFile: "event/eventShow.css" });
+    res.render("event/show", { event, cssFile: "event/eventShow.css" });
   } catch (err) {
     logger.error("Error fetching event:", err);
     req.flash("error", "Unable to retrieve event.");
@@ -62,6 +75,7 @@ module.exports.show = wrapAsync(async (req, res) => {
   }
 });
 
+// Render Edit Event Form
 module.exports.renderEditForm = wrapAsync(async (req, res) => {
   const eventId = req.params.id;
   logger.info(`Fetching event for editing with ID: ${eventId}`);
@@ -75,7 +89,7 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
     }
 
     logger.info("Event found for editing:", event._id);
-    res.render("events/edit", { event, cssFile: "event/eventEdit.css" });
+    res.render("event/edit", { event, cssFile: "event/eventEdit.css" });
   } catch (err) {
     logger.error("Error fetching event for editing:", err);
     req.flash("error", "Failed to load event for editing.");
@@ -83,6 +97,7 @@ module.exports.renderEditForm = wrapAsync(async (req, res) => {
   }
 });
 
+// Update Event
 module.exports.update = wrapAsync(async (req, res) => {
   const eventId = req.params.id;
   logger.info(`Updating event with ID: ${eventId}`);
@@ -99,6 +114,7 @@ module.exports.update = wrapAsync(async (req, res) => {
   }
 });
 
+// Delete Event
 module.exports.delete = wrapAsync(async (req, res) => {
   const eventId = req.params.id;
   logger.info(`Deleting event with ID: ${eventId}`);
@@ -114,6 +130,7 @@ module.exports.delete = wrapAsync(async (req, res) => {
   }
 });
 
+// Like Event
 module.exports.like = wrapAsync(async (req, res) => {
   const eventId = req.params.id;
   const userId = req.user._id;
@@ -137,7 +154,7 @@ module.exports.like = wrapAsync(async (req, res) => {
       logger.info("User liked the event:", eventId);
     }
 
-    res.redirect("/events");
+    res.redirect(`/events/${eventId}`);
   } catch (err) {
     logger.error("Error liking event:", err);
     req.flash("error", "Failed to like event.");
@@ -145,26 +162,7 @@ module.exports.like = wrapAsync(async (req, res) => {
   }
 });
 
-module.exports.comment = wrapAsync(async (req, res) => {
-  const eventId = req.params.id;
-  logger.info(`User ${req.user._id} commenting on event with ID: ${eventId}`);
-  try {
-    const event = await Event.findById(eventId);
-
-    if (!event) {
-      logger.info("Event not found.");
-      req.flash("error", "Event not found");
-      return res.redirect("/events");
-    }
-
-    res.redirect(`/events/${eventId}#comment-section`);
-  } catch (err) {
-    logger.error("Error commenting on event:", err);
-    req.flash("error", "Failed to comment on event.");
-    res.redirect(`/events/${eventId}`);
-  }
-});
-
+// Report Event
 module.exports.report = wrapAsync(async (req, res) => {
   const eventId = req.params.id;
   const userId = req.user._id;
@@ -189,10 +187,43 @@ module.exports.report = wrapAsync(async (req, res) => {
     }
 
     req.flash("success", "Event reported!");
-    res.redirect("/events");
+    res.redirect(`/events/${eventId}`);
   } catch (err) {
     logger.error("Error reporting event:", err);
     req.flash("error", "Failed to report event.");
     res.redirect("/events");
+  }
+});
+
+// Add Event Review
+module.exports.addReview = wrapAsync(async (req, res) => {
+  const eventId = req.params.id;
+  const userId = req.user._id;
+  logger.info(`User ${userId} adding a review for event with ID: ${eventId}`);
+
+  try {
+    const event = await Event.findById(eventId);
+
+    if (!event) {
+      logger.info("Event not found.");
+      req.flash("error", "Event does not exist!");
+      return res.redirect("/events");
+    }
+
+    const review = new EventReview({
+      ...req.body.review,
+      reviewer: userId,
+      event: eventId,
+    });
+
+    await review.save();
+    logger.info("Review added for event:", eventId);
+
+    req.flash("success", "Review added!");
+    res.redirect(`/events/${eventId}`);
+  } catch (err) {
+    logger.error("Error adding review:", err);
+    req.flash("error", "Failed to add review.");
+    res.redirect(`/events/${eventId}`);
   }
 });

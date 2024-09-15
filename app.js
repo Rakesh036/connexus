@@ -38,7 +38,8 @@ const successRoutes = require("./routes/successRoutes");
 const successReviewRoutes = require("./routes/successReviewRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
-
+const eventRoutes = require("./routes/eventRoutes");
+const eventReviewRoutes = require("./routes/eventReviewRoutes");
 // Error Handling
 const ExpressError = require("./utils/expressError");
 const User = require("./models/user");
@@ -127,6 +128,8 @@ app.use("/successes", successRoutes);
 app.use("/successes/:id/reviews", successReviewRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/notifications", notificationRoutes);
+app.use("/events", eventRoutes);
+app.use("/events/:id/reviews", eventReviewRoutes);
 
 logger.info("Routes configured");
 

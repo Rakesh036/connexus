@@ -4,13 +4,14 @@ const User = require("./user"); // Import User model
 const Donation = require("./donation"); // Import Donation model
 const Group = require("./group"); // Import Group model if you have one
 const Notification = require("./notification"); // Import Notification model
+const EventReview = require("./eventReview"); // Import EventReview model
 
 const eventSchema = new Schema({
   title: {
     type: String,
     required: true,
     trim: true,
-    minlength: [1, "Title must be at least 1 characters long"],
+    minlength: [1, "Title must be at least 1 character long"],
     maxlength: [200, "Title cannot exceed 200 characters"],
   },
   description: {
@@ -39,11 +40,11 @@ const eventSchema = new Schema({
   },
   link: {
     type: String, // Link for online events
-    required: function() { return this.isOnline; }, // Required if the event is online
+    required: function () { return this.isOnline; }, // Required if the event is online
   },
   venue: {
     type: String, // Venue for offline events
-    required: function() { return !this.isOnline; }, // Required if the event is offline
+    required: function () { return !this.isOnline; }, // Required if the event is offline
   },
   images: [
     {
@@ -57,6 +58,24 @@ const eventSchema = new Schema({
       },
     },
   ],
+  chiefGuests: [
+    {
+      name: {
+        type: String,
+        required: true, // Name of chief guest
+      },
+      image: {
+        url: {
+          type: String,
+          required: false, // URL for chief guest's image
+        },
+        filename: {
+          type: String,
+          required: false, // Filename for chief guest's image
+        },
+      },
+    },
+  ],
   joinMembers: [
     {
       type: Schema.Types.ObjectId,
@@ -66,7 +85,7 @@ const eventSchema = new Schema({
   reviews: [
     {
       type: Schema.Types.ObjectId,
-      ref: "EventReview", // Optionally add review feature similar to jobs
+      ref: "EventReview", // Reference to reviews
     },
   ],
   likes: [
@@ -86,10 +105,19 @@ const eventSchema = new Schema({
     ref: "Group", // Reference to the Group model, if applicable
     required: false, // Optional, if not all events are associated with groups
   },
+  donation: {
+    type: Schema.Types.ObjectId,
+    ref: "Donation", // Reference to the Donation model, if applicable
+    required: false,
+  },
+  isDonationRequired: {
+    type: Boolean,
+    default: false, // Flag for whether a donation is required
+  },
 }, { timestamps: true });
 
 // Middleware to handle notifications when an event is created
-eventSchema.post("save", async function(event) {
+eventSchema.post("save", async function (event) {
   try {
     // Notify the organiser when the event is created
     await Notification.create({
@@ -137,7 +165,7 @@ eventSchema.post("save", async function(event) {
 });
 
 // Middleware to handle notifications and data updates when an event is deleted
-eventSchema.post("findOneAndDelete", async function(event) {
+eventSchema.post("findOneAndDelete", async function (event) {
   try {
     // Remove the event from the organiser's record
     await User.findByIdAndUpdate(event.organiser, {
