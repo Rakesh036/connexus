@@ -1,0 +1,73 @@
+<%- layout("layouts/boilerplate") -%>
+
+<div class="container">
+  <h1 class="my-4">Create New Event</h1>
+  
+  <form action="/events" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="title" class="form-label">Event Title</label>
+      <input type="text" class="form-control" id="title" name="title" required minlength="1" maxlength="200">
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Event Description</label>
+      <textarea class="form-control" id="description" name="description" required minlength="1" maxlength="1000"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="date" class="form-label">Event Date</label>
+      <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="time" class="form-label">Event Time</label>
+      <input type="time" class="form-control" id="time" name="time" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="isOnline" class="form-label">Is the event online?</label>
+      <select class="form-select" id="isOnline" name="isOnline" required onchange="toggleEventLocation()">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+      </select>
+    </div>
+
+    <div class="mb-3" id="venueField">
+      <label for="venue" class="form-label">Event Venue</label>
+      <input type="text" class="form-control" id="venue" name="venue">
+    </div>
+
+    <div class="mb-3 d-none" id="linkField">
+      <label for="link" class="form-label">Event Link</label>
+      <input type="url" class="form-control" id="link" name="link">
+    </div>
+
+    <div class="mb-3">
+      <label for="chiefGuests" class="form-label">Chief Guests (add multiple by comma)</label>
+      <input type="text" class="form-control" id="chiefGuests" name="chiefGuests">
+    </div>
+
+    <div class="mb-3">
+      <label for="eventImage" class="form-label">Event Image</label>
+      <input type="file" class="form-control" id="eventImage" name="eventImage">
+    </div>
+
+    <div class="mb-3">
+      <label for="isDonationRequired" class="form-label">Is donation required?</label>
+      <select class="form-select" id="isDonationRequired" name="isDonationRequired">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Event</button>
+  </form>
+</div>
+
+<script>
+  function toggleEventLocation() {
+    const isOnline = document.getElementById('isOnline').value === 'true';
+    document.getElementById('linkField').classList.toggle('d-none', !isOnline);
+    document.getElementById('venueField').classList.toggle('d-none', isOnline);
+  }
+</script>

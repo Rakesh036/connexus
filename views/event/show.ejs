@@ -1,0 +1,93 @@
+<%- layout("/layouts/boilerplate") -%>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <img class="card-img-top" src="<%= event.images.length ? event.images[0].url : '/images/default-event.jpg' %>" alt="<%= event.title %>">
+                <div class="card-body">
+                    <h1 class="card-title"><%= event.title %></h1>
+                    <p class="card-text"><%= event.description %></p>
+                    <p class="card-text"><small class="text-muted">Organized by: <%= event.organiser.name %></small></p>
+                    <p class="card-text"><small class="text-muted">Date: <%= event.date.toDateString() %> | Time: <%= event.time %></small></p>
+                    <% if (event.isOnline) { %>
+                    <p class="card-text"><strong>Event Link:</strong> <a href="<%= event.link %>"><%= event.link %></a></p>
+                    <% } else { %>
+                    <p class="card-text"><strong>Venue:</strong> <%= event.venue %></p>
+                    <% } %>
+                </div>
+            </div>
+
+            <!-- Chief Guests Section -->
+            <h4 class="mt-4">Chief Guests</h4>
+            <% if (event.chiefGuests.length) { %>
+            <div class="row">
+                <% event.chiefGuests.forEach(guest => { %>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <% if (guest.image.url) { %>
+                        <img src="<%= guest.image.url %>" alt="<%= guest.name %>" class="card-img-top">
+                        <% } else { %>
+                        <img src="/images/default-guest.jpg" alt="<%= guest.name %>" class="card-img-top">
+                        <% } %>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= guest.name %></h5>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+            <% } else { %>
+            <p>No chief guests listed for this event.</p>
+            <% } %>
+
+            <!-- Reviews Section -->
+            <h4 class="mt-4">Reviews</h4>
+            <% if (event.reviews.length) { %>
+            <% event.reviews.forEach(review => { %>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text"><%= review.comment %></p>
+                    <p class="card-text"><small class="text-muted">Posted by: <%= review.reviewer.name %></small></p>
+                </div>
+            </div>
+            <% }) %>
+            <% } else { %>
+            <p>No reviews yet. Be the first to review this event!</p>
+            <% } %>
+
+            <!-- Add Review Button -->
+            <a href="/events/<%= event._id %>/reviews/new" class="btn btn-primary mt-2">Add Review</a>
+        </div>
+
+        <div class="col-md-4">
+            <!-- Event Sidebar -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Event Details</h5>
+                    <p class="card-text"><strong>Likes:</strong> <%= event.likes.length %></p>
+                    <p class="card-text"><strong>Reports:</strong> <%= event.reports.length %></p>
+
+                    <!-- Join Event Button -->
+                    <a href="/events/<%= event._id %>/join" class="btn btn-success btn-block mb-2">
+                        <% if (currUser && event.joinMembers.findIndex(member => member.equals(currUser._id)) > -1) { %>
+                        Joined
+                        <% } else { %>
+                        Join Event
+                        <% } %>
+                    </a>
+
+                    <!-- Like Event Button -->
+                    <a href="/events/<%= event._id %>/like" class="btn btn-like btn-block">
+                        <%= event.likes.length %>&nbsp;
+                        <% if (currUser && event.likes.findIndex(like => like.equals(currUser._id)) > -1) { %>
+                        <i class="fa-solid fa-thumbs-up"></i> Liked
+                        <% } else { %>
+                        <i class="fa-regular fa-thumbs-up"></i> Like
+                        <% } %>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

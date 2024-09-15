@@ -94,3 +94,52 @@
 
 2024-09-14T16:13:23.572Z [undefined] [32minfo[39m: Processing login form submission
 2024-09-14T16:13:23.764Z [undefined] [32minfo[39m: Redirecting to: /
+2024-09-14T18:02:20.963Z [undefined] [32minfo[39m: Express app initialized
+2024-09-14T18:02:20.978Z [undefined] [32minfo[39m: Express configured
+2024-09-14T18:02:20.982Z [undefined] [32minfo[39m: Session and flash configured
+2024-09-14T18:02:20.982Z [undefined] [32minfo[39m: Passport configured
+2024-09-14T18:02:20.982Z [undefined] [32minfo[39m: Routes configured
+2024-09-14T18:02:20.986Z [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-14T18:02:21.001Z [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-14T18:24:49.076Z [undefined] [32minfo[39m: Express app initialized
+2024-09-14T18:24:49.101Z [undefined] [32minfo[39m: Express configured
+2024-09-14T18:24:49.104Z [undefined] [32minfo[39m: Session and flash configured
+2024-09-14T18:24:49.105Z [undefined] [32minfo[39m: Passport configured
+2024-09-14T18:24:49.105Z [undefined] [32minfo[39m: Routes configured
+2024-09-14T18:24:49.109Z [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-14T18:24:49.125Z [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-14T18:25:09.151Z [undefined] [32minfo[39m: Express app initialized
+2024-09-14T18:25:09.175Z [undefined] [32minfo[39m: Express configured
+2024-09-14T18:25:09.178Z [undefined] [32minfo[39m: Session and flash configured
+2024-09-14T18:25:09.179Z [undefined] [32minfo[39m: Passport configured
+2024-09-14T18:25:09.179Z [undefined] [32minfo[39m: Routes configured
+2024-09-14T18:25:09.183Z [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-14T18:25:09.199Z [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-14T18:26:25.170Z [undefined] [32minfo[39m: Express app initialized
+2024-09-14T18:26:25.186Z [undefined] [32minfo[39m: Express configured
+2024-09-14T18:26:25.189Z [undefined] [32minfo[39m: Session and flash configured
+2024-09-14T18:26:25.189Z [undefined] [32minfo[39m: Passport configured
+2024-09-14T18:26:25.189Z [undefined] [32minfo[39m: Routes configured
+2024-09-14T18:26:25.196Z [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-14T18:26:25.210Z [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-14T18:26:41.623Z [undefined] [32minfo[39m: Express app initialized
+2024-09-14T18:26:41.645Z [undefined] [32minfo[39m: Express configured
+2024-09-14T18:26:41.648Z [undefined] [32minfo[39m: Session and flash configured
+2024-09-14T18:26:41.649Z [undefined] [32minfo[39m: Passport configured
+2024-09-14T18:26:41.649Z [undefined] [32minfo[39m: Routes configured
+2024-09-14T18:26:41.655Z [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-14T18:26:41.678Z [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-14T18:29:13.337Z [undefined] [32minfo[39m: Express app initialized
+2024-09-14T18:29:13.367Z [undefined] [32minfo[39m: Express configured
+2024-09-14T18:29:13.371Z [undefined] [32minfo[39m: Session and flash configured
+2024-09-14T18:29:13.371Z [undefined] [32minfo[39m: Passport configured
+2024-09-14T18:29:13.371Z [undefined] [32minfo[39m: Routes configured
+2024-09-14T18:29:13.376Z [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-14T18:29:13.400Z [undefined] [32minfo[39m: Connected to MongoDB
+2024-09-14T18:29:40.241Z [undefined] [32minfo[39m: Express app initialized
+2024-09-14T18:29:40.260Z [undefined] [32minfo[39m: Express configured
+2024-09-14T18:29:40.267Z [undefined] [32minfo[39m: Session and flash configured
+2024-09-14T18:29:40.268Z [undefined] [32minfo[39m: Passport configured
+2024-09-14T18:29:40.268Z [undefined] [32minfo[39m: Routes configured
+2024-09-14T18:29:40.272Z [undefined] [32minfo[39m: Server is running on port 8080
+2024-09-14T18:29:40.290Z [undefined] [32minfo[39m: Connected to MongoDB
