@@ -1,16 +1,15 @@
 const Joi = require('joi');
 const logger = require('../utils/logger')('event schema');
 
-
 const eventSchema = Joi.object({
   title: Joi.string().min(1).max(200).required(),
   description: Joi.string().max(1000).default('No description provided'),
   date: Joi.date().required(),
   time: Joi.string().default('00:00'),
   isOnline: Joi.boolean().default(false),
-  link: Joi.string().uri().allow('').default('') // Allow empty string and default to empty
+  link: Joi.string().uri().allow('').default('')
     .when('isOnline', { is: true, then: Joi.required(), otherwise: Joi.optional() }),
-  venue: Joi.string().allow('').default('') // Allow empty string for venue
+  venue: Joi.string().allow('').default('')
     .when('isOnline', { is: false, then: Joi.required(), otherwise: Joi.optional() }),
   images: Joi.array().items(
     Joi.object({
@@ -18,15 +17,16 @@ const eventSchema = Joi.object({
       filename: Joi.string().default(''),
     })
   ).default([]),
-  chiefGuests: Joi.array().items(
+  chiefGuests: Joi.alternatives().try(
     Joi.object({
       name: Joi.string().default(''),
       image: Joi.object({
-        url: Joi.string().uri().default(''),
-        filename: Joi.string().default(''),
+        url: Joi.string().uri().allow('').default(''), // Allow empty string
+        filename: Joi.string().allow('').default(''),   // Allow empty string
       }).default({}),
-    })
-  ).default([]),
+    }).default({}),
+    Joi.string().valid('').default(null) // Allow chiefGuests to be an empty string or null
+  ).default(null), // Set chiefGuests to null if not provided
   isDonationRequired: Joi.boolean().default(false),
 });
 

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Job = require("../models/job");
 const User = require("../models/user");
 const { validateJob } = require("../schemas/jobSchema");
+const { log } = require("winston");
 const logger = require("../utils/logger")("jobSeeder"); // Import logger
 
 const jobData = [
@@ -152,8 +153,6 @@ const jobData = [
     companyName: "FilmAssist",
     applyLink: "https://filmassist.in/careers",
   },
-
-  // Other Fields
   {
     title: "Software Engineer",
     salary: 120000,
@@ -713,6 +712,23 @@ async function jobSeeder() {
       // Pick a random user ID for the job owner
       job.owner = userIds[Math.floor(Math.random() * userIds.length)];
 
+      // random number of likes
+      let x = Math.floor(Math.random() * userIds.length);
+      console.log("value of x: ", x);
+      job.likes=[];
+      for (let i = 0; i < x; i++) {
+        const uId = userIds[Math.floor(Math.random() * userIds.length)];
+        // Check if the user already likes the job
+        if (!job.likes.includes(uId)) {
+          // Add the user to the job's likes array
+          job.likes.push(uId);
+        }
+        console.log("uId: ",uId);
+        
+      }
+
+      console.log("all likes added");
+      
       // Create the job
       const newJob = await Job.create(job);
       logger.info(`Job "${job.title}" added.`);

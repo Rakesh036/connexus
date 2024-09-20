@@ -57,7 +57,7 @@ const eventSchema = new Schema({
       },
     },
   ],
-  chiefGuests: [
+  chiefGuests: 
     {
       name: {
         type: String,
@@ -74,7 +74,7 @@ const eventSchema = new Schema({
         },
       },
     },
-  ],
+  
   joinMembers: [
     {
       type: Schema.Types.ObjectId,
