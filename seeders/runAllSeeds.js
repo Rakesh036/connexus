@@ -28,32 +28,32 @@ async function runSeeds() {
 
     // Clear other collections
     await Promise.all([
-      // require("../models/discussion").deleteMany({}),
-      // require("../models/discussionReview").deleteMany({}),
-      // require("../models/donation").deleteMany({}),
-      // require("../models/group").deleteMany({}),
-      // require("../models/job").deleteMany({}),
-      // require("../models/jobReview").deleteMany({}),
+      require("../models/discussion").deleteMany({}),
+      require("../models/discussionReview").deleteMany({}),
+      require("../models/donation").deleteMany({}),
+      require("../models/group").deleteMany({}),
+      require("../models/job").deleteMany({}),
+      require("../models/jobReview").deleteMany({}),
       require("../models/payment").deleteMany({}),
-      // require("../models/quiz").deleteMany({}),
-      // require("../models/success").deleteMany({}),
-      // require("../models/successReview").deleteMany({}),
-      // require("../models/user").deleteMany({}),
+      require("../models/quiz").deleteMany({}),
+      require("../models/success").deleteMany({}),
+      require("../models/successReview").deleteMany({}),
+      require("../models/user").deleteMany({}),
     ]);
     logger.info("Old data cleared.");
 
     // Seed in proper sequence
-    // await userSeeder();
-    // await discussionSeeder();
-    // await discussionReviewSeeder();
-    // await donationSeeder();
-    // await groupSeeder();
-    // await jobSeeder();
-    // await jobReviewSeeder();
+    await userSeeder();
+    await discussionSeeder();
+    await discussionReviewSeeder();
+    await donationSeeder();
+    await groupSeeder();
+    await jobSeeder();
+    await jobReviewSeeder();
     await paymentSeeder();
-    // await quizSeeder();
-    // await successSeeder();
-    // await successReviewSeeder();
+    await quizSeeder();
+    await successSeeder();
+    await successReviewSeeder();
 
     logger.info("Database successfully seeded!");
   } catch (error) {
