@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Success = require("../models/success");
 const User = require("../models/user");
-const logger = require("../utils/logger"); // Import your logger
-
+const logger = require("../utils/logger")("successSeeder"); // Import your logger
+const { successValidate } = require("../schemas/successSchema");
 const successData = [
   // Existing data
   {

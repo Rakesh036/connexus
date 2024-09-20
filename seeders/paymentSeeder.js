@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const Payment = require("../models/payment");
 const Donation = require("../models/donation");
 const User = require("../models/user");
-const logger = require("../utils/logger"); // Import logger
+const logger = require("../utils/logger")("paymentSeeder"); // Import logger
+const { paymentValidate } = require("../schemas/paymentSchema");
 
 const paymentData = [
   {

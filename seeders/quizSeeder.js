@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Quiz = require("../models/quiz");
 const Group = require("../models/group");
-const logger = require("../utils/logger"); // Import logger
-
+const logger = require("../utils/logger")("quizSeeder"); // Import logger
+const { quizValidate } = require("../schemas/quizSchema");
 const quizData = [
   // JavaScript Basics
   {

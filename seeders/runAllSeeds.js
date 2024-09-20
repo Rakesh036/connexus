@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const mongoUrl = "mongodb://127.0.0.1:27017/wanderlust";
-const logger = require('../utils/logger'); // Import your logger
+const logger = require('../utils/logger')("runAllSeeds"); // Import your logger
 
 // Import seeders
 const discussionSeeder = require("./discussionSeeder");

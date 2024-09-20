@@ -4,7 +4,7 @@ const JobReview = require("../models/jobReview");
 const User = require("../models/user");
 
 const { validateJobReview } = require("../schemas/jobReviewSchema");
-const logger = require("../utils/logger"); // Import logger
+const logger = require("../utils/logger")("jobReviewSeeder"); // Import logger
 
 const reviewData = [
   { comment: "Great work environment and amazing learning opportunities." },
