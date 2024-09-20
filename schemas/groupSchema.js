@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const logger = require('../utils/logger'); // Importing your custom logger
+const logger = require('../utils/logger')('group  schema'); // Importing your custom logger
 
 // Define the schema
 module.exports.groupSchema = Joi.object({

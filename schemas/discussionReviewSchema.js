@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const logger = require('../utils/logger'); // Import logger
+const logger = require('../utils/logger')('discussionReview Schema'); // Import logger
 
 // Define the schema
 module.exports.discussionReviewSchema = Joi.object({
@@ -8,9 +8,13 @@ module.exports.discussionReviewSchema = Joi.object({
 
 // Logging schema validation
 module.exports.validateDiscussionReview = (data) => {
+  // console.log("review schema file start");
+  
   logger.info("======= [SCHEMA: Discussion Review] =======");
   logger.info("[ACTION: Starting validation for Discussion Review schema]");
-  logger.debug("Received data for validation: %o", data);
+  // logger.debug("Received data for validation: %o", data);
+  // console.log("review data: %o", data);
+  
 
   const { error } = module.exports.discussionReviewSchema.validate(data);
   

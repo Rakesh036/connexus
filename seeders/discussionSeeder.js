@@ -335,7 +335,6 @@ const discussionData = [
   },
   // Add more similar data units up to 100
 ];
-
 async function discussionSeeder() {
   try {
     // Clear existing discussions
@@ -346,25 +345,26 @@ async function discussionSeeder() {
     const users = await User.find({});
     const userIds = users.map((user) => user._id);
 
-    for (const discussion of discussionData) {
-      // Validate the discussion data
-      try {
-        validateDiscussion(discussion);
-      } catch (validationError) {
-        logger.error(
-          `Failed to validate discussion: ${validationError.message}`
-        );
-        continue; // Skip this entry and move to the next one
-      }
-
-      // Assign a random user as the owner of the discussion
-      discussion.owner = userIds[Math.floor(Math.random() * userIds.length)];
-
-      // Create the discussion
-      const newDiscussion = await Discussion.create(discussion);
-      logger.info(`Discussion "${discussion.title}" added.`);
+    if (userIds.length === 0) {
+      logger.warn("No users found to assign discussions to.");
+      return;
     }
 
+    const discussionPromises = discussionData.map(async (discussion) => {
+      try {
+        validateDiscussion(discussion);
+        discussion.owner = userIds[Math.floor(Math.random() * userIds.length)];
+
+        const createdDiscussion = await Discussion.create(discussion);
+        logger.info(`Discussion created: ${createdDiscussion.title}`);
+        return createdDiscussion; // Return the created discussion
+      } catch (error) {
+        logger.error(`Error in discussion creation: ${error.message}`);
+        throw error; // Propagate the error
+      }
+    });
+
+    await Promise.all(discussionPromises);
     logger.info("Discussion data seeded successfully!");
   } catch (error) {
     logger.error("Error seeding discussion data:", error);

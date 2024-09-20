@@ -171,47 +171,60 @@ const discussionReviewData = [
     comment: "Awesome contribution, this is very helpful!",
   },
 ];
-
 async function discussionReviewSeeder() {
   try {
     // Clear existing discussion reviews
     await DiscussionReview.deleteMany({});
     logger.info("Existing discussion reviews cleared.");
 
-    // Fetch all discussion and user IDs
+    // Fetch all discussions and users
     const discussions = await Discussion.find({});
     const users = await User.find({});
-    const discussionIds = discussions.map((discussion) => discussion._id);
-    const userIds = users.map((user) => user._id);
+    const userIds = users.map(user => user._id); // Extract user IDs
+    const discussionIds = discussions.map(discussion => discussion._id); // Extract discussion IDs
+    logger.info(
+      `Found ${discussions.length} discussions and ${users.length} users.`
+    );
+
+    if (!discussionIds.length || !userIds.length) {
+      throw new Error("No discussions or users found to associate with reviews.");
+    }
 
     for (const review of discussionReviewData) {
       // Validate the review data
       try {
         validateDiscussionReview(review);
       } catch (validationError) {
-        logger.error(`Failed to validate review: ${validationError.message}`);
+        logger.error(
+          `Validation failed for review: ${JSON.stringify(review)} - Error: ${validationError.message}`
+        );
         continue; // Skip this review and move to the next one
       }
 
-      // Assign a random discussion and user (author) to each review
+      // Assign a random user (author) and a random discussion to each review
       review.author = userIds[Math.floor(Math.random() * userIds.length)];
-      const randomDiscussion =
-        discussionIds[Math.floor(Math.random() * discussionIds.length)];
+      review.discussionId = discussionIds[Math.floor(Math.random() * discussionIds.length)];
 
       // Create the review
-      const newReview = await DiscussionReview.create(review);
-      logger.info(`Review "${review.comment}" added.`);
+      try {
+        const newReview = await DiscussionReview.create(review);
+        logger.info(`Review "${review.comment}" added.`);
 
-      // Update the discussion's reviews array
-      await Discussion.findByIdAndUpdate(randomDiscussion, {
-        $push: { reviews: newReview._id },
-      });
-      logger.info(`Discussion "${randomDiscussion}" updated with new review.`);
+        // Update the discussion's reviews array
+        await Discussion.findByIdAndUpdate(review.discussionId, {
+          $push: { reviews: newReview._id },
+        });
+        logger.info(
+          `Discussion "${review.discussionId}" updated with new review.`
+        );
+      } catch (error) {
+        logger.error(`Error saving/updating review: ${error.message}`);
+      }
     }
 
     logger.info("Discussion review data seeded successfully!");
   } catch (error) {
-    logger.error("Error seeding discussion review data:", error);
+    logger.error(`Error seeding discussion review data: ${error.message}`);
   }
 }
 

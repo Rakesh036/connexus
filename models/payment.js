@@ -18,7 +18,8 @@ const paymentSchema = new Schema(
         message: "Please enter a valid email address.",
       },
     },
-    donationTitle: {  // Changed from eventTitle for clarity
+    donationTitle: {
+      // Changed from eventTitle for clarity
       type: String,
       trim: true,
     },
@@ -45,7 +46,10 @@ const paymentSchema = new Schema(
       type: String,
       validate: {
         validator: function (v) {
-          return this.paymentMethod === "Credit Card" || this.paymentMethod === "Debit Card" ? (!!v && v.length === 4) : true;
+          return this.paymentMethod === "Credit Card" ||
+            this.paymentMethod === "Debit Card"
+            ? !!v && v.length === 4
+            : true;
         },
         message: "Store only the last 4 digits of the card number.",
       },
@@ -54,16 +58,24 @@ const paymentSchema = new Schema(
       type: String,
       validate: {
         validator: function (v) {
-          return this.paymentMethod === "Credit Card" || this.paymentMethod === "Debit Card" ? !!v : true;
+          return this.paymentMethod === "Credit Card" ||
+            this.paymentMethod === "Debit Card"
+            ? !!v
+            : true;
         },
         message: "Expiry date is required for card payments.",
       },
+    },
+    donationId: {
+      type: Schema.Types.ObjectId,
+      ref: "Donation",
     },
     donor: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
   },
+
   { timestamps: true }
 );
 

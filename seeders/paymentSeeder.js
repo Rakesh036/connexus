@@ -865,19 +865,28 @@ async function paymentSeeder() {
 
     // Fetch all donations
     const donations = await Donation.find({});
-    const donationTitles = donations.map((donation) => donation.title);
+    // const donationTitles = donations.map((donation) => donation.title);
+    const donationIds = donations.map((donation) => donation._id); // Extract discussion IDs
+    const users = await User.find({});
+    const userIds = users.map((user) => user._id);
 
     for (const payment of paymentData) {
       // Pick a random donation title
-      const randomDonationTitle =
-        donationTitles[Math.floor(Math.random() * donationTitles.length)];
+      let x = Math.floor(Math.random() * donationIds.length);
+      let randomDonationTitle = donations[x].title;
+      let randomDonationId = donationIds[x];
 
       // Add the random donation title to the payment data
       payment.donationTitle = randomDonationTitle;
+      payment.donationId = randomDonationId;
+      payment.donor = userIds[Math.floor(Math.random() * userIds.length)];
 
       // Create the payment
-      await Payment.create(payment);
+      const newPayment = await Payment.create(payment);
       logger.info(`Payment for donation "${payment.donationTitle}" added.`);
+      await Donation.findByIdAndUpdate(payment.donationId, {
+        $push: { payment: newPayment._id },
+      });
     }
 
     logger.info("Payment data seeded successfully!");

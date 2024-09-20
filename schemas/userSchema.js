@@ -1,5 +1,5 @@
 const Joi = require("joi");
-const logger = require("../utils/logger"); // Ensure the path to your logger is correct
+const logger = require("../utils/logger")('user schema'); // Ensure the path to your logger is correct
 
 // Define the schema
 module.exports.userSchema = Joi.object({

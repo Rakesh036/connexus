@@ -649,13 +649,15 @@ const users = [
 
 async function seedUsers() {
   try {
-    await User.deleteMany({});
-    await User.insertMany(users);
-    logger.info("Users seeded successfully");
+    for (let userData of users) {
+      const { password, ...userDetails } = userData;
+      const user = new User(userDetails);
+      await User.register(user, password); // This hashes the password and saves the user
+      logger.info(`User ${user.username} seeded successfully`);
+    }
   } catch (error) {
     logger.error('Error seeding users:', error);
-  
   }
-};
+}
 
 module.exports = seedUsers;

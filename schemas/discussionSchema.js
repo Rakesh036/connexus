@@ -16,22 +16,38 @@ module.exports.discussionSchema = Joi.object({
     "Notes",
     "Help",
     "Other"
-  ).required()
+  ).required(),
 });
 
 // Validate function
 module.exports.validateDiscussion = (data) => {
   logger.info("======= [SCHEMA: Discussion] =======");
   logger.info("[ACTION: Starting validation for Discussion schema]");
-  logger.debug("Received data for validation: %o", data);
+// console.log("data received: ", data);
 
-  const { error } = discussionSchema.validate(data);
+// console.log(
+//   `..........................................................validation start hone wala h`
+// );
+// logger.debug(`Received data for validation: ${data}`);
+// console.log("hello 1");
+// console.log("Validating discussion:", data);
 
-  if (error) {
-    const errorMessage = error.details.map(el => el.message).join(", ");
-    logger.error(`[VALIDATION ERROR] ${errorMessage}`);
-    throw new Error(`Validation error: ${errorMessage}`);
-  }
+const { error } = module.exports.discussionSchema.validate(data, { abortEarly: false });
+// console.log("Validation result:", error ? error.details : "No error");
+// console.log("hello 2");
+
+if (error) {
+  const errorMessage = error.details.map((el) => el.message).join(", ");
+  logger.error(`[VALIDATION ERROR] ${errorMessage}`);
+
+  console.log(
+    "............................................................................validation failed"
+  );
+  throw new Error(`Validation error: ${errorMessage}`);
+}
+  console.log(
+    "............................................................................validation passed"
+  );
 
   logger.info("[Validation passed successfully]");
   logger.info("======= [END OF ACTION: Validation for Discussion schema] =======\n");

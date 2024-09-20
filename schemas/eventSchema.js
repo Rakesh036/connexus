@@ -1,4 +1,6 @@
 const Joi = require('joi');
+const logger = require('../utils/logger')('event schema');
+
 
 const eventSchema = Joi.object({
   title: Joi.string().min(1).max(200).required(),
