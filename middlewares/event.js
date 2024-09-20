@@ -1,26 +1,34 @@
-const Joi = require("joi");
-const eventSchema = require("../schemas/eventSchema"); // Adjust the path accordingly
-const logger = require("../utils/logger")('eventValidationMware'); // Import logger
+const eventSchema = require("../schemas/eventSchema");
+const logger = require("../utils/logger")('eventValidationMware');
 
 module.exports.validateEvent = (req, res, next) => {
-    console.log("validateEvent middleware");
-    
+  console.log("validateEvent middleware");
+
   // Log the request body for debugging
+  logger.info(`Request body: ${JSON.stringify(req.body.event)}`);
 
   // Convert fields to their appropriate types
   req.body.event.isOnline = req.body.event.isOnline === "true";
   req.body.event.isDonationRequired = req.body.event.isDonationRequired === "true";
-  
-  if (req.body.event.chiefGuests === "") {
-    req.body.event.chiefGuests = [];
+
+  // Handle the chiefGuests field
+  if (typeof req.body.event.chiefGuests === 'string' && req.body.event.chiefGuests.trim()) {
+    req.body.event.chiefGuests = {
+      name: req.body.event.chiefGuests,
+      image: { url: '', filename: '' } // Set defaults for image
+    };
+  } else {
+    req.body.event.chiefGuests = null; // Set to null if empty or not provided
   }
 
-  // Log the user trying to create the event
-    logger.info(`User ID: ${req.user._id} is trying to create a new event where`, { label: 'eventValidation' });
-    console.log(" req.body.event=",req.body.event);
-    
+  // Log the user attempting to create an event
+  if (req.user) {
+    logger.info(`User ID: ${req.user._id} is trying to create a new event`, { label: 'eventValidation' });
+  }
 
-  // Validate the event schema
+  console.log("Updated req.body.event=", req.body.event);
+
+  // Validate the event data against the schema
   const { error } = eventSchema.validate(req.body.event);
 
   if (error) {
