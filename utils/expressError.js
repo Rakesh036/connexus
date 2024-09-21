@@ -1,4 +1,4 @@
-const logger = require("./logger"); // Ensure the path to your logger is correct
+const logger = require("./logger")('expressError'); // Ensure the path to your logger is correct
 
 class ExpressError extends Error {
   constructor(statusCode, message) {

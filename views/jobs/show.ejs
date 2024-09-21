@@ -61,7 +61,7 @@
                     <hr>
                     <h4>All Reviews</h4>
                     <div class="review-list">
-                        <% job.reviews.forEach(review => { %>
+                        <% job.reviews.reverse().forEach(review => { %>
                         <div class="card review-card mb-3">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div class="review-username"><i>@<%= review.author.username %></i></div>

@@ -39,9 +39,9 @@ module.exports.isJobOwner = async (req, res, next) => {
 module.exports.validateJob = (req, res, next) => {
   try {
     logger.info("Validating job schema...");
-    logger.debug(`Request body: ${JSON.stringify(req.body)}`);
+    logger.debug(`Request body: ${JSON.stringify(req.body.job)}`);
 
-    const { error } = jobSchema.validate(req.body);
+    const { error } = jobSchema.validate(req.body.job);
 
     if (error) {
       const errMsg = error.details.map((el) => el.message).join(",");
