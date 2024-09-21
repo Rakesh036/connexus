@@ -7,10 +7,15 @@
 
     <!-- Search Input -->
     <div class="mb-3">
-        <input type="text" id="searchInput" placeholder="Search by Graduation Year, Degree, Department, Employer, Job Title, Industry, Experience, Skills, or Groups" class="form-control" onkeyup="filterAlumni()">
+        <input type="text" id="searchInput" placeholder="Search by Username, Graduation Year, Degree, Department, Employer, Job Title, Industry, Experience, Skills, or Groups" class="form-control" onkeyup="filterAlumni()">
     </div>
 
-    <!-- If no alumni are found, show a message -->
+    <!-- No matches found message -->
+    <div id="noMatches" class="alert alert-info" style="display: none;" role="alert">
+        No matches found.
+    </div>
+
+    <!-- If no alumni are found in the initial list, show a message -->
     <% if (alumniList.length === 0) { %>
     <div class="alert alert-warning" role="alert">
         No alumni found.
@@ -65,6 +70,8 @@
     function filterAlumni() {
         const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
         const alumniCards = document.querySelectorAll('.alumni-card');
+        const noMatchesMessage = document.getElementById('noMatches');
+        let hasMatch = false;
 
         alumniCards.forEach(card => {
             const username = card.querySelector('.card-title').textContent.toLowerCase();
@@ -79,9 +86,13 @@
             if (username.includes(searchInput) || degree.includes(searchInput) || details.includes(searchInput) ||
                 skills.includes(searchInput) || groups.includes(searchInput)) {
                 card.style.display = 'block';
+                hasMatch = true; // Set to true if there is a match
             } else {
                 card.style.display = 'none';
             }
         });
+
+        // Show or hide the no matches message
+        noMatchesMessage.style.display = hasMatch ? 'none' : 'block'; // Show message if no matches
     }
 </script>
