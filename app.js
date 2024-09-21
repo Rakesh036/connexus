@@ -43,6 +43,7 @@ const eventReviewRoutes = require("./routes/eventReviewRoutes");
 // Error Handling
 const ExpressError = require("./utils/expressError");
 const User = require("./models/user");
+const findAlumniRoutes = require('./routes/findAlumniRoutes');
 
 // Express App Initialization
 const app = express();
@@ -130,10 +131,12 @@ app.use("/api/payment", paymentRoutes);
 app.use("/notifications", notificationRoutes);
 app.use("/events", eventRoutes);
 app.use("/events/:id/reviews", eventReviewRoutes);
+// Use the findalumni routes
+app.use(findAlumniRoutes);
 
-// logger.info("Routes configured");
 
 // Home Route
+
 app.get("/", (req, res) => {
   logger.info("Rendering home page");
   res.render("home/fullpage.ejs", { cssFile: "landing/index.css" });
