@@ -1,5 +1,6 @@
-/* General Card Styling */
-.card {
+/* Scoped styles for job-container */
+
+.job-container .card {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   background-color: #ffffff;
@@ -7,26 +8,26 @@
   display: flex;
   flex-direction: column; /* Ensure card body stretches to fill height */
 }
-.card:hover {
+.job-container .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Container styling */
-.container {
+.job-container .container {
   margin-top: 2rem;
   padding: 0 1rem;
 }
 
 /* Review List Container */
-.review-list {
+.job-container .review-list {
   max-height: 250px;
   overflow-y: auto;
   padding-right: 10px;
 }
 
 /* Review Card Styling */
-.review-card {
+.job-container .review-card {
   background-color: #f9f9f9;
   border: 2px solid #00ffcc;
   border-radius: 8px;
@@ -34,13 +35,13 @@
   margin-bottom: 15px;
   transition: background-color 0.3s, border-color 0.3s;
 }
-.review-card:hover {
+.job-container .review-card:hover {
   background-color: #e6fffa;
   border-color: #00e6b8;
 }
 
 /* General Button Styles */
-.btn {
+.job-container .btn {
   padding: 10px 25px;
   border-radius: 5px;
   font-weight: bold;
@@ -49,42 +50,42 @@
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.btn:hover {
+.job-container .btn:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Button Styles */
-.btn-back {
+.job-container .btn-back {
   background-color: #00cc99;
   color: #fff;
 }
-.btn-back:hover {
+.job-container .btn-back:hover {
   background-color: #00b386;
 }
-.btn-edit {
+.job-container .btn-edit {
   background-color: #007bff;
   color: #fff;
 }
-.btn-edit:hover {
+.job-container .btn-edit:hover {
   background-color: #0056b3;
 }
-.btn-delete {
+.job-container .btn-delete {
   background-color: #e74c3c;
   color: #fff;
 }
-.btn-delete:hover {
+.job-container .btn-delete:hover {
   background-color: #c0392b;
 }
-.btn-submit {
+.job-container .btn-submit {
   background-color: #27ae60;
   color: #fff;
 }
-.btn-submit:hover {
+.job-container .btn-submit:hover {
   background-color: #229954;
 }
 
 /* Textarea styling */
-textarea.form-control {
+.job-container textarea.form-control {
   border: 2px solid #00ffcc;
   border-radius: 5px;
   padding: 12px;
@@ -94,15 +95,15 @@ textarea.form-control {
 }
 
 /* Textarea focus state */
-textarea.form-control:focus {
+.job-container textarea.form-control:focus {
   border-color: #00e6b8;
   box-shadow: 0 0 10px #00ffcc;
 }
 
 /* Heading Styles */
-h1,
-h4,
-h5 {
+.job-container h1,
+.job-container h4,
+.job-container h5 {
   font-family: "Arial", sans-serif;
   font-weight: bold;
   color: #333;
@@ -111,19 +112,19 @@ h5 {
 
 /* Adjustments for smaller screens */
 @media (max-width: 768px) {
-  .row {
+  .job-container .row {
     flex-direction: column;
   }
-  .col-md-8,
-  .col-md-4 {
+  .job-container .col-md-8,
+  .job-container .col-md-4 {
     width: 100%;
     margin: 0 0 2rem 0;
   }
 }
 
 /* Neon Border Effect for Entire Page */
-.job-info-box,
-.comment-section {
+.job-container .job-info-box,
+.job-container .comment-section {
   border: 2px solid #00ffcc;
   padding: 15px;
   margin-bottom: 20px;
