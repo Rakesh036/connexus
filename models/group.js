@@ -30,6 +30,7 @@ const groupSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "User",
+        default: [],
       },
     ],
     owner: {
@@ -41,6 +42,7 @@ const groupSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "Quiz",
+        default: [],
       },
     ],
     memberCount: {

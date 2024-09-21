@@ -19,6 +19,7 @@
             <p><strong>Star Alumni:</strong> <%= user.isStarAlumni ? 'Yes' : 'No' %></p>
         </div>
         <div class="col-lg-8">
+            <!-- Projects -->
             <div class="mb-4">
                 <h2>Projects</h2>
                 <% if (user.projects.length) { %>
@@ -32,6 +33,7 @@
                 <% } %>
             </div>
 
+            <!-- Achievements -->
             <div class="mb-4">
                 <h2>Achievements</h2>
                 <% if (user.achievements.length) { %>
@@ -45,6 +47,7 @@
                 <% } %>
             </div>
 
+            <!-- Job Postings -->
             <div class="mb-4">
                 <h2>Job Postings</h2>
                 <% if (user.jobPosts.length) { %>
@@ -58,6 +61,7 @@
                 <% } %>
             </div>
 
+            <!-- Discussion Posts -->
             <div class="mb-4">
                 <h2>Discussion Posts</h2>
                 <% if (user.discussionPosts.length) { %>
@@ -71,11 +75,12 @@
                 <% } %>
             </div>
 
+            <!-- Groups Joined -->
             <div class="mb-4">
                 <h2>Groups Joined</h2>
-                <% if (user.groupJoined.length) { %>
+                <% if (user.groupsJoined.length) { %>
                     <ul>
-                        <% user.groupJoined.forEach(group => { %>
+                        <% user.groupsJoined.forEach(group => { %>
                             <li><a href="/groups/<%= group._id %>"><%= group.name %></a></li>
                         <% }) %>
                     </ul>
@@ -84,12 +89,27 @@
                 <% } %>
             </div>
 
+            <!-- Groups Created -->
+            <div class="mb-4">
+                <h2>Groups Created</h2>
+                <% if (user.groupsCreated.length) { %>
+                    <ul>
+                        <% user.groupsCreated.forEach(group => { %>
+                            <li><a href="/groups/<%= group._id %>"><%= group.name %></a></li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No groups created.</p>
+                <% } %>
+            </div>
+
+            <!-- Quizzes Participated -->
             <div class="mb-4">
                 <h2>Quizzes Participated</h2>
-                <% if (user.quizParticipated.length) { %>
+                <% if (user.quizzesParticipated.length) { %>
                     <ul>
-                        <% user.quizParticipated.forEach(quiz => { %>
-                            <li><a href="/quizzes/<%= quiz._id %>"><%= quiz.title %></a></li>
+                        <% user.quizzesParticipated.forEach(quiz => { %>
+                            <li><a href="/groups/<%= quiz.group %>/quizzes/<%= quiz._id %>/leaderboard"><%= quiz.title %></a></li>
                         <% }) %>
                     </ul>
                 <% } else { %>
@@ -97,6 +117,21 @@
                 <% } %>
             </div>
 
+            <!-- Quizzes Created -->
+            <div class="mb-4">
+                <h2>Quizzes Created</h2>
+                <% if (user.quizzesCreated.length) { %>
+                    <ul>
+                        <% user.quizzesCreated.forEach(quiz => { %>
+                            <li><a href="/groups/<%= quiz.group %>/quizzes/<%= quiz._id %>"><%= quiz.title %></a></li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No quizzes created.</p>
+                <% } %>
+            </div>
+
+            <!-- Events Organized -->
             <div class="mb-4">
                 <h2>Events Organized</h2>
                 <% if (user.eventsOrganised.length) { %>
@@ -110,6 +145,7 @@
                 <% } %>
             </div>
 
+            <!-- Events Joined -->
             <div class="mb-4">
                 <h2>Events Joined</h2>
                 <% if (user.eventsJoined.length) { %>

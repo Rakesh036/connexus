@@ -6,6 +6,11 @@ function arrayLimit(val) {
   return val.length >= 2;
 }
 
+// Validator function to ensure correctAnswer is within the valid index range of options
+function validateAnswerIndex(val) {
+  return this.options && val >= 0 && val < this.options.length;
+}
+
 const quizSchema = new Schema({
   title: {
     type: String,
@@ -25,6 +30,7 @@ const quizSchema = new Schema({
       correctAnswer: {
         type: Number,
         required: true,
+        validate: [validateAnswerIndex, "Correct answer must be a valid index in options."],
       },
     },
   ],

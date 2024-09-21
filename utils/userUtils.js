@@ -5,15 +5,15 @@ const User = require('../models/user');
 async function getUserProfile(userId) {
   try {
     const userProfile = await User.findById(userId)
-    //   .populate('connections')
-      .populate('groupCreated')
-      .populate('groupJoined')
-      .populate('quizParticipated')
+      .populate('groupsCreated')
+      .populate('groupsJoined')
+      .populate('quizzesParticipated')
+      .populate('quizzesCreated')
       .populate('donations')
       .populate('jobPosts')
       .populate('discussionPosts')
-    //   .populate('eventsOrganised')
-    //   .populate('eventsJoined')
+      .populate('eventsOrganised')
+      .populate('eventsJoined')
       .exec();
 
     return userProfile;
