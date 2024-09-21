@@ -20,9 +20,11 @@
   padding: 20px;
 }
 
+/* Updated Image Styling */
 .upperpart img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 16/9; /* Ensures fixed aspect ratio for all images */
+  object-fit: cover; /* Crops images to maintain aspect ratio */
   border-bottom: 2px solid #00ffcc; /* Neon border below image */
   border-radius: 5px;
 }
@@ -31,6 +33,11 @@
   font-size: 1.25rem;
   font-weight: bold;
   margin: 10px 0;
+}
+.card-title {
+  min-height: 3.6rem; /* Space for two lines */
+  line-height: 1.8rem;
+  overflow: hidden;
 }
 
 .card-text {
@@ -126,4 +133,17 @@
 .btn-primary.readmore i {
   margin-right: 5px;
   color: #1976d2; /* Blueish color for read more icon */
+}
+/* Placeholder for no image found */
+.no-image-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9; /* Same aspect ratio as the image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0; /* Light grey background */
+  color: #666; /* Text color */
+  font-weight: bold;
+  border-bottom: 2px solid #00ffcc; /* Neon border matching image */
+  border-radius: 5px;
 }
