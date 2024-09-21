@@ -1,0 +1,133 @@
+/* General Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Title Styling */
+h1 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #343a40;
+  font-weight: 600;
+}
+
+/* Search Input */
+#searchInput {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 12px 15px;
+  font-size: 16px;
+}
+
+/* Alerts */
+.alert {
+  border-radius: 5px;
+}
+
+/* Alumni Card */
+.alumni-card {
+  min-height: 420px; /* Ensures all cards are of the same height */
+}
+
+.alumni-card .card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  height: 100%;
+}
+
+.alumni-card .card:hover {
+  transform: translateY(-5px);
+}
+
+.alumni-card .card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Cover Photo Styling */
+.cover-photo-container {
+  position: relative;
+  height: 150px; /* Height of the cover photo */
+  background-color: #f0f0f0; /* Background color */
+  text-align: center; /* Center text */
+  overflow: hidden; /* Hide overflow */
+  border-radius: 10px 10px 0 0; /* Rounded corners */
+}
+
+.cover-photo {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  object-fit: cover; /* Cover the area */
+}
+
+/* Profile Picture Styling (updated positioning) */
+.profile-photo {
+  position: absolute;
+  top: 75px; /* Adjust to position it on the cover photo */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Keep it centered */
+  width: 120px; /* Profile image width */
+  height: 120px; /* Profile image height */
+  border-radius: 50%; /* Make it circular */
+  border: 4px solid #fff; /* White border */
+  background-color: #fff; /* Ensure white background */
+  z-index: 10; /* Ensure it’s on top of the cover photo */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+/* Adjust the margin-top of the text container */
+.upperpart {
+  margin-top: 80px; /* Adjust to push below profile picture */
+  text-align: center; /* Center align text */
+  z-index: 1; /* Lower z-index */
+}
+
+.upperpart h5 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.upperpart p {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Button Styling */
+.lowerpart {
+  margin-top: auto; /* Pushes the button to the bottom */
+  padding: 15px; /* Adds padding for spacing */
+  text-align: center; /* Center-align the button */
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  transition: all 0.3s ease-in-out; /* Adds a smooth transition effect */
+  padding: 8px 20px; /* Adds padding to the button */
+  font-size: 14px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darken color on hover */
+  transform: translateY(-3px); /* Gives a subtle lift effect on hover */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Adds shadow on hover */
+}
+
+/* No Matches Message */
+#noMatches {
+  font-size: 16px;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .alumni-card {
+    margin-bottom: 20px;
+  }
+}
