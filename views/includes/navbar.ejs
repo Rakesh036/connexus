@@ -46,7 +46,7 @@
         <% } else { %>
         <a href="/notifications" class="btn btn-light position-relative">
           <i class="fa fa-bell"></i>
-          <% if (typeof unreadCount !== undefined && unreadCount > 0) { %>
+          <% if (typeof unreadCount !== 'undefined' && unreadCount > 0) { %>
           <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
           >
@@ -107,7 +107,7 @@
       <% } else { %>
       <a href="/notifications" class="btn btn-light position-relative">
         <i class="fa fa-bell"></i>
-        <% if (typeof unreadCount !== undefined && unreadCount > 0) { %>
+        <% if (typeof unreadCount !== 'undefined' && unreadCount > 0) { %>
         <span
           class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
         >
