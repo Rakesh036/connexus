@@ -20,11 +20,11 @@
 }
 
 /* Review List Container */
-.job-container .review-list {
+/* .job-container .review-list {
   max-height: 250px;
   overflow-y: auto;
   padding-right: 10px;
-}
+} */
 
 /* Review Card Styling */
 .job-container .review-card {
@@ -39,6 +39,17 @@
   background-color: #e6fffa;
   border-color: #00e6b8;
 }
+
+/* right box scroll bar */
+/* Right Box: Comments and Reviews */
+.job-container .comment-section {
+  max-height: 100vh; /* Adjust this value as needed */
+  overflow-y: auto; /* Enable vertical scrolling for the whole section */
+  border: 2px solid #00ffcc; /* To keep the border consistent */
+  padding: 10px; /* Ensure padding is consistent */
+  margin-bottom: 20px; /* Space below the comment section */
+}
+
 
 /* General Button Styles */
 .job-container .btn {
