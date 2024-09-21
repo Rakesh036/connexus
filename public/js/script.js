@@ -21,25 +21,3 @@
     );
   });
 })();
-
-// // Check if the URL has a fragment identifier
-// if (window.location.hash === "#comment-section") {
-//   // Scroll to the comment section
-//   document
-//     .getElementById("comment-section")
-//     .scrollIntoView({ behavior: "smooth" });
-//   // Focus on the comment textarea
-//   document.getElementById("comment").focus();
-// }
-
-
-// for toggling nav bar
-    function toggleMenu() {
-        const navLinks = document.querySelector(".nav-links");
-        const buttons = document.querySelector(".buttons");
-        navLinks.classList.toggle("show");
-        buttons.classList.toggle("show");
-    }
-
-
-    
