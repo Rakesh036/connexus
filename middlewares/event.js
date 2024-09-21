@@ -1,43 +1,83 @@
 const eventSchema = require("../schemas/eventSchema");
 const logger = require("../utils/logger")('eventValidationMware');
 
-module.exports.validateEvent = (req, res, next) => {
-  console.log("validateEvent middleware");
 
-  // Log the request body for debugging
-  logger.info(`Request body: ${JSON.stringify(req.body.event)}`);
+const mongoose = require("mongoose");
+const multer = require("multer");
+const { body, validationResult } = require("express-validator");
+const Event = require("../models/event");
 
-  // Convert fields to their appropriate types
-  req.body.event.isOnline = req.body.event.isOnline === "true";
-  req.body.event.isDonationRequired = req.body.event.isDonationRequired === "true";
+module.exports.validateEvent = async (req, res, next) => {
+  try {
+    const { title, description, date, time, isOnline, venue, link, chiefGuests, donation, group } = req.body.event;
 
-  // Handle the chiefGuests field
-  if (typeof req.body.event.chiefGuests === 'string' && req.body.event.chiefGuests.trim()) {
-    req.body.event.chiefGuests = {
-      name: req.body.event.chiefGuests,
-      image: { url: '', filename: '' } // Set defaults for image
+    // 1. Chief Guest: Handle string name + image (via multer)
+    let chiefGuestData = { name: "", image: { url: "", filename: "" } };
+    if (chiefGuests) {
+      if (chiefGuests.name) {
+        chiefGuestData.name = chiefGuests.name;
+      }
+      if (req.file && req.file.fieldname === "chiefGuestImage") {
+        // Assume multer is set up for chiefGuestImage
+        chiefGuestData.image.url = req.file.path;  // Assuming multer gives path
+        chiefGuestData.image.filename = req.file.filename;
+      }
+    }
+console.log("hellooo 1");
+
+    // 2. Convert donation/group IDs to ObjectId if valid
+    let donationId = null;
+    if (donation && mongoose.isValidObjectId(donation)) {
+      donationId = new mongoose.Types.ObjectId(donation);
+    }
+
+    console.log("hello 1.1");
+    let groupId = null;
+    if (group && mongoose.isValidObjectId(group)) {
+      groupId = new mongoose.Types.ObjectId(group);
+    }
+
+    console.log("hello 2");
+    // 3. Determine if group association is valid
+    const isGroupAssociated = groupId ? true : false;
+
+    // 4. Convert boolean fields from string to boolean
+    const isOnlineEvent = (isOnline === "true");
+
+    // 5. Handle Event Poster (from multer)
+    let eventPoster = { url: "", filename: "" };
+    if (req.file && req.file.fieldname === "eventPoster") {
+      eventPoster = {
+        url: req.file.path,  // Assuming multer gives path
+        filename: req.file.filename,
+      };
+    }
+
+    console.log("hello 3");
+    // 6. Default values for non-required fields
+    const eventData = {
+      title,
+      description: description || "No description provided",
+      date,
+      time: time || "00:00",
+      isOnline: isOnlineEvent,
+      venue: isOnlineEvent ? "" : venue || "",
+      link: isOnlineEvent ? link || "" : "",
+      chiefGuests: chiefGuestData,
+      donation: donationId || null,
+      group: groupId || null,
+      isGroupAssociated,
+      poster: eventPoster,
     };
-  } else {
-    req.body.event.chiefGuests = null; // Set to null if empty or not provided
+
+    console.log("hello 4");
+    // Attach processed data to req.body
+    req.body.event = eventData;
+
+    next();
+  } catch (err) {
+    console.error("Error during event preprocessing", { error: err });
+    logger.error(`Error during event preprocessing ${err }`);
+    res.status(500).send("Server error during event processing.");
   }
-
-  // Log the user attempting to create an event
-  if (req.user) {
-    logger.info(`User ID: ${req.user._id} is trying to create a new event`, { label: 'eventValidation' });
-  }
-
-  console.log("Updated req.body.event=", req.body.event);
-
-  // Validate the event data against the schema
-  const { error } = eventSchema.validate(req.body.event);
-
-  if (error) {
-    // Log validation error to the console and logger
-    console.error("Validation Error:", error.details);
-    logger.error(`Validation Error: ${JSON.stringify(error.details)}`, { label: 'eventRoutes' });
-
-    return res.status(400).json({ error: error.details[0].message });
-  }
-
-  next();
 };

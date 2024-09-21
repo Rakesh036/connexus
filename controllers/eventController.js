@@ -25,7 +25,7 @@ module.exports.index = wrapAsync(async (req, res) => {
 // Render Form for New Event
 module.exports.renderNewForm = (req, res) => {
   logger.info("Rendering new event form.");
-  res.render("event/new", { cssFile: "event/eventNew.css" });
+  res.render("event/new", { cssFile: "event/newEvent.css" });
 };
 
 // Create a New Event

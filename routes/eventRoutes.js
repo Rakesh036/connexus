@@ -20,6 +20,8 @@ router
     next();
   }, eventController.index) // Ensure this method exists in eventController
   .post((req, res, next) => {
+    console.log("new event form receive");
+    
     logger.info("======= [ROUTE: Create New Event] =======");
     // logger.info("[ACTION: Creating New Event]");
     console.log("inside post event route, req.body: ", req.body);

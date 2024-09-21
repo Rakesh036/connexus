@@ -1,33 +1,41 @@
 const Joi = require('joi');
-const logger = require('../utils/logger')('event schema');
 
 const eventSchema = Joi.object({
-  title: Joi.string().min(1).max(200).required(),
-  description: Joi.string().max(1000).default('No description provided'),
-  date: Joi.date().required(),
-  time: Joi.string().default('00:00'),
-  isOnline: Joi.boolean().default(false),
-  link: Joi.string().uri().allow('').default('')
-    .when('isOnline', { is: true, then: Joi.required(), otherwise: Joi.optional() }),
-  venue: Joi.string().allow('').default('')
-    .when('isOnline', { is: false, then: Joi.required(), otherwise: Joi.optional() }),
-  images: Joi.array().items(
-    Joi.object({
-      url: Joi.string().uri().default(''),
-      filename: Joi.string().default(''),
-    })
-  ).default([]),
-  chiefGuests: Joi.alternatives().try(
-    Joi.object({
-      name: Joi.string().default(''),
-      image: Joi.object({
-        url: Joi.string().uri().allow('').default(''), // Allow empty string
-        filename: Joi.string().allow('').default(''),   // Allow empty string
-      }).default({}),
-    }).default({}),
-    Joi.string().valid('').default(null) // Allow chiefGuests to be an empty string or null
-  ).default(null), // Set chiefGuests to null if not provided
-  isDonationRequired: Joi.boolean().default(false),
-});
+  title: Joi.string()
+    .min(1)
+    .max(200)
+    .required()
+    .messages({
+      'string.empty': 'Event title is required.',
+      'string.min': 'Event title must be at least 1 character long.',
+      'string.max': 'Event title must be less than or equal to 200 characters long.',
+    }),
+  description: Joi.string()
+    .min(1)
+    .max(1000)
+    .required()
+    .messages({
+      'string.empty': 'Event description is required.',
+      'string.min': 'Event description must be at least 1 character long.',
+      'string.max': 'Event description must be less than or equal to 1000 characters long.',
+    }),
+  date: Joi.date()
+    .greater('now')
+    .required()
+    .messages({
+      'date.base': 'Event date must be a valid date.',
+      'date.greater': 'Event date must be in the future.',
+    }),
+  time: Joi.string().required(),
+  isOnline: Joi.boolean().required(),
+  venue: Joi.string().allow('').optional(),
+  link: Joi.string().uri().allow('').optional(),
+  chiefGuests: Joi.object({
+    name: Joi.string().allow('').optional(),
+    image: Joi.any().optional(),
+  }),
+  donation: Joi.string().allow('').optional(),
+  group: Joi.string().allow('').optional(),
+}).required();
 
 module.exports = eventSchema;
