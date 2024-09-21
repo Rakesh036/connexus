@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <header>
     <div class="containerHeader">
         <nav>
@@ -5,6 +6,64 @@
                 <a href="/">
                     <img src="/images/connexusLogo.jpeg" alt="Connexus" />
                 </a>
+=======
+
+        <header>
+            <div class="containerHeader">
+                <nav>
+                    <div class="logo">
+                        <a href="/">
+                            <img src="/images/connexusLogo.jpeg" alt="Connexus" />
+                        </a>
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/jobs">Career</a></li>
+                        
+                        <!-- Find Alumni Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="findAlumniDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Find Alumni
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="findAlumniDropdown">
+                                <li><a class="dropdown-item" href="/findAlumni?filter=username">By Username</a></li>
+                                <li><a class="dropdown-item" href="/groups">By Group</a></li>
+                                <li><a class="dropdown-item" href="/nearBy">nearBy</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li><a href="/successes">Success Story</a></li>
+                        <li><a href="/events">Events</a></li>
+                        <li><a href="/donations">Donation</a></li>
+                        <li><a href="/discussions">Discussion</a></li>
+                        <li>
+                            <a href="/notifications" class="btn btn-light position-relative">
+                                <i class="fa fa-bell"></i>
+                                <% if (typeof unreadCount !== `undefined` && unreadCount > 0) { %>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    <%= unreadCount %>
+                                </span>
+                                <% } %>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <div class="buttons">
+                        <% if (!currUser) { %>
+                        <a href="/auth/login" class="btn btn-login">Log in</a>
+                        <a href="/auth/signup" class="btn btn-register">Signup</a>
+                        <% } else { %>
+                        <a href="/users/profile/<%= currUser._id %>" class="btn btn-login">Profile</a>
+                        <a href="/auth/logout" class="btn btn-login">Log out</a>
+                        <% } %>
+                    </div>
+                    <div class="menu-icon" onclick="toggleMenu()">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </nav>
+>>>>>>> 6ab61bd (Finished Find alumni and remove star alumni from group index.js)
             </div>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
