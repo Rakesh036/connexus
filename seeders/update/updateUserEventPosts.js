@@ -2,14 +2,11 @@ const mongoose = require("mongoose");
 const Event = require("../../models/event"); // Adjust the path as necessary
 const User = require("../../models/user"); // Adjust the path as necessary
 
-// Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/connexus20", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-async function resetAndUpdateUserEventPosts() {
+async function resetAndUpdateUserEventPosts(connection) {
   try {
+    // Use the passed connection
+    await connection;
+
     // Step 1: Clear `eventsOrganised` and `eventsJoined` fields for all users
     await User.updateMany({}, { $set: { eventsOrganised: [], eventsJoined: [] } });
     console.log("Cleared old event data from users.");
@@ -53,10 +50,8 @@ async function resetAndUpdateUserEventPosts() {
     console.log("Event update completed successfully.");
   } catch (error) {
     console.error("Error resetting and updating user event posts:", error);
-  } finally {
-    mongoose.connection.close();
   }
 }
 
-// Run the update function
-resetAndUpdateUserEventPosts();
+// Export the function
+module.exports.resetAndUpdateUserEventPosts = resetAndUpdateUserEventPosts;

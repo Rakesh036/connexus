@@ -2,14 +2,11 @@ const mongoose = require("mongoose");
 const Success = require("../../models/success"); // Adjust the path as necessary
 const User = require("../../models/user"); // Adjust the path as necessary
 
-// Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/connexus20", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-async function resetAndUpdateUserSuccessStories() {
+async function resetAndUpdateUserSuccessStories(connection) {
   try {
+    // Use the passed connection
+    await connection;
+
     // Step 1: Clear `successStories` field for all users
     await User.updateMany({}, { $set: { successStories: [] } });
     console.log("Cleared old success story data from users.");
@@ -46,10 +43,8 @@ async function resetAndUpdateUserSuccessStories() {
     console.log("Success story update completed successfully.");
   } catch (error) {
     console.error("Error resetting and updating user success stories:", error);
-  } finally {
-    mongoose.connection.close();
   }
 }
 
-// Run the update function
-resetAndUpdateUserSuccessStories();
+// Export the function
+module.exports.resetAndUpdateUserSuccessStories = resetAndUpdateUserSuccessStories;

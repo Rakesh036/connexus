@@ -2,14 +2,11 @@ const mongoose = require("mongoose");
 const Discussion = require("../../models/discussion"); // Adjust the path as necessary
 const User = require("../../models/user"); // Adjust the path as necessary
 
-// Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/connexus20", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-async function resetAndUpdateUserDiscussionPosts() {
+async function resetAndUpdateUserDiscussionPosts(connection) {
   try {
+    // Use the passed connection
+    await connection;
+
     // Step 1: Clear `discussionPosts` field for all users
     await User.updateMany({}, { $set: { discussionPosts: [] } });
     console.log("Cleared old discussion data from users.");
@@ -42,10 +39,8 @@ async function resetAndUpdateUserDiscussionPosts() {
     console.log("Discussion update completed successfully.");
   } catch (error) {
     console.error("Error resetting and updating user discussion posts:", error);
-  } finally {
-    mongoose.connection.close();
   }
 }
 
-// Run the update function
-resetAndUpdateUserDiscussionPosts();
+// Export the function
+module.exports.resetAndUpdateUserDiscussionPosts = resetAndUpdateUserDiscussionPosts;

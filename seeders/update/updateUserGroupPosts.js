@@ -2,14 +2,11 @@ const mongoose = require("mongoose");
 const Job = require("../../models/job"); // Adjust the path as necessary
 const User = require("../../models/user"); // Adjust the path as necessary
 
-// Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/connexus20", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-async function resetAndUpdateUserJobPosts() {
+async function resetAndUpdateUserGroupPosts(connection) {
   try {
+    // Use the passed connection
+    await connection;
+
     // Step 1: Clear `jobPosts` field for all users
     await User.updateMany({}, { $set: { jobPosts: [] } });
     console.log("Cleared old job data from users.");
@@ -42,10 +39,8 @@ async function resetAndUpdateUserJobPosts() {
     console.log("Job update completed successfully.");
   } catch (error) {
     console.error("Error resetting and updating user job posts:", error);
-  } finally {
-    mongoose.connection.close();
   }
 }
 
-// Run the update function
-resetAndUpdateUserJobPosts();
+// Export the function
+module.exports.resetAndUpdateUserGroupPosts = resetAndUpdateUserGroupPosts;
