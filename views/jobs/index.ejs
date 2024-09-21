@@ -4,9 +4,26 @@
         <div class="col-12">
             <h1 class="mb-4">Career Opportunity</h1>
             <a href="/jobs/new" class="btn btn-success mb-3">Create New Job</a>
-            <div class="row">
+
+            <!-- Search Bar -->
+            <div class="search-bar mb-4">
+                <div class="input-group">
+                    <input type="text" id="searchInput" class="form-control"
+                        placeholder="Search jobs by title, location, or salary..." onkeyup="filterJobs()">
+                </div>
+            </div>
+
+            <!-- Job Type Filter Checkboxes -->
+            <div class="job-type-filters mb-4">
+                <label><input type="checkbox" id="fullTimeCheckbox" onclick="filterJobs()"> Full-Time</label>
+                <label><input type="checkbox" id="partTimeCheckbox" onclick="filterJobs()"> Part-Time</label>
+                <label><input type="checkbox" id="internshipCheckbox" onclick="filterJobs()"> Internship</label>
+            </div>
+
+            <!-- Job Cards -->
+            <div class="row" id="jobsContainer">
                 <% jobs.reverse().forEach(job => { %>
-                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 job-card-container">
                     <div class="job-card">
                         <div class="card-body">
                             <div class="upperpart">
@@ -66,3 +83,54 @@
         </div>
     </div>
 </div>
+
+<!-- Script to filter jobs -->
+<script>
+    function filterJobs() {
+        const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+        const jobContainers = document.querySelectorAll('.job-card-container');
+
+        const isFullTimeChecked = document.getElementById('fullTimeCheckbox').checked;
+        const isPartTimeChecked = document.getElementById('partTimeCheckbox').checked;
+        const isInternshipChecked = document.getElementById('internshipCheckbox').checked;
+
+        let isNumericSearch = !isNaN(searchInput) && searchInput !== "";
+
+        jobContainers.forEach(container => {
+            const title = container.querySelector('.card-title').textContent.toLowerCase();
+            const location = container.querySelector('.fa-map-marker-alt').parentElement.textContent.toLowerCase();
+            const salary = container.querySelector('.fa-dollar-sign').parentElement.textContent.replace(/[^0-9]/g, '');
+            const jobType = container.querySelector('.fa-briefcase').parentElement.textContent.toLowerCase();
+
+            let showCard = false;
+
+            // If input is numeric, compare with salary
+            if (isNumericSearch) {
+                const parsedSalary = parseInt(salary, 10);
+                if (parsedSalary && parsedSalary >= parseInt(searchInput)) {
+                    showCard = true;
+                }
+            } else {
+                // Compare with title or location for string search
+                if (title.includes(searchInput) || location.includes(searchInput)) {
+                    showCard = true;
+                }
+            }
+
+            // Filter by job type if any checkbox is checked
+            if (isFullTimeChecked || isPartTimeChecked || isInternshipChecked) {
+                if (isFullTimeChecked && jobType.includes("full-time")) {
+                    showCard = true;
+                } else if (isPartTimeChecked && jobType.includes("part-time")) {
+                    showCard = true;
+                } else if (isInternshipChecked && jobType.includes("internship")) {
+                    showCard = true;
+                } else {
+                    showCard = false;
+                }
+            }
+
+            container.style.display = showCard ? 'block' : 'none';
+        });
+    }
+</script>

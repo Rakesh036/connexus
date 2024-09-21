@@ -1,184 +1,131 @@
+/* General Card Styling */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column; /* Ensure card body stretches to fill height */
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 /* Container styling */
-.page-container {
-  border-radius: 10px; /* Reduced outer radius */
-  border: 2px solid #ddd; /* Border color */
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 960px; /* Reduce size to match previous remembered size */
-  margin: 0 auto; /* Center the container */
+.container {
+  margin-top: 2rem;
+  padding: 0 1rem;
 }
 
-/* Textarea border */
-textarea.form-control {
-  border: 2px solid #00ffcc; /* Neon border color */
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 16px;
-}
-
-/* Back Button Styling */
-.btn-back {
-  background-color: #00cc99; /* Greenish color */
-  border: 2px solid #009966; /* Darker green border */
-  color: #ffffff;
-  padding: 10px 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 5px;
-  display: inline-flex;
-  align-items: center;
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-back i {
-  margin-right: 8px;
-}
-
-.btn-back:hover {
-  background-color: #00ffcc;
-  color: #333;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
-}
-
-/* Edit Button Styling */
-.btn-edit {
-  background-color: #0056b3; /* Blueish color */
-  border: 2px solid #004494; /* Darker blue border */
-  color: #ffffff;
-  padding: 10px 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 5px;
-  margin-left: 10px;
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-edit i {
-  margin-right: 8px;
-}
-
-.btn-edit:hover {
-  background-color: #004494;
-  color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
-}
-
-/* Delete Button Styling */
-.btn-delete {
-  background-color: #cc0000; /* Reddish color */
-  border: 2px solid #990000; /* Darker reddish border */
-  color: #ffffff;
-  padding: 10px 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 5px;
-  margin-left: 10px;
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-delete i {
-  margin-right: 8px;
-}
-
-.btn-delete:hover {
-  background-color: #990000;
-  color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
-}
-
-/* Submit Button Style */
-.btn-submit {
-  background-color: #00cc99; /* Greenish color */
-  border: 2px solid #009966; /* Darker green border */
-  color: #ffffff;
-  padding: 10px 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 5px;
-  display: inline-flex;
-  align-items: center;
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-submit i {
-  margin-right: 8px;
-}
-
-.btn-submit:hover {
-  background-color: #00ffcc;
-  color: #333;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
+/* Review List Container */
+.review-list {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
 /* Review Card Styling */
 .review-card {
-  border: 2px solid #00ffcc; /* Neon border color */
-  border-radius: 10px;
-  padding: 10px;
   background-color: #f9f9f9;
-  margin-bottom: 20px;
+  border: 2px solid #00ffcc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+.review-card:hover {
+  background-color: #e6fffa;
+  border-color: #00e6b8;
 }
 
-/* Review Username Styling */
-.review-username {
-  font-weight: bold;
-  color: #000;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between; /* Align username and delete button */
-}
-
-/* Review Comment Styling */
-.review-comment {
-  color: #333;
-}
-
-/* Review Delete Button */
-.review-delete-btn {
-  background-color: #cc0000; /* Reddish color */
-  border: 2px solid #990000;
-  color: #ffffff;
-}
-/* Textarea border styling */
-textarea.form-control {
-  border: 2px solid #00ffcc; /* Neon border color */
+/* General Button Styles */
+.btn {
+  padding: 10px 25px;
   border-radius: 5px;
-  padding: 10px;
-  background-color: #fdfdfd; /* Background color for contrast */
-  color: #333; /* Text color */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.btn:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Button Styles */
+.btn-back {
+  background-color: #00cc99;
+  color: #fff;
+}
+.btn-back:hover {
+  background-color: #00b386;
+}
+.btn-edit {
+  background-color: #007bff;
+  color: #fff;
+}
+.btn-edit:hover {
+  background-color: #0056b3;
+}
+.btn-delete {
+  background-color: #e74c3c;
+  color: #fff;
+}
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+.btn-submit {
+  background-color: #27ae60;
+  color: #fff;
+}
+.btn-submit:hover {
+  background-color: #229954;
+}
+
+/* Textarea styling */
+textarea.form-control {
+  border: 2px solid #00ffcc;
+  border-radius: 5px;
+  padding: 12px;
+  background-color: #fafafa;
+  color: #333;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 /* Textarea focus state */
 textarea.form-control:focus {
-  border-color: #00ffcc; /* Neon border color */
-  box-shadow: 0 0 8px #00ffcc; /* Neon glow effect */
+  border-color: #00e6b8;
+  box-shadow: 0 0 10px #00ffcc;
 }
-/* Outer Border for the Page Container */
-.page-container {
-  border: 2px solid #00ffcc; /* Neon border color */
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px;
-  background-color: #f9f9f9; /* Slightly different background for contrast */
-  max-width: 800px; /* Set a max-width to control the container width */
-  margin: 0 auto; /* Center the container horizontally */
+
+/* Heading Styles */
+h1,
+h4,
+h5 {
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
 /* Adjustments for smaller screens */
 @media (max-width: 768px) {
-  .page-container {
-    padding: 15px;
-    max-width: 90%; /* Allow more width on smaller screens */
+  .row {
+    flex-direction: column;
+  }
+  .col-md-8,
+  .col-md-4 {
+    width: 100%;
+    margin: 0 0 2rem 0;
   }
 }
 
-@media (max-width: 576px) {
-  .page-container {
-    padding: 10px;
-    max-width: 95%; /* Further increase width for very small screens */
-  }
+/* Neon Border Effect for Entire Page */
+.job-info-box,
+.comment-section {
+  border: 2px solid #00ffcc;
+  padding: 15px;
+  margin-bottom: 20px;
+  flex: 1; /* Makes both boxes equal height */
 }
