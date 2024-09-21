@@ -1,0 +1,65 @@
+<%- layout("/layouts/boilerplate") -%>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="mb-0">Find Alumni</h1>
+    </div>
+
+    <!-- Search Input -->
+    <div class="mb-3">
+        <input type="text" id="searchInput" placeholder="Search by Graduation Year, Degree, Department, Employer, Job Title, Industry, Experience, or Skills" class="form-control" onkeyup="filterAlumni()">
+    </div>
+
+    <!-- If no alumni are found, show a message -->
+    <% if (alumniList.length === 0) { %>
+    <div class="alert alert-warning" role="alert">
+        No alumni found.
+    </div>
+    <% } else { %>
+    <div class="row" id="alumniList">
+        <% alumniList.forEach(alumni => { %>
+        <div class="col-md-4 mb-4 alumni-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="upperpart text-center">
+                        <!-- Alumni Profile Picture -->
+                        <img src="<%= alumni.profilePicture || '/images/default-profile.png' %>" class="img-fluid rounded-circle mb-2" alt="<%= alumni.username %>" style="width: 100px; height: 100px;">
+                        
+                        <!-- Alumni Name and Degree -->
+                        <h5 class="card-title"><%= alumni.username %></h5>
+                        <p class="card-text">Degree: <%= alumni.degree %> (Class of <%= alumni.graduationYear %>)</p>
+                        <p class="card-text"><%= alumni.city %>, <%= alumni.country %></p>
+                    </div>
+                    <div class="lowerpart">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- Show More Details button -->
+                            <a href="/alumni/<%= alumni._id %>" class="btn btn-primary btn-sm readmore">Show More Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+    <% } %>
+</div>
+
+<script>
+    function filterAlumni() {
+        const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+        const alumniCards = document.querySelectorAll('.alumni-card');
+
+        alumniCards.forEach(card => {
+            const username = card.querySelector('.card-title').textContent.toLowerCase();
+            const degree = card.querySelector('.card-text').textContent.toLowerCase();
+            const details = card.querySelector('.card-text').textContent.toLowerCase();
+
+            // Check if any of the fields match the search input
+            if (username.includes(searchInput) || degree.includes(searchInput) || details.includes(searchInput)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
