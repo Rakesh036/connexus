@@ -1,6 +1,7 @@
+const mongoose = require("mongoose");
 const Event = require("../models/event");
-const EventReview = require("../models/eventReview"); // Assuming the event review model
-const User = require("../models/user"); // Assuming the user model
+const EventReview = require("../models/eventReview");
+const User = require("../models/user");
 const wrapAsync = require("../utils/wrapAsync");
 const logger = require("../utils/logger")('eventController');
 
@@ -12,7 +13,7 @@ module.exports.index = wrapAsync(async (req, res) => {
       .populate("likes")
       .populate("reports")
       .populate("organiser")
-      .populate("group"); // Populate group if needed
+      .populate("group");
     logger.info(`Found ${events.length} events.`);
     res.render("event/index", { events, cssFile: "event/eventIndex.css" });
   } catch (err) {
@@ -30,17 +31,20 @@ module.exports.renderNewForm = (req, res) => {
 
 // Create a New Event
 module.exports.create = wrapAsync(async (req, res) => {
-  logger.info("inside create eventController ");
+  logger.info("Creating a new event...");
   try {
-    console.log("inside event creation, req.body: ", req.body);
-    // console.log("inside event creation, req.body.event: ", req.body.event);
-    // console.log("inside event creation, req.file: ", req.file);
-    // console.log("inside event creation, req.user._id:", req.user._id);
-
     const newEvent = new Event(req.body.event);
     newEvent.organiser = req.user._id;
-    console.log("newEvent is: ", newEvent);
     await newEvent.save();
+
+    // Update the organiser's eventsOrganised field
+    const organiser = await User.findById(req.user._id);
+    if (!organiser.eventsOrganised.includes(newEvent._id)) {
+      organiser.eventsOrganised.push(newEvent._id);
+      await organiser.save();
+      logger.info(`Updated organiser ${organiser.username}: added event ${newEvent.title}`);
+    }
+
     logger.info(`New event created with ID: ${newEvent._id}`);
     req.flash("success", "New event created!");
     res.redirect(`/events/${newEvent._id}`);
@@ -57,15 +61,6 @@ module.exports.show = wrapAsync(async (req, res) => {
   logger.info(`Fetching event with ID: ${eventId}`);
   try {
     const event = await Event.findById(eventId);
-    // .populate({
-    //   path: "reviews",
-    //   populate: { path: "reviewer" },
-    // })
-    // .populate("organiser")
-    // .populate("group") // Populate group
-    // .populate("likes")
-    // .populate("reports");
-
     if (!event) {
       logger.info("Event not found.");
       req.flash("error", "Event does not exist!");
@@ -80,7 +75,6 @@ module.exports.show = wrapAsync(async (req, res) => {
     res.redirect("/events");
   }
 });
-
 // Render Edit Event Form
 module.exports.renderEditForm = wrapAsync(async (req, res) => {
   const eventId = req.params.id;
@@ -233,17 +227,15 @@ module.exports.addReview = wrapAsync(async (req, res) => {
     res.redirect(`/events/${eventId}`);
   }
 });
-
 // Join Event
 module.exports.joinEvent = wrapAsync(async (req, res) => {
   const eventId = req.params.id;
   const userId = req.user._id;
-  
+
   logger.info(`User ${userId} attempting to join event with ID: ${eventId}`);
-  
+
   try {
     const event = await Event.findById(eventId);
-
     if (!event) {
       logger.info("Event not found.");
       req.flash("error", "Event does not exist!");
@@ -262,22 +254,31 @@ module.exports.joinEvent = wrapAsync(async (req, res) => {
     event.joinMembers.push(userId);
     await event.save();
 
-    // Add the event to the user's joinedEvents array
-    await User.findByIdAndUpdate(userId, {
-      $push: { joinedEvents: eventId },
-    });
+    // Add the event to the user's eventsJoined array
+    const user = await User.findById(userId);
+    if (!user.eventsJoined.includes(eventId)) {
+      user.eventsJoined.push(eventId);
+      await user.save();
+      logger.info(`Updated participant ${user.username}: added event ${event.title}`);
+    }
+
+    // Also add the event to the organiser's eventsJoined array
+    const organiser = await User.findById(event.organiser);
+    if (!organiser.eventsJoined.includes(eventId)) {
+      organiser.eventsJoined.push(eventId);
+      await organiser.save();
+      logger.info(`Updated organiser ${organiser.username}: added event ${event.title}`);
+    }
 
     logger.info(`User ${userId} joined event ${eventId}`);
     req.flash("success", "Successfully joined the event!");
     res.redirect(`/events/${eventId}`);
-    
   } catch (err) {
     logger.error("Error joining event:", err);
     req.flash("error", "Failed to join event.");
     res.redirect("/events");
   }
 });
-
 
 // Leave Event
 module.exports.leaveEvent = wrapAsync(async (req, res) => {
@@ -288,7 +289,6 @@ module.exports.leaveEvent = wrapAsync(async (req, res) => {
 
   try {
     const event = await Event.findById(eventId);
-
     if (!event) {
       logger.info("Event not found.");
       req.flash("error", "Event does not exist!");
@@ -306,17 +306,15 @@ module.exports.leaveEvent = wrapAsync(async (req, res) => {
     // Remove user from the joinMembers array
     await Event.findByIdAndUpdate(eventId, { $pull: { joinMembers: userId } });
 
-    // Remove the event from the user's joinedEvents array
-    await User.findByIdAndUpdate(userId, { $pull: { joinedEvents: eventId } });
+    // Remove the event from the user's eventsJoined array
+    await User.findByIdAndUpdate(userId, { $pull: { eventsJoined: eventId } });
 
     logger.info(`User ${userId} left event ${eventId}`);
     req.flash("success", "You have successfully left the event.");
     res.redirect(`/events/${eventId}`);
-
   } catch (err) {
     logger.error("Error leaving event:", err);
     req.flash("error", "Failed to leave event.");
     res.redirect("/events");
   }
 });
-

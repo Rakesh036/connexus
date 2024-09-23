@@ -33,6 +33,10 @@ router.route("/login")
   .post((req, res, next) => {
     logger.info("======= [ROUTE: Login] =======");
     logger.info("[ACTION: Processing Login Form Submission]");
+
+console.log("user id and  password: ",req.body.username, req.body.password);
+
+
     logger.info(`Received data: ${JSON.stringify(req.body)}`);
     loginUser(req, res, (err) => {
       if (err) {

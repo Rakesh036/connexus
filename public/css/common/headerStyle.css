@@ -4,9 +4,21 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
+html,body {
   font-family: Arial, sans-serif;
+  height: 100vh;
 }
+
+.login-page{
+  min-height: 100%;
+  flex: 1;
+}
+
+.container{
+  flex: 1;
+  min-height: 50vh;
+}
+
 header {
   background-color: #f9f9f9;
   padding: 15px;

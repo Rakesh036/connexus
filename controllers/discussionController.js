@@ -1,5 +1,4 @@
 const Discussion = require("../models/discussion");
-const User = require("../models/user");
 const wrapAsync = require("../utils/wrapAsync");
 const logger = require("../utils/logger")('discussionController');
 
@@ -11,22 +10,19 @@ module.exports.index = wrapAsync(async (req, res) => {
   let discussions;
 
   try {
-    if (queryType) {
-      logger.info(`Querying discussions by type: ${queryType}`);
-      discussions = await Discussion.find({ queryType });
-    } else {
-      logger.info("Querying all discussions");
-      discussions = await Discussion.find({});
-    }
+    discussions = queryType 
+      ? await Discussion.find({ queryType }) 
+      : await Discussion.find({});
 
+    logger.info(`Retrieved ${discussions.length} discussions.`);
     res.render("discussions/index", {
       discussions,
       cssFile: "discussion/discussionIndex.css",
     });
-
   } catch (err) {
     logger.error(`Error retrieving discussions: ${err}`);
-    res.status(500).send("Internal Server Error");
+    req.flash("error", "Failed to retrieve discussions.");
+    res.redirect("/discussions");
   }
 
   logger.info("======= [END OF ACTION: Index] =======\n");
@@ -52,10 +48,13 @@ module.exports.create = wrapAsync(async (req, res) => {
     await newDiscussion.save();
 
     logger.info(`New discussion created with ID: ${newDiscussion._id}`);
-    // Find the user and update their discussionPosts array
-    const user = await User.findById(req.user._id);
-    user.discussionPosts.push(newDiscussion._id);
-    await user.save();
+
+    // Add discussion ID to the user's discussionPosts
+    if (!req.user.discussionPosts.includes(newDiscussion._id)) {
+      req.user.discussionPosts.push(newDiscussion._id);
+      await req.user.save();
+      logger.info(`Updated user ${req.user.username}: added discussion ${newDiscussion.title}`);
+    }
 
     req.flash("success", "New discussion created!");
     res.redirect("/discussions");
@@ -75,11 +74,11 @@ module.exports.show = wrapAsync(async (req, res) => {
 
   try {
     const discussion = await Discussion.findById(req.params.id)
+      .populate("owner")
       .populate({
         path: "reviews",
         populate: { path: "author" },
-      })
-      .populate("owner");
+      });
 
     if (!discussion) {
       logger.error("Discussion not found!");
@@ -88,12 +87,10 @@ module.exports.show = wrapAsync(async (req, res) => {
     }
 
     logger.info(`Discussion found: ${discussion._id}`);
-
     res.render("discussions/show", {
       discussion,
       cssFile: "discussion/discussionShow.css",
     });
-
   } catch (err) {
     logger.error(`Error retrieving discussion: ${err}`);
     req.flash("error", "Failed to retrieve discussion.");
@@ -110,7 +107,6 @@ module.exports.edit = wrapAsync(async (req, res) => {
 
   try {
     const discussion = await Discussion.findById(req.params.id);
-
     if (!discussion) {
       logger.error("Discussion not found!");
       req.flash("error", "Discussion does not exist!");
@@ -118,12 +114,10 @@ module.exports.edit = wrapAsync(async (req, res) => {
     }
 
     logger.info(`Discussion found for edit: ${discussion._id}`);
-
     res.render("discussions/edit", {
       discussion,
-      cssFile: "discussion/discussionedit.css",
+      cssFile: "discussion/discussionEdit.css",
     });
-
   } catch (err) {
     logger.error(`Error retrieving discussion for edit: ${err}`);
     req.flash("error", "Failed to retrieve discussion for editing.");
@@ -141,11 +135,9 @@ module.exports.update = wrapAsync(async (req, res) => {
   try {
     await Discussion.findByIdAndUpdate(req.params.id, { ...req.body.discussion });
     req.flash("success", "Discussion updated!");
-
     logger.info(`Discussion updated: ${req.params.id}`);
 
     res.redirect(`/discussions/${req.params.id}`);
-
   } catch (err) {
     logger.error(`Error updating discussion: ${err}`);
     req.flash("error", "Failed to update discussion.");
@@ -163,11 +155,9 @@ module.exports.delete = wrapAsync(async (req, res) => {
   try {
     await Discussion.findByIdAndDelete(req.params.id);
     req.flash("success", "Discussion deleted!");
-
     logger.info(`Discussion deleted: ${req.params.id}`);
 
     res.redirect("/discussions");
-
   } catch (err) {
     logger.error(`Error deleting discussion: ${err}`);
     req.flash("error", "Failed to delete discussion.");
@@ -177,6 +167,7 @@ module.exports.delete = wrapAsync(async (req, res) => {
   logger.info("======= [END OF ACTION: Delete] =======\n");
 });
 
+// Like functionality
 module.exports.like = wrapAsync(async (req, res) => {
   logger.info("======= [CONTROLLER: Discussion] =======");
   logger.info("[ACTION: Like]");
@@ -204,7 +195,6 @@ module.exports.like = wrapAsync(async (req, res) => {
     }
 
     res.redirect(`/discussions`);
-
   } catch (err) {
     logger.error(`Error processing like: ${err}`);
     req.flash("error", "Failed to process like.");
@@ -214,6 +204,7 @@ module.exports.like = wrapAsync(async (req, res) => {
   logger.info("======= [END OF ACTION: Like] =======\n");
 });
 
+// Comment functionality
 module.exports.comment = wrapAsync(async (req, res) => {
   logger.info("======= [CONTROLLER: Discussion] =======");
   logger.info("[ACTION: Comment]");
@@ -221,15 +212,15 @@ module.exports.comment = wrapAsync(async (req, res) => {
 
   try {
     const discussion = await Discussion.findById(req.params.id);
-
     if (!discussion) {
       logger.error("Discussion not found!");
       req.flash("error", "Discussion not found");
       return res.redirect("/discussions");
     }
 
-    res.redirect(`/discussions/${req.params.id}#comment-section`);
+    // Handle comment logic here...
 
+    res.redirect(`/discussions/${req.params.id}#comment-section`);
   } catch (err) {
     logger.error(`Error processing comment: ${err}`);
     req.flash("error", "Failed to process comment.");
@@ -239,6 +230,7 @@ module.exports.comment = wrapAsync(async (req, res) => {
   logger.info("======= [END OF ACTION: Comment] =======\n");
 });
 
+// Report functionality
 module.exports.report = wrapAsync(async (req, res) => {
   logger.info("======= [CONTROLLER: Discussion] =======");
   logger.info("[ACTION: Report]");
@@ -267,7 +259,6 @@ module.exports.report = wrapAsync(async (req, res) => {
 
     req.flash("success", "Discussion reported!");
     res.redirect(`/discussions`);
-
   } catch (err) {
     logger.error(`Error processing report: ${err}`);
     req.flash("error", "Failed to report discussion.");

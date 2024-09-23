@@ -27,8 +27,22 @@ module.exports.create = wrapAsync(async (req, res) => {
   try {
     const newJob = new Job(req.body.job);
     newJob.owner = req.user._id;
+    
+    // Save the new job
     await newJob.save();
     logger.info(`New job created with ID: ${newJob._id}`);
+    
+    // Update the user's jobPosts
+    if (req.user) {
+      if (!req.user.jobPosts.includes(newJob._id)) {
+        req.user.jobPosts.push(newJob._id);
+        await req.user.save();  // Save the updated user document
+        logger.info(`User ${req.user.username} updated with new job ${newJob.title}`);
+      } else {
+        logger.info(`User ${req.user.username} already has job ${newJob.title} in jobPosts.`);
+      }
+    }
+    
     req.flash("success", "New job created!");
     res.redirect("/jobs");
   } catch (err) {
@@ -37,6 +51,7 @@ module.exports.create = wrapAsync(async (req, res) => {
     res.redirect("/jobs");
   }
 });
+
 
 module.exports.show = wrapAsync(async (req, res) => {
   const jobId = req.params.id;
