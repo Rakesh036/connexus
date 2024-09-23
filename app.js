@@ -22,6 +22,8 @@ const LocalStrategy = require("passport-local");
 const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
+const bodyParser = require('body-parser');
+const multer = require('multer');
 
 // Import routes
 const authRoutes = require("./routes/authRoutes");
@@ -65,6 +67,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+
+// For handling multipart/form-data (file uploads)
+const upload = multer();
+app.use(upload.any());
+
 
 // logger.info("Express configured");
 
@@ -129,7 +136,8 @@ app.use("/successes", successRoutes);
 app.use("/successes/:id/reviews", successReviewRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/notifications", notificationRoutes);
-app.use("/events", eventRoutes);
+app.use("/events", (req,res,next)=>{console.log("like routes currently present in app.js");next();
+},eventRoutes);
 app.use("/events/:id/reviews", eventReviewRoutes);
 // Use the findalumni routes
 app.use(findAlumniRoutes);
