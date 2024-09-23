@@ -1,4 +1,5 @@
 const Discussion = require("../models/discussion");
+const User = require("../models/user");
 const wrapAsync = require("../utils/wrapAsync");
 const logger = require("../utils/logger")('discussionController');
 
