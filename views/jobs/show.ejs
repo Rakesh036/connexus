@@ -36,6 +36,12 @@
                         <p class="lead"><strong><i class="fa-solid fa-link"></i> Apply at:</strong> <a
                                 href="<%= job.applyLink %>" target="_blank"><%= job.applyLink %></a></p>
                     </div>
+
+                    <div class="creator-info mt-4 text-center">
+                        <h5>Created by:</h5>
+                        <p><strong><i class="fa-solid fa-user"></i> <%= job.owner.username %></strong></p>
+
+                    </div>
                 </div>
             </div>
         </div>

@@ -19,12 +19,15 @@
   padding: 0 1rem;
 }
 
-/* Review List Container */
-/* .job-container .review-list {
-  max-height: 250px;
-  overflow-y: auto;
-  padding-right: 10px;
-} */
+/* Right Box: Comments and Reviews */
+.job-container .comment-section {
+  max-height: 83vh; /* Adjust this value as needed */
+  height: 83vh;
+  overflow-y: auto; /* Enable vertical scrolling for the whole section */
+  border: 2px solid #00ffcc; /* To keep the border consistent */
+  padding: 10px; /* Ensure padding is consistent */
+  margin-bottom: 20px; /* Space below the comment section */
+}
 
 /* Review Card Styling */
 .job-container .review-card {
@@ -39,17 +42,6 @@
   background-color: #e6fffa;
   border-color: #00e6b8;
 }
-
-/* right box scroll bar */
-/* Right Box: Comments and Reviews */
-.job-container .comment-section {
-  max-height: 100vh; /* Adjust this value as needed */
-  overflow-y: auto; /* Enable vertical scrolling for the whole section */
-  border: 2px solid #00ffcc; /* To keep the border consistent */
-  padding: 10px; /* Ensure padding is consistent */
-  margin-bottom: 20px; /* Space below the comment section */
-}
-
 
 /* General Button Styles */
 .job-container .btn {
@@ -140,4 +132,18 @@
   padding: 15px;
   margin-bottom: 20px;
   flex: 1; /* Makes both boxes equal height */
+}
+
+.job-container .creator-info {
+  margin-top: 40px; /* Increase the top margin for more spacing */
+  margin-left: 70%; /* Use a percentage for left margin */
+  text-align: left; /* Align text to the left */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .job-container .creator-info {
+    margin-left: 5%; /* Reduce left margin for smaller screens */
+    margin-top: 30px; /* Adjust top margin for smaller screens */
+  }
 }
