@@ -59,8 +59,8 @@ const myFormat = winston.format.printf(({ level, message, timestamp, label, stac
 const transport = new DailyRotateFile({
   filename: logFilePath,
   datePattern: 'YYYY-MM-DD',
-  maxSize: '20m',
-  maxFiles: '14d',
+  maxSize: '2m',
+  maxFiles: '2d',
   zippedArchive: true,
 });
 

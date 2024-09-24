@@ -23,14 +23,14 @@
             <% const sections = [
                 { title: 'Projects', items: user.projects },
                 { title: 'Achievements', items: user.achievements },
-                { title: 'Job Postings', items: user.jobPosts, link: true },
-                { title: 'Discussion Posts', items: user.discussionPosts, link: true },
-                { title: 'Groups Joined', items: user.groupsJoined, link: true },
-                { title: 'Groups Created', items: user.groupsCreated, link: true },
-                { title: 'Quizzes Participated', items: user.quizzesParticipated, link: true, quiz: true },
-                { title: 'Quizzes Created', items: user.quizzesCreated, link: true, quiz: true },
-                { title: 'Events Organized', items: user.eventsOrganised, link: true },
-                { title: 'Events Joined', items: user.eventsJoined, link: true },
+                { title: 'Job Postings', items: user.jobPosts, link: 'jobs' },
+                { title: 'Discussion Posts', items: user.discussionPosts, link: 'discussions' },
+                { title: 'Groups Joined', items: user.groupsJoined, link: 'groups', leave: true },
+                { title: 'Groups Created', items: user.groupsCreated, link: 'groups' },
+                { title: 'Quizzes Participated', items: user.quizzesParticipated, link: true, quiz: 'participate', remove: true },
+                { title: 'Quizzes Created', items: user.quizzesCreated, link: true, quiz: 'create' },
+                { title: 'Events Organized', items: user.eventsOrganised, link: 'events' },
+                { title: 'Events Joined', items: user.eventsJoined, link: 'events', leave: true },
                 { title: 'Success Stories', items: user.successStories, story: true },
                 { title: 'Payments Made', items: user.payments, payment: true },
                 { title: 'Donations Created', items: user.donations, donation: true }
@@ -42,40 +42,70 @@
                     <% if (section.items.length) { %>
                         <ul class="list-group">
                             <% section.items.forEach((item, index) => { %>
-                                <li class="list-group-item" style="display: <% if (index >= 3) { %>none<% } else { %>block<% } %>;">
-                                    <% if (section.link) { %>
-                                        <a href="/<%= section.title.toLowerCase().replace(' ', '') %>/<%= item._id %>"><%= item.title || item.name %></a>
-                                    <% } else if (section.story) { %>
-                                        <strong>Story Title:</strong> <%= item.title %>
-                                        <p><%= item.description %></p>
-                                    <% } else if (section.payment) { %>
-                                        <div>
-                                            <strong>Date:</strong> <%= item.createdAt.toDateString() %><br>
-                                            <strong>Transaction ID:</strong> <%= item._id %><br>
-                                            <a href="/donations/<%= item.donationId._id %>">
-                                                <%= item.donationId ? (item.donationId.title.length > 30 ? item.donationId.title.substring(0, 30) + '...' : item.donationId.title) : 'N/A' %>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>
+                                        <% if (section.link && !section.quiz) { %>
+                                            <a href="/<%= section.link %>/<%= item._id %>"><%= item.title || item.name %></a>
+                                        <% } else if (section.quiz === 'create') { %>
+                                            <a href="/groups/<%= item.group %>/quizzes/<%= item._id %>"><%= item.title %></a>
+                                        <% } else if (section.quiz === 'participate') { %>
+                                            <a href="/groups/<%= item.group %>/quizzes/<%= item._id %>/leaderboard"><%= item.title %></a>
+                                        <% } else if (section.story) { %>
+                                            <strong>Story Title:</strong> <%= item.title %>
+                                            <p><%= item.description %></p>
+                                        <% } else if (section.payment) { %>
+                                            <div>
+                                                <strong>Date:</strong> <%= item.createdAt.toDateString() %><br>
+                                                <strong>Transaction ID:</strong> <%= item._id %><br>
+                                                <a href="/donations/<%= item.donationId._id %>">
+                                                    <%= item.donationId ? (item.donationId.title.length > 30 ? item.donationId.title.substring(0, 30) + '...' : item.donationId.title) : 'N/A' %>
+                                                </a>
+                                                <div class="float-end"><strong>$<%= item.amount %></strong></div>
+                                            </div>
+                                        <% } else if (section.donation) { %>
+                                            <strong>Donation Title:</strong> <%= item.title.length > 30 ? item.title.substring(0, 30) + '...' : item.title %>
+                                            <p>
+                                                <strong>Total Collection:</strong> $<%= item.totalCollected %> / $<%= item.goalAmount %>
+                                                (<%= (item.totalCollected / item.goalAmount * 100).toFixed(2) %>%)
+                                            </p>
+                                            <button type="button" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#donors-<%= item._id %>">
+                                                View Donors
+                                            </button>
+                                            <div id="donors-<%= item._id %>" class="collapse">
+                                                <ul>
+                                                    <% item.donors.forEach(donor => { %>
+                                                        <li><%= donor.name %> - $<%= donor.amount %></li>
+                                                    <% }) %>
+                                                </ul>
+                                            </div>
+                                        <% } else { %>
+                                            <%= item %>
+                                        <% } %>
+                                    </span>
+                                    <span>
+                                        <% if (section.leave) { %>
+                                            <form action="/<%= section.link %>/<%= item._id %>/leave" method="post" style="display: inline;">
+                                                <button type="submit" class="btn btn-link text-danger" onclick="return confirm('Are you sure you want to leave this group/event?');">
+                                                    <i class="fa-solid fa-sign-out-alt"></i>
+                                                </button>
+                                            </form>
+                                        <% } else if (section.remove) { %>
+                                            <form action="/quizzes/<%= item._id %>/remove" method="post" style="display: inline;">
+                                                <button type="submit" class="btn btn-link text-danger" onclick="return confirm('Are you sure you want to remove your participation in this quiz?');">
+                                                    <i class="fa-solid fa-times"></i>
+                                                </button>
+                                            </form>
+                                        <% } else { %>
+                                            <a href="/<%= section.link %>/<%= item._id %>/edit" class="btn btn-link text-primary">
+                                                <i class="fa-solid fa-edit"></i>
                                             </a>
-                                            <div class="float-end"><strong>$<%= item.amount %></strong></div>
-                                        </div>
-                                    <% } else if (section.donation) { %>
-                                        <strong>Donation Title:</strong> <%= item.title.length > 30 ? item.title.substring(0, 30) + '...' : item.title %>
-                                        <p>
-                                            <strong>Total Collection:</strong> $<%= item.totalCollected %> / $<%= item.goalAmount %>
-                                            (<%= (item.totalCollected / item.goalAmount * 100).toFixed(2) %>%)
-                                        </p>
-                                        <button type="button" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#donors-<%= item._id %>">
-                                            View Donors
-                                        </button>
-                                        <div id="donors-<%= item._id %>" class="collapse">
-                                            <ul>
-                                                <% item.donors.forEach(donor => { %>
-                                                    <li><%= donor.name %> - $<%= donor.amount %></li>
-                                                <% }) %>
-                                            </ul>
-                                        </div>
-                                    <% } else { %>
-                                        <%= item %>
-                                    <% } %>
+                                            <form action="/<%= section.link %>/<%= item._id %>?_method=delete" method="post" style="display: inline;">
+                                                <button type="submit" class="btn btn-link text-danger" onclick="return confirm('Are you sure you want to delete this item?');">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        <% } %>
+                                    </span>
                                 </li>
                             <% }) %>
                         </ul>
@@ -91,17 +121,4 @@
     </div>
 </div>
 
-<script>
-    function toggleView(button, sectionTitle) {
-        const listItems = button.closest('.mb-4').querySelectorAll('.list-group-item');
-        const isExpanded = button.innerText === 'Collapse';
-        
-        listItems.forEach((item, index) => {
-            if (index >= 3) {
-                item.style.display = isExpanded ? 'none' : 'block';
-            }
-        });
-
-        button.innerText = isExpanded ? 'View All' : 'Collapse';
-    }
-</script>
+<script src="/js/profile.js"></script>
