@@ -57,6 +57,35 @@ const donationSchema = new Schema(
       type: Number,
       default: 0,
     },
+    isAnonymous: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+ 
+    isDeadlineDate: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+
+    deadlineDate: {
+      type: Date,
+      default: null,
+      required: false,
+    },
+    isFundraising: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    fundraisingGoal: {
+      type: Number,
+      default: null,
+      required: false,
+    },
+    
+
     isEmergency: {
       type: Boolean,
       default: false,
@@ -68,13 +97,20 @@ const donationSchema = new Schema(
 // Middleware to update total collection safely
 donationSchema.methods.addDonation = async function (userId, amount) {
   try {
+
+  const donationAmount = parseInt(amount, 10); // Convert to integer
+   
     const existingDonor = this.donors.find(donor => donor.user.equals(userId));
     if (existingDonor) {
-      existingDonor.amount += amount;
+      existingDonor.amount += donationAmount;
     } else {
       this.donors.push({ user: userId, amount });
     }
-    this.totalCollection += amount;
+
+    console.log("this.totalCollection: ", this.totalCollection, "  amount: ", donationAmount);  
+    this.totalCollection += donationAmount;
+    console.log("this.totalCollection: ", this.totalCollection, "  amount: ", donationAmount);  
+    
     await this.save();
   } catch (err) {
     throw new Error("Error adding donation: " + err.message);

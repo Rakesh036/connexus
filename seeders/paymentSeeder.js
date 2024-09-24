@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 const Payment = require("../models/payment");
 const Donation = require("../models/donation");
 const User = require("../models/user");
-const logger = require("../utils/logger")("paymentSeeder"); // Import logger
-const { paymentValidate } = require("../schemas/paymentSchema");
+const logger = require("../utils/logger")("paymentSeeder");
+const { validatePayment } = require("../schemas/paymentSchema");
+const Notification = require("../models/notification");
 
 const paymentData = [
   {
@@ -13,6 +14,7 @@ const paymentData = [
     paymentMethod: "Credit Card",
     cardNumber: "1234",
     expiryDate: "12/25",
+    cvv: "123"
   },
   {
     fullName: "Vivaan Patel",
@@ -22,838 +24,13 @@ const paymentData = [
     upiId: "vivaan.patel@upi",
   },
   {
-    fullName: "Aditya Gupta",
-    email: "aditya.gupta@example.com",
-    amount: 500,
-    paymentMethod: "Debit Card",
-    cardNumber: "5678",
-    expiryDate: "11/24",
-  },
-  {
-    fullName: "Aisha Khan",
-    email: "aisha.khan@example.com",
-    amount: 150,
-    paymentMethod: "Credit Card",
-    cardNumber: "4321",
-    expiryDate: "05/26",
-  },
-  {
-    fullName: "Arjun Reddy",
-    email: "arjun.reddy@example.com",
-    amount: 200,
-    paymentMethod: "PayPal",
-    paypalEmail: "arjun.reddy@paypal.com",
-  },
-  {
-    fullName: "Kavya Mehta",
-    email: "kavya.mehta@example.com",
-    amount: 300,
-    paymentMethod: "Debit Card",
-    cardNumber: "8765",
-    expiryDate: "07/24",
-  },
-  {
-    fullName: "Rohan Singh",
-    email: "rohan.singh@example.com",
-    amount: 400,
-    paymentMethod: "UPI",
-    upiId: "rohan.singh@upi",
-  },
-  {
-    fullName: "Isha Desai",
-    email: "isha.desai@example.com",
-    amount: 250,
-    paymentMethod: "Credit Card",
-    cardNumber: "1111",
-    expiryDate: "09/25",
-  },
-  {
-    fullName: "Madhav Patel",
-    email: "madhav.patel@example.com",
-    amount: 350,
-    paymentMethod: "PayPal",
-    paypalEmail: "madhav.patel@paypal.com",
-  },
-  {
-    fullName: "Nisha Agarwal",
-    email: "nisha.agarwal@example.com",
-    amount: 500,
-    paymentMethod: "Debit Card",
-    cardNumber: "2222",
-    expiryDate: "03/24",
-  },
-  {
-    fullName: "Saanvi Bhat",
-    email: "saanvi.bhat@example.com",
-    amount: 450,
-    paymentMethod: "UPI",
-    upiId: "saanvi.bhat@upi",
-  },
-  {
-    fullName: "Kabir Joshi",
-    email: "kabir.joshi@example.com",
-    amount: 600,
-    paymentMethod: "Credit Card",
-    cardNumber: "3333",
-    expiryDate: "10/25",
-  },
-  {
-    fullName: "Diya Singh",
-    email: "diya.singh@example.com",
-    amount: 700,
-    paymentMethod: "Debit Card",
-    cardNumber: "4444",
-    expiryDate: "12/24",
-  },
-  {
-    fullName: "Arnav Sharma",
-    email: "arnav.sharma@example.com",
-    amount: 120,
-    paymentMethod: "UPI",
-    upiId: "arnav.sharma@upi",
-  },
-  {
-    fullName: "Pooja Verma",
-    email: "pooja.verma@example.com",
-    amount: 220,
-    paymentMethod: "PayPal",
-    paypalEmail: "pooja.verma@paypal.com",
-  },
-  {
-    fullName: "Siddharth Kumar",
-    email: "siddharth.kumar@example.com",
-    amount: 330,
-    paymentMethod: "Credit Card",
-    cardNumber: "5555",
-    expiryDate: "08/26",
-  },
-  {
-    fullName: "Meera Patel",
-    email: "meera.patel@example.com",
-    amount: 440,
-    paymentMethod: "Debit Card",
-    cardNumber: "6666",
-    expiryDate: "06/24",
-  },
-  {
-    fullName: "Ravi Shankar",
-    email: "ravi.shankar@example.com",
-    amount: 550,
-    paymentMethod: "PayPal",
-    paypalEmail: "ravi.shankar@paypal.com",
-  },
-  {
-    fullName: "Sneha Kapoor",
-    email: "sneha.kapoor@example.com",
-    amount: 660,
-    paymentMethod: "UPI",
-    upiId: "sneha.kapoor@upi",
-  },
-  {
-    fullName: "Vikram Rao",
-    email: "vikram.rao@example.com",
-    amount: 770,
-    paymentMethod: "Credit Card",
-    cardNumber: "7777",
-    expiryDate: "04/25",
-  },
-  {
-    fullName: "Naina Gupta",
-    email: "naina.gupta@example.com",
-    amount: 880,
-    paymentMethod: "Debit Card",
-    cardNumber: "8888",
-    expiryDate: "11/24",
-  },
-  {
-    fullName: "Karan Sharma",
-    email: "karan.sharma@example.com",
-    amount: 990,
-    paymentMethod: "PayPal",
-    paypalEmail: "karan.sharma@paypal.com",
-  },
-  {
-    fullName: "Tanya Jain",
-    email: "tanya.jain@example.com",
-    amount: 150,
-    paymentMethod: "UPI",
-    upiId: "tanya.jain@upi",
-  },
-  {
-    fullName: "Rajesh Patel",
-    email: "rajesh.patel@example.com",
-    amount: 260,
-    paymentMethod: "Credit Card",
-    cardNumber: "9999",
-    expiryDate: "01/25",
-  },
-  {
-    fullName: "Ananya Bhardwaj",
-    email: "ananya.bhardwaj@example.com",
-    amount: 370,
-    paymentMethod: "Debit Card",
-    cardNumber: "0000",
-    expiryDate: "02/24",
-  },
-  {
-    fullName: "Kritika Sinha",
-    email: "kritika.sinha@example.com",
-    amount: 480,
-    paymentMethod: "PayPal",
-    paypalEmail: "kritika.sinha@paypal.com",
-  },
-  {
-    fullName: "Ishaan Reddy",
-    email: "ishaan.reddy@example.com",
-    amount: 590,
-    paymentMethod: "UPI",
-    upiId: "ishaan.reddy@upi",
-  },
-  {
-    fullName: "Ritu Sharma",
-    email: "ritu.sharma@example.com",
-    amount: 700,
-    paymentMethod: "Credit Card",
-    cardNumber: "1111",
-    expiryDate: "03/26",
-  },
-  {
-    fullName: "Alok Kumar",
-    email: "alok.kumar@example.com",
-    amount: 810,
-    paymentMethod: "Debit Card",
-    cardNumber: "2222",
-    expiryDate: "04/24",
-  },
-  {
-    fullName: "Pallavi Mehta",
-    email: "pallavi.mehta@example.com",
-    amount: 920,
-    paymentMethod: "PayPal",
-    paypalEmail: "pallavi.mehta@paypal.com",
-  },
-  {
-    fullName: "Siddhi Agarwal",
-    email: "siddhi.agarwal@example.com",
-    amount: 1030,
-    paymentMethod: "UPI",
-    upiId: "siddhi.agarwal@upi",
-  },
-  {
-    fullName: "Gaurav Saini",
-    email: "gaurav.saini@example.com",
-    amount: 1140,
-    paymentMethod: "Credit Card",
-    cardNumber: "3333",
-    expiryDate: "05/25",
-  },
-  {
-    fullName: "Tanvi Sharma",
-    email: "tanvi.sharma@example.com",
-    amount: 1250,
-    paymentMethod: "Debit Card",
-    cardNumber: "4444",
-    expiryDate: "06/24",
-  },
-  {
-    fullName: "Ravi Gupta",
-    email: "ravi.gupta@example.com",
-    amount: 1360,
-    paymentMethod: "PayPal",
-    paypalEmail: "ravi.gupta@paypal.com",
-  },
-  {
-    fullName: "Ankita Singh",
-    email: "ankita.singh@example.com",
-    amount: 1470,
-    paymentMethod: "UPI",
-    upiId: "ankita.singh@upi",
-  },
-  {
-    fullName: "Mohit Verma",
-    email: "mohit.verma@example.com",
-    amount: 1580,
-    paymentMethod: "Credit Card",
-    cardNumber: "5555",
-    expiryDate: "07/25",
-  },
-  {
-    fullName: "Neha Jain",
-    email: "neha.jain@example.com",
-    amount: 1690,
-    paymentMethod: "Debit Card",
-    cardNumber: "6666",
-    expiryDate: "08/24",
-  },
-  {
-    fullName: "Amit Kumar",
-    email: "amit.kumar@example.com",
-    amount: 1800,
-    paymentMethod: "PayPal",
-    paypalEmail: "amit.kumar@paypal.com",
-  },
-  {
-    fullName: "Ritika Kapoor",
-    email: "ritika.kapoor@example.com",
-    amount: 1910,
-    paymentMethod: "UPI",
-    upiId: "ritika.kapoor@upi",
-  },
-  {
-    fullName: "Raj Malhotra",
-    email: "raj.malhotra@example.com",
-    amount: 2020,
-    paymentMethod: "Credit Card",
-    cardNumber: "7777",
-    expiryDate: "09/25",
-  },
-  {
-    fullName: "Priya Mehta",
-    email: "priya.mehta@example.com",
-    amount: 2130,
-    paymentMethod: "Debit Card",
-    cardNumber: "8888",
-    expiryDate: "10/24",
-  },
-  {
-    fullName: "Sanjay Sinha",
-    email: "sanjay.sinha@example.com",
-    amount: 2240,
-    paymentMethod: "PayPal",
-    paypalEmail: "sanjay.sinha@paypal.com",
-  },
-  {
-    fullName: "Kriti Agarwal",
-    email: "kriti.agarwal@example.com",
-    amount: 2350,
-    paymentMethod: "UPI",
-    upiId: "kriti.agarwal@upi",
-  },
-  {
-    fullName: "Vikas Yadav",
-    email: "vikas.yadav@example.com",
-    amount: 2460,
-    paymentMethod: "Credit Card",
-    cardNumber: "9999",
-    expiryDate: "11/25",
-  },
-  {
-    fullName: "Pallavi Singh",
-    email: "pallavi.singh@example.com",
-    amount: 2570,
-    paymentMethod: "Debit Card",
-    cardNumber: "0000",
-    expiryDate: "12/24",
-  },
-  {
-    fullName: "Tarun Sharma",
-    email: "tarun.sharma@example.com",
-    amount: 2680,
-    paymentMethod: "PayPal",
-    paypalEmail: "tarun.sharma@paypal.com",
-  },
-  {
-    fullName: "Nupur Verma",
-    email: "nupur.verma@example.com",
-    amount: 2790,
-    paymentMethod: "UPI",
-    upiId: "nupur.verma@upi",
-  },
-  {
-    fullName: "Amitabh Bachchan",
-    email: "amitabh.bachchan@example.com",
-    amount: 2900,
-    paymentMethod: "Credit Card",
-    cardNumber: "1111",
-    expiryDate: "01/26",
-  },
-  {
-    fullName: "Madhuri Dixit",
-    email: "madhuri.dixit@example.com",
-    amount: 3010,
-    paymentMethod: "Debit Card",
-    cardNumber: "2222",
-    expiryDate: "02/25",
-  },
-  {
-    fullName: "Ranveer Singh",
-    email: "ranveer.singh@example.com",
-    amount: 3120,
-    paymentMethod: "PayPal",
-    paypalEmail: "ranveer.singh@paypal.com",
-  },
-  {
-    fullName: "Kareena Kapoor",
-    email: "kareena.kapoor@example.com",
-    amount: 3230,
-    paymentMethod: "UPI",
-    upiId: "kareena.kapoor@upi",
-  },
-  {
-    fullName: "Shah Rukh Khan",
-    email: "shah.rukh.khan@example.com",
-    amount: 3340,
-    paymentMethod: "Credit Card",
-    cardNumber: "3333",
-    expiryDate: "03/26",
-  },
-  {
-    fullName: "Deepika Padukone",
-    email: "deepika.padukone@example.com",
-    amount: 3450,
-    paymentMethod: "Debit Card",
-    cardNumber: "4444",
-    expiryDate: "04/24",
-  },
-  {
-    fullName: "Hrithik Roshan",
-    email: "hrithik.roshan@example.com",
-    amount: 3560,
-    paymentMethod: "PayPal",
-    paypalEmail: "hrithik.roshan@paypal.com",
-  },
-  {
-    fullName: "Priyanka Chopra",
-    email: "priyanka.chopra@example.com",
-    amount: 3670,
-    paymentMethod: "UPI",
-    upiId: "priyanka.chopra@upi",
-  },
-  {
-    fullName: "Jacqueline Fernandez",
-    email: "jacqueline.fernandez@example.com",
-    amount: 3780,
-    paymentMethod: "Credit Card",
-    cardNumber: "5555",
-    expiryDate: "05/25",
-  },
-  {
-    fullName: "Alia Bhatt",
-    email: "alia.bhatt@example.com",
-    amount: 3890,
-    paymentMethod: "Debit Card",
-    cardNumber: "6666",
-    expiryDate: "06/24",
-  },
-  {
-    fullName: "Ranbir Kapoor",
-    email: "ranbir.kapoor@example.com",
-    amount: 4000,
-    paymentMethod: "PayPal",
-    paypalEmail: "ranbir.kapoor@paypal.com",
-  },
-  {
-    fullName: "Sonam Kapoor",
-    email: "sonam.kapoor@example.com",
-    amount: 4110,
-    paymentMethod: "UPI",
-    upiId: "sonam.kapoor@upi",
-  },
-  {
-    fullName: "Amitabh Bachchan",
-    email: "amitabh.bachchan@example.com",
-    amount: 4220,
-    paymentMethod: "Credit Card",
-    cardNumber: "7777",
-    expiryDate: "07/25",
-  },
-  {
-    fullName: "Kriti Sanon",
-    email: "kriti.sanon@example.com",
-    amount: 4330,
-    paymentMethod: "Debit Card",
-    cardNumber: "8888",
-    expiryDate: "08/24",
-  },
-  {
-    fullName: "Varun Dhawan",
-    email: "varun.dhawan@example.com",
-    amount: 4440,
-    paymentMethod: "PayPal",
-    paypalEmail: "varun.dhawan@paypal.com",
-  },
-  {
-    fullName: "Disha Patani",
-    email: "disha.patani@example.com",
-    amount: 4550,
-    paymentMethod: "UPI",
-    upiId: "disha.patani@upi",
-  },
-  {
-    fullName: "Sidharth Malhotra",
-    email: "sidharth.malhotra@example.com",
-    amount: 4660,
-    paymentMethod: "Credit Card",
-    cardNumber: "9999",
-    expiryDate: "09/25",
-  },
-  {
-    fullName: "Taapsee Pannu",
-    email: "taapsee.pannu@example.com",
-    amount: 4770,
-    paymentMethod: "Debit Card",
-    cardNumber: "0000",
-    expiryDate: "10/24",
-  },
-  {
-    fullName: "Shilpa Shetty",
-    email: "shilpa.shetty@example.com",
-    amount: 4880,
-    paymentMethod: "PayPal",
-    paypalEmail: "shilpa.shetty@paypal.com",
-  },
-  {
-    fullName: "Nargis Fakhri",
-    email: "nargis.fakhri@example.com",
-    amount: 4990,
-    paymentMethod: "UPI",
-    upiId: "nargis.fakhri@upi",
-  },
-  {
-    fullName: "John Abraham",
-    email: "john.abraham@example.com",
-    amount: 5100,
-    paymentMethod: "Credit Card",
-    cardNumber: "1111",
-    expiryDate: "11/26",
-  },
-  {
-    fullName: "Vaani Kapoor",
-    email: "vaani.kapoor@example.com",
-    amount: 5210,
-    paymentMethod: "Debit Card",
-    cardNumber: "2222",
-    expiryDate: "12/25",
-  },
-  {
-    fullName: "Kalki Koechlin",
-    email: "kalki.koechlin@example.com",
-    amount: 5320,
-    paymentMethod: "PayPal",
-    paypalEmail: "kalki.koechlin@paypal.com",
-  },
-  {
-    fullName: "Radhika Apte",
-    email: "radhika.apte@example.com",
-    amount: 5430,
-    paymentMethod: "UPI",
-    upiId: "radhika.apte@upi",
-  },
-  {
-    fullName: "Mrunal Thakur",
-    email: "mrunal.thakur@example.com",
-    amount: 5540,
-    paymentMethod: "Credit Card",
-    cardNumber: "3333",
-    expiryDate: "01/27",
-  },
-  {
-    fullName: "Pooja Hegde",
-    email: "pooja.hegde@example.com",
-    amount: 5650,
-    paymentMethod: "Debit Card",
-    cardNumber: "4444",
-    expiryDate: "02/26",
-  },
-  {
-    fullName: "Neha Sharma",
-    email: "neha.sharma@example.com",
-    amount: 5760,
-    paymentMethod: "PayPal",
-    paypalEmail: "neha.sharma@paypal.com",
-  },
-  {
-    fullName: "Samantha Ruth Prabhu",
-    email: "samantha.ruth.prabhu@example.com",
-    amount: 5870,
-    paymentMethod: "UPI",
-    upiId: "samantha.ruth.prabhu@upi",
-  },
-  {
-    fullName: "Nithya Menen",
-    email: "nithya.menen@example.com",
-    amount: 5980,
-    paymentMethod: "Credit Card",
-    cardNumber: "5555",
-    expiryDate: "03/27",
-  },
-  {
-    fullName: "Kiara Advani",
-    email: "kiara.advani@example.com",
-    amount: 6090,
-    paymentMethod: "Debit Card",
-    cardNumber: "6666",
-    expiryDate: "04/25",
-  },
-  {
-    fullName: "Ananya Panday",
-    email: "ananya.panday@example.com",
-    amount: 6200,
-    paymentMethod: "PayPal",
-    paypalEmail: "ananya.panday@paypal.com",
-  },
-  {
-    fullName: "Siddharth Nigam",
-    email: "siddharth.nigam@example.com",
-    amount: 6310,
-    paymentMethod: "UPI",
-    upiId: "siddharth.nigam@upi",
-  },
-  {
-    fullName: "Shilpa Shetty",
-    email: "shilpa.shetty@example.com",
-    amount: 6420,
-    paymentMethod: "Credit Card",
-    cardNumber: "7777",
-    expiryDate: "05/26",
-  },
-  {
     fullName: "Rajkummar Rao",
     email: "rajkummar.rao@example.com",
     amount: 6530,
     paymentMethod: "Debit Card",
-    cardNumber: "8888",
-    expiryDate: "06/25",
-  },
-  {
-    fullName: "Sidharth Malhotra",
-    email: "sidharth.malhotra@example.com",
-    amount: 6640,
-    paymentMethod: "PayPal",
-    paypalEmail: "sidharth.malhotra@paypal.com",
-  },
-  {
-    fullName: "Sophie Choudry",
-    email: "sophie.choudry@example.com",
-    amount: 6750,
-    paymentMethod: "UPI",
-    upiId: "sophie.choudry@upi",
-  },
-  {
-    fullName: "Arjun Kapoor",
-    email: "arjun.kapoor@example.com",
-    amount: 6860,
-    paymentMethod: "Credit Card",
-    cardNumber: "9999",
-    expiryDate: "07/26",
-  },
-  {
-    fullName: "Sonakshi Sinha",
-    email: "sonakshi.sinha@example.com",
-    amount: 6970,
-    paymentMethod: "Debit Card",
-    cardNumber: "0000",
-    expiryDate: "08/25",
-  },
-  {
-    fullName: "Ranveer Singh",
-    email: "ranveer.singh@example.com",
-    amount: 7080,
-    paymentMethod: "PayPal",
-    paypalEmail: "ranveer.singh@paypal.com",
-  },
-  {
-    fullName: "Malaika Arora",
-    email: "malaika.arora@example.com",
-    amount: 7190,
-    paymentMethod: "UPI",
-    upiId: "malaika.arora@upi",
-  },
-  {
-    fullName: "Amitabh Bachchan",
-    email: "amitabh.bachchan@example.com",
-    amount: 7300,
-    paymentMethod: "Credit Card",
-    cardNumber: "1111",
-    expiryDate: "09/26",
-  },
-  {
-    fullName: "Rani Mukerji",
-    email: "rani.mukerji@example.com",
-    amount: 7410,
-    paymentMethod: "Debit Card",
-    cardNumber: "2222",
-    expiryDate: "10/25",
-  },
-  {
-    fullName: "Jacqueline Fernandez",
-    email: "jacqueline.fernandez@example.com",
-    amount: 7520,
-    paymentMethod: "PayPal",
-    paypalEmail: "jacqueline.fernandez@paypal.com",
-  },
-  {
-    fullName: "Sanya Malhotra",
-    email: "sanya.malhotra@example.com",
-    amount: 7630,
-    paymentMethod: "UPI",
-    upiId: "sanya.malhotra@upi",
-  },
-  {
-    fullName: "Sidharth Malhotra",
-    email: "sidharth.malhotra@example.com",
-    amount: 7740,
-    paymentMethod: "Credit Card",
-    cardNumber: "3333",
-    expiryDate: "11/26",
-  },
-  {
-    fullName: "Taapsee Pannu",
-    email: "taapsee.pannu@example.com",
-    amount: 7850,
-    paymentMethod: "Debit Card",
-    cardNumber: "4444",
-    expiryDate: "12/25",
-  },
-  {
-    fullName: "Kalki Koechlin",
-    email: "kalki.koechlin@example.com",
-    amount: 7960,
-    paymentMethod: "PayPal",
-    paypalEmail: "kalki.koechlin@paypal.com",
-  },
-  {
-    fullName: "Shilpa Shetty",
-    email: "shilpa.shetty@example.com",
-    amount: 8070,
-    paymentMethod: "UPI",
-    upiId: "shilpa.shetty@upi",
-  },
-  {
-    fullName: "Ananya Panday",
-    email: "ananya.panday@example.com",
-    amount: 8180,
-    paymentMethod: "Credit Card",
-    cardNumber: "5555",
-    expiryDate: "01/27",
-  },
-  {
-    fullName: "Kiara Advani",
-    email: "kiara.advani@example.com",
-    amount: 8290,
-    paymentMethod: "Debit Card",
-    cardNumber: "6666",
-    expiryDate: "02/26",
-  },
-  {
-    fullName: "Madhuri Dixit",
-    email: "madhuri.dixit@example.com",
-    amount: 8400,
-    paymentMethod: "PayPal",
-    paypalEmail: "madhuri.dixit@paypal.com",
-  },
-  {
-    fullName: "Radhika Apte",
-    email: "radhika.apte@example.com",
-    amount: 8510,
-    paymentMethod: "UPI",
-    upiId: "radhika.apte@upi",
-  },
-  {
-    fullName: "Samantha Ruth Prabhu",
-    email: "samantha.ruth.prabhu@example.com",
-    amount: 8620,
-    paymentMethod: "Credit Card",
-    cardNumber: "7777",
-    expiryDate: "03/27",
-  },
-  {
-    fullName: "Vaani Kapoor",
-    email: "vaani.kapoor@example.com",
-    amount: 8730,
-    paymentMethod: "Debit Card",
-    cardNumber: "8888",
-    expiryDate: "04/26",
-  },
-  {
-    fullName: "Disha Patani",
-    email: "disha.patani@example.com",
-    amount: 8840,
-    paymentMethod: "PayPal",
-    paypalEmail: "disha.patani@paypal.com",
-  },
-  {
-    fullName: "Ananya Panday",
-    email: "ananya.panday@example.com",
-    amount: 8950,
-    paymentMethod: "UPI",
-    upiId: "ananya.panday@upi",
-  },
-  {
-    fullName: "Jacqueline Fernandez",
-    email: "jacqueline.fernandez@example.com",
-    amount: 9060,
-    paymentMethod: "Credit Card",
-    cardNumber: "9999",
-    expiryDate: "05/27",
-  },
-  {
-    fullName: "Shilpa Shetty",
-    email: "shilpa.shetty@example.com",
-    amount: 9170,
-    paymentMethod: "Debit Card",
-    cardNumber: "0000",
-    expiryDate: "06/26",
-  },
-  {
-    fullName: "Sidharth Malhotra",
-    email: "sidharth.malhotra@example.com",
-    amount: 9280,
-    paymentMethod: "PayPal",
-    paypalEmail: "sidharth.malhotra@paypal.com",
-  },
-  {
-    fullName: "Kalki Koechlin",
-    email: "kalki.koechlin@example.com",
-    amount: 9390,
-    paymentMethod: "UPI",
-    upiId: "kalki.koechlin@upi",
-  },
-  {
-    fullName: "Kiara Advani",
-    email: "kiara.advani@example.com",
-    amount: 9500,
-    paymentMethod: "Credit Card",
-    cardNumber: "1111",
-    expiryDate: "07/27",
-  },
-  {
-    fullName: "Madhuri Dixit",
-    email: "madhuri.dixit@example.com",
-    amount: 9610,
-    paymentMethod: "Debit Card",
-    cardNumber: "2222",
-    expiryDate: "08/26",
-  },
-  {
-    fullName: "Rani Mukerji",
-    email: "rani.mukerji@example.com",
-    amount: 9720,
-    paymentMethod: "PayPal",
-    paypalEmail: "rani.mukerji@paypal.com",
-  },
-  {
-    fullName: "Taapsee Pannu",
-    email: "taapsee.pannu@example.com",
-    amount: 9830,
-    paymentMethod: "UPI",
-    upiId: "taapsee.pannu@upi",
-  },
-  {
-    fullName: "Samantha Ruth Prabhu",
-    email: "samantha.ruth.prabhu@example.com",
-    amount: 9940,
-    paymentMethod: "Credit Card",
-    cardNumber: "3333",
-    expiryDate: "09/27",
-  },
-  {
-    fullName: "Shilpa Shetty",
-    email: "shilpa.shetty@example.com",
-    amount: 10050,
-    paymentMethod: "Debit Card",
-    cardNumber: "4444",
-    expiryDate: "10/26",
+    debitCardNumber: "8888",
+    debitExpiryDate: "06/25",
+    debitCvv: "456"
   },
 ];
 
@@ -863,30 +40,74 @@ async function paymentSeeder() {
     await Payment.deleteMany({});
     logger.info("Existing payments cleared.");
 
-    // Fetch all donations
+    // Fetch all donations and users
     const donations = await Donation.find({});
-    // const donationTitles = donations.map((donation) => donation.title);
-    const donationIds = donations.map((donation) => donation._id); // Extract discussion IDs
     const users = await User.find({});
-    const userIds = users.map((user) => user._id);
+    const userIds = users.map(user => user._id);
+    const donationIds = donations.map(donation => donation._id);
 
     for (const payment of paymentData) {
-      // Pick a random donation title
-      let x = Math.floor(Math.random() * donationIds.length);
-      let randomDonationTitle = donations[x].title;
-      let randomDonationId = donationIds[x];
+      // Validate payment data
+      try {
+        validatePayment(payment);
+      } catch (validationError) {
+        console.error("Validation error: ", validationError);
+        continue; // Skip to next payment if validation fails
+      }
 
-      // Add the random donation title to the payment data
-      payment.donationTitle = randomDonationTitle;
-      payment.donationId = randomDonationId;
-      payment.donor = userIds[Math.floor(Math.random() * userIds.length)];
+      // Randomly pick donation and donor
+      const randomDonationId = donationIds[Math.floor(Math.random() * donationIds.length)];
+      const donorId = userIds[Math.floor(Math.random() * userIds.length)];
 
       // Create the payment
-      const newPayment = await Payment.create(payment);
-      logger.info(`Payment for donation "${payment.donationTitle}" added.`);
-      await Donation.findByIdAndUpdate(payment.donationId, {
-        $push: { payment: newPayment._id },
+      const newPayment = new Payment({
+        fullName: payment.fullName,
+        email: payment.email,
+        amount: payment.amount,
+        paymentMethod: payment.paymentMethod,
+        donationId: randomDonationId,
+        donor: donorId,
+        // Using the new fields based on the form
+        upiId: payment.upiId || undefined,
+        cardNumber: payment.cardNumber || undefined,
+        expiryDate: payment.expiryDate || undefined,
+        cvv: payment.cvv || undefined,
+        debitCardNumber: payment.debitCardNumber || undefined,
+        debitExpiryDate: payment.debitExpiryDate || undefined,
+        debitCvv: payment.debitCvv || undefined,
       });
+
+      await newPayment.save();
+      logger.info(`Payment for donation "${randomDonationId}" added with ID: ${newPayment._id}`);
+
+      // Update the associated donation
+      await Donation.findByIdAndUpdate(randomDonationId, {
+        $push: { payments: newPayment._id },
+        $inc: { totalCollection: payment.amount }, // Increment total collection by payment amount
+      });
+
+      // Update the user with payment reference
+      await User.findByIdAndUpdate(donorId, {
+        $push: { payments: newPayment._id },
+        $inc: { points: 10 },
+      });
+
+      // Create notifications for the donor
+      await Notification.create({
+        user: donorId,
+        message: `Thank you for your donation of ${payment.amount} to donation ID: "${randomDonationId}".`,
+        link: `/donations/${randomDonationId}`,
+      });
+
+      // Create notifications for the donation owner
+      const donationOwner = donations.find(donation => donation._id.equals(randomDonationId)).owner;
+      await Notification.create({
+        user: donationOwner._id,
+        message: `A donation of ${payment.amount} was made to your donation with ID: "${randomDonationId}".`,
+        link: `/donations/${randomDonationId}`,
+      });
+
+      logger.info(`Notifications created for donation ID: ${randomDonationId}`);
     }
 
     logger.info("Payment data seeded successfully!");

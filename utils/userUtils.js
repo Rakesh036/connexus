@@ -10,7 +10,14 @@ async function getUserProfile(userId) {
       .populate('groupsJoined')
       .populate('quizzesParticipated')
       .populate('quizzesCreated')
-      .populate('donations')
+      .populate({
+        path: 'donations',
+        populate: {
+          path: 'donors.user',
+          model: 'User',
+          // select: 'username',
+        }
+      })
       .populate({
         path: 'payments',
         populate: {

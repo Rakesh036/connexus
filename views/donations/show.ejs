@@ -7,7 +7,7 @@
                 <div class="d-flex align-items-center">
                     <!-- Back to Donations with Icon -->
                     <a href="/donations" class="btn btn-back d-inline-flex align-items-center me-3">
-                        <i class="fa-solid fa-left-long"></i>
+                        <i class="fa-solid fa-left-long"></i> Back to Donations
                     </a>
                 </div>
 
@@ -15,11 +15,11 @@
                 <% if (currUser && donation.owner && donation.owner.equals(currUser._id)) { %>
                 <div class="d-flex align-items-center">
                     <a href="/donations/<%= donation._id %>/edit" class="btn btn-edit me-2">
-                        <i class="fa-solid fa-edit"></i>
+                        <i class="fa-solid fa-edit"></i> Edit
                     </a>
                     <form action="/donations/<%= donation._id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-delete">
-                            <i class="fa-solid fa-trash"></i>
+                        <button class="btn btn-delete" type="submit" onclick="return confirm('Are you sure you want to delete this donation?');">
+                            <i class="fa-solid fa-trash"></i> Delete
                         </button>
                     </form>
                 </div>
@@ -29,14 +29,22 @@
             <!-- Title and Emergency Status -->
             <h1 class="mb-0 flex-grow-1 text-center">
                 <%= donation.title %>
-                <% if(donation.isEmergency) { %>
+                <% if (donation.isEmergency) { %>
                 <span class="badge bg-danger">Emergency</span>
                 <% } %>
             </h1>
 
             <p><%= donation.description %></p>
 
-            <form action="/api/payment/<%= donation._id  %>" method="get" class="me-2">
+            <p><strong>Total Collection:</strong> <%= donation.totalCollection %> rupees</p>
+            <% if (donation.isFundraising) { %>
+                <p><strong>Fundraising Goal:</strong> <%= donation.fundraisingGoal %> rupees</p>
+            <% } %>
+            <% if (donation.deadlineDate) { %>
+                <p><strong>Deadline Date:</strong> <%= donation.deadlineDate.toLocaleDateString() %></p>
+            <% } %>
+
+            <form action="/api/payment/<%= donation._id %>" method="get" class="me-2">
                 <button type="submit" class="btn btn-primary mt-2">
                     <i class="fa fa-donate"></i> Donate
                 </button>
@@ -48,16 +56,15 @@
             <!-- Payments Section -->
             <h3>Payments</h3>
             <% if (donation.payments.length > 0) { %>
-            <% donation.payments.forEach(payment => { %>
-            <div class="mb-3 d-flex">
-                <p><strong>Donor:</strong>
-                    <%= payment.donor ? payment.donor.username : "Anonymous" %>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p><strong>Amount:</strong> <%= payment.amount %> rupees&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p><strong>Transaction ID:</strong> <%= payment._id %></p>
-            </div>
-            <% }) %>
+                <% donation.payments.forEach(payment => { %>
+                <div class="mb-3 d-flex">
+                    <p><strong>Donor:</strong> <%= payment.donor ? payment.donor.username : "Anonymous" %>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p><strong>Amount:</strong> <%= payment.amount %> rupees&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p><strong>Transaction ID:</strong> <%= payment._id %></p>
+                </div>
+                <% }) %>
             <% } else { %>
-            <p>No payments have been made yet.</p>
+                <p>No payments have been made yet.</p>
             <% } %>
         </div>
     </div>
