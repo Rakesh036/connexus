@@ -1,7 +1,6 @@
 const Joi = require("joi");
-const logger = require("../utils/logger")('paymentMiddleware'); // Specify label
+const logger = require("../utils/logger")('paymentMiddleware');
 
-// Middleware to validate payment details using Joi
 module.exports.validatePayment = (req, res, next) => {
   try {
     logger.info("Validating payment details...");
@@ -9,40 +8,39 @@ module.exports.validatePayment = (req, res, next) => {
     const paymentSchema = Joi.object({
       fullName: Joi.string().required(),
       email: Joi.string().email().optional(),
-      donationTitle: Joi.string().optional(),  // Changed from eventTitle for clarity
-      amount: Joi.number().required().min(0),
+      donationTitle: Joi.string().allow('').optional(),
+      amount: Joi.number().optional().min(0),
       paymentMethod: Joi.string()
         .valid("UPI", "Credit Card", "Debit Card")
-        .required(),
-      upiId: Joi.string().when("paymentMethod", {
-        is: "UPI",
-        then: Joi.required(),
-      }),
-      cardNumber: Joi.string().when("paymentMethod", {
-        is: Joi.string().valid("Credit Card", "Debit Card"),
-        then: Joi.required(),
-      }),
-      expiryDate: Joi.string().when("paymentMethod", {
-        is: Joi.string().valid("Credit Card", "Debit Card"),
-        then: Joi.required(),
-      }),
+        .optional(),
+      upiId: Joi.string().allow('').optional(),
+      cardNumber: Joi.string().allow('').optional(),
+      expiryDate: Joi.string().allow('').optional(),
+      cvv: Joi.string().allow('').optional(),
+      debitCardNumber: Joi.string().allow('').optional(),
+      debitExpiryDate: Joi.string().allow('').optional(),
+      debitCvv: Joi.string().allow('').optional(),
+      
     });
 
-    logger.debug(`Request body for payment validation: ${JSON.stringify(req.body)}`);
+    console.log("Validating payment request body: ", req.body);
 
     const { error } = paymentSchema.validate(req.body);
+    console.log("Validation error: ", error);
 
     if (error) {
       const msg = error.details.map((el) => el.message).join(", ");
       logger.error(`Validation error: ${msg}`);
       req.flash("error", msg);
-      return res.redirect("back");
+      res.locals.redirectUrl = req.get('referer'); // Redirect back to the previous page
+      return res.redirect(res.locals.redirectUrl);
     }
 
     logger.info("Payment details validation passed.");
     next();
   } catch (e) {
-    logger.error(`Error in validatePayment middleware: ${e.message}`);
+    logger.error(`Error in validatePayment middleware: ${e.message}`, { stack: e.stack });
+    req.flash("error", "An error occurred during payment validation.");
     next(e);
   }
 };

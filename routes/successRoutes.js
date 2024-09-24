@@ -1,9 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const { storage } = require("../cloudConfig.js");
-const upload = multer({ storage });
+const path = require("path");
+// Set storage to save locally in an "uploads" folder
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, "../uploads")); // Save in 'uploads' folder
+  },
+  filename: function (req, file, cb) {
+    // Use the original file name or customize if needed
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
 
+const upload = multer({ storage });
 const logger = require("../utils/logger")('successRoutes'); // Specify label
 
 const {
@@ -32,18 +42,16 @@ router.get("/new", isLoggedIn, (req, res, next) => {
 router.post(
   "/",
   isLoggedIn,
+  upload.single("success[image]"), // Ensure the name matches the input
   (req, res, next) => {
-    logger.info("======= [ROUTE: Create Success Story] =======");
-    logger.info("[ACTION: Creating New Success Story]");
-    logger.info(`User ID: ${req.user._id} is creating a new success story`);
+    logger.info("Image upload in progress...");
+    if (!req.file) {
+      return next(new ExpressError(400, "Image upload is required"));
+    }
+    logger.info("Image upload successful");
     next();
   },
   validateSuccess,
-  upload.single("success[image]"),
-  (req, res, next) => {
-    logger.info("[ACTION: Success Story Validation and File Upload Completed]");
-    next();
-  },
   successController.create
 );
 

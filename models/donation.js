@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-const Payment = require("./payment");
-const Notification = require("./notification");
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const donationSchema = new Schema(
   {
@@ -34,10 +32,31 @@ const donationSchema = new Schema(
         ref: "Payment",
         validate: {
           validator: mongoose.Types.ObjectId.isValid,
-          message: "Invalid transaction ID",
+          message: "Invalid payment ID",
         },
       },
     ],
+    donors: [
+      {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "User",
+          validate: {
+            validator: mongoose.Types.ObjectId.isValid,
+            message: "Invalid donor ID",
+          },
+        },
+        amount: {
+          type: Number,
+          required: true,
+          min: [1, "Donation amount must be at least 1"],
+        },
+      },
+    ],
+    totalCollection: {
+      type: Number,
+      default: 0,
+    },
     isEmergency: {
       type: Boolean,
       default: false,
@@ -46,18 +65,32 @@ const donationSchema = new Schema(
   { timestamps: true }
 );
 
+// Middleware to update total collection safely
+donationSchema.methods.addDonation = async function (userId, amount) {
+  try {
+    const existingDonor = this.donors.find(donor => donor.user.equals(userId));
+    if (existingDonor) {
+      existingDonor.amount += amount;
+    } else {
+      this.donors.push({ user: userId, amount });
+    }
+    this.totalCollection += amount;
+    await this.save();
+  } catch (err) {
+    throw new Error("Error adding donation: " + err.message);
+  }
+};
+
+// Notification logic
 donationSchema.post("save", async function (doc, next) {
   const Notification = mongoose.model("Notification");
-  console.log("during save a new donation in donationSchema");
 
-  // Create a notification for the owner of the donation
   await Notification.create({
     user: doc.owner,
-    message: `Your donation "${doc.title}" was successfully created.`,
+    message: `Your donation "${doc.title}" was successfully created. Current total: ${doc.totalCollection}`,
     link: `/donations/${doc._id}`,
   });
 
-  // Create a specific notification if the donation is an emergency
   if (doc.isEmergency) {
     await Notification.create({
       user: doc.owner,
@@ -71,16 +104,13 @@ donationSchema.post("save", async function (doc, next) {
 
 donationSchema.post("findOneAndUpdate", async function (doc, next) {
   const Notification = mongoose.model("Notification");
-  console.log("during update in donationSchema");
 
-  // Create a notification for the owner of the donation
   await Notification.create({
     user: doc.owner,
-    message: `Your donation "${doc.title}" was successfully updated.`,
+    message: `Your donation "${doc.title}" was successfully updated. Current total: ${doc.totalCollection}`,
     link: `/donations/${doc._id}`,
   });
 
-  // Create a specific notification if the donation is an emergency
   if (doc.isEmergency) {
     await Notification.create({
       user: doc.owner,
@@ -91,5 +121,11 @@ donationSchema.post("findOneAndUpdate", async function (doc, next) {
 
   next();
 });
+
+
+
+// Indexing for optimization
+donationSchema.index({ owner: 1 });
+donationSchema.index({ isEmergency: 1 });
 
 module.exports = mongoose.model("Donation", donationSchema);

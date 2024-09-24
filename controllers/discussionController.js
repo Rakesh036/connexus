@@ -182,7 +182,10 @@ module.exports.like = wrapAsync(async (req, res) => {
     if (!discussion) {
       logger.error("Discussion not found!");
       req.flash("error", "Discussion does not exist!");
-      return res.redirect("/discussions");
+       // Store redirect URL
+  res.locals.redirectUrl = req.get('referer'); // Redirect back to the previous page
+  return res.redirect(res.locals.redirectUrl);
+    
     }
 
     const hasLiked = discussion.likes.some((like) => like.equals(userId));
@@ -194,12 +197,15 @@ module.exports.like = wrapAsync(async (req, res) => {
       logger.info("Liking the discussion.");
       await Discussion.findByIdAndUpdate(id, { $push: { likes: userId } });
     }
-
-    res.redirect(`/discussions`);
+  // Store redirect URL
+  res.locals.redirectUrl = req.get('referer'); // Redirect back to the previous page
+  res.redirect(res.locals.redirectUrl);
   } catch (err) {
     logger.error(`Error processing like: ${err}`);
     req.flash("error", "Failed to process like.");
-    res.redirect(`/discussions`);
+     // Store redirect URL
+  res.locals.redirectUrl = req.get('referer'); // Redirect back to the previous page
+  res.redirect(res.locals.redirectUrl);
   }
 
   logger.info("======= [END OF ACTION: Like] =======\n");
@@ -216,7 +222,9 @@ module.exports.comment = wrapAsync(async (req, res) => {
     if (!discussion) {
       logger.error("Discussion not found!");
       req.flash("error", "Discussion not found");
-      return res.redirect("/discussions");
+       // Store redirect URL
+  res.locals.redirectUrl = req.get('referer'); // Redirect back to the previous page
+ return res.redirect(res.locals.redirectUrl);
     }
 
     // Handle comment logic here...
@@ -225,7 +233,9 @@ module.exports.comment = wrapAsync(async (req, res) => {
   } catch (err) {
     logger.error(`Error processing comment: ${err}`);
     req.flash("error", "Failed to process comment.");
-    res.redirect(`/discussions/${req.params.id}`);
+    // Store redirect URL
+    res.locals.redirectUrl = req.get('referer'); // Redirect back to the previous page
+    res.redirect(res.locals.redirectUrl);
   }
 
   logger.info("======= [END OF ACTION: Comment] =======\n");
@@ -259,11 +269,15 @@ module.exports.report = wrapAsync(async (req, res) => {
     }
 
     req.flash("success", "Discussion reported!");
-    res.redirect(`/discussions`);
+     // Store redirect URL
+  res.locals.redirectUrl = req.get('referer'); // Redirect back to the previous page
+  res.redirect(res.locals.redirectUrl);
   } catch (err) {
     logger.error(`Error processing report: ${err}`);
     req.flash("error", "Failed to report discussion.");
-    res.redirect(`/discussions`);
+  // Store redirect URL
+  res.locals.redirectUrl = req.get('referer'); // Redirect back to the previous page
+  res.redirect(res.locals.redirectUrl);
   }
 
   logger.info("======= [END OF ACTION: Report] =======\n");

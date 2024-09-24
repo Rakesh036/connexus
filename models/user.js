@@ -125,6 +125,13 @@ const userSchema = new Schema({
       default: [],
     },
   ],
+  payments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Payment",
+      default: [],
+    },
+  ],
   jobPosts: [
     {
       type: Schema.Types.ObjectId,

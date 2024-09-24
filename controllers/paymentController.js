@@ -4,7 +4,6 @@ const User = require("../models/user");
 const Notification = require("../models/notification");
 const logger = require("../utils/logger")('paymentController'); // Specify label
 
-
 module.exports.renderPaymentForm = (req, res) => {
   const { donationId } = req.params;
   res.render("donations/paymentForm", { donationId });
@@ -14,7 +13,6 @@ module.exports.processPayment = async (req, res) => {
   const {
     fullName,
     email,
-    eventTitle,
     amount,
     paymentMethod,
     upiId,
@@ -45,7 +43,6 @@ module.exports.processPayment = async (req, res) => {
     const payment = new Payment({
       fullName,
       email,
-      eventTitle,
       amount,
       paymentMethod,
       upiId,
@@ -63,18 +60,16 @@ module.exports.processPayment = async (req, res) => {
     });
 
     await User.findByIdAndUpdate(donorId, {
-      $push: { donations: donationId },
+      $push: { payments: payment._id },
       $inc: { points: 10 },
     });
 
     const donation = await Donation.findById(donationId);
-
     await Notification.create({
       user: donorId,
       message: `Thank you for your donation of ${amount} to "${donation.title}".`,
       link: `/donations/${donationId}`,
     });
-
     await Notification.create({
       user: donation.owner._id,
       message: `A donation of ${amount} was made to your donation "${donation.title}".`,
@@ -86,7 +81,7 @@ module.exports.processPayment = async (req, res) => {
     req.flash("success", `Payment successful! Transaction ID: ${payment._id}`);
     res.redirect(`/donations/${donationId}`);
   } catch (error) {
-    logger.error(`Error processing payment for donation ID: ${donationId} - ${error}`);
+    logger.error(`Error processing payment for donation ID: ${donationId} - ${error.message}`);
     req.flash("error", "Error processing payment. Please try again.");
     res.redirect(`/donations/${donationId}`);
   }

@@ -4,17 +4,17 @@
   padding: 0;
   box-sizing: border-box;
 }
-html,body {
+html, body {
   font-family: Arial, sans-serif;
   height: 100vh;
 }
 
-.login-page{
+.login-page {
   min-height: 100%;
   flex: 1;
 }
 
-.container{
+.container {
   flex: 1;
   min-height: 50vh;
 }
@@ -36,18 +36,17 @@ header {
   display: block;
   width: 150px;
   transition: transform 0.3s ease-in-out;
-  /* Smooth hover animation */
 }
 
 .logo a:hover {
   transform: scale(1.1);
-  /* Slight growth on hover */
 }
 
 .logo img {
   width: 100%;
 }
 
+/* Normal Navigation Bar Styles */
 .navbar2 {
   display: flex;
   align-items: center;
@@ -57,48 +56,56 @@ header {
 
 .nav-links2 li,
 ul {
-  padding: 0px;
-}
-
-.nav-links2 a {
-  text-decoration: none;
-  color: #000;
-  /* font-size: 16px; */
-  transition: color 0.3s ease-in-out;
-  /* Smooth hover effect */
+  padding: 0;
 }
 
 .nav-links2 {
   list-style-type: none;
   display: flex;
-  align-self: start;
   align-items: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  /* justify-content: space-between; */
   flex-grow: 1;
   margin-left: 8rem;
   margin-right: 2rem;
 }
 
 .nav-links2 li {
-  margin-right: 40px;
+  margin-right: 20px;
+}
+
+.nav-links2 a {
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease-in-out;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 .nav-links2 a:hover {
-  color: #007bff;
-  /* Change link color on hover */
+  color: white;
+  background-color: #007bff;
+  transform: scale(1.05);
 }
 
+/* Hover effect for dropdown items */
+.dropdown-item {
+  color: #000;
+  padding: 8px 15px;
+}
+
+.dropdown-item:hover {
+  background-color: #007bff;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Auth Buttons */
 .auth-buttons {
   margin-left: 30px;
   display: flex;
   align-items: center;
-}
-
-.auth-buttons ul,
-li {
-  margin: 0px;
 }
 
 .login-btn,
@@ -108,7 +115,6 @@ li {
   cursor: pointer;
   font-size: 16px;
   transition: all 0.3s ease-in-out;
-  /* Smooth animation for buttons */
 }
 
 .login-btn {
@@ -119,12 +125,10 @@ li {
   margin-right: 15px;
 }
 
-/* Button Hover Animation */
 .login-btn:hover {
   background-color: #007bff;
   color: white;
   transform: scale(1.05);
-  /* Slightly enlarge on hover */
 }
 
 .register-btn {
@@ -136,9 +140,9 @@ li {
 .register-btn:hover {
   background-color: #0056b3;
   transform: scale(1.05);
-  /* Slightly enlarge on hover */
 }
 
+/* Mobile Menu */
 .hamburger-menu {
   display: none;
   font-size: 30px;
@@ -147,7 +151,6 @@ li {
   right: 30px;
 }
 
-/* Mobile Menu */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -161,54 +164,34 @@ li {
   z-index: 1000;
 }
 
-.mobile-menu a,
-li {
-  text-decoration: none;
-  color: black;
-}
-.mobile-menu ul {
-  list-style-type: none;
-}
-
 .mobile-menu.open {
   right: 0;
 }
 
-.close-menu {
-  font-size: 30px;
-  cursor: pointer;
-  display: block;
-  margin-bottom: 20px;
-}
-
-.mobile-nav-links2 {
+.mobile-menu ul {
   list-style-type: none;
 }
 
-.mobile-nav-links2 li {
-  margin-bottom: 15px;
-}
-
-.mobile-nav-links2 a {
+.mobile-nav-links a {
   text-decoration: none;
+  color: black;
   font-size: 18px;
-  color: #333;
-  transition: color 0.3s ease-in-out;
+  padding: 10px;
+  display: block;
+  transition: all 0.3s ease-in-out;
+  border-radius: 4px;
 }
 
-.mobile-nav-links2 a:hover {
-  color: #007bff;
+.mobile-nav-links a:hover {
+  background-color: #007bff;
+  color: white;
+  transform: scale(1.05);
 }
 
 .mobile-auth-buttons .login-btn,
 .mobile-auth-buttons .register-btn {
   width: 100%;
   margin-bottom: 10px;
-}
-
-.mobile-auth-buttons .register-btn {
-  background-color: #007bff;
-  color: white;
 }
 
 @media (max-width: 768px) {

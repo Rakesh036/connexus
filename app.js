@@ -69,8 +69,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 // For handling multipart/form-data (file uploads)
-const upload = multer();
-app.use(upload.any());
+// const storage = multer.memoryStorage(); // Use memory storage
+// const upload = multer({ storage });
+
+// app.use(upload.any());
 
 
 // logger.info("Express configured");
