@@ -14,7 +14,7 @@ module.exports.validateDonation = (data) => {
   logger.info("[ACTION: Starting validation for Donation schema]");
   logger.debug("Received data for validation: %o", data);
 
-  const { error } = module.exports.donationSchema.validate(data);
+  const { error } = donationSchema.validate(data);
 
   if (error) {
     const errorMessage = error.details.map(el => el.message).join(", ");

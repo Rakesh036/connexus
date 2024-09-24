@@ -14,7 +14,7 @@
                     <input type="text" id="title" name="success[title]" class="form-control"
                         placeholder="Add a catchy title" required>
                     <div class="valid-feedback">Title looks good!</div>
-                    <div class="invalid-feedback">Please enter a title of story.</div>
+                    <div class="invalid-feedback">Please enter a title for the story.</div>
                 </div>
 
                 <div class="mb-3">
@@ -40,3 +40,21 @@
         </div>
     </div>
 </div>
+<!-- 
+<script>
+    // Example for Bootstrap 5 custom validation
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script> -->

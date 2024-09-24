@@ -1,9 +1,8 @@
 const Donation = require("../models/donation");
 const { donationSchema } = require("../schemas/donationSchema");
 const ExpressError = require("../utils/expressError");
-const logger = require("../utils/logger")('donationMiddleware'); // Specify label
+const logger = require("../utils/logger")('donationMiddleware');
 
-// Middleware to check if the logged-in user is the owner of the donation
 module.exports.isDonationOwner = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -29,24 +28,26 @@ module.exports.isDonationOwner = async (req, res, next) => {
     next();
   } catch (err) {
     logger.error(`Error in isDonationOwner middleware: ${err.message}`);
+    req.flash("error", "An error occurred while checking ownership.");
     next(err);
   }
 };
 
-// Middleware to validate donation schema
 module.exports.validateDonation = (req, res, next) => {
   try {
     logger.info("Validating donation schema...");
+    console.log("req.body.donation: ",req.body.donation);
+    
     logger.debug(`Request body before conversion: ${JSON.stringify(req.body)}`);
 
     // Convert isEmergency to a boolean
     req.body.donation.isEmergency = req.body.donation.isEmergency === 'true';
     logger.debug(`Request body after conversion: ${JSON.stringify(req.body)}`);
 
-    const { error } = donationSchema.validate(req.body);
+    const { error } = donationSchema.validate(req.body.donation);
 
     if (error) {
-      const msg = error.details.map((el) => el.message).join(",");
+      const msg = error.details.map((el) => el.message).join(", ");
       logger.error(`Validation error: ${msg}`);
       throw new ExpressError(msg, 400);
     }
@@ -55,6 +56,7 @@ module.exports.validateDonation = (req, res, next) => {
     next();
   } catch (err) {
     logger.error(`Error in validateDonation middleware: ${err.message}`);
+    req.flash("error", "Validation failed. Please check your input.");
     next(err);
   }
 };

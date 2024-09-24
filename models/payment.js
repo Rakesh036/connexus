@@ -10,18 +10,12 @@ const paymentSchema = new Schema(
     },
     email: {
       type: String,
-      trim: true,
-      validate: {
-        validator: function (v) {
-          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-        },
-        message: "Please enter a valid email address.",
-      },
+      trim: true,   default: "",
+     
     },
     donationTitle: {
-      // Changed from eventTitle for clarity
       type: String,
-      trim: true,
+      trim: true,   default: "",
     },
     amount: {
       type: Number,
@@ -34,37 +28,20 @@ const paymentSchema = new Schema(
       enum: ["UPI", "Credit Card", "Debit Card"],
     },
     upiId: {
-      type: String,
-      validate: {
-        validator: function (v) {
-          return this.paymentMethod === "UPI" ? !!v : true;
-        },
-        message: "UPI ID is required for UPI payments.",
-      },
+      type: String,   default: "",
     },
     cardNumber: {
       type: String,
-      validate: {
-        validator: function (v) {
-          return this.paymentMethod === "Credit Card" ||
-            this.paymentMethod === "Debit Card"
-            ? !!v && v.length === 4
-            : true;
-        },
-        message: "Store only the last 4 digits of the card number.",
-      },
+      default: "",
+    },
+    debitCardNumber: {
+      type: String,   default: "",
+    },
+    debitExpiryDate: {
+      type: String,   default: "",
     },
     expiryDate: {
-      type: String,
-      validate: {
-        validator: function (v) {
-          return this.paymentMethod === "Credit Card" ||
-            this.paymentMethod === "Debit Card"
-            ? !!v
-            : true;
-        },
-        message: "Expiry date is required for card payments.",
-      },
+      type: String,   default: "",
     },
     donationId: {
       type: Schema.Types.ObjectId,
@@ -75,8 +52,18 @@ const paymentSchema = new Schema(
       ref: "User",
     },
   },
-
   { timestamps: true }
 );
+
+// Ensure valid donation ID before saving payment
+paymentSchema.pre("save", async function (next) {
+  if (this.donationId) {
+    const donationExists = await mongoose.model("Donation").exists({ _id: this.donationId });
+    if (!donationExists) {
+      return next(new Error("Invalid donation ID."));
+    }
+  }
+  next();
+});
 
 module.exports = mongoose.model("Payment", paymentSchema);

@@ -69,6 +69,11 @@ module.exports.create = wrapAsync(async (req, res) => {
     newSuccess.image = { url: req.file.path, filename: req.file.filename };
     await newSuccess.save();
 
+    // Update the user's successStories array
+    const user = await User.findById(req.user._id);
+    user.successStories.push(newSuccess._id);
+    await user.save();
+
     req.flash("success", "New success story created!");
     res.redirect("/successes");
 
@@ -79,6 +84,7 @@ module.exports.create = wrapAsync(async (req, res) => {
     res.redirect("/successes");
   }
 });
+
 
 module.exports.renderEditForm = wrapAsync(async (req, res) => {
   const { id } = req.params;
