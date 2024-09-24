@@ -27,6 +27,37 @@ module.exports.processPayment = async (req, res) => {
     req.flash("error", "Donation ID is missing.");
     return res.redirect("/donations");
   }
+  else {
+    const donation = await Donation.findById(donationId);
+
+    if (!donation) {
+      logger.error(`Donation with ID: ${donationId} not found.`);
+      req.flash("error", "Donation not found.");
+      return res.redirect("/donations");
+    }
+
+
+
+    // if (donation.status === "completed") {
+    //   logger.error("Donation has already been completed.");
+    //   req.flash("error", "Donation has already been completed.");
+    //   return res.redirect(`/donations/${donationId}`);
+    // }
+
+    // if (donation.status === "cancelled") {
+    //   logger.error("Donation has been cancelled.");
+    //   req.flash("error", "Donation has been cancelled.");
+    //   return res.redirect(`/donations/${donationId}`);
+    // }
+
+    // if (donation.status === "pending") {
+    //   logger.error("Donation is still pending.");
+    //   req.flash("error", "Donation is still pending. Please wait for the payment to be processed.
+    //   );
+    //   return res.redirect(`/donations/${donationId}`);
+
+    // }
+  }
 
   const donorId = req.user._id;
 
@@ -49,6 +80,7 @@ module.exports.processPayment = async (req, res) => {
       cardNumber,
       expiryDate,
       cvv,
+      donationId:donationId,
       donor: donorId,
     });
 

@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col-lg-4 text-center">
             <% if (user.profilePicture) { %>
-            <img src="<%= user.profilePicture %>" alt="Profile Picture" class="img-fluid rounded-circle mb-3">
+                <img src="<%= user.profilePicture %>" alt="Profile Picture" class="img-fluid rounded-circle mb-3">
             <% } else { %>
-            <i class="fa-solid fa-user fa-5x mb-3"></i>
+                <i class="fa-solid fa-user fa-5x mb-3"></i>
             <% } %>
             <h1><%= user.username %></h1>
             <p class="lead"><%= user.jobTitle %> at <%= user.employer %></p>
@@ -18,200 +18,90 @@
             <p><strong>Points:</strong> <%= user.points %></p>
             <p><strong>Star Alumni:</strong> <%= user.isStarAlumni ? 'Yes' : 'No' %></p>
         </div>
+
         <div class="col-lg-8">
-            <!-- Projects -->
-            <div class="mb-4">
-                <h2>Projects</h2>
-                <% if (user.projects.length) { %>
-                <ul>
-                    <% user.projects.forEach(project => { %>
-                    <li><%= project %></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No projects listed.</p>
-                <% } %>
-            </div>
+            <% const sections = [
+                { title: 'Projects', items: user.projects },
+                { title: 'Achievements', items: user.achievements },
+                { title: 'Job Postings', items: user.jobPosts, link: true },
+                { title: 'Discussion Posts', items: user.discussionPosts, link: true },
+                { title: 'Groups Joined', items: user.groupsJoined, link: true },
+                { title: 'Groups Created', items: user.groupsCreated, link: true },
+                { title: 'Quizzes Participated', items: user.quizzesParticipated, link: true, quiz: true },
+                { title: 'Quizzes Created', items: user.quizzesCreated, link: true, quiz: true },
+                { title: 'Events Organized', items: user.eventsOrganised, link: true },
+                { title: 'Events Joined', items: user.eventsJoined, link: true },
+                { title: 'Success Stories', items: user.successStories, story: true },
+                { title: 'Payments Made', items: user.payments, payment: true },
+                { title: 'Donations Created', items: user.donations, donation: true }
+            ]; %>
 
-            <!-- Achievements -->
-            <div class="mb-4">
-                <h2>Achievements</h2>
-                <% if (user.achievements.length) { %>
-                <ul>
-                    <% user.achievements.forEach(achievement => { %>
-                    <li><%= achievement %></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No achievements listed.</p>
-                <% } %>
-            </div>
-
-            <!-- Job Postings -->
-            <div class="mb-4">
-                <h2>Job Postings</h2>
-                <% if (user.jobPosts.length) { %>
-                <ul>
-                    <% user.jobPosts.forEach(jobPost => { %>
-                    <li><a href="/jobs/<%= jobPost._id %>"><%= jobPost.title %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No job postings.</p>
-                <% } %>
-            </div>
-
-            <!-- Discussion Posts -->
-            <div class="mb-4">
-                <h2>Discussion Posts</h2>
-                <% if (user.discussionPosts.length) { %>
-                <ul>
-                    <% user.discussionPosts.forEach(discussionPost => { %>
-                    <li><a href="/discussions/<%= discussionPost._id %>"><%= discussionPost.title %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No discussion posts.</p>
-                <% } %>
-            </div>
-
-            <!-- Groups Joined -->
-            <div class="mb-4">
-                <h2>Groups Joined</h2>
-                <% if (user.groupsJoined.length) { %>
-                <ul>
-                    <% user.groupsJoined.forEach(group => { %>
-                    <li><a href="/groups/<%= group._id %>"><%= group.name %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No groups joined.</p>
-                <% } %>
-            </div>
-
-            <!-- Groups Created -->
-            <div class="mb-4">
-                <h2>Groups Created</h2>
-                <% if (user.groupsCreated.length) { %>
-                <ul>
-                    <% user.groupsCreated.forEach(group => { %>
-                    <li><a href="/groups/<%= group._id %>"><%= group.name %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No groups created.</p>
-                <% } %>
-            </div>
-
-            <!-- Quizzes Participated -->
-            <div class="mb-4">
-                <h2>Quizzes Participated</h2>
-                <% if (user.quizzesParticipated.length) { %>
-                <ul>
-                    <% user.quizzesParticipated.forEach(quiz => { %>
-                    <li><a href="/groups/<%= quiz.group %>/quizzes/<%= quiz._id %>/leaderboard"><%= quiz.title %></a>
-                    </li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No quizzes participated in.</p>
-                <% } %>
-            </div>
-
-            <!-- Quizzes Created -->
-            <div class="mb-4">
-                <h2>Quizzes Created</h2>
-                <% if (user.quizzesCreated.length) { %>
-                <ul>
-                    <% user.quizzesCreated.forEach(quiz => { %>
-                    <li><a href="/groups/<%= quiz.group %>/quizzes/<%= quiz._id %>"><%= quiz.title %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No quizzes created.</p>
-                <% } %>
-            </div>
-
-            <!-- Events Organized -->
-            <div class="mb-4">
-                <h2>Events Organized</h2>
-                <% if (user.eventsOrganised.length) { %>
-                <ul>
-                    <% user.eventsOrganised.forEach(event => { %>
-                    <li><a href="/events/<%= event._id %>"><%= event.title %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No events organized.</p>
-                <% } %>
-            </div>
-
-            <!-- Events Joined -->
-            <div class="mb-4">
-                <h2>Events Joined</h2>
-                <% if (user.eventsJoined.length) { %>
-                <ul>
-                    <% user.eventsJoined.forEach(event => { %>
-                    <li><a href="/events/<%= event._id %>"><%= event.title %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No events joined.</p>
-                <% } %>
-            </div>
-            <!-- Success Stories & Payments -->
-            <div class="mb-4">
-                <h2>Success Stories & Payments</h2>
-                <% if (user.successStories.length) { %>
-                <ul>
-                    <% user.successStories.forEach(story => { %>
-                    <li>
-                        <strong>Story Title:</strong> <%= story.title %>
-                        <p><%= story.description %></p>
-                        <!-- Payment Info -->
-                        <p><strong>Donation:</strong> <%= story.donationTitle %></p>
-                        <p><strong>Payment Status:</strong> <%= story.paymentStatus %></p>
-                        <p><strong>Amount:</strong> $<%= story.amount %></p>
-                        <p><strong>Transaction Date:</strong>
-                            <%= story.paymentDate ? story.paymentDate.toDateString() : 'N/A' %>
-                        </p>
-                    </li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No success stories uploaded.</p>
-                <% } %>
-            </div>
-
-
-            <!-- Donations Created -->
-<div class="mb-4">
-    <h2>Donations Created</h2>
-    <% if (user.donations.length) { %>
-        <ul>
-            <% user.donations.forEach(donation => { %>
-                <li>
-                    <strong>Donation Title:</strong> <%= donation.title %> 
-                    <p><strong>Total Collection:</strong> $<%= donation.totalCollected %> / $<%= donation.goalAmount %> (<%= (donation.totalCollected / donation.goalAmount * 100).toFixed(2) %>%)</p>
-                    <p><strong>Number of Donors:</strong> <%= donation.donors.length %></p>
-                    <button type="button" data-bs-toggle="collapse" data-bs-target="#donors-<%= donation._id %>">
-                        View Donors
-                    </button>
-                    <div id="donors-<%= donation._id %>" class="collapse">
-                        <ul>
-                            <% donation.donors.forEach(donor => { %>
-                                <li><%= donor.name %> - $<%= donor.amount %></li>
+            <% sections.forEach(section => { %>
+                <div class="mb-4">
+                    <h2><%= section.title %></h2>
+                    <% if (section.items.length) { %>
+                        <ul class="list-group">
+                            <% section.items.forEach((item, index) => { %>
+                                <li class="list-group-item" style="display: <% if (index >= 3) { %>none<% } else { %>block<% } %>;">
+                                    <% if (section.link) { %>
+                                        <a href="/<%= section.title.toLowerCase().replace(' ', '') %>/<%= item._id %>"><%= item.title || item.name %></a>
+                                    <% } else if (section.story) { %>
+                                        <strong>Story Title:</strong> <%= item.title %>
+                                        <p><%= item.description %></p>
+                                    <% } else if (section.payment) { %>
+                                        <div>
+                                            <strong>Date:</strong> <%= item.createdAt.toDateString() %><br>
+                                            <strong>Transaction ID:</strong> <%= item._id %><br>
+                                            <a href="/donations/<%= item.donationId._id %>">
+                                                <%= item.donationId ? (item.donationId.title.length > 30 ? item.donationId.title.substring(0, 30) + '...' : item.donationId.title) : 'N/A' %>
+                                            </a>
+                                            <div class="float-end"><strong>$<%= item.amount %></strong></div>
+                                        </div>
+                                    <% } else if (section.donation) { %>
+                                        <strong>Donation Title:</strong> <%= item.title.length > 30 ? item.title.substring(0, 30) + '...' : item.title %>
+                                        <p>
+                                            <strong>Total Collection:</strong> $<%= item.totalCollected %> / $<%= item.goalAmount %>
+                                            (<%= (item.totalCollected / item.goalAmount * 100).toFixed(2) %>%)
+                                        </p>
+                                        <button type="button" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#donors-<%= item._id %>">
+                                            View Donors
+                                        </button>
+                                        <div id="donors-<%= item._id %>" class="collapse">
+                                            <ul>
+                                                <% item.donors.forEach(donor => { %>
+                                                    <li><%= donor.name %> - $<%= donor.amount %></li>
+                                                <% }) %>
+                                            </ul>
+                                        </div>
+                                    <% } else { %>
+                                        <%= item %>
+                                    <% } %>
+                                </li>
                             <% }) %>
                         </ul>
-                    </div>
-                </li>
+                        <% if (section.items.length > 3) { %>
+                            <button class="btn btn-primary mt-2" onclick="toggleView(this, '<%= section.title %>')">View All</button>
+                        <% } %>
+                    <% } else { %>
+                        <p>No <%= section.title.toLowerCase() %> listed.</p>
+                    <% } %>
+                </div>
             <% }) %>
-        </ul>
-    <% } else { %>
-        <p>No donations created.</p>
-    <% } %>
-</div>
-
         </div>
     </div>
 </div>
+
+<script>
+    function toggleView(button, sectionTitle) {
+        const listItems = button.closest('.mb-4').querySelectorAll('.list-group-item');
+        const isExpanded = button.innerText === 'Collapse';
+        
+        listItems.forEach((item, index) => {
+            if (index >= 3) {
+                item.style.display = isExpanded ? 'none' : 'block';
+            }
+        });
+
+        button.innerText = isExpanded ? 'View All' : 'Collapse';
+    }
+</script>

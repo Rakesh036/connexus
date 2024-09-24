@@ -1,6 +1,7 @@
 // utils/userUtils.js
 
 const User = require('../models/user');
+const Donation = require('../models/donation'); // Import the Donation model
 
 async function getUserProfile(userId) {
   try {
@@ -10,10 +11,19 @@ async function getUserProfile(userId) {
       .populate('quizzesParticipated')
       .populate('quizzesCreated')
       .populate('donations')
+      .populate({
+        path: 'payments',
+        populate: {
+          path: 'donationId',
+          model: 'Donation',
+          select:'title',
+        },
+      }) // Ensure payment's donationId is populated
       .populate('jobPosts')
       .populate('discussionPosts')
       .populate('eventsOrganised')
       .populate('eventsJoined')
+      .populate('successStories')
       .exec();
 
     return userProfile;
