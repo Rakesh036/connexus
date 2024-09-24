@@ -13,7 +13,7 @@ module.exports.index = wrapAsync(async (req, res) => {
         .populate("likes")
         .populate("joinMembers");
       logger.info(`Found ${events.length} events.`);
-      res.render("events/index", { events, cssFile: "events/index.css" });
+      res.render("events/index", { events, cssFile: "event/eventIndex.css" });
     } catch (err) {
       logger.error("Error fetching events:", err);
       throw new ExpressError(500, "Error fetching events.");
@@ -35,7 +35,7 @@ module.exports.show = wrapAsync(async (req, res) => {
         }
 
         const isLiked = event.likes.includes(req.user ? req.user._id : null);
-        res.render("events/show", { event, isLiked, cssFile: "events/show.css" });
+        res.render("events/show", { event, isLiked, cssFile: "event/eventShow.css" });
     } catch (err) {
         logger.error("Error fetching event:", err);
         throw new ExpressError(500, "Error fetching event.");
@@ -45,7 +45,7 @@ module.exports.show = wrapAsync(async (req, res) => {
 // New
 module.exports.new = (req, res) => {
     logger.info("Rendering new event form.");
-    res.render("events/new", { cssFile: "events/new.css" });
+    res.render("events/new", { cssFile: "event/eventNew.css" });
 };
 
 // Create
@@ -102,7 +102,7 @@ module.exports.edit = wrapAsync(async (req, res) => {
       logger.error("Event not found for editing.");
       throw new ExpressError(404, "Event not found.");
     }
-    res.render("events/edit", { event, cssFile: "events/edit.css" });
+    res.render("events/edit", { event, cssFile: "event/eventEdit.css" });
   } catch (err) {
     logger.error("Error rendering edit form:", err);
     throw new ExpressError(500, "Error rendering edit form.");
