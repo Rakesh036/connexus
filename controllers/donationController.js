@@ -1,4 +1,5 @@
 const Donation = require("../models/donation");
+const User = require("../models/user");
 const Payment = require("../models/payment");
 const wrapAsync = require("../utils/wrapAsync");
 const logger = require("../utils/logger")('donationController'); // Specify label
@@ -34,6 +35,7 @@ module.exports.renderNewForm = (req, res) => {
   logger.info("Rendering new donation form.");
   res.render("donations/new.ejs", { cssFile: "donate/donateNew.css" });
 };
+
 module.exports.create = wrapAsync(async (req, res) => {
   logger.info("Creating new donation...");
   try {
@@ -43,7 +45,7 @@ module.exports.create = wrapAsync(async (req, res) => {
     
     // Push the new donation ID into the user's donations array
     await User.findByIdAndUpdate(req.user._id, {
-      $push: { donations: newDonation._id }, // Use newDonation._id
+      $push: { donations: newDonation._id },
     });
 
     logger.info(`New donation created with ID: ${newDonation._id}`);
@@ -112,7 +114,7 @@ module.exports.update = wrapAsync(async (req, res) => {
   try {
     const donation = await Donation.findByIdAndUpdate(req.params.id, {
       ...req.body.donation,
-    });
+    }, { new: true });
 
     if (!donation) {
       logger.warn("Donation not found for update.");
@@ -164,6 +166,7 @@ module.exports.createPayment = wrapAsync(async (req, res) => {
     await payment.save();
 
     donation.payments.push(payment._id);
+    donation.totalCollection += payment.amount; // Update total collection
     await donation.save();
 
     logger.info(`Payment created and added to donation with ID: ${donation._id}`);

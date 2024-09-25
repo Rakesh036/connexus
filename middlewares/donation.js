@@ -36,15 +36,25 @@ module.exports.isDonationOwner = async (req, res, next) => {
 module.exports.validateDonation = (req, res, next) => {
   try {
     logger.info("Validating donation schema...");
-    console.log("req.body.donation: ",req.body.donation);
-    
     logger.debug(`Request body before conversion: ${JSON.stringify(req.body)}`);
-
+    console.log("donation 1, req.body.donation: ",req.body.donation);
     // Convert isEmergency to a boolean
     req.body.donation.isEmergency = req.body.donation.isEmergency === 'true';
-    logger.debug(`Request body after conversion: ${JSON.stringify(req.body)}`);
+    console.log("donation 2");
+    
+    // Ensure fundraisingGoal is set to 0 if not provided
+    req.body.donation.fundraisingGoal = req.body.donation.fundraisingGoal || 0;
+    console.log("donation 3");
+    // Set deadlineDate to null if not provided
+    if (!req.body.donation.deadlineDate) {
+      req.body.donation.deadlineDate = null;
+    }
+    console.log("donation 4");
 
+    logger.debug(`Request body after conversion: ${JSON.stringify(req.body)}`);
+    console.log("donation 5, req.body.donation: ",req.body.donation);
     const { error } = donationSchema.validate(req.body.donation);
+console.error( "error", error);
 
     if (error) {
       const msg = error.details.map((el) => el.message).join(", ");

@@ -1,0 +1,20 @@
+<div class="left-sidebar">
+    <h4>Profile</h4>
+    <div class="text-center">
+        <% if (user.profilePicture) { %>
+            <img src="<%= user.profilePicture %>" alt="Profile Picture" class="img-fluid rounded-circle mb-3">
+        <% } else { %>
+            <i class="fa-solid fa-user fa-5x mb-3"></i>
+        <% } %>
+        <h5><%= user.username %></h5>
+        <p class="lead"><%= user.jobTitle %> at <%= user.employer %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>Phone:</strong> <%= user.phone || 'N/A' %></p>
+        <p><strong>Location:</strong> <%= user.city %>, <%= user.country %></p>
+        <p><strong>Date of Birth:</strong> <%= user.dob ? user.dob.toDateString() : 'N/A' %></p>
+        <p><strong>Experience:</strong> <%= user.experience %> years</p>
+        <p><strong>Skills:</strong> <%= user.skills.length ? user.skills.join(", ") : 'None' %></p>
+        <p><strong>Points:</strong> <%= user.points %></p>
+        <p><strong>Star Alumni:</strong> <%= user.isStarAlumni ? 'Yes' : 'No' %></p>
+    </div>
+</div>

@@ -28,6 +28,14 @@ module.exports.processPayment = async (req, res) => {
     return res.redirect("/donations");
   }
 
+  const donation = await Donation.findById(donationId);
+
+  if (!donation) {
+    logger.error(`Donation with ID: ${donationId} not found.`);
+    req.flash("error", "Donation not found.");
+    return res.redirect("/donations");
+  }
+
   const donorId = req.user._id;
 
   try {
@@ -40,6 +48,7 @@ module.exports.processPayment = async (req, res) => {
       return res.redirect(`/donations/${donationId}`);
     }
 
+    // Create the payment
     const payment = new Payment({
       fullName,
       email,
@@ -49,22 +58,29 @@ module.exports.processPayment = async (req, res) => {
       cardNumber,
       expiryDate,
       cvv,
+      donationId: donationId,
       donor: donorId,
     });
 
     await payment.save();
     logger.info(`Payment saved successfully with ID: ${payment._id}`);
 
+    // Update donation with payment and total collection
     await Donation.findByIdAndUpdate(donationId, {
       $push: { payments: payment._id },
+      $inc: { totalCollection: amount },  // Increment totalCollection
     });
 
+    // Update user with payment reference and points
     await User.findByIdAndUpdate(donorId, {
       $push: { payments: payment._id },
       $inc: { points: 10 },
     });
 
-    const donation = await Donation.findById(donationId);
+    // Update donation donors and total collection using the addDonation method
+    await donation.addDonation(donorId, amount);  // Safely add donor and update totalCollection
+
+    // Send notifications
     await Notification.create({
       user: donorId,
       message: `Thank you for your donation of ${amount} to "${donation.title}".`,

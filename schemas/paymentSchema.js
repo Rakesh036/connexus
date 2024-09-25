@@ -2,34 +2,21 @@ const Joi = require("joi");
 const logger = require('../utils/logger')('payment schema'); // Ensure the path to your logger is correct
 
 // Define the schema
-module.exports.paymentSchema = Joi.object({
+const paymentSchema = Joi.object({
   fullName: Joi.string().required(),
   email: Joi.string().email().optional(),
-  donationTitle: Joi.string().optional(), // For consistency with the donation schema
-  amount: Joi.number().positive().required(),
+  donationTitle: Joi.string().allow('').optional(), // Keep for consistency
+  amount: Joi.number().positive().required(), // Change to positive to match seeder
   paymentMethod: Joi.string()
     .valid("UPI", "Credit Card", "Debit Card")
     .required(),
-  upiId: Joi.string().when("paymentMethod", {
-    is: "UPI",
-    then: Joi.required(),
-    otherwise: Joi.optional(),
-  }),
-  cardNumber: Joi.string().when("paymentMethod", {
-    is: "Credit Card",
-    then: Joi.required(),
-    otherwise: Joi.optional(),
-  }),
-  expiryDate: Joi.string().when("paymentMethod", {
-    is: "Credit Card",
-    then: Joi.required(),
-    otherwise: Joi.optional(),
-  }),
-  cvv: Joi.string().when("paymentMethod", {
-    is: "Credit Card",
-    then: Joi.required(),
-    otherwise: Joi.optional(),
-  }),
+  upiId: Joi.string().allow('').optional(),
+  cardNumber: Joi.string().allow('').optional(),
+  expiryDate: Joi.string().allow('').optional(),
+  cvv: Joi.string().allow('').optional(),
+  debitCardNumber: Joi.string().allow('').optional(),
+  debitExpiryDate: Joi.string().allow('').optional(),
+  debitCvv: Joi.string().allow('').optional(),
 });
 
 // Logging-based validation
@@ -52,3 +39,4 @@ module.exports.validatePayment = (data) => {
   return true;
 };
 
+module.exports.paymentSchema = paymentSchema; // Export schema for other uses

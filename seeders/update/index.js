@@ -6,6 +6,7 @@ const updateUserQuizPosts = require("./updateUserQuizPosts").resetAndUpdateUserQ
 const updateUserGroupPosts = require("./updateUserGroupPosts").resetAndUpdateUserGroupPosts;
 const updateUserSuccessStories = require("./updateUserSuccessStories").resetAndUpdateUserSuccessStories;
 const updateUserDiscussionPosts = require("./updateUserDiscussionPosts").resetAndUpdateUserDiscussionPosts;
+const recalculateTotalCollection=require("./recalculateTotalCollection").recalculateDonorAmountsAndTotalCollection;
 
 async function runUpdates() {
   try {
@@ -17,12 +18,14 @@ async function runUpdates() {
     console.log("Connected to MongoDB.");
 
     // Pass the connection to each update function
-    await updateUserJobPosts(connection);
-    await updateUserEventPosts(connection);
-    await updateUserQuizPosts(connection);
-    await updateUserGroupPosts(connection);
-    await updateUserSuccessStories(connection);
-    await updateUserDiscussionPosts(connection);
+    // await updateUserJobPosts(connection);
+    // await updateUserEventPosts(connection);
+    // await updateUserQuizPosts(connection);
+    // await updateUserGroupPosts(connection);
+    // await updateUserSuccessStories(connection);
+    // await updateUserDiscussionPosts(connection);
+
+    await recalculateTotalCollection(connection);  // Adjust the path as necessary
 
     console.log("All updates completed successfully.");
   } catch (error) {

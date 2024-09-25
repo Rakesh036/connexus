@@ -1,217 +1,29 @@
 <%- layout("/layouts/boilerplate") -%>
-<div class="container mt-3">
+<div class="profile-container mt-3">
     <div class="row">
-        <div class="col-lg-4 text-center">
-            <% if (user.profilePicture) { %>
-            <img src="<%= user.profilePicture %>" alt="Profile Picture" class="img-fluid rounded-circle mb-3">
-            <% } else { %>
-            <i class="fa-solid fa-user fa-5x mb-3"></i>
-            <% } %>
-            <h1><%= user.username %></h1>
-            <p class="lead"><%= user.jobTitle %> at <%= user.employer %></p>
-            <p><strong>Email:</strong> <%= user.email %></p>
-            <p><strong>Phone:</strong> <%= user.phone || 'N/A' %></p>
-            <p><strong>Location:</strong> <%= user.city %>, <%= user.country %></p>
-            <p><strong>Date of Birth:</strong> <%= user.dob ? user.dob.toDateString() : 'N/A' %></p>
-            <p><strong>Experience:</strong> <%= user.experience %> years</p>
-            <p><strong>Skills:</strong> <%= user.skills.length ? user.skills.join(", ") : 'None' %></p>
-            <p><strong>Points:</strong> <%= user.points %></p>
-            <p><strong>Star Alumni:</strong> <%= user.isStarAlumni ? 'Yes' : 'No' %></p>
+        <div class="col-lg-3">
+            <%- include('../partials/leftsidebar') %>
         </div>
-        <div class="col-lg-8">
-            <!-- Projects -->
-            <div class="mb-4">
-                <h2>Projects</h2>
-                <% if (user.projects.length) { %>
-                <ul>
-                    <% user.projects.forEach(project => { %>
-                    <li><%= project %></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No projects listed.</p>
-                <% } %>
-            </div>
-
-            <!-- Achievements -->
-            <div class="mb-4">
-                <h2>Achievements</h2>
-                <% if (user.achievements.length) { %>
-                <ul>
-                    <% user.achievements.forEach(achievement => { %>
-                    <li><%= achievement %></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No achievements listed.</p>
-                <% } %>
-            </div>
-
-            <!-- Job Postings -->
-            <div class="mb-4">
-                <h2>Job Postings</h2>
-                <% if (user.jobPosts.length) { %>
-                <ul>
-                    <% user.jobPosts.forEach(jobPost => { %>
-                    <li><a href="/jobs/<%= jobPost._id %>"><%= jobPost.title %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No job postings.</p>
-                <% } %>
-            </div>
-
-            <!-- Discussion Posts -->
-            <div class="mb-4">
-                <h2>Discussion Posts</h2>
-                <% if (user.discussionPosts.length) { %>
-                <ul>
-                    <% user.discussionPosts.forEach(discussionPost => { %>
-                    <li><a href="/discussions/<%= discussionPost._id %>"><%= discussionPost.title %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No discussion posts.</p>
-                <% } %>
-            </div>
-
-            <!-- Groups Joined -->
-            <div class="mb-4">
-                <h2>Groups Joined</h2>
-                <% if (user.groupsJoined.length) { %>
-                <ul>
-                    <% user.groupsJoined.forEach(group => { %>
-                    <li><a href="/groups/<%= group._id %>"><%= group.name %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No groups joined.</p>
-                <% } %>
-            </div>
-
-            <!-- Groups Created -->
-            <div class="mb-4">
-                <h2>Groups Created</h2>
-                <% if (user.groupsCreated.length) { %>
-                <ul>
-                    <% user.groupsCreated.forEach(group => { %>
-                    <li><a href="/groups/<%= group._id %>"><%= group.name %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No groups created.</p>
-                <% } %>
-            </div>
-
-            <!-- Quizzes Participated -->
-            <div class="mb-4">
-                <h2>Quizzes Participated</h2>
-                <% if (user.quizzesParticipated.length) { %>
-                <ul>
-                    <% user.quizzesParticipated.forEach(quiz => { %>
-                    <li><a href="/groups/<%= quiz.group %>/quizzes/<%= quiz._id %>/leaderboard"><%= quiz.title %></a>
-                    </li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No quizzes participated in.</p>
-                <% } %>
-            </div>
-
-            <!-- Quizzes Created -->
-            <div class="mb-4">
-                <h2>Quizzes Created</h2>
-                <% if (user.quizzesCreated.length) { %>
-                <ul>
-                    <% user.quizzesCreated.forEach(quiz => { %>
-                    <li><a href="/groups/<%= quiz.group %>/quizzes/<%= quiz._id %>"><%= quiz.title %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No quizzes created.</p>
-                <% } %>
-            </div>
-
-            <!-- Events Organized -->
-            <div class="mb-4">
-                <h2>Events Organized</h2>
-                <% if (user.eventsOrganised.length) { %>
-                <ul>
-                    <% user.eventsOrganised.forEach(event => { %>
-                    <li><a href="/events/<%= event._id %>"><%= event.title %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No events organized.</p>
-                <% } %>
-            </div>
-
-            <!-- Events Joined -->
-            <div class="mb-4">
-                <h2>Events Joined</h2>
-                <% if (user.eventsJoined.length) { %>
-                <ul>
-                    <% user.eventsJoined.forEach(event => { %>
-                    <li><a href="/events/<%= event._id %>"><%= event.title %></a></li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No events joined.</p>
-                <% } %>
-            </div>
-            <!-- Success Stories & Payments -->
-            <div class="mb-4">
-                <h2>Success Stories & Payments</h2>
-                <% if (user.successStories.length) { %>
-                <ul>
-                    <% user.successStories.forEach(story => { %>
-                    <li>
-                        <strong>Story Title:</strong> <%= story.title %>
-                        <p><%= story.description %></p>
-                        <!-- Payment Info -->
-                        <p><strong>Donation:</strong> <%= story.donationTitle %></p>
-                        <p><strong>Payment Status:</strong> <%= story.paymentStatus %></p>
-                        <p><strong>Amount:</strong> $<%= story.amount %></p>
-                        <p><strong>Transaction Date:</strong>
-                            <%= story.paymentDate ? story.paymentDate.toDateString() : 'N/A' %>
-                        </p>
-                    </li>
-                    <% }) %>
-                </ul>
-                <% } else { %>
-                <p>No success stories uploaded.</p>
-                <% } %>
-            </div>
-
-
-            <!-- Donations Created -->
-<div class="mb-4">
-    <h2>Donations Created</h2>
-    <% if (user.donations.length) { %>
-        <ul>
-            <% user.donations.forEach(donation => { %>
-                <li>
-                    <strong>Donation Title:</strong> <%= donation.title %> 
-                    <p><strong>Total Collection:</strong> $<%= donation.totalCollected %> / $<%= donation.goalAmount %> (<%= (donation.totalCollected / donation.goalAmount * 100).toFixed(2) %>%)</p>
-                    <p><strong>Number of Donors:</strong> <%= donation.donors.length %></p>
-                    <button type="button" data-bs-toggle="collapse" data-bs-target="#donors-<%= donation._id %>">
-                        View Donors
-                    </button>
-                    <div id="donors-<%= donation._id %>" class="collapse">
-                        <ul>
-                            <% donation.donors.forEach(donor => { %>
-                                <li><%= donor.name %> - $<%= donor.amount %></li>
-                            <% }) %>
-                        </ul>
-                    </div>
-                </li>
-            <% }) %>
-        </ul>
-    <% } else { %>
-        <p>No donations created.</p>
-    <% } %>
-</div>
-
+        <div class="col-lg-7 middle-content">
+            <%- include('../partials/middlecontent') %>
+        </div>
+        <div class="col-lg-2">
+            <%- include('../partials/rightsidebar') %>
         </div>
     </div>
 </div>
+
+<script src="/js/profile.js"></script>
+
+<style>
+    .left-sidebar, .right-sidebar {
+        position: sticky;
+        top: 0;
+        height: 100vh; /* Full height for fixed positioning */
+        overflow-y: auto; /* Enable scrolling if content overflows */
+    }
+    .middle-content {
+        overflow-y: auto; /* Allow middle section to scroll */
+        height: 100vh; /* Full height to match sidebars */
+    }
+</style>
