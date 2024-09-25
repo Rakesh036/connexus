@@ -8,7 +8,7 @@
                 <!-- Filter Buttons -->
                 <a href="/donations" class="btn btn-secondary mb-3 me-2">All Donations</a>
                 <a href="/donations?filter=emergency" class="btn btn-danger mb-3">Emergency Donations</a>
-                </div>
+            </div>
             <div class="row justify-content-center">
                 <% donations.reverse().forEach(donation => { %>
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
@@ -18,7 +18,8 @@
                                 <h5 class="card-title">
                                     <%= donation.title %>
                                     <% if(donation.isEmergency) { %>
-                                    <span class="badge bg-danger">Emergency</span>
+                                    <!-- Replacing text with Font Awesome icon for emergency -->
+                                    <i class="fa-solid fa-triangle-exclamation text-danger ms-2"></i>
                                     <% } %>
                                 </h5>
                                 <p class="card-text">Description: <%= donation.description %></p>
@@ -29,7 +30,6 @@
                                         <i class="fa fa-donate"></i> Donate
                                     </button>
                                 </form>
-                                <hr>
                                 <a href="/donations/<%= donation._id %>" class="btn btn-info mt-2">
                                     Read More
                                 </a>
