@@ -52,7 +52,8 @@ const app = express();
 // logger.info("Express app initialized");
 
 // Mongoose Connection
-const MONGO_URL = "mongodb://127.0.0.1:27017/connexus20";
+const MONGO_URL = process.env.MONGODB_URL;
+// const MONGO_URL = "mongodb://127.0.0.1:27017/connexus20";
 
 mongoose
   .connect(MONGO_URL)
