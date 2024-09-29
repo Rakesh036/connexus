@@ -7,6 +7,7 @@
 html, body {
   font-family: Arial, sans-serif;
   height: 100vh;
+  width: 100vw;
 }
 
 .login-page {
@@ -29,6 +30,8 @@ header {
   padding-right: 15px;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
+  /* position: fixed; */
+  width: 100vw;
 }
 
 /* Logo Animation */
@@ -66,8 +69,8 @@ ul {
   margin-top: 1rem;
   margin-bottom: 1rem;
   flex-grow: 1;
-  margin-left: 8rem;
-  margin-right: 2rem;
+  margin-left: 1.2rem;
+    /* margin-right: 1.2rem; */
 }
 
 .nav-links2 li {

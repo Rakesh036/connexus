@@ -1,5 +1,11 @@
 const mongoose = require("mongoose");
-const mongoUrl = "mongodb://127.0.0.1:27017/connexus20";
+// const mongoUrl = "mongodb://127.0.0.1:27017/connexus20";
+
+// Mongoose Connection
+const MONGO_URL = process.env.MONGODB_URL;
+// const MONGO_URL = "mongodb://127.0.0.1:27017/connexus20";
+
+
 const logger = require("../utils/logger")("runAllSeeds"); // Import your logger
 
 // Import seeders
@@ -19,22 +25,23 @@ const userSeeder = require("./userSeeder");
 async function runSeeds() {
   try {
     // Connect to MongoDB
-    await mongoose.connect(mongoUrl, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+   await mongoose
+  .connect(MONGO_URL)
+  .then(() => logger.info("Connectedd to MongoDB"))
+  .catch((err) => logger.error("Error connecting to MongoDB:", err));
+
 
     logger.info("Connected to MongoDB");
 
     // Clear other collections
     await Promise.all([
-      // require("../models/discussion").deleteMany({}),
-      // require("../models/discussionReview").deleteMany({}),
-      require("../models/donation").deleteMany({}),
+      require("../models/discussion").deleteMany({}),
+      require("../models/discussionReview").deleteMany({}),
+      // require("../models/donation").deleteMany({}),
       // require("../models/group").deleteMany({}),
       // require("../models/job").deleteMany({}),
       // require("../models/jobReview").deleteMany({}),
-      require("../models/payment").deleteMany({}),
+      // require("../models/payment").deleteMany({}),
       // require("../models/quiz").deleteMany({}),
       // require("../models/success").deleteMany({}),
       // require("../models/successReview").deleteMany({}),
@@ -44,13 +51,13 @@ async function runSeeds() {
 
     // Seed in proper sequence
     // await userSeeder();
-    // await discussionSeeder();
-    // await discussionReviewSeeder();
-    await donationSeeder();
+    await discussionSeeder();
+    await discussionReviewSeeder();
+    // await donationSeeder();
     // await groupSeeder();
     // await jobSeeder();
     // await jobReviewSeeder();
-    await paymentSeeder();
+    // await paymentSeeder();
     // await quizSeeder();
     // await successSeeder();
     // await successReviewSeeder();
